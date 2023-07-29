@@ -1,0 +1,48 @@
+ARG ONGGI_IMAGE=c.rzp.io/razorpay/onggi-multi-arch:php-8.1-api-worker
+ARG ARMORY_IMAGE=c.rzp.io/proxy_dockerhub/surnet/alpine-wkhtmltopdf:3.16.2-0.12.6-small
+
+FROM $ARMORY_IMAGE as wkhtmltopdf
+
+FROM $ONGGI_IMAGE
+
+ARG GIT_COMMIT_HASH
+ARG GIT_USERNAME
+ARG CACHEBUST
+
+WORKDIR /app
+
+COPY --from=wkhtmltopdf /bin/wkhtmltopdf /usr/bin/wkhtmltopdf
+
+COPY composer.json composer.lock /app/
+
+RUN --mount=type=secret,id=git_token set -eu && \
+    composer --version && \
+    git config --global user.name ${GIT_USERNAME} && \
+    composer config -g "github-oauth.github.com" $(cat /run/secrets/git_token) && \
+    composer config -g repos.packagist composer "https://packagist.rzp.io" && \
+    composer install --no-dev --no-interaction --no-autoloader --no-scripts && \
+    rm -rf /root/.composer && \
+    composer clear-cache && \
+    pear81 config-set php_ini /etc/php81/php.ini && \
+    mkdir -p public && echo "${GIT_COMMIT_HASH}" > public/commit.txt
+
+COPY . /app/
+
+RUN composer dump-autoload -o
+
+RUN apk add make git
+ADD Makefile /app
+ADD error_modules /app
+RUN echo ${CACHEBUST}
+
+RUN --mount=type=secret,id=git_token set -eux && \
+    echo "machine github.com login ${GIT_USERNAME} password $(cat /run/secrets/git_token)" > ~/.netrc && \
+    make error-module-clean && \
+    rm -f ~/.netrc
+
+RUN --mount=type=secret,id=git_token set -eux && \
+    echo "machine github.com login ${GIT_USERNAME} password $(cat /run/secrets/git_token)" > ~/.netrc && \
+    make error-module-fetch && \
+    rm -f ~/.netrc
+
+ENTRYPOINT [ "/usr/bin/dumb-init", "--single-child", "/app/dockerconf/entrypoint.worker.sh"]

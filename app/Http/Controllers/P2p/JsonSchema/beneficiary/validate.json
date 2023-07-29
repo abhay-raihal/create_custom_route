@@ -1,0 +1,38 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "type",
+        "validated"
+    ],
+    "properties": {
+        "validated": {
+            "type": "boolean",
+            "description" : "Whether the beneficiary is validated or not. For bank account, we will only validate IFSC"
+        },
+        "type" : {
+            "type" : "string",
+            "description": "Type of beneficiary passed"
+        },
+        "address": {
+            "type": "string",
+            "description": "NPCI format for the beneficiary",
+            "pattern": "^(.*)@(.*)$"
+        },
+        "beneficiary_name": {
+            "type": ["string", "null"],
+            "description": "Name for the beneficiary"
+        },
+        "id": {
+            "type" : ["string", "null"],
+            "description": "If validated, it can be used in transactions"
+        },
+        "verified": {
+            "type": "boolean",
+            "description": "Flag for verified payee"
+        }
+    }
+}

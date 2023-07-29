@@ -1,0 +1,55 @@
+<VirtualHost *:80>
+  # Keepalive settings
+  KeepAlive On
+  KeepAliveTimeout 60
+  MaxKeepAliveRequests 100
+
+  # {{ ansible_managed }}
+  ServerAdmin serverlogs@razorpay.com
+
+  {% set qa = ['perf', perf1,'perf2','func','automation','bvt','availability','ephemeral'] %}
+  {% if env in qa  %}
+  ServerName {{ env }}-api.razorpay.in
+  ServerAlias {{ env }}-invoices.razorpay.in
+  {% elif env == 'echo' %}
+  ServerName {{ env }}-api.razorpay.in
+  ServerAlias {{ env }}-invoices.razorpay.in
+  {% elif env == 'devserve' %}
+  ServerName api.dev.razorpay.in
+  ServerAlias invoices.dev.razorpay.in
+  {% elif env != 'prod' %}
+  ServerName {{ env }}-api.razorpay.com
+  ServerAlias {{ env }}-invoices.razorpay.com
+  {% elif env == 'prod' %}
+  ServerName api.razorpay.com
+  ServerAlias invoices.razorpay.com
+  {% endif %}
+
+  DocumentRoot /app/public
+  <Directory /app/public>
+    # This is to allow Authorization header raw access
+    # Without which bearer auth doesn't work
+    CGIPassAuth On
+    Options -Indexes
+    AllowOverride FileInfo
+    ErrorDocument 500 '{"error":{"code":"server_error","description":"The server encountered an error. The incident has been reported to admins"}}'
+
+    <IfModule mod_rewrite.c>
+      Options -MultiViews
+      RewriteEngine On
+      RewriteCond %{REQUEST_URI} !=/server-status
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteRule ^ index.php [L]
+    </IfModule>
+    Require all granted
+  </Directory>
+
+  # HTTPoxy Mitigation
+  RequestHeader unset Proxy early
+  LogLevel warn
+
+  SetEnvIf Request_URI "/commit.txt" dontlog
+
+  ErrorLog /var/log/apache/APACHE_HOST-{{ env }}-api-error.log
+  CustomLog /var/log/apache/APACHE_HOST-{{ env }}-api-access.log combined env=!dontlog
+</VirtualHost>

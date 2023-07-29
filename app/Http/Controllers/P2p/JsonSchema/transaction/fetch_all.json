@@ -1,0 +1,113 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "entity",
+        "count",
+        "items"
+    ],
+    "properties": {
+        "entity": {
+            "type": "string",
+            "enum": [
+                "collection"
+            ],
+            "default": null
+        },
+        "count": {
+            "type": "integer"
+        },
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "entity",
+                    "status",
+                    "amount",
+                    "description",
+                    "flow",
+                    "type",
+                    "currency",
+                    "error_code",
+                    "error_description",
+                    "is_concern_eligible",
+                    "is_pending_collect",
+                    "created_at",
+                    "completed_at",
+                    "expire_at"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "default": null,
+                        "pattern": "^ctxn_[\\w]{14}$"
+                    },
+                    "entity": {
+                        "type": "string",
+                        "enum": [
+                            "customer.transaction"
+                        ],
+                        "default": null,
+                        "pattern": "^(.*)$"
+                    },
+                    "status": {
+                        "type": "string",
+                        "pattern": "^(.*)$"
+                    },
+                    "amount": {
+                        "type": "integer"
+                    },
+                    "description": {
+                        "type": "string",
+                        "pattern": "^(.*)$"
+                    },
+                    "type": {
+                        "type": "string",
+                        "pattern": "^(.*)$"
+                    },
+                    "currency": {
+                        "type": "string",
+                        "pattern": "^(.*)$"
+                    },
+                    "error_description": {
+                        "type": "null"
+                    },
+                    "error_code": {
+                        "type": "null"
+                    },
+                    "flow": {
+                        "type": "string",
+                        "pattern": "^(.*)$"
+                    },
+                    "is_concern_eligible": {
+                        "type" : "boolean"
+                    },
+                    "is_pending_collect": {
+                        "type" : "boolean"
+                    },
+                    "initiated_at": {
+                        "type": ["integer", "null"]
+                    },
+                    "created_at": {
+                        "type": ["integer", "null"]
+                    },
+                    "completed_at": {
+                        "type": ["integer", "null"]
+                    },
+                    "expire_at": {
+                        "type": ["integer", "null"]
+                    },
+                    "upi":{
+                        "type": ["object", "null"]
+                    }
+                }
+            }
+        }
+    }
+}

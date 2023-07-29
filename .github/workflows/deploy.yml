@@ -1,0 +1,684 @@
+name: Run Unit Coverage
+on: [deployment]
+jobs:
+  Smart-collect:
+    runs-on: [api-public]
+    if: github.event.deployment.environment == 'smartcollectUT'
+    container:
+      image: c.rzp.io/razorpay/onggi:php-8.1-api-web
+      options: "--entrypoint /bin/bash"
+      credentials:
+        username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+        password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+    continue-on-error: false
+    name: Smart Collect Test Suite
+    steps:
+      - name: checkout
+        id: checkout
+        uses: razorpay/checkout-action@08eef2bd6ada50786812e7351457a762856a532f
+      - name: "Cache dependencies installed with composer"
+        uses: "actions/cache@v3.0.0"
+        with:
+          path: "/github/home/.composer/cache"
+          key: "api-composer-${{ hashFiles('composer.lock') }}"
+      - name: prepare_test
+        run: ci-assets/prepare_test.sh
+        env:
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+      - name: smart collect test suite
+        run: ci-assets/unit_coverage.sh
+        env:
+          DB_LIVE_HOST: mysql
+          DB_TEST_HOST: mysql
+          DB_AUTH_HOST: mysql
+          DB_LIVE_DATABASE: api_live
+          DB_TEST_DATABASE: api_test
+          DB_AUTH_DATABASE: api_auth
+          DB_UPI_PAYMENTS_MOCKED: "false"
+          DB_UPI_PAYMENTS_LIVE_HOST: mysql
+          DB_UPI_PAYMENTS_TEST_HOST: mysql
+          REDIS_HOST: redis
+          QUERY_CACHE_REDIS_HOST: redis
+          QUERY_CACHE_REDIS_PORT: 6379
+          MUTEX_REDIS_HOST: redis
+          MUTEX_REDIS_PORT: 6379
+          SESSION_REDIS_HOST: redis
+          SESSION_REDIS_PORT: 6379
+          SESSION_REDIS_HOST_V2: redis
+          SESSION_REDIS_PORT_V2: 6379
+          THROTTLE_REDIS_HOST: redis
+          THROTTLE_REDIS_PORT: 6379
+          ES_HOST: elasticsearch
+          ES_AUDIT_HOST: elasticsearch
+          LQEXT_TESTING_TXN_SKIP_COUNT: 5
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          GIT_COMMIT_ID: ${{ github.sha }}
+          SONAR_PROJECT_ID: API_SMARTCOLLECT_UT
+          TEST_SUITE_NAME: "Smart Collect Test Suite"
+          SOURCE_DIR: /__w/api/api/app/Models/BankAccount,/__w/api/api/app/Models/BankTransfer,/__w/api/api/app/Models/BankTransferRequest,/__w/api/api/app/Models/QrCode,/__w/api/api/app/Models/VirtualAccount,/__w/api/api/app/Models/VirtualAccountProducts,/__w/api/api/app/Models/VirtualAccountTpv,/__w/api/api/app/Models/VirtualVpaPrefix,/__w/api/api/app/Models/VirtualVpaPrefixHistory,/__w/api/api/app/Models/Vpa,/__w/api/api/app/Models/UpiTransfer,/__w/api/api/app/Models/UpiTransferRequest,/__w/api/api/app/Models/QrPayment
+    services:
+      redis:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/redis:alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      mysql:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/bitnami/mysql:8.0
+        env:
+          MYSQL_DATABASE: api
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+      elasticsearch:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/elasticsearch:5.6-alpine
+        env:
+          ES_JAVA_OPTS: -Xms512m -Xmx512m
+  SMEP-Partnerships:
+    runs-on: [self-hosted]
+    if: github.event.deployment.environment == 'smep-partnerships-api'
+    container:
+      image: c.rzp.io/razorpay/onggi:php-7.2-api-web-v3
+      options: "--entrypoint /bin/bash"
+      credentials:
+        username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+        password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+    continue-on-error: false
+    name: SMEP Partnerships Test Suite
+    steps:
+      - name: checkout
+        id: checkout
+        uses: razorpay/checkout-action@08eef2bd6ada50786812e7351457a762856a532f
+      - name: "Cache dependencies installed with composer"
+        uses: "actions/cache@v3.0.0"
+        with:
+          path: "/github/home/.composer/cache"
+          key: "api-composer-${{ hashFiles('composer.lock') }}"
+      - name: prepare_test
+        run: ci-assets/prepare_test.sh
+        env:
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+      - name: smep partnerships test suite
+        run: ci-assets/unit_coverage.sh
+        env:
+          DB_LIVE_HOST: mysql
+          DB_TEST_HOST: mysql
+          DB_AUTH_HOST: mysql
+          DB_LIVE_DATABASE: api_live
+          DB_TEST_DATABASE: api_test
+          DB_AUTH_DATABASE: api_auth
+          DB_UPI_PAYMENTS_MOCKED: "false"
+          DB_UPI_PAYMENTS_LIVE_HOST: mysql
+          DB_UPI_PAYMENTS_TEST_HOST: mysql
+          REDIS_HOST: redis
+          QUERY_CACHE_REDIS_HOST: redis
+          QUERY_CACHE_REDIS_PORT: 6379
+          MUTEX_REDIS_HOST: redis
+          MUTEX_REDIS_PORT: 6379
+          SESSION_REDIS_HOST: redis
+          SESSION_REDIS_PORT: 6379
+          SESSION_REDIS_HOST_V2: redis
+          SESSION_REDIS_PORT_V2: 6379
+          THROTTLE_REDIS_HOST: redis
+          THROTTLE_REDIS_PORT: 6379
+          ES_HOST: elasticsearch
+          ES_AUDIT_HOST: elasticsearch
+          LQEXT_TESTING_TXN_SKIP_COUNT: 5
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          GIT_COMMIT_ID: ${{ github.sha }}
+          SONAR_PROJECT_ID: smep-partnerships-api
+          TEST_SUITE_NAME: "SMEP Partnerships Test Suite"
+          SOURCE_DIR: /__w/api/api/app/Models/Partner,/__w/api/api/app/Models/Merchant/MerchantApplications,/__w/api/api/app/Models/Merchant/AccessMap
+    services:
+      redis:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/redis:alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      mysql:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/bitnami/mysql:8.0
+        env:
+          MYSQL_DATABASE: api
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+      elasticsearch:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/elasticsearch:5.6-alpine
+        env:
+          ES_JAVA_OPTS: -Xms512m -Xmx512m
+  Route:
+    runs-on: [api-public]
+    if: github.event.deployment.environment == 'routeUT'
+    container:
+      image: c.rzp.io/razorpay/onggi:php-8.1-api-web
+      options: "--entrypoint /bin/bash"
+      credentials:
+        username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+        password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+    continue-on-error: false
+    name: Route Test Suite
+    steps:
+      - name: checkout
+        id: checkout
+        uses: razorpay/checkout-action@08eef2bd6ada50786812e7351457a762856a532f
+      - name: "Cache dependencies installed with composer"
+        uses: "actions/cache@v3.0.0"
+        with:
+          path: "/github/home/.composer/cache"
+          key: "api-composer-${{ hashFiles('composer.lock') }}"
+      - name: prepare_test
+        run: ci-assets/prepare_test.sh
+        env:
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+      - name: Route test suite
+        run: ci-assets/unit_coverage.sh
+        env:
+          DB_LIVE_HOST: mysql
+          DB_TEST_HOST: mysql
+          DB_AUTH_HOST: mysql
+          DB_LIVE_DATABASE: api_live
+          DB_TEST_DATABASE: api_test
+          DB_AUTH_DATABASE: api_auth
+          DB_UPI_PAYMENTS_MOCKED: "false"
+          DB_UPI_PAYMENTS_LIVE_HOST: mysql
+          DB_UPI_PAYMENTS_TEST_HOST: mysql
+          REDIS_HOST: redis
+          QUERY_CACHE_REDIS_HOST: redis
+          QUERY_CACHE_REDIS_PORT: 6379
+          MUTEX_REDIS_HOST: redis
+          MUTEX_REDIS_PORT: 6379
+          SESSION_REDIS_HOST: redis
+          SESSION_REDIS_PORT: 6379
+          SESSION_REDIS_HOST_V2: redis
+          SESSION_REDIS_PORT_V2: 6379
+          THROTTLE_REDIS_HOST: redis
+          THROTTLE_REDIS_PORT: 6379
+          ES_HOST: elasticsearch
+          ES_AUDIT_HOST: elasticsearch
+          LQEXT_TESTING_TXN_SKIP_COUNT: 5
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          GIT_COMMIT_ID: ${{ github.sha }}
+          SONAR_PROJECT_ID: API_ROUTE_UT
+          TEST_SUITE_NAME: "Route Test Suite"
+          SOURCE_DIR: /__w/api/api/app/Models/Transfer,/__w/api/api/app/Models/Reversal
+    services:
+      redis:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/redis:alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      mysql:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/bitnami/mysql:8.0
+        env:
+          MYSQL_DATABASE: api
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+      elasticsearch:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/elasticsearch:5.6-alpine
+        env:
+          ES_JAVA_OPTS: -Xms512m -Xmx512m
+  PaymentPage:
+    runs-on: [ api-public ]
+    if: github.event.deployment.environment == 'paymentPageUT'
+    container:
+      image: c.rzp.io/razorpay/onggi:php-8.1-api-web
+      options: "--entrypoint /bin/bash"
+      credentials:
+        username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+        password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+    continue-on-error: false
+    name: Payment Page test suite
+    steps:
+      - name: checkout
+        id: checkout
+        uses: razorpay/checkout-action@08eef2bd6ada50786812e7351457a762856a532f
+      - name: "Cache dependencies installed with composer"
+        uses: "actions/cache@v3.0.0"
+        with:
+          path: "/github/home/.composer/cache"
+          key: "api-composer-${{ hashFiles('composer.lock') }}"
+      - name: prepare_test
+        run: ci-assets/prepare_test.sh
+        env:
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+      - name: Payment Page test suite
+        run: ci-assets/unit_coverage.sh
+        env:
+          DB_LIVE_HOST: mysql
+          DB_TEST_HOST: mysql
+          DB_AUTH_HOST: mysql
+          DB_LIVE_DATABASE: api_live
+          DB_TEST_DATABASE: api_test
+          DB_AUTH_DATABASE: api_auth
+          DB_UPI_PAYMENTS_MOCKED: "false"
+          DB_UPI_PAYMENTS_LIVE_HOST: mysql
+          DB_UPI_PAYMENTS_TEST_HOST: mysql
+          REDIS_HOST: redis
+          QUERY_CACHE_REDIS_HOST: redis
+          QUERY_CACHE_REDIS_PORT: 6379
+          MUTEX_REDIS_HOST: redis
+          MUTEX_REDIS_PORT: 6379
+          SESSION_REDIS_HOST: redis
+          SESSION_REDIS_PORT: 6379
+          SESSION_REDIS_HOST_V2: redis
+          SESSION_REDIS_PORT_V2: 6379
+          THROTTLE_REDIS_HOST: redis
+          THROTTLE_REDIS_PORT: 6379
+          ES_HOST: elasticsearch
+          ES_AUDIT_HOST: elasticsearch
+          LQEXT_TESTING_TXN_SKIP_COUNT: 5
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          GIT_COMMIT_ID: ${{ github.sha }}
+          SONAR_PROJECT_ID: API_PAYMENTPAGE_UT
+          TEST_SUITE_NAME: "Payment Page Test Suite"
+          SOURCE_DIR: /__w/api/api/app/Models/PaymentLink
+    services:
+      redis:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/redis:alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      mysql:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/bitnami/mysql:8.0
+        env:
+          MYSQL_DATABASE: api
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+      elasticsearch:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/elasticsearch:5.6-alpine
+        env:
+          ES_JAVA_OPTS: -Xms512m -Xmx512m
+  RxPayouts:
+    runs-on: [api-public]
+    if: github.event.deployment.environment == 'RX_PAYOUTS'
+    container:
+      image: c.rzp.io/razorpay/onggi:php-8.1-api-web
+      options: "--entrypoint /bin/bash"
+      credentials:
+        username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+        password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+    continue-on-error: false
+    name: RX Test Suite Payouts
+    steps:
+      - name: checkout
+        id: checkout
+        uses: razorpay/checkout-action@08eef2bd6ada50786812e7351457a762856a532f
+      - name: "Cache dependencies installed with composer"
+        uses: "actions/cache@v3.0.0"
+        with:
+          path: "/github/home/.composer/cache"
+          key: "api-composer-${{ hashFiles('composer.lock') }}"
+      - name: prepare_test
+        run: ci-assets/prepare_test.sh
+        env:
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+      - name: rx test suite
+        run: ci-assets/unit_coverage.sh
+        env:
+          DB_LIVE_HOST: mysql
+          DB_TEST_HOST: mysql
+          DB_AUTH_HOST: mysql
+          DB_LIVE_DATABASE: api_live
+          DB_TEST_DATABASE: api_test
+          DB_AUTH_DATABASE: api_auth
+          DB_UPI_PAYMENTS_MOCKED: "false"
+          DB_UPI_PAYMENTS_LIVE_HOST: mysql
+          DB_UPI_PAYMENTS_TEST_HOST: mysql
+          REDIS_HOST: redis
+          QUERY_CACHE_REDIS_HOST: redis
+          QUERY_CACHE_REDIS_PORT: 6379
+          MUTEX_REDIS_HOST: redis
+          MUTEX_REDIS_PORT: 6379
+          SESSION_REDIS_HOST: redis
+          SESSION_REDIS_PORT: 6379
+          SESSION_REDIS_HOST_V2: redis
+          SESSION_REDIS_PORT_V2: 6379
+          THROTTLE_REDIS_HOST: redis
+          THROTTLE_REDIS_PORT: 6379
+          ES_HOST: elasticsearch
+          ES_AUDIT_HOST: elasticsearch
+          LQEXT_TESTING_TXN_SKIP_COUNT: 5
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          GIT_COMMIT_ID: ${{ github.sha }}
+          SONAR_PROJECT_ID: API_RX_PAYOUT
+          TEST_SUITE_NAME: "Rx Test Suite Payouts"
+          SOURCE_DIR: /__w/api/api/app/Models/Payout,/__w/api/api/app/Models/FeeRecovery,/__w/api/api/app/Models/Contact,/__w/api/api/app/Models/FundAccount,/__w/api/api/app/Models/BankingAccountStatement,/__w/api/api/app/Models/BankingAccount,/__w/api/api/app/Models/FundTransfer,/__w/api/api/app/Models/Counter,/__w/api/api/app/Models/BankingAccountTpv,/__w/api/api/app/Models/RequestLog,/__w/api/api/app/Models/BankTransfer,/__w/api/api/app/Models/Merchant/Balance,/__w/api/api/app/Models/Merchant/Invoice
+    services:
+      redis:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/redis:alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      mysql:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/bitnami/mysql:8.0
+        env:
+          MYSQL_DATABASE: api
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+      elasticsearch:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/elasticsearch:5.6-alpine
+        env:
+          ES_JAVA_OPTS: -Xms512m -Xmx512m
+  RxCore:
+    runs-on: [api-public]
+    if: github.event.deployment.environment == 'RX_CORE'
+    container:
+      image: c.rzp.io/razorpay/onggi:php-8.1-api-web
+      options: "--entrypoint /bin/bash"
+      credentials:
+        username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+        password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+    continue-on-error: false
+    name: RX Test Suite Core
+    steps:
+      - name: checkout
+        id: checkout
+        uses: razorpay/checkout-action@08eef2bd6ada50786812e7351457a762856a532f
+      - name: "Cache dependencies installed with composer"
+        uses: "actions/cache@v3.0.0"
+        with:
+          path: "/github/home/.composer/cache"
+          key: "api-composer-${{ hashFiles('composer.lock') }}"
+      - name: prepare_test
+        run: ci-assets/prepare_test.sh
+        env:
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+      - name: rx test suite
+        run: ci-assets/unit_coverage.sh
+        env:
+          DB_LIVE_HOST: mysql
+          DB_TEST_HOST: mysql
+          DB_AUTH_HOST: mysql
+          DB_LIVE_DATABASE: api_live
+          DB_TEST_DATABASE: api_test
+          DB_AUTH_DATABASE: api_auth
+          DB_UPI_PAYMENTS_MOCKED: "false"
+          DB_UPI_PAYMENTS_LIVE_HOST: mysql
+          DB_UPI_PAYMENTS_TEST_HOST: mysql
+          REDIS_HOST: redis
+          QUERY_CACHE_REDIS_HOST: redis
+          QUERY_CACHE_REDIS_PORT: 6379
+          MUTEX_REDIS_HOST: redis
+          MUTEX_REDIS_PORT: 6379
+          SESSION_REDIS_HOST: redis
+          SESSION_REDIS_PORT: 6379
+          SESSION_REDIS_HOST_V2: redis
+          SESSION_REDIS_PORT_V2: 6379
+          THROTTLE_REDIS_HOST: redis
+          THROTTLE_REDIS_PORT: 6379
+          ES_HOST: elasticsearch
+          ES_AUDIT_HOST: elasticsearch
+          LQEXT_TESTING_TXN_SKIP_COUNT: 5
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          GIT_COMMIT_ID: ${{ github.sha }}
+          SONAR_PROJECT_ID: API_RX_CORE
+          TEST_SUITE_NAME: "Rx Test Suite Core"
+          SOURCE_DIR: /__w/api/api/app/Models/Payout,/__w/api/api/app/Models/FeeRecovery,/__w/api/api/app/Models/Contact,/__w/api/api/app/Models/FundAccount,/__w/api/api/app/Models/BankingAccountStatement,/__w/api/api/app/Models/BankingAccount,/__w/api/api/app/Models/FundTransfer,/__w/api/api/app/Models/Counter,/__w/api/api/app/Models/BankingAccountTpv,/__w/api/api/app/Models/RequestLog,/__w/api/api/app/Models/BankTransfer,/__w/api/api/app/Models/Merchant/Balance,/__w/api/api/app/Models/Merchant/Invoice
+    services:
+      redis:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/redis:alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      mysql:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/bitnami/mysql:8.0
+        env:
+          MYSQL_DATABASE: api
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+      elasticsearch:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/elasticsearch:5.6-alpine
+        env:
+          ES_JAVA_OPTS: -Xms512m -Xmx512m
+  EsOndemand:
+    runs-on: [ api-public ]
+    if: github.event.deployment.environment == 'ES_ONDEMAND'
+    container:
+      image: c.rzp.io/razorpay/onggi:php-8.1-api-web
+      options: "--entrypoint /bin/bash"
+      credentials:
+        username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+        password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+    continue-on-error: false
+    name: ES Ondemand Test Suite
+    steps:
+      - name: checkout
+        id: checkout
+        uses: razorpay/checkout-action@08eef2bd6ada50786812e7351457a762856a532f
+      - name: prepare_test
+        run: ci-assets/prepare_test.sh
+        env:
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+      - name: rx test suite
+        run: ci-assets/unit_coverage.sh
+        env:
+          DB_LIVE_HOST: mysql
+          DB_TEST_HOST: mysql
+          DB_AUTH_HOST: mysql
+          DB_LIVE_DATABASE: api_live
+          DB_TEST_DATABASE: api_test
+          DB_AUTH_DATABASE: api_auth
+          DB_UPI_PAYMENTS_MOCKED: "false"
+          DB_UPI_PAYMENTS_LIVE_HOST: mysql
+          DB_UPI_PAYMENTS_TEST_HOST: mysql
+          REDIS_HOST: redis
+          QUERY_CACHE_REDIS_HOST: redis
+          QUERY_CACHE_REDIS_PORT: 6379
+          MUTEX_REDIS_HOST: redis
+          MUTEX_REDIS_PORT: 6379
+          THROTTLE_REDIS_HOST: redis
+          THROTTLE_REDIS_PORT: 6379
+          ES_HOST: elasticsearch
+          ES_AUDIT_HOST: elasticsearch
+          LQEXT_TESTING_TXN_SKIP_COUNT: 5
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          GIT_COMMIT_ID: ${{ github.sha }}
+          SONAR_PROJECT_ID: API_ES_ONDEMAND
+          TEST_SUITE_NAME: "ES Ondemand Test Suite"
+          SOURCE_DIR: /__w/api/api/app/Models/Settlement/Ondemand,/__w/api/api/app/Models/Settlement/OndemandPayout,/__w/api/api/app/Models/Settlement/OndemandFundAccount
+    services:
+      redis:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/redis:alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      mysql:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/bitnami/mysql:8.0
+        env:
+          MYSQL_DATABASE: api
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+      elasticsearch:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/elasticsearch:5.6-alpine
+        env:
+          ES_JAVA_OPTS: -Xms512m -Xmx512m
+  OnboardingAPIs:
+    runs-on: [ api-public ]
+    if: github.event.deployment.environment == 'OnboardingAPIsUT'
+    container:
+      image: c.rzp.io/razorpay/onggi:php-8.1-api-web
+      options: "--entrypoint /bin/bash"
+      credentials:
+        username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+        password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+    continue-on-error: false
+    name: Onboarding APIs Test Suite
+    steps:
+      - name: checkout
+        id: checkout
+        uses: razorpay/checkout-action@08eef2bd6ada50786812e7351457a762856a532f
+      - name: "Cache dependencies installed with composer"
+        uses: "actions/cache@v3.0.0"
+        with:
+          path: "/github/home/.composer/cache"
+          key: "api-composer-${{ hashFiles('composer.lock') }}"
+      - name: prepare_test
+        run: ci-assets/prepare_test.sh
+        env:
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+      - name: Onboarding APIs test suite
+        run: ci-assets/unit_coverage.sh
+        env:
+          DB_LIVE_HOST: mysql
+          DB_TEST_HOST: mysql
+          DB_AUTH_HOST: mysql
+          DB_LIVE_DATABASE: api_live
+          DB_TEST_DATABASE: api_test
+          DB_AUTH_DATABASE: api_auth
+          DB_UPI_PAYMENTS_MOCKED: "false"
+          DB_UPI_PAYMENTS_LIVE_HOST: mysql
+          DB_UPI_PAYMENTS_TEST_HOST: mysql
+          REDIS_HOST: redis
+          QUERY_CACHE_REDIS_HOST: redis
+          QUERY_CACHE_REDIS_PORT: 6379
+          MUTEX_REDIS_HOST: redis
+          MUTEX_REDIS_PORT: 6379
+          SESSION_REDIS_HOST: redis
+          SESSION_REDIS_PORT: 6379
+          SESSION_REDIS_HOST_V2: redis
+          SESSION_REDIS_PORT_V2: 6379
+          THROTTLE_REDIS_HOST: redis
+          THROTTLE_REDIS_PORT: 6379
+          ES_HOST: elasticsearch
+          ES_AUDIT_HOST: elasticsearch
+          LQEXT_TESTING_TXN_SKIP_COUNT: 5
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_HOST: https://sonar.razorpay.com
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          GIT_COMMIT_ID: ${{ github.sha }}
+          SONAR_PROJECT_ID: OnboardingAPIs_UT
+          TEST_SUITE_NAME: "Onboarding APIs Test Suite"
+          SOURCE_DIR: /__w/api/api/app/Models/Merchant/AccountV2,/__w/api/api/app/Models/Merchant/WebhookV2,/__w/api/api/app/Models/Merchant/Product,/__w/api/api/app/Models/Merchant/Stakeholder,/__w/api/api/app/Models/Merchant/Document,/__w/api/api/app/Models/Merchant/Detail,/__w/api/api/app/Models/Merchant/Escalations
+          EXCLUDE_FILES: app/Models/Merchant/Escalations/Actions/Handlers/CommunicationHandler.php,app/Models/Merchant/Escalations/Actions/Handlers/DisablePaymentsHandler.php,app/Models/Merchant/Escalations/Actions/Handlers/EscalationHandler.php,app/Models/Merchant/Escalations/Actions/Handlers/FundsOnHoldHandler.php,app/Models/Merchant/Escalations/Actions/Handlers/MerchantTagsHandler.php,app/Models/Merchant/WebhookV2/AlertEmailRecon/**,app/Models/Merchant/Detail/BusinessCategoriesV2/**,app/Models/Merchant/Detail/BusinessDetailSearch/**,app/Models/Merchant/Detail/Report/**,app/Models/Merchant/Detail/Upload/**,app/Models/Merchant/Detail/Verifiers/**,app/Models/Merchant/Detail/FileMigration.php
+    services:
+      redis:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/redis:alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      mysql:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/bitnami/mysql:8.0
+        env:
+          MYSQL_DATABASE: api
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+      elasticsearch:
+        credentials:
+          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
+          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
+        image: c.rzp.io/proxy_dockerhub/library/elasticsearch:5.6-alpine
+        env:
+          ES_JAVA_OPTS: -Xms512m -Xmx512m
+

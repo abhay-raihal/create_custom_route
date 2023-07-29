@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         backupGlobals="false" backupStaticAttributes="false"
+         bootstrap="bootstrap/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         cacheResult="true"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+    <coverage>
+        <include>
+            <directory suffix=".php">./app/</directory>
+        </include>
+        <exclude>
+            <file>./app/config/database.php</file>
+            <file>./app/config/testing/database.php</file>
+            <file>./app/gateway/hdfc/HdfcGatewayConfig.php</file>
+            <directory suffix=".php">./app/database/seeds</directory>
+        </exclude>
+    </coverage>
+    <testsuites>
+        <testsuite name="Dcs Test Suite">
+            <directory>./tests/Unit/Services/Dcs</directory>
+        </testsuite>
+        <testsuite name="Application Test Suite">
+            <directory>./tests/Functional/AccessControlHistoryLogs/</directory>
+            <directory>./tests/Functional/VendorPayment/</directory>
+            <directory>./tests/Functional/Encryption/</directory>
+            <directory>./tests/Functional/D2cBureauDetails/</directory>
+            <directory>./tests/Functional/AccessControlPrivileges/</directory>
+            <directory>./tests/Functional/Options/</directory>
+            <directory>./tests/Functional/CardMandate/</directory>
+            <directory>./tests/Functional/PaperMandate/</directory>
+            <directory>./tests/Functional/UserRole/</directory>
+            <directory>./tests/Functional/Adjustment/</directory>
+            <directory>./tests/Functional/BharatQrPayment/</directory>
+            <directory>./tests/Functional/Governor/</directory>
+            <directory>./tests/Functional/Card/</directory>
+            <directory>./tests/Functional/EdgeThrottler/</directory>
+            <directory>./tests/Functional/SmartRouting/</directory>
+            <directory>./tests/Functional/Bbps/</directory>
+            <directory>./tests/Functional/SubVirtualAccount/</directory>
+            <directory>./tests/Functional/Care/</directory>
+            <directory>./tests/Functional/StatusCake/</directory>
+            <directory>./tests/Functional/PublicController/</directory>
+            <directory>./tests/Functional/CorporateCards/</directory>
+            <directory>./tests/Functional/InstrumentRules/</directory>
+            <directory>./tests/Functional/Art/</directory>
+            <directory>./tests/Functional/Affordability/</directory>
+            <directory>./tests/Functional/VendorPortal/</directory>
+            <directory>./tests/Functional/UpiTransfer/</directory>
+            <directory>./tests/Functional/MasterOnboardingService/</directory>
+            <directory>./tests/Functional/TerminalOnboardingDetail/</directory>
+            <directory>./tests/Functional/OneClickCheckout/</directory>
+            <directory>./tests/Functional/PayoutOutbox/</directory>
+            <directory>./tests/Functional/Location/</directory>
+            <file>./tests/Functional/Merchant/PartnerTest.php</file>
+        </testsuite>
+        <testsuite name="Application-1 Test Suite">
+            <directory>./tests/Functional/Razorflow/</directory>
+            <directory>./tests/Functional/SubscriptionRegistration/</directory>
+            <directory>./tests/Functional/Mpan/</directory>
+            <directory>./tests/Functional/Admin/</directory>
+            <directory>./tests/Functional/Internal/</directory>
+            <directory>./tests/Functional/Typeform/</directory>
+            <directory>./tests/Functional/ThirdWatch/</directory>
+            <directory>./tests/Functional/Roles/</directory>
+            <directory>./tests/Functional/Coupon/</directory>
+            <directory>./tests/Functional/Assertion/</directory>
+            <directory>./tests/Functional/QrCode/</directory>
+            <directory>./tests/Functional/Growth/</directory>
+            <directory>./tests/Functional/LocationService/</directory>
+            <directory>./tests/Functional/FreshdeskTicket/</directory>
+            <exclude>./tests/Functional/AThirdWatch/</exclude>
+            <exclude>./tests/Functional/Admin/GroupEsTest.php</exclude>
+        </testsuite>
+        <testsuite name="Application-2 Test Suite">
+            <directory>./tests/Functional/QrCodeConfig/</directory>
+            <directory>./tests/Functional/AutoGenerateApiDocs/</directory>
+            <directory>./tests/Functional/InstrumentRequest/</directory>
+            <directory>./tests/Functional/Batch/</directory>
+            <directory>./tests/Functional/CheckoutOrder/</directory>
+            <directory>./tests/Functional/Address/</directory>
+            <directory>./tests/Functional/P2p/</directory>
+            <directory>./tests/Functional/LedgerJournalJob/</directory>
+            <directory>./tests/Functional/Reward/</directory>
+            <directory>./tests/Functional/Fixtures/</directory>
+            <directory>./tests/Functional/Report/</directory>
+            <directory>./tests/Functional/VirtualVpaPrefix/</directory>
+            <directory>./tests/Functional/TerminalTestRun/</directory>
+            <directory>./tests/Functional/Beam/</directory>
+        </testsuite>
+        <testsuite name="Application-3 Test Suite">
+            <directory>./tests/Functional/Authz/</directory>
+            <directory>./tests/Functional/Consumer/</directory>
+            <directory>./tests/Functional/TrustedBadge/</directory>
+            <directory>./tests/Functional/Modules/</directory>
+            <directory>./tests/Functional/Error/</directory>
+            <directory>./tests/Functional/CircuitBreaker/</directory>
+            <directory>./tests/Functional/CreditNote/</directory>
+            <directory>./tests/Functional/Helpers/</directory>
+            <directory>./tests/Functional/BankTransfer/</directory>
+            <directory>./tests/Functional/Offline/</directory>
+            <directory>./tests/Functional/BasicAuth/</directory>
+            <directory>./tests/Functional/Store/</directory>
+            <directory>./tests/Functional/Splitz/</directory>
+        </testsuite>
+        <testsuite name="Features-1 Test Suite">
+            <directory>./tests/Functional/Customer/</directory>
+            <directory>./tests/Functional/Device/</directory>
+            <directory>./tests/Functional/EMI/</directory>
+            <directory>./tests/Functional/FileStore/</directory>
+            <directory>./tests/Functional/Invoice/</directory>
+            <exclude>/tests/Functional/Invoice/PaymentEInvoiceTest.php</exclude>
+            <directory>./tests/Functional/FundTransfer/</directory>
+            <directory>./tests/Functional/Invitation/</directory>
+            <directory>./tests/Functional/Key/</directory>
+            <directory>./tests/Functional/BankingAccountTpv/</directory>
+            <!--<directory>./tests/Functional/AutoGenerateApiDocsTest/</directory>-->
+        </testsuite>
+        <testsuite name="Features-2 Test Suite">
+            <file>./tests/Functional/Merchant/AccountTest.php</file>
+            <file>./tests/Functional/Merchant/AccountV2DocumentsTest.php</file>
+            <file>./tests/Functional/Merchant/AccountV2Test.php</file>
+            <file>./tests/Functional/Merchant/AmountCreditsTest.php</file>
+            <file>./tests/Functional/Merchant/AppCheckerTest.php</file>
+            <file>./tests/Functional/Merchant/BalanceConfigTest.php</file>
+            <file>./tests/Functional/Merchant/BatchActionTest.php</file>
+            <file>./tests/Functional/Merchant/BulkFraudNotifyTest.php</file>
+            <file>./tests/Functional/Merchant/CardRedactionTest.php</file>
+            <file>./tests/Functional/Merchant/CheckoutFeeCalculationTest.php</file>
+            <file>./tests/Functional/Merchant/CheckoutPreferencesTest.php</file>
+            <file>./tests/Functional/Merchant/CreditLogsTest.php</file>
+        </testsuite>
+        <testsuite name="Features-2-1 Test Suite">
+            <file>./tests/Functional/Merchant/DailyReportTest.php</file>
+            <file>./tests/Functional/Merchant/DetailEntityEventTest.php</file>
+            <file>./tests/Functional/Merchant/EntityEventTest.php</file>
+            <file>./tests/Functional/Merchant/EntityInstrumentationTest.php</file>
+            <file>./tests/Functional/Merchant/EntityReportTest.php</file>
+            <file>./tests/Functional/Merchant/HolidayNotificationTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantDetailTest.php</file>
+        </testsuite>
+        <testsuite name="Features-2-2 Test Suite">
+            <file>./tests/Functional/Merchant/M2MReferralTest.php</file>
+            <file>./tests/Functional/Merchant/MailmodoTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantAnalyticsTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantAttributeTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantCoreTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantCreateTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantDocumentTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantEmailTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantEsCreateTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantEsFetchTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantPromotionsTest.php</file>
+        </testsuite>
+        <testsuite name="Features-2-3 Test Suite">
+            <file>./tests/Functional/Merchant/MerchantInvoiceTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantNotificationConfigTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantOneCcConfigTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantPromotionsTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantRequestTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantRiskNoteTest.php</file>
+            <file>./tests/Functional/Merchant/MethodsTest.php</file>
+            <file>./tests/Functional/Merchant/NeedsClarificationRespondedTest.php</file>
+            <file>./tests/Functional/Merchant/OneClickCheckoutAuthConfigTest.php</file>
+            <file>./tests/Functional/Merchant/PartnerAccountTest.php</file>
+            <file>./tests/Functional/Merchant/PartnerConfigTest.php</file>
+        </testsuite>
+        <testsuite name="Features-2-4 Test Suite">
+            <file>./tests/Functional/Merchant/PartnerTerminalOnboardingTest.php</file>
+            <file>./tests/Functional/Merchant/PaymentDowntimeTest.php</file>
+            <file>./tests/Functional/Merchant/PaymentLimitTest.php</file>
+            <file>./tests/Functional/Merchant/SFAllMerchantToUnclaimedGroupTest.php</file>
+            <file>./tests/Functional/Merchant/SFMerchantPOCUpdateTest.php</file>
+            <file>./tests/Functional/Merchant/ScrubBankingSensitiveDetailsTest.php</file>
+            <file>./tests/Functional/Merchant/SelfServeCreditVATest.php</file>
+            <file>./tests/Functional/Merchant/SelfServeCreditsTest.php</file>
+            <file>./tests/Functional/Merchant/ShippingInfoTest.php</file>
+            <file>./tests/Functional/Merchant/StakeholderTest.php</file>
+            <file>./tests/Functional/Merchant/SubBalanceTest.php</file>
+            <file>./tests/Functional/Merchant/TerminalMigrationTest.php</file>
+            <file>./tests/Functional/Merchant/TerminalOnboardingTest.php</file>
+            <file>./tests/Functional/Merchant/TerminalTest.php</file>
+            <file>./tests/Functional/Merchant/WebhookTest.php</file>
+            <file>./tests/Functional/Merchant/WebhookV2Test.php</file>
+            <file>./tests/Functional/Merchant/WebsiteCheckerTest.php</file>
+        </testsuite>
+        <testsuite name="Features-3 Test Suite">
+            <directory>./tests/Functional/BankingAccountStatement/</directory>
+            <directory>./tests/Functional/Setting/</directory>
+            <directory>./tests/Functional/Settlement/</directory>
+            <directory>./tests/Functional/OAuth/</directory>
+            <directory>./tests/Functional/AppFramework/</directory>
+            <directory>./tests/Functional/Pricing/</directory>
+        </testsuite>
+        <testsuite name="Features-3-1 Test Suite">
+            <directory>./tests/Functional/Payout/</directory>
+            <directory>./tests/Functional/RequestLog/</directory>
+            <file>./tests/Unit/PayoutDetails/CoreTest.php</file>
+            <file>./tests/Unit/Utility/IfscValidationTest.php</file>
+            <file>./tests/Unit/PayoutSource/PayoutSourceTest.php</file>
+        </testsuite>
+        <testsuite name="Features-3-2 Test Suite">
+            <directory>./tests/Functional/Order/</directory>
+            <directory>./tests/Functional/Promotion/</directory>
+            <directory>./tests/Functional/RazorX/</directory>
+            <directory>./tests/Functional/Request/</directory>
+            <directory>./tests/Functional/Risk/</directory>
+            <directory>./tests/Functional/Schedule/</directory>
+            <directory>./tests/Functional/Lambda/</directory>
+            <directory>./tests/Functional/Mailgun/</directory>
+            <directory>./tests/Functional/Storage/</directory>
+            <directory>./tests/Functional/Pagination/</directory>
+            <directory>./tests/Functional/Survey/</directory>
+        </testsuite>
+        <testsuite name="Features-4 Test Suite">
+            <directory>./tests/Functional/Tax/</directory>
+            <directory>./tests/Functional/Transaction/</directory>
+            <directory>./tests/Functional/Transfer/</directory>
+            <directory>./tests/Functional/User/</directory>
+            <directory>./tests/Functional/UserRole/</directory>
+        </testsuite>
+        <testsuite name="Features-4-1 Test Suite">
+            <directory>./tests/Functional/VirtualAccount/</directory>
+            <directory>./tests/Functional/QrCode/</directory>
+            <directory>./tests/Functional/Workflow/</directory>
+            <directory>./tests/Functional/Reminders/</directory>
+            <directory>./tests/Functional/Dispute/</directory>
+            <directory>./tests/Functional/Refund/</directory>
+        </testsuite>
+        <testsuite name="Features-4-2 Test Suite">
+            <directory>./tests/Unit/</directory>
+            <directory>./tests/Unit/Models/Merchant/Activation/</directory>
+            <directory>./tests/Unit/Models/Merchant/AutoKyc/</directory>
+            <directory>./tests/Unit/Models/Merchant/BusinessDetail/</directory>
+            <directory>./tests/Unit/Models/Merchant/Bvs/</directory>
+            <exclude>./tests/Unit/AdminFetch</exclude>
+            <exclude>./tests/Unit/Services/Dcs</exclude>
+            <exclude>./tests/Unit/CapitalCollections</exclude>
+            <exclude>./tests/Unit/CircuitBreaker</exclude>
+            <exclude>./tests/Unit/EE</exclude>
+            <exclude>./tests/Unit/Elfin</exclude>
+            <exclude>./tests/Unit/Entity</exclude>
+            <exclude>./tests/Unit/Fetch</exclude>
+            <exclude>./tests/Unit/Models/Merchant/</exclude>
+            <exclude>./tests/Unit/Models/Offers/</exclude>
+            <exclude>./tests/Unit/Services/MutexTest.php</exclude>
+            <exclude>./tests/Unit/Services/RedisDualWriteTest.php</exclude>
+            <exclude>./tests/Unit/CircuitBreaker/RedisCircuitBreakerTest.php</exclude>
+            <exclude>./tests/Unit/Models/User/UserTest.php</exclude>
+            <exclude>./tests/Unit/Services/CredcaseSignerTest.php</exclude>
+            <exclude>./tests/Unit/PayoutDetails/CoreTest.php</exclude>
+            <exclude>./tests/Unit/PayoutSource/PayoutSourceTest.php</exclude>
+            <exclude>./tests/Unit/Services/Utility/IfscValidationTest.php</exclude>
+        </testsuite>
+        <testsuite name="Features-4-3 Test Suite">
+            <directory>./tests/Unit/Models/Merchant/</directory>
+            <directory>./tests/Unit/Models/Offers/</directory>
+            <directory>./tests/Unit/AdminFetch</directory>
+            <directory>./tests/Unit/CapitalCollections</directory>
+            <exclude>./tests/Unit/CircuitBreaker</exclude>
+            <directory>./tests/Unit/EE</directory>
+            <directory>./tests/Unit/Elfin</directory>
+            <directory>./tests/Unit/Entity</directory>
+            <directory>./tests/Unit/Fetch</directory>
+            <exclude>./tests/Unit/Models/Merchant/Asv/</exclude>
+            <exclude>./tests/Unit/Models/Merchant/Activation/</exclude>
+            <exclude>./tests/Unit/Models/Merchant/AutoKyc/</exclude>
+            <exclude>./tests/Unit/Models/Merchant/BusinessDetail/</exclude>
+            <exclude>./tests/Unit/Models/Merchant/Bvs/</exclude>
+        </testsuite>
+        <testsuite name="Feature-6 Test Suite">
+            <directory>./tests/Functional/TaxPayments/</directory>
+            <directory>./tests/Functional/Contact/</directory>
+            <directory>./tests/Functional/FundAccounts/</directory>
+            <file>./tests/Functional/Merchant/FeaturesTest.php</file>
+            <!--<file>./tests/Functional/Gateway/Mozart/UpiMindgateRecurringTest.php</file>-->
+        </testsuite>
+        <testsuite name="Feature-6-1 Test Suite">
+            <file>./tests/Functional/Payment/TerminalSelectionTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantTest.php</file>
+        </testsuite>
+        <!--        This is temporary fix to split Feature-2 Test Suite because of OOM issue. Root cause is unknown-->
+        <testsuite name="Feature-7 Test Suite">
+            <directory>./tests/Functional/Merchant/Activation</directory>
+            <!-- <directory>./tests/Functional/Merchant/AutoKyc</directory> -->
+        </testsuite>
+        <testsuite name="Feature-7-1 Test Suite">
+            <directory>./tests/Functional/Merchant/Bvs/</directory>
+            <directory>./tests/Functional/Merchant/BvsVerification/</directory>
+            <directory>./tests/Functional/Modules/Acs/</directory>
+            <directory>./tests/Functional/Modules/Acs/Wrapper/</directory>
+            <directory>./tests/Unit/Models/Merchant/Asv/</directory>
+            <directory>./tests/Functional/Merchant/Slabs/</directory>
+            <directory>./tests/Functional/Merchant/Store/</directory>
+        </testsuite>
+        <testsuite name="Feature-7-2 Test Suite">
+            <directory>./tests/Functional/Merchant/Products</directory>
+        </testsuite>
+        <testsuite name="Payment Test Suite">
+            <directory>./tests/Functional/Payment/</directory>
+            <!--The tests which need redis-cluster are in a different suite-->
+            <exclude>./tests/Functional/Payment/TerminalSelectionTest.php</exclude>
+            <exclude>./tests/Functional/Payment/Analytics/AnalyticsTest.php</exclude>
+        </testsuite>
+        <testsuite name="Payment Test Suite - 1">
+            <exclude>./tests/Functional/Payment/TerminalSelectionTest.php</exclude>
+            <file>./tests/Functional/Payment/Analytics/AnalyticsTest.php</file>
+            <exclude>./tests/Functional/Payment/Config/</exclude>
+            <exclude>./tests/Functional/Payment/GatewayRule/</exclude>
+            <exclude>./tests/Functional/Payment/NbPlusService/</exclude>
+            <exclude>./tests/Functional/Payment/TerminalAuthentication/</exclude>
+            <exclude>./tests/Functional/Payment/TerminalRotator/</exclude>
+            <exclude>./tests/Functional/Payment/Transfers/</exclude>
+            <exclude>/tests/Functional/Payment/AcknowledgeTest.php</exclude>
+            <exclude>/tests/Functional/Payment/AuthorizeTest.php</exclude>
+            <exclude>/tests/Functional/Payment/BajajFinservEmiTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CaptureTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CaptureVerifyTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CaptureWithNegativeBalanceTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CardInternalPricingTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CardlessEmiTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CardPaymentServiceTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CardTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CashOnDeliveryTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CheckoutOnyxTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CredTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CustomerFeeBearerInternationalPaymentTest.php</exclude>
+            <exclude>/tests/Functional/Payment/CustomerFeeBearerInternationalPaymentTest.php</exclude>
+            <exclude>/tests/Functional/Payment/EMIPaymentTest.php</exclude>
+            <exclude>/tests/Functional/Payment/EventTrackerTest.php</exclude>
+            <exclude>/tests/Functional/Payment/FraudDetectionTest.php</exclude>
+            <exclude>/tests/Functional/Payment/GatewayDowntimeDetectionTest.php</exclude>
+            <exclude>/tests/Functional/Payment/GatewayDowntimeDetectionV2Test.php</exclude>
+            <exclude>/tests/Functional/Payment/GatewayDowntimeSorterTest.php</exclude>
+            <exclude>/tests/Functional/Payment/GatewayDowntimeTest.php</exclude>
+            <exclude>/tests/Functional/Payment/GatewayErrorThrottlerTest.php</exclude>
+            <exclude>/tests/Functional/Payment/GooglePayCardTest.php</exclude>
+            <exclude>/tests/Functional/Payment/GooglePayOmnichannelTest.php</exclude>
+            <exclude>/tests/Functional/Payment/GooglePayProviderCreatePaymentTest.php</exclude>
+            <exclude>/tests/Functional/Payment/HdfcDebitEmiTest.php</exclude>
+            <exclude>/tests/Functional/Payment/HdfcVasPaymentTest.php</exclude>
+            <exclude>/tests/Functional/Payment/KotakDebitEmiTest.php</exclude>
+            <exclude>/tests/Functional/Payment/IndusindDebitEmiTest.php</exclude>
+            <exclude>/tests/Functional/Payment/MismatchAmountTest.php</exclude>
+            <exclude>/tests/Functional/Payment/MutexTest.php</exclude>
+            <exclude>/tests/Functional/Payment/NetBankingTest.php</exclude>
+            <exclude>/tests/Functional/Payment/OneCCShopifyCreateOrderTest.php</exclude>
+            <exclude>/tests/Functional/Payment/OpenwalletPaymentTest.php</exclude>
+            <exclude>/tests/Functional/Payment/OtpPaymentTest.php</exclude>
+            <exclude>/tests/Functional/Payment/PaymentCancelTest.php</exclude>
+            <exclude>/tests/Functional/Payment/PaymentCreate3ds2Test.php</exclude>
+            <exclude>/tests/Functional/Payment/PaymentCreateAVSTest.php</exclude>
+            <exclude>/tests/Functional/Payment/PaymentCreateConvenienceFeeTest.php</exclude>
+            <exclude>/tests/Functional/Payment/PaymentCreateDCCTest.php</exclude>
+
+            <exclude>/tests/Functional/Payment/PaymentCreateOnyxTest.php</exclude>
+            <exclude>/tests/Functional/Payment/PaymentCreateTest.php</exclude>
+            <exclude>/tests/Functional/Payment/PaymentFetchTest.php</exclude>
+            <exclude>/tests/Functional/Payment/PaymentMiscTest.php</exclude>
+            <exclude>/tests/Functional/Payment/PaymentRelatedEntitiesTest.php</exclude>
+            <exclude>/tests/Functional/Payment/RecurringPaymentTest.php</exclude>
+            <exclude>/tests/Functional/Payment/RetrieveTest.php</exclude>
+            <exclude>/tests/Functional/Payment/ReturnTest.php</exclude>
+        </testsuite>
+        <testsuite name="Gateway-1 Test Suite">
+            <directory>./tests/Functional/Gateway/Aeps/</directory>
+            <directory>./tests/Functional/Gateway/Amex/</directory>
+            <directory>./tests/Functional/Gateway/Atom/</directory>
+            <directory>./tests/Functional/Gateway/AxisMigs/</directory>
+            <directory>./tests/Functional/Gateway/AxisGenius/</directory>
+            <directory>./tests/Functional/Gateway/Billdesk/</directory>
+            <directory>./tests/Functional/Gateway/Enach/</directory>
+            <directory>./tests/Functional/Gateway/Esigner/</directory>
+            <directory>./tests/Functional/Gateway/Netbanking/</directory>
+        </testsuite>
+        <testsuite name="Gateway-2 Test Suite">
+            <directory>./tests/Functional/Gateway/Mpi/</directory>
+            <directory>./tests/Functional/Gateway/File/</directory>
+            <directory>./tests/Functional/Gateway/Paytm/</directory>
+            <directory>./tests/Functional/Gateway/Reconciliation/</directory>
+            <exclude>./tests/Functional/Gateway/Reconciliation/NbplusAppMethodEmerchantpayReconciliationTest.php</exclude>
+            <directory>./tests/Functional/Gateway/Sharp/</directory>
+            <directory>./tests/Functional/Gateway/Upi/</directory>
+        </testsuite>
+        <testsuite name="Gateway-3 Test Suite">
+            <directory>./tests/Functional/Gateway/Hitachi/</directory>
+            <directory>./tests/Functional/Gateway/CardlessEmi</directory>
+            <directory>./tests/Functional/Gateway/Mozart/</directory>
+            <directory>./tests/Functional/Gateway/PayLater</directory>
+            <directory>./tests/Functional/Gateway/Wallet/</directory>
+            <directory>./tests/Functional/Gateway/FirstData/</directory>
+            <directory>./tests/Functional/Gateway/Paysecure/</directory>
+            <directory>./tests/Functional/Gateway/Card/</directory>
+            <directory>./tests/Functional/Gateway/Ebs/</directory>
+            <directory>./tests/Functional/Gateway/Mobikwik/</directory>
+            <directory>./tests/Functional/Gateway/Cybersource/</directory>
+            <directory>./tests/Functional/Gateway/Hdfc/</directory>
+            <exclude>./tests/Functional/Gateway/Mozart/UpiMindgateRecurringTest.php</exclude>
+        </testsuite>
+        <testsuite name="Smart Collect Test Suite">
+            <directory>./tests/Functional/VirtualAccount</directory>
+            <directory>./tests/Functional/VirtualVpaPrefix</directory>
+            <directory>./tests/Functional/UpiTransfer</directory>
+            <directory>./tests/Functional/BankTransfer</directory>
+            <directory>./tests/Functional/BharatQrPayment</directory>
+            <directory>./tests/Functional/QrCode</directory>
+        </testsuite>
+        <testsuite name="Route Test Suite">
+            <directory>./tests/Functional/Transfer/</directory>
+            <directory>./tests/Functional/Payment/Transfers/</directory>
+            <file>./tests/Functional/Order/Transfer/OrderTransferTest.php</file>
+            <file>./tests/Functional/Merchant/AccountTest.php</file>
+        </testsuite>
+        <testsuite name="Rx Test Suite Payouts">
+            <directory>./tests/Functional/Payout/</directory>
+        </testsuite>
+        <testsuite name="Rx Test Suite Core">
+            <directory>./tests/Functional/Contact/</directory>
+            <directory>./tests/Functional/FundAccounts/</directory>
+            <directory>./tests/Functional/BankingAccountStatement/</directory>
+            <directory>./tests/Functional/FundTransfer/</directory>
+            <directory>./tests/Functional/BankingAccountTpv/</directory>
+            <directory>./tests/Functional/RequestLog/</directory>
+            <directory>./tests/Functional/BankTransfer/</directory>
+        </testsuite>
+        <testsuite name="ES Ondemand Test Suite">
+            <directory>./tests/Functional/Settlement/SettlementOndemand</directory>
+        </testsuite>
+        <testsuite name="Onboarding APIs Test Suite">
+            <directory>./tests/Functional/Merchant/Products/</directory>
+            <file>./tests/Functional/Merchant/AccountV2DocumentsTest.php</file>
+            <file>./tests/Functional/Merchant/AccountV2Test.php</file>
+            <file>./tests/Functional/Merchant/StakeholderTest.php</file>
+            <file>./tests/Functional/Merchant/WebhookV2Test.php</file>
+
+            <file>./tests/Unit/Models/Merchant/MerchantTest.php</file>
+            <file>./tests/Unit/Models/Merchant/Detail/CoreTest.php</file>
+            <file>./tests/Unit/Models/Merchant/Detail/NeedsClarificationTest.php</file>
+            <file>./tests/Unit/Models/Merchant/Escalations/CoreTest.php</file>
+        </testsuite>
+        <testsuite name="SMEP Partnerships Test Suite">
+            <directory>./tests/Functional/Partner/</directory>
+            <directory>./tests/Functional/EntityOrigin/</directory>
+            <file>./tests/Functional/Merchant/PartnerFUXTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantCoreTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantReferralTest.php</file>
+
+        </testsuite>
+        <testsuite name="UPI Suite Test Suite">
+            <directory>./tests/Functional/PaymentsUpi</directory>
+            <directory>./tests/Unit/PaymentsUpi</directory>
+        </testsuite>
+        <testsuite name="Cross Border Test Suite">
+            <directory>./tests/Functional/Currency/</directory>
+            <directory>./tests/Functional/InternationalBankTransfer/</directory>
+            <directory>./tests/Functional/International</directory>
+            <file>./tests/Functional/Merchant/MerchantInternationalIntegrationTest.php</file>
+            <file>./tests/Functional/Payment/PaymentCreateDCCTest.php</file>
+            <file>./tests/Functional/Payment/PaymentCreateAVSTest.php</file>
+            <file>./tests/Functional/Invoice/PaymentEInvoiceTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantAutomatedAPMOnboardingTest.php</file>
+            <file>./tests/Functional/Payment/CustomerFeeBearerInternationalPaymentTest.php</file>
+            <file>./tests/Functional/Merchant/InternationalEnablementTest.php</file>
+            <file>./tests/Functional/Payment/NbPlusService/NbPlusPaymentServicePayPalTest.php</file>
+            <file>./tests/Functional/Gateway/Reconciliation/NbplusAppMethodEmerchantpayReconciliationTest.php</file>
+            <file>./tests/Functional/Merchant/MerchantDocumentFIRSTest.php</file>
+            <file>./tests/Functional/Merchant/CheckoutInternationalPreferencesTest.php</file>
+            <file>./tests/Functional/Payment/NbPlusService/NbplusPaymentServiceAppsTest.php</file>
+        </testsuite>
+        <testsuite name="Affordibility Test Suite">
+            <directory>./tests/Functional/Offer/</directory>
+        </testsuite>
+        <testsuite name="Rx Test Suite-1 Payouts">
+            <directory>./tests/Functional/PayoutSource/</directory>
+            <directory>./tests/Functional/PayoutDowntime/</directory>
+        </testsuite>
+        <testsuite name="Rx Test Suite-2 Payouts">
+            <directory>./tests/Functional/Counter/</directory>
+            <directory>./tests/Functional/FundLoadingDowntime/</directory>
+        </testsuite>
+        <testsuite name="Rx Test Suite-3 Payouts">
+            <directory>./tests/Functional/FeeRecovery/</directory>
+        </testsuite>
+        <testsuite name="Rx Test Suite-4 Payouts">
+            <file>./tests/Functional/Merchant/BalanceTest.php</file>
+            <file>./tests/Functional/Merchant/LowBalanceConfigTest.php</file>
+        </testsuite>
+        <testsuite name="RazorpayX Test-1 Suite">
+            <directory>./tests/Functional/BankingAccountService/</directory>
+            <directory>./tests/Functional/BankingAccount/</directory>
+        </testsuite>
+        <testsuite name="RazorpayX Test-2 Suite">
+            <directory>./tests/Unit/Models/Contact</directory>
+            <directory>./tests/Functional/AccountingPayouts/</directory>
+        </testsuite>
+        <testsuite name="RazorpayX Test-3 Suite">
+            <directory>./tests/Functional/PayoutLink/</directory>
+            <file>./tests/Functional/Merchant/MerchantBankingInvoiceTest.php</file>
+        </testsuite>
+        <testsuite name="NoCode Test Suite">
+            <directory>./tests/Functional/Invoice/</directory>
+            <directory>./tests/Functional/Item/</directory>
+            <directory>./tests/Functional/PaymentLink/</directory>
+            <directory>./tests/Unit/Models/PaymentLink</directory>
+        </testsuite>
+    </testsuites>
+    <listeners>
+        <listener class="\Symfony\Bridge\PhpUnit\SymfonyTestsListener">
+            <arguments>
+                <array>
+                    <element key="dns-sensitive">
+                        <array>
+                            <element key="0">
+                                <string>Illuminate\Validation\Concerns</string>
+                            </element>
+                            <element key="1">
+                                <string>RZP\Models\Merchant\Webhook</string>
+                            </element>
+                        </array>
+                    </element>
+                </array>
+            </arguments>
+        </listener>
+    </listeners>
+    <php>
+        <ini name="memory_limit" value="8192M"/>
+        <env name="ENABLE_DUAL_WRITE_PAYMENTS" value="true" force="true" />
+        <env name="ENABLE_QUERY_FALLBACK_ON_ARCHIVED_CARD" value="true" force="true" />
+        <env name="ENABLE_QUERY_FALLBACK_ON_ARCHIVED_PAYMENT" value="true" force="true" />
+    </php>
+</phpunit>

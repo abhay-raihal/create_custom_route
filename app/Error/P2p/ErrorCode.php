@@ -1,0 +1,44 @@
+<?php
+
+namespace RZP\Error\P2p;
+
+class ErrorCode extends \RZP\Error\ErrorCode
+{
+    // @codingStandardsIgnoreStart
+
+    const SERVER_ERROR_CONTEXT_MERCHANT_REQUIRED                    = 'SERVER_ERROR_CONTEXT_MERCHANT_REQUIRED';
+    const SERVER_ERROR_CONTEXT_DEVICE_REQUIRED                      = 'SERVER_ERROR_CONTEXT_DEVICE_REQUIRED';
+    const SERVER_ERROR_CONTEXT_HANDLE_REQUIRED                      = 'SERVER_ERROR_CONTEXT_HANDLE_REQUIRED';
+
+    const BAD_REQUEST_INVALID_HANDLE                                = 'BAD_REQUEST_INVALID_HANDLE';
+    const BAD_REQUEST_DEVICE_NOT_ATTACHED_TO_HANDLE                 = 'BAD_REQUEST_DEVICE_NOT_ATTACHED_TO_HANDLE';
+    const BAD_REQUEST_MERCHANT_NOT_ALLOWED_ON_HANDLE                = 'BAD_REQUEST_MERCHANT_NOT_ALLOWED_ON_HANDLE';
+    const BAD_REQUEST_DEVICE_DOES_NOT_BELONG_TO_MERCHANT            = 'BAD_REQUEST_DEVICE_DOES_NOT_BELONG_TO_MERCHANT';
+    const BAD_REQUEST_INVALID_MERCHANT_IN_CONTEXT                   = 'BAD_REQUEST_INVALID_MERCHANT_IN_CONTEXT';
+    const BAD_REQUEST_TOKEN_EXPIRED_NOT_VALID                       = 'BAD_REQUEST_TOKEN_EXPIRED_NOT_VALID';
+    const BAD_REQUEST_DEVICE_BLONGED_TO_OTHER_CUSTOMER              = 'BAD_REQUEST_DEVICE_BLONGED_TO_OTHER_CUSTOMER';
+
+    const BAD_REQUEST_NO_BANK_ACCOUNT_FOUND                         = 'BAD_REQUEST_NO_BANK_ACCOUNT_FOUND';
+
+    const BAD_REQUEST_VPA_NOT_AVAILABLE                             = 'BAD_REQUEST_VPA_NOT_AVAILABLE';
+    const BAD_REQUEST_DUPLICATE_VPA                                 = 'BAD_REQUEST_DUPLICATE_VPA';
+    const BAD_REQUEST_MAX_VPA_LIMIT_REACHED                         = 'BAD_REQUEST_MAX_VPA_LIMIT_REACHED';
+
+    const GATEWAY_ERROR_DEVICE_INVALID_TOKEN                        = 'GATEWAY_ERROR_DEVICE_INVALID_TOKEN';
+
+    const BAD_REQUEST_TRANSACTION_INVALID_STATE                     = 'BAD_REQUEST_TRANSACTION_INVALID_STATE';
+    const BAD_REQUEST_DUPLICATE_TRANSACTION                         = 'BAD_REQUEST_DUPLICATE_TRANSACTION';
+    const BAD_REQUEST_PAYER_PAYEE_SAME                              = 'BAD_REQUEST_PAYER_PAYEE_SAME';
+
+    // @codingStandardsIgnoreEnd
+
+    static function getConstants()
+    {
+        $oClass = new \ReflectionClass(__CLASS__);
+
+        return $oClass->getConstants();
+    }
+}
+
+
+

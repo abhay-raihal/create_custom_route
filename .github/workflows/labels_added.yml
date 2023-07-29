@@ -1,0 +1,99 @@
+name: Labels Added
+
+on:
+  pull_request:
+    types: [  labeled, unlabeled, opened, synchronize, reopened]
+
+jobs:
+  check_ready_for_review_label:
+    name: PR Labels
+    runs-on: [ api-public]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Fetch Github Users
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+        id: githubUsers
+        run: |
+            USER_CHECK=$(sh ./.github/actions/getGithubusers.sh ${{github.actor}})
+            echo "::set-output name=flaguser::$USER_CHECK"
+
+      - name: Show Github Users Flag
+        env:
+          USER_CHECK: ${{steps.githubUsers.outputs.flaguser}}
+        run: |
+            echo $USER_CHECK
+      - if: contains(github.event.pull_request.labels.*.name, 'ReadyForReview')
+        name: Set flag Ready
+        id: readyForReview
+        run: echo "::set-output name=flag::true"
+      - name: Ready For Review Label Added
+        env:
+          USER_CHECK: ${{steps.githubUsers.outputs.flaguser}}
+          LABEL: 'Ready For Review'
+          LABEL_FLAG: ${{steps.readyForReview.outputs.flag}}
+        run: |
+          sh ./.github/actions/labelCheck.sh
+      - if: contains(github.event.pull_request.labels.*.name, 'DevTestingStarted')
+        name: Set flag Dev
+        id: devTestingStarted
+        run: echo "::set-output name=flag::true"
+      - uses: actions/checkout@v2
+      - name: Dev Testing Started Label Added
+        env:
+          USER_CHECK: ${{steps.githubUsers.outputs.flaguser}}
+          LABEL: 'Dev Testing Started'
+          LABEL_FLAG: ${{steps.devTestingStarted.outputs.flag}}
+        run: |
+          sh ./.github/actions/labelCheck.sh
+  check_api_migration_label:
+    name: API Migration PR Labels
+    runs-on: [ api-public ]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Fetch Github Users
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+        id: githubUsers
+        run: |
+            USER_CHECK=$(sh ./.github/actions/getGithubusers.sh ${{github.actor}})
+            echo "::set-output name=flaguser::$USER_CHECK"
+
+      - name: Show Github Users Flag
+        env:
+          USER_CHECK: ${{steps.githubUsers.outputs.flaguser}}
+        run: |
+            echo $USER_CHECK
+      - if: contains(github.event.pull_request.labels.*.name, 'Migration')
+        name: Set flag Migration
+        id: migration
+        run: echo "::set-output name=flag::true"
+      - if: contains(github.event.pull_request.labels.*.name, 'Non-Migration')
+        name: Set flag Non-Migration
+        id: nonMigration
+        run: echo "::set-output name=flag::true"
+      - if: contains(github.event.pull_request.labels.*.name, 'Archival')
+        name: Set flag Archival
+        id: archival
+        run: echo "::set-output name=flag::true"
+      - name: Migration or Non-Migration label added
+        env:
+          USER_CHECK: ${{steps.githubUsers.outputs.flaguser}}
+          LABEL_ONE: 'Migration'
+          LABEL_ONE_FLAG: ${{steps.migration.outputs.flag}}
+          LABEL_TWO: 'Non-Migration'
+          LABEL_TWO_FLAG: ${{steps.nonMigration.outputs.flag}}
+          LABEL_THREE: 'Archival'
+          LABEL_THREE_FLAG: ${{steps.archival.outputs.flag}}
+        run: |
+          sh ./.github/actions/alternateLabelCheck.sh
+      - name: BU and module label added
+        env:
+          CONCAT_PR_LABELS: ${{join(github.event.pull_request.labels.*.name, '<==>')}}
+          DELIMITER: "<==>"
+        run: |
+          bash ./.github/actions/validPRLabelCheckFromList.sh

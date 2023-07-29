@@ -1,0 +1,78 @@
+ARG ONGGI_IMAGE=c.rzp.io/razorpay/onggi-multi-arch:php-8.1-api-web
+ARG ARMORY_IMAGE=c.rzp.io/proxy_dockerhub/surnet/alpine-wkhtmltopdf:3.16.2-0.12.6-small
+
+FROM $ARMORY_IMAGE as wkhtmltopdf
+
+FROM --platform=$BUILDPLATFORM $ONGGI_IMAGE as opencensus-ext
+WORKDIR /
+ARG OPENCENSUS_VERSION_TAG=v0.8.0-beta
+RUN set -eux && \
+    wget -O - https://github.com/razorpay/opencensus-php/tarball/"${OPENCENSUS_VERSION_TAG}" | tar xz --strip=1
+RUN cd /ext && phpize81 && ./configure --enable-opencensus --with-php-config=/usr/bin/php-config81 && make install
+
+FROM --platform=$BUILDPLATFORM $ONGGI_IMAGE as builder
+
+RUN apk add --update wget tar \
+    && wget https://curl.haxx.se/download/curl-7.82.0.tar.gz \
+    && tar -xzf curl-7.82.0.tar.gz \
+    && cd curl-7.82.0 \
+    && ./configure --with-ssl --prefix=/usr \
+    && make && make install \
+    && cd .. && rm -rf curl-7.82.0 \
+    && rm -rf /var/lib/apt/lists/*
+
+
+FROM $ONGGI_IMAGE
+
+COPY --from=builder /usr/bin/curl /usr/bin/curl
+
+ARG GIT_COMMIT_HASH
+ARG GIT_USERNAME
+ARG CACHEBUST
+ENV GIT_COMMIT_HASH=${GIT_COMMIT_HASH}
+
+WORKDIR /app
+
+COPY --from=wkhtmltopdf /bin/wkhtmltopdf /usr/bin/wkhtmltopdf
+
+COPY composer.json composer.lock /app/
+
+RUN --mount=type=secret,id=git_token set -eu && \
+    composer --version && \
+    git config --global user.name ${GIT_USERNAME} && \
+    composer config -g "github-oauth.github.com" $(cat /run/secrets/git_token) && \
+    composer config -g repos.packagist composer "https://packagist.rzp.io" && \
+    composer install --no-dev --no-interaction --no-autoloader --no-scripts && \
+    rm -rf /root/.composer && \
+    composer clear-cache && \
+    pear81 config-set php_ini /etc/php81/php.ini && \
+    pecl81 install opencensus-alpha && \
+    mkdir -p public && echo "${GIT_COMMIT_HASH}" > public/commit.txt
+
+ENV PHP_MEMORY_LIMIT=4096M
+
+COPY --from=opencensus-ext /usr/lib/php81/modules/opencensus.so /usr/lib/php81/modules
+
+COPY --chown=apache:www-data . /app/
+
+RUN cp dockerconf/default.conf dockerconf/mpm.conf /etc/apache2/conf.d/ && \
+    composer dump-autoload -o
+
+RUN apk add make git
+ADD Makefile /app
+ADD error_modules /app
+RUN echo ${CACHEBUST}
+
+RUN --mount=type=secret,id=git_token set -eux && \
+    echo "machine github.com login ${GIT_USERNAME} password $(cat /run/secrets/git_token)" > ~/.netrc && \
+    make error-module-clean && \
+    rm -f ~/.netrc
+
+RUN --mount=type=secret,id=git_token set -eux && \
+    echo "machine github.com login ${GIT_USERNAME} password $(cat /run/secrets/git_token)" > ~/.netrc && \
+    make error-module-fetch && \
+    rm -f ~/.netrc
+
+EXPOSE 80
+
+ENTRYPOINT [ "/usr/bin/dumb-init", "--single-child", "/app/dockerconf/entrypoint.web.sh"]

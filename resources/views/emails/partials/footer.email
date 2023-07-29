@@ -1,0 +1,44 @@
+<table class="row footer">
+  <tr>
+    <td class="wrapper last">
+
+      <table class="three columns offset-by-six">
+        <tr>
+          <td class="center">
+            <center>
+              <a href="https://facebook.com/razorpay" class="logo">
+                <img height="22" width="22" src="https://cdn.razorpay.com/facebook.png" alt="Facebook Icon" title="Razorpay on Facebook"/>
+              </a>
+              <a href="https://twitter.com/razorpay" class="logo">
+                <img height="22" width="22" src="https://cdn.razorpay.com/twitter.png" alt="Twitter Icon" title="Razorpay on Twitter"/>
+              </a>
+              <a href="https://github.com/razorpay" class="logo">
+                <img height="22" width="22" src="https://cdn.razorpay.com/github.png" alt="GitHub Icon" title="Razorpay on GitHub"/>
+              </a>
+            </center>
+          </td>
+          <td class="expander"></td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+@if(!isset($showContact) || $showContact !== false)
+  <table class="row footer">
+    <tr>
+      <td class="wrapper last">
+
+        <table class="seven columns">
+          <tr>
+            <td class="center">
+              @include('emails.partials.support')
+            </td>
+            <td class="expander"></td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+@endif

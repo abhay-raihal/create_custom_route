@@ -1,0 +1,64 @@
+{
+  "settings": {
+
+  },
+  "mappings": {
+    "action": {
+      "_all": {
+        "enabled": false
+      },
+      "properties": {
+        "id": {
+          "type": "text"
+        },
+        "entity_name": {
+          "type": "text"
+        },
+        "entity_id": {
+          "type": "text"
+        },
+        "admin_id": {
+          "type": "text"
+        },
+        "maker": {
+          "type": "text"
+        },
+        "type": {
+          "type": "text"
+        },
+        "url": {
+          "type": "text"
+        },
+        "route_params": {
+          "properties": {
+            "orgId": {
+              "type": "text"
+            },
+            "id": {
+              "type": "text"
+            }
+          }
+        },
+        "method": {
+          "type": "text"
+        },
+        "payload": {
+          "type": "object",
+          "enabled": false
+        },
+        "controller": {
+          "type": "text"
+        },
+        "route": {
+          "type": "text"
+        },
+        "state": {
+          "type": "text"
+        },
+        "permission": {
+          "type": "text"
+        }
+      }
+    }
+  }
+}

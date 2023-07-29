@@ -1,0 +1,87 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "entity",
+        "status",
+        "amount",
+        "description",
+        "flow",
+        "type",
+        "currency",
+        "error_code",
+        "error_description",
+        "created_at",
+        "completed_at",
+        "expire_at",
+        "is_concern_eligible"
+    ],
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "^(.*)$"
+        },
+        "entity": {
+            "type": "string",
+            "pattern": "^(.*)$"
+        },
+        "txn_id": {
+            "type": "string",
+            "pattern": "^(.*)$"
+        },
+        "status": {
+            "type": "string",
+            "pattern": "^(.*)$"
+        },
+        "amount": {
+            "type": "integer"
+        },
+        "description": {
+            "type": "string",
+            "pattern": "^(.*)$"
+        },
+        "type": {
+            "type": "string",
+            "pattern": "^(.*)$"
+        },
+        "currency": {
+            "type": "string",
+            "pattern": "^(.*)$"
+        },
+        "error_description": {
+            "type": ["string", "null"]
+        },
+        "error_code": {
+            "type": ["string", "null"]
+        },
+        "flow": {
+            "type": "string",
+            "pattern": "^(.*)$"
+        },
+        "is_concern_eligible": {
+            "type" : "boolean"
+        },
+        "is_pending_collect": {
+            "type" : "boolean"
+        },
+        "created_at": {
+            "type": ["integer", "null"]
+        },
+        "initiated_at": {
+            "type": ["integer", "null"]
+        },
+        "completed_at": {
+            "type": ["integer", "null"]
+        },
+        "expire_at": {
+            "type": ["integer", "null"]
+        },
+        "upi":{
+            "type": ["object", "null"]
+        }
+    }
+}

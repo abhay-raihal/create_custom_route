@@ -1,0 +1,2989 @@
+<?php
+
+namespace RZP\Error;
+
+class ErrorCode
+{
+    const BAD_REQUEST_REFUND_RECEIPT_ALREADY_PRESENT = 'BAD_REQUEST_REFUND_RECEIPT_ALREADY_PRESENT';
+
+    /**
+     * The error codes are named such that the first and the second word
+     * tells the error category.
+     */
+
+    /**
+    *   All Successful operation status are tracked using this error code
+    */
+    const SUCCESS                                                                   = 'SUCCESS';
+
+    /**
+     * All internal un-explained and sudden errors are encapsulated
+     * by the following error code.
+     */
+    const SERVER_ERROR                                                              = 'SERVER_ERROR';
+
+    /**
+     * General gateway specific error codes
+     * Isn't specific to one particular gateway and
+     * should be generally valid for gateways that
+     * are added in future
+     */
+    const GATEWAY_ERROR_FATAL_ERROR                                                 = 'GATEWAY_ERROR_FATAL_ERROR';
+    const GATEWAY_ERROR_REQUEST_ERROR                                               = 'GATEWAY_ERROR_REQUEST_ERROR';
+    const GATEWAY_ERROR_GENERIC_ERROR                                               = 'GATEWAY_ERROR_GENERIC_ERROR';
+    const GATEWAY_ERROR_PAYMENT_FAILED                                              = 'GATEWAY_ERROR_PAYMENT_FAILED';
+    const GATEWAY_ERROR_INVALID_JSON                                                = 'GATEWAY_ERROR_INVALID_JSON';
+    const GATEWAY_ERROR_ORDER_EXISTS                                                = 'GATEWAY_ERROR_ORDER_EXISTS';
+    const GATEWAY_ERROR_INVALID_DATA                                                = 'GATEWAY_ERROR_INVALID_DATA';
+
+    const GATEWAY_ERROR_SYSTEM_UNAVAILABLE                                          = 'GATEWAY_ERROR_SYSTEM_UNAVAILABLE';
+    const GATEWAY_ERROR_PAYMENT_DECLINED_TERMINAL_NOT_ALLOWED                       = 'GATEWAY_ERROR_PAYMENT_DECLINED_TERMINAL_NOT_ALLOWED';
+    const GATEWAY_ERROR_PAYMENT_DECLINED_CARD_NOT_ALLOWED                           = 'GATEWAY_ERROR_PAYMENT_DECLINED_CARD_NOT_ALLOWED';
+    const GATEWAY_ERROR_PAYMENT_DECLINED_CARD_RESTRICTED                            = 'GATEWAY_ERROR_PAYMENT_DECLINED_CARD_RESTRICTED';
+
+    const GATEWAY_ERROR_REQUEST_TIMEOUT                                             = 'GATEWAY_ERROR_REQUEST_TIMEOUT';
+    const GATEWAY_ERROR_DENIED_BY_RISK                                              = 'GATEWAY_ERROR_DENIED_BY_RISK';
+    const GATEWAY_ERROR_INVALID_RESPONSE_BY_DESTINATION_BANK                        = 'GATEWAY_ERROR_INVALID_RESPONSE_BY_DESTINATION_BANK';
+    const GATEWAY_ERROR_PROCESSING_DECLINED                                         = 'GATEWAY_ERROR_PROCESSING_DECLINED';
+    const GATEWAY_ERROR_AUTHENTICATION_NOT_AVAILABLE                                = 'GATEWAY_ERROR_AUTHENTICATION_NOT_AVAILABLE';
+    const GATEWAY_ERROR_IVR_UNAVAILABLE                                             = 'GATEWAY_ERROR_IVR_UNAVAILABLE';
+    const GATEWAY_ERROR_IVR_AUTHENTICATION_NOT_AVAILABLE                            = 'GATEWAY_ERROR_IVR_AUTHENTICATION_NOT_AVAILABLE';
+    const GATEWAY_ERROR_INVALID_TERMINAL_ID                                         = 'GATEWAY_ERROR_INVALID_TERMINAL_ID';
+    const GATEWAY_ERROR_INVALID_TERMINAL_SECRET                                     = 'GATEWAY_ERROR_INVALID_TERMINAL_SECRET';
+    const GATEWAY_ERROR_PASSWORD_SECURITY_NOT_ENABLED                               = 'GATEWAY_ERROR_PASSWORD_SECURITY_NOT_ENABLED';
+    const GATEWAY_ERROR_TERMINAL_SECRET_EXPIRED                                     = 'GATEWAY_ERROR_TERMINAL_SECRET_EXPIRED';
+    const GATEWAY_ERROR_CERTIFICATE_VALIDATION_FAILED                               = 'GATEWAY_ERROR_CERTIFICATE_VALIDATION_FAILED';
+    const GATEWAY_ERROR_SIGNATURE_VALIDATION_FAILED                                 = 'GATEWAY_ERROR_SIGNATURE_VALIDATION_FAILED';
+    const GATEWAY_ERROR_INVALID_SUBSEQUENT_PAYMENT                                  = 'GATEWAY_ERROR_INVALID_SUBSEQUENT_PAYMENT';
+    const GATEWAY_ERROR_SUPPORT_FAILED                                              = 'GATEWAY_ERROR_SUPPORT_FAILED';
+    const GATEWAY_ERROR_SUPPORT_AUTH_NOT_FOUND                                      = 'GATEWAY_ERROR_SUPPORT_AUTH_NOT_FOUND';
+    const GATEWAY_ERROR_CAPTURE_GREATER_THAN_AUTH                                   = 'GATEWAY_ERROR_CAPTURE_GREATER_THAN_AUTH';
+    const GATEWAY_ERROR_PAYMENT_CAPTURE_FAILED                                      = 'GATEWAY_ERROR_PAYMENT_CAPTURE_FAILED';
+    const GATEWAY_ERROR_PARES_NOT_SUCCESSFUL                                        = 'GATEWAY_ERROR_PARES_NOT_SUCCESSFUL';
+    const GATEWAY_ERROR_INVALID_PARES_XML                                           = 'GATEWAY_ERROR_INVALID_PARES_XML';
+    const GATEWAY_ERROR_INVALID_PARES_FORMAT                                        = 'GATEWAY_ERROR_INVALID_PARES_FORMAT';
+    const GATEWAY_ERROR_PARES_DATA_MISMATCH                                         = 'GATEWAY_ERROR_PARES_DATA_MISMATCH';
+    const GATEWAY_ERROR_DATA_MISMATCH                                               = 'GATEWAY_ERROR_DATA_MISMATCH';
+    const GATEWAY_ERROR_CARD_NUMBER_MISMATCH                                        = 'GATEWAY_ERROR_CARD_NUMBER_MISMATCH';
+    const GATEWAY_ERROR_NOT_UNDERSTOOD_ERROR                                        = 'GATEWAY_ERROR_NOT_UNDERSTOOD_ERROR';
+    const GATEWAY_ERROR_NO_CREDIT_ACCOUNT                                           = 'GATEWAY_ERROR_NO_CREDIT_ACCOUNT';
+    const GATEWAY_ERROR_CHECKSUM_MATCH_FAILED                                       = 'GATEWAY_ERROR_CHECKSUM_MATCH_FAILED';
+    const GATEWAY_ERROR_TRANSACTION_TYPE_NOT_SUPPORTED                              = 'GATEWAY_ERROR_TRANSACTION_TYPE_NOT_SUPPORTED';
+    const GATEWAY_ERROR_PAYMENT_VERIFICATION_ERROR                                  = 'GATEWAY_ERROR_PAYMENT_VERIFICATION_ERROR';
+    const GATEWAY_ERROR_UNSUPPORTED_CARD_NETWORK                                    = 'GATEWAY_ERROR_UNSUPPORTED_CARD_NETWORK';
+    const GATEWAY_ERROR_FALSE_AUTHORIZE                                             = 'GATEWAY_ERROR_FALSE_AUTHORIZE';
+    const GATEWAY_ERROR_UNKNOWN_ERROR                                               = 'GATEWAY_ERROR_UNKNOWN_ERROR';
+    const GATEWAY_ERROR_INVALID_TERMINAL                                            = 'GATEWAY_ERROR_INVALID_TERMINAL';
+    const GATEWAY_ERROR_TERMINAL_NOT_ENABLED                                        = 'GATEWAY_ERROR_TERMINAL_NOT_ENABLED';
+    const GATEWAY_ERROR_INSTITUTION_NOT_ENABLED                                     = 'GATEWAY_ERROR_INSTITUTION_NOT_ENABLED';
+    const GATEWAY_ERROR_INSTITUTION_ID_MISMATCH                                     = 'GATEWAY_ERROR_INSTITUTION_ID_MISMATCH';
+    const GATEWAY_ERROR_TERMINAL_ACTION_NOT_ENABLED                                 = 'GATEWAY_ERROR_TERMINAL_ACTION_NOT_ENABLED';
+    const GATEWAY_ERROR_INVALID_RESPONSE                                            = 'GATEWAY_ERROR_INVALID_RESPONSE';
+    const GATEWAY_ERROR_PAYMENT_ALREADY_SETTLED                                     = 'GATEWAY_ERROR_PAYMENT_ALREADY_SETTLED';
+    const GATEWAY_ERROR_PAYMENT_VOID_FAILED                                         = 'GATEWAY_ERROR_PAYMENT_VOID_FAILED';
+    const GATEWAY_ERROR_PAYMENT_REFUND_FAILED                                       = 'GATEWAY_ERROR_PAYMENT_REFUND_FAILED';
+    const GATEWAY_ERROR_INVALID_STATUS_DESCRIPTION                                  = 'GATEWAY_ERROR_INVALID_STATUS_DESCRIPTION';
+    const GATEWAY_ERROR_REFUND_AMOUNT_GREATER_THAN_CAPTURED                         = 'GATEWAY_ERROR_REFUND_AMOUNT_GREATER_THAN_CAPTURED';
+    const GATEWAY_ERROR_TIMED_OUT                                                   = 'GATEWAY_ERROR_TIMED_OUT';
+    const BAD_REQUEST_CARD_NOT_ELIGIBLE                                             = 'BAD_REQUEST_CARD_NOT_ELIGIBLE';
+    const REPO_FAILED_TO_FIND_BY_CONDITION                                          = 'REPO_FAILED_TO_FIND_BY_CONDITION';
+    const GATEWAY_ERROR_INVALID_DATE_FORMAT                                         = 'GATEWAY_ERROR_INVALID_DATE_FORMAT';
+    const GATEWAY_ERROR_INVALID_TIME_FORMAT                                         = 'GATEWAY_ERROR_INVALID_TIME_FORMAT';
+    const GATEWAY_ERROR_SYSTEM_BUSY                                                 = 'GATEWAY_ERROR_SYSTEM_BUSY';
+    const GATEWAY_ERROR_COMMUNICATION_ERROR                                         = 'GATEWAY_ERROR_COMMUNICATION_ERROR';
+    const GATEWAY_ERROR_INVALID_CONFIGURATION                                       = 'GATEWAY_ERROR_INVALID_CONFIGURATION';
+    const GATEWAY_ERROR_USER_INACTIVE                                               = 'GATEWAY_ERROR_USER_INACTIVE';
+    const GATEWAY_ERROR_CARD_NOT_ENROLLED                                           = 'GATEWAY_ERROR_CARD_NOT_ENROLLED';
+    const GATEWAY_ERROR_AUTHENTICATION_STATUS_ATTEMPTED                             = 'GATEWAY_ERROR_AUTHENTICATION_STATUS_ATTEMPTED';
+    const GATEWAY_ERROR_AUTHENTICATION_STATUS_FAILED                                = 'GATEWAY_ERROR_AUTHENTICATION_STATUS_FAILED';
+    const GATEWAY_ERROR_ENROLL_STATUS_EMPTY                                         = 'GATEWAY_ERROR_ENROLL_STATUS_EMPTY';
+    const GATEWAY_ERROR_ENROLL_STATUS_INVALID                                       = 'GATEWAY_ERROR_ENROLL_STATUS_INVALID';
+    const GATEWAY_ERROR_CARD_RUPAY_MAESTRO_NOT_ENABLED                              = 'GATEWAY_ERROR_CARD_RUPAY_MAESTRO_NOT_ENABLED';
+    const GATEWAY_ERROR_SOAP_ERROR                                                  = 'GATEWAY_ERROR_SOAP_ERROR';
+    const GATEWAY_ERROR_DECRYPTION_FAILED                                           = 'GATEWAY_ERROR_DECRYPTION_FAILED';
+    const GATEWAY_ERROR_AMOUNT_TAMPERED                                             = 'GATEWAY_ERROR_AMOUNT_TAMPERED';
+    const GATEWAY_ERROR_INVALID_FORMAT                                              = 'GATEWAY_ERROR_INVALID_FORMAT';
+    const SERVER_ERROR_INVALID_FORMAT                                               = 'SERVER_ERROR_INVALID_FORMAT';
+    const GATEWAY_ERROR_SUPPORT_GREATER_THAN_AUTH                                   = 'GATEWAY_ERROR_SUPPORT_GREATER_THAN_AUTH';
+    const GATEWAY_ERROR_TOKEN_ABSENT_RECURRING_PAYMENT                              = 'GATEWAY_ERROR_TOKEN_ABSENT_RECURRING_PAYMENT';
+    const GATEWAY_ERROR_TOKEN_REGISTRATION_FAILED                                   = 'GATEWAY_ERROR_TOKEN_REGISTRATION_FAILED';
+    const GATEWAY_ERROR_TOKEN_INCOMPLETE                                            = 'GATEWAY_ERROR_TOKEN_INCOMPLETE';
+    const GATEWAY_ERROR_TOKEN_VALIDATION_FAILED                                     = 'GATEWAY_ERROR_TOKEN_VALIDATION_FAILED';
+    const GATEWAY_ERROR_DUPLICATE_TOKEN                                             = 'GATEWAY_ERROR_DUPLICATE_TOKEN';
+    const GATEWAY_ERROR_TOKEN_NOT_FOUND                                             = 'GATEWAY_ERROR_TOKEN_NOT_FOUND';
+    const GATEWAY_ERROR_CONSUMER_PAN_TAMPERED                                       = 'GATEWAY_ERROR_CONSUMER_PAN_TAMPERED';
+    const GATEWAY_ERROR_MERCHANT_PAN_TAMPERED                                       = 'GATEWAY_ERROR_MERCHANT_PAN_TAMPERED';
+    const GATEWAY_ERROR_INVALID_PAN_LENGTH                                          = 'GATEWAY_ERROR_INVALID_PAN_LENGTH';
+    const GATEWAY_ERROR_STATUS_CODE_MISMATCH                                        = 'GATEWAY_ERROR_STATUS_CODE_MISMATCH';
+    const GATEWAY_ERROR_PIN_CRYPTOGRAPHY_ERROR                                      = 'GATEWAY_ERROR_PIN_CRYPTOGRAPHY_ERROR';
+    const GATEWAY_ERROR_TRANSACTION_DECLINED                                        = 'GATEWAY_ERROR_TRANSACTION_DECLINED';
+    const GATEWAY_ERROR_TRANSACTION_NOT_PRESENT                                     = 'GATEWAY_ERROR_TRANSACTION_NOT_PRESENT';
+    const GATEWAY_ERROR_TERMINAL_MAX_AMOUNT_LIMIT_REACHED                           = 'GATEWAY_ERROR_TERMINAL_MAX_AMOUNT_LIMIT_REACHED';
+    const GATEWAY_ERROR_TERMINAL_MAX_TRANSACTION_LIMIT_REACHED                      = 'GATEWAY_ERROR_TERMINAL_MAX_TRANSACTION_LIMIT_REACHED';
+    const GATEWAY_ERROR_PIN_CHANGE_FAILED                                           = 'GATEWAY_ERROR_PIN_CHANGE_FAILED';
+    const GATEWAY_ERROR_SWITCH_UNOPERATIVE                                          = 'GATEWAY_ERROR_SWITCH_UNOPERATIVE';
+    const GATEWAY_ERROR_AGGREGATOR_DOWN                                             = 'GATEWAY_ERROR_AGGREGATOR_DOWN';
+    const GATEWAY_ERROR_AGGREGATOR_ERROR                                            = 'GATEWAY_ERROR_AGGREGATOR_ERROR';
+    const GATEWAY_ERROR_BANK_ID_NOT_ENABLED_AGGREGATOR_TERMINAL                     = 'GATEWAY_ERROR_BANK_ID_NOT_ENABLED_AGGREGATOR_TERMINAL';
+    const GATEWAY_ERROR_ENSTAGE_ERROR                                               = 'GATEWAY_ERROR_ENSTAGE_ERROR';
+    const GATEWAY_ERROR_CAF_STATUS_ERROR                                            = 'GATEWAY_ERROR_CAF_STATUS_ERROR';
+    const GATEWAY_ERROR_ISO_MESSAGE_NULL                                            = 'GATEWAY_ERROR_ISO_MESSAGE_NULL';
+    const GATEWAY_ERROR_ISO_MESSAGE_SEND_OR_RECEIVE_FAILURE                         = 'GATEWAY_ERROR_ISO_MESSAGE_SEND_OR_RECEIVE_FAILURE';
+    const GATEWAY_ERROR_RESERVED_PRIVATE_USE                                        = 'GATEWAY_ERROR_RESERVED_PRIVATE_USE';
+    const GATEWAY_ERROR_ECI_INVALID                                                 = 'GATEWAY_ERROR_ECI_INVALID';
+    const GATEWAY_ERROR_LOADING_PAYMENT_PAGE_FAILED                                 = 'GATEWAY_ERROR_LOADING_PAYMENT_PAGE_FAILED';
+    const GATEWAY_ERROR_PAYMENT_INSTRUMENT_ERROR                                    = 'GATEWAY_ERROR_PAYMENT_INSTRUMENT_ERROR';
+    const GATEWAY_ERROR_PAYMENT_INSTRUMENT_NOT_ENABLED                              = 'GATEWAY_ERROR_PAYMENT_INSTRUMENT_NOT_ENABLED';
+    const GATEWAY_ERROR_INSTITUTION_IMPS_NOT_ACTIVE                                 = 'GATEWAY_ERROR_INSTITUTION_IMPS_NOT_ACTIVE';
+    const GATEWAY_ERROR_INVALID_INSTITUTION                                         = 'GATEWAY_ERROR_INVALID_INSTITUTION';
+    const GATEWAY_ERROR_TERMINAL_IMPS_NOT_ACTIVE                                    = 'GATEWAY_ERROR_TERMINAL_IMPS_NOT_ACTIVE';
+    const GATEWAY_ERROR_DUPLICATE_RECORD                                            = 'GATEWAY_ERROR_DUPLICATE_RECORD';
+    const GATEWAY_ERROR_PREVIOUS_VOID_CHECK_FAILURE                                 = 'GATEWAY_ERROR_PREVIOUS_VOID_CHECK_FAILURE';
+    const GATEWAY_ERROR_FORMATTING_FAILED                                           = 'GATEWAY_ERROR_FORMATTING_FAILED';
+    const GATEWAY_ERROR_INTERNAL_FORMAT_ERROR                                       = 'GATEWAY_ERROR_INTERNAL_FORMAT_ERROR';
+    const GATEWAY_ERROR_HASH_GENERATION_ERROR                                       = 'GATEWAY_ERROR_HASH_GENERATION_ERROR';
+    const GATEWAY_ERROR_INVALID_CAVV                                                = 'GATEWAY_ERROR_INVALID_CAVV';
+    const GATEWAY_ERROR_INVALID_MERCHANT                                            = 'GATEWAY_ERROR_INVALID_MERCHANT';
+    const GATEWAY_ERROR_MERCHANT_NOT_ALLOWED_FOR_ENCRYPTION                         = 'GATEWAY_ERROR_MERCHANT_NOT_ALLOWED_FOR_ENCRYPTION';
+    const GATEWAY_ERROR_MERCHANT_NOT_ENABLED                                        = 'GATEWAY_ERROR_MERCHANT_NOT_ENABLED';
+    const GATEWAY_ERROR_RC_UNAVAILABLE                                              = 'GATEWAY_ERROR_RC_UNAVAILABLE';
+    const GATEWAY_ERROR_PAYMENT_OPTION_NOT_ENABLED                                  = 'GATEWAY_ERROR_PAYMENT_OPTION_NOT_ENABLED';
+    const GATEWAY_ERROR_LOADING_DATA_ERROR                                          = 'GATEWAY_ERROR_LOADING_DATA_ERROR';
+    const GATEWAY_ERROR_LOADING_INSTITUTION_CONFIG_FAILURE                          = 'GATEWAY_ERROR_LOADING_INSTITUTION_CONFIG_FAILURE';
+    const GATEWAY_ERROR_PROBLEM_IN_UPDATION                                         = 'GATEWAY_ERROR_PROBLEM_IN_UPDATION';
+    const GATEWAY_ERROR_LOG_UPDATE_FAILURE                                          = 'GATEWAY_ERROR_LOG_UPDATE_FAILURE';
+    const GATEWAY_ERROR_RISK_UPDATE_FAILURE                                         = 'GATEWAY_ERROR_RISK_UPDATE_FAILURE';
+    const GATEWAY_ERROR_VPAS_DETAILS_UPDATE_FAILURE                                 = 'GATEWAY_ERROR_VPAS_DETAILS_UPDATE_FAILURE';
+    const GATEWAY_ERROR_INTERNAL_DATA_FETCH_ERROR                                   = 'GATEWAY_ERROR_INTERNAL_DATA_FETCH_ERROR';
+    const GATEWAY_ERROR_RISK_PROFILE_FETCH_FAILURE                                  = 'GATEWAY_ERROR_RISK_PROFILE_FETCH_FAILURE';
+    const GATEWAY_ERROR_PASSWORD_RULES_FETCH_FAILURE                                = 'GATEWAY_ERROR_PASSWORD_RULES_FETCH_FAILURE';
+    const GATEWAY_ERROR_BLOCKED_IP_LIST_FETCH_FAILURE                               = 'GATEWAY_ERROR_BLOCKED_IP_LIST_FETCH_FAILURE';
+    const GATEWAY_ERROR_INSTITUTION_CONFIG_FETCH_FAILURE                            = 'GATEWAY_ERROR_INSTITUTION_CONFIG_FETCH_FAILURE';
+    const GATEWAY_ERROR_TRANSACTION_LOG_RETRIEVAL_FAILURE                           = 'GATEWAY_ERROR_TRANSACTION_LOG_RETRIEVAL_FAILURE';
+    const GATEWAY_ERROR_VPAS_LOG_RETRIEVAL_FAILURE                                  = 'GATEWAY_ERROR_VPAS_LOG_RETRIEVAL_FAILURE';
+    const GATEWAY_ERROR_PAYMENT_LOG_DETAILS_UNAVAILABLE                             = 'GATEWAY_ERROR_PAYMENT_LOG_DETAILS_UNAVAILABLE';
+    const GATEWAY_ERROR_UNABLE_TO_LOCATE_PREVIOUS_RECORD                            = 'GATEWAY_ERROR_UNABLE_TO_LOCATE_PREVIOUS_RECORD';
+    const GATEWAY_ERROR_COMPLIANCE_ERROR                                            = 'GATEWAY_ERROR_COMPLIANCE_ERROR';
+    const GATEWAY_ERROR_INVALID_MODE                                                = 'GATEWAY_ERROR_INVALID_MODE';
+
+    const GATEWAY_ERROR_CARD_ISSUING_BANK_SYSTEM_ERROR                              = 'GATEWAY_ERROR_CARD_ISSUING_BANK_SYSTEM_ERROR';
+    const GATEWAY_ERROR_PAYMENT_DUPLICATE_REQUEST                                   = 'GATEWAY_ERROR_PAYMENT_DUPLICATE_REQUEST';
+    const GATEWAY_ERROR_REFUND_DUPLICATE_REQUEST                                    = 'GATEWAY_ERROR_REFUND_DUPLICATE_REQUEST';
+    const GATEWAY_ERROR_DUPLICATE_TRANSACTION                                       = 'GATEWAY_ERROR_DUPLICATE_TRANSACTION';
+    const GATEWAY_ERROR_REFUND_NOT_ALLOWED_ON_THE_WALLET                            = 'GATEWAY_ERROR_REFUND_NOT_ALLOWED_ON_THE_WALLET';
+    const GATEWAY_ERROR_PAYMENT_INVALID_REFERENCE_NO                                = 'GATEWAY_ERROR_PAYMENT_INVALID_REFERENCE_NO';
+    const GATEWAY_ERROR_PAYMENT_INVALID_AMOUNT                                      = 'GATEWAY_ERROR_PAYMENT_INVALID_AMOUNT';
+    const GATEWAY_ERROR_REFUND_INVALID_AMOUNT                                       = 'GATEWAY_ERROR_REFUND_INVALID_AMOUNT';
+    const GATEWAY_ERROR_ANOTHER_REFUND_IN_PROGRESS_FOR_SAME_PAYMENT                 = 'GATEWAY_ERROR_ANOTHER_REFUND_IN_PROGRESS_FOR_SAME_PAYMENT';
+    const GATEWAY_ERROR_PAYMENT_INVALID_ACTION                                      = 'GATEWAY_ERROR_PAYMENT_INVALID_ACTION';
+    const GATEWAY_ERROR_PAYMENT_INVALID_ID                                          = 'GATEWAY_ERROR_PAYMENT_INVALID_ID';
+    const GATEWAY_ERROR_PAYMENT_CANNOT_BE_RETRIEVED                                 = 'GATEWAY_ERROR_PAYMENT_CANNOT_BE_RETRIEVED';
+    const GATEWAY_ERROR_PAYMENT_DENIED_NEGATIVE_BIN                                 = 'GATEWAY_ERROR_PAYMENT_DENIED_NEGATIVE_BIN';
+    const GATEWAY_ERROR_PAYMENT_BIN_CHECK_FAILED                                    = 'GATEWAY_ERROR_PAYMENT_BIN_CHECK_FAILED';
+    const GATEWAY_ERROR_PAYMENT_INVALID_CURRENCY                                    = 'GATEWAY_ERROR_PAYMENT_INVALID_CURRENCY';
+    const GATEWAY_ERROR_PAYMENT_INVALID_UDF                                         = 'GATEWAY_ERROR_PAYMENT_INVALID_UDF';
+    const GATEWAY_ERROR_PAYMENT_CREDIT_LESS_THAN_DEBIT                              = 'GATEWAY_ERROR_PAYMENT_CREDIT_LESS_THAN_DEBIT';
+    const GATEWAY_ERROR_PAYMENT_CREDIT_GREATER_THAN_DEBIT                           = 'GATEWAY_ERROR_PAYMENT_CREDIT_GREATER_THAN_DEBIT';
+    const GATEWAY_ERROR_PAYMENT_SUPPORT_FAILED                                      = 'GATEWAY_ERROR_PAYMENT_SUPPORT_FAILED';
+    const GATEWAY_ERROR_PAYMENT_SUPPORT_AUTH_NOT_FOUND                              = 'GATEWAY_ERROR_PAYMENT_SUPPORT_AUTH_NOT_FOUND';
+    const GATEWAY_ERROR_PAYMENT_INVALID_MOBILE                                      = 'GATEWAY_ERROR_PAYMENT_INVALID_MOBILE';
+    const GATEWAY_ERROR_PAYMENT_INVALID_EMAIL                                       = 'GATEWAY_ERROR_PAYMENT_INVALID_EMAIL';
+    const GATEWAY_ERROR_PAYMENT_AUTHENTICATION_ERROR                                = 'GATEWAY_ERROR_PAYMENT_AUTHENTICATION_ERROR';
+    const GATEWAY_ERROR_PAYMENT_CHARGEBACK_ERROR                                    = 'GATEWAY_ERROR_PAYMENT_CHARGEBACK_ERROR';
+    const GATEWAY_ERROR_BANK_OFFLINE                                                = 'GATEWAY_ERROR_BANK_OFFLINE';
+    const GATEWAY_ERROR_ISSUER_DOWN                                                 = 'GATEWAY_ERROR_ISSUER_DOWN';
+    const GATEWAY_ERROR_UNACCEPTABLE_TRANSACTION_FEE                                = 'GATEWAY_ERROR_UNACCEPTABLE_TRANSACTION_FEE';
+    const GATEWAY_ERROR_INVALID_TRANSACTION                                         = 'GATEWAY_ERROR_INVALID_TRANSACTION';
+    const GATEWAY_ERROR_UNEXPECTED_PAYMENT_PENDING                                  = 'GATEWAY_ERROR_UNEXPECTED_PAYMENT_PENDING';
+
+    const GATEWAY_ERROR_CARD_INVALID_NAME                                           = 'GATEWAY_ERROR_CARD_INVALID_NAME';
+    const GATEWAY_ERROR_CARD_NUMBER_INVALID_LENGTH                                  = 'GATEWAY_ERROR_CARD_NUMBER_INVALID_LENGTH';
+    const GATEWAY_ERROR_CARD_INVALID_NUMBER                                         = 'GATEWAY_ERROR_CARD_INVALID_NUMBER';
+    const GATEWAY_ERROR_CARD_INVALID_EXPIRY_DATE                                    = 'GATEWAY_ERROR_CARD_INVALID_EXPIRY_DATE';
+    const GATEWAY_ERROR_CARD_INVALID_BRAND                                          = 'GATEWAY_ERROR_CARD_INVALID_BRAND';
+    const GATEWAY_ERROR_CARD_INVALID_AMOUNT                                         = 'GATEWAY_ERROR_CARD_INVALID_AMOUNT';
+    const GATEWAY_ERROR_CARD_INVALID_ADDRESS                                        = 'GATEWAY_ERROR_CARD_INVALID_ADDRESS';
+    const GATEWAY_ERROR_CARD_INVALID_ZIP                                            = 'GATEWAY_ERROR_CARD_INVALID_ZIP';
+    const GATEWAY_ERROR_CARD_INVALID_CVV                                            = 'GATEWAY_ERROR_CARD_INVALID_CVV';
+    const GATEWAY_ERROR_CARD_MISSING_CVV                                            = 'GATEWAY_ERROR_CARD_MISSING_CVV';
+    const GATEWAY_ERROR_INVALID_CARD_NUMBER_PREFIX                                  = 'GATEWAY_ERROR_INVALID_CARD_NUMBER_PREFIX';
+
+    const GATEWAY_ERROR_HEADLESS_PARSING_FAILED                                     = 'GATEWAY_ERROR_HEADLESS_PARSING_FAILED';
+    const GATEWAY_ERROR_OTPELF_FAILURE                                              = 'GATEWAY_ERROR_OTPELF_FAILURE';
+
+    const GATEWAY_ERROR_PAYMENT_MISSING_DATA                                        = 'GATEWAY_ERROR_PAYMENT_MISSING_DATA';
+    const GATEWAY_ERROR_INVALID_PARAMETERS                                          = 'GATEWAY_ERROR_INVALID_PARAMETERS';
+    const GATEWAY_ERROR_INVALID_CALLBACK_URL                                        = 'GATEWAY_ERROR_INVALID_CALLBACK_URL';
+    const GATEWAY_ERROR_INVALID_PAYMENT_DATA                                        = 'GATEWAY_ERROR_INVALID_PAYMENT_DATA';
+
+    const GATEWAY_ERROR_BLOCKED_IP                                                  = 'GATEWAY_ERROR_BLOCKED_IP';
+
+    const GATEWAY_ERROR_RECURRING_PAYMENT_NOT_FOUND                                 = 'GATEWAY_ERROR_RECURRING_PAYMENT_NOT_FOUND';
+    const GATEWAY_ERROR_PAYMENT_TRANSACTION_NOT_FOUND                               = 'GATEWAY_ERROR_PAYMENT_TRANSACTION_NOT_FOUND';
+
+    const GATEWAY_ERROR_CALLBACK_EMPTY_INPUT                                        = 'GATEWAY_ERROR_CALLBACK_EMPTY_INPUT';
+
+    const GATEWAY_ERROR_MERCHANT_NOT_ENABLED_FOR_STANDING_INSTRUCTION               = 'GATEWAY_ERROR_MERCHANT_NOT_ENABLED_FOR_STANDING_INSTRUCTION';
+    const GATEWAY_ERROR_MERCHANT_IP_NOT_WHITELISTED                                 = 'GATEWAY_ERROR_MERCHANT_IP_NOT_WHITELISTED';
+    const GATEWAY_ERROR_PREMATURE_SI_EXECUTION                                      = 'GATEWAY_ERROR_PREMATURE_SI_EXECUTION';
+    const GATEWAY_ERROR_SI_EXECUTION_ALREADY_DONE                                   = 'GATEWAY_ERROR_SI_EXECUTION_ALREADY_DONE';
+
+    const GATEWAY_ERROR_ENCRYPTION_PROCESS_NOT_ENABLED                              = 'GATEWAY_ERROR_ENCRYPTION_PROCESS_NOT_ENABLED';
+    const GATEWAY_ERROR_RESPONSE_ENCRYPTION_FAILED                                  = 'GATEWAY_ERROR_RESPONSE_ENCRYPTION_FAILED';
+    const GATEWAY_ERROR_PAYMENT_ENCRYPTION_FAILED                                   = 'GATEWAY_ERROR_PAYMENT_ENCRYPTION_FAILED';
+
+    const GATEWAY_ERROR_ISSUER_ACS_SYSTEM_FAILURE                                   = 'GATEWAY_ERROR_ISSUER_ACS_SYSTEM_FAILURE';
+    const GATEWAY_ERROR_ISSUER_ACS_INVALID_RESPONSE                                 = 'GATEWAY_ERROR_ISSUER_ACS_INVALID_RESPONSE';
+
+    const GATEWAY_ERROR_MANDATE_CREATION_FAILED                                     = 'GATEWAY_ERROR_MANDATE_CREATION_FAILED';
+
+    const GATEWAY_ERROR_CREDIT_CARD_NUMBER_DECRYPTION_FAILED                        = 'GATEWAY_ERROR_CREDIT_CARD_NUMBER_DECRYPTION_FAILED';
+    const GATEWAY_ERROR_CREDIT_CARD_ENCRYPTION_FAILED                               = 'GATEWAY_ERROR_CREDIT_CARD_ENCRYPTION_FAILED';
+    const GATEWAY_ERROR_CARD_ENCRYPTION_FAILED                                      = 'GATEWAY_ERROR_CARD_ENCRYPTION_FAILED';
+    const GATEWAY_ERROR_CRYPTO_ALOGRITHM_ERROR                                      = 'GATEWAY_ERROR_CRYPTO_ALOGRITHM_ERROR';
+    const GATEWAY_ERROR_RSA_DECRYPTION_FAILED                                       = 'GATEWAY_ERROR_RSA_DECRYPTION_FAILED';
+    const GATEWAY_ERROR_RSA_ENCRYPTION_FAILED                                       = 'GATEWAY_ERROR_RSA_ENCRYPTION_FAILED';
+    const BAD_REQUEST_INVALID_CARD_CVV                                              = 'BAD_REQUEST_INVALID_CARD_CVV';
+    const GATEWAY_ERROR_ONBOARDING_FAILED                                           = 'GATEWAY_ERROR_ONBOARDING_FAILED';
+    const GATEWAY_ERROR_TERMINAL_ONBOARDING_FAILED                                  = 'GATEWAY_ERROR_TERMINAL_ONBOARDING_FAILED';
+    const GATEWAY_ERROR_BANK_NOT_SUPPORTED_BY_SWITCH                                = 'GATEWAY_ERROR_BANK_NOT_SUPPORTED_BY_SWITCH';
+    const BAD_REQUEST_CARD_PAYMENT_DECLINED_MODE_NOT_SUPPORTED                      = 'BAD_REQUEST_CARD_PAYMENT_DECLINED_MODE_NOT_SUPPORTED';
+    const BAD_REQUEST_CARD_DISABLED_FOR_ONLINE_PAYMENTS                             = 'BAD_REQUEST_CARD_DISABLED_FOR_ONLINE_PAYMENTS';
+    const BAD_REQUEST_INVALID_CARD_NUMBER                                           = 'BAD_REQUEST_INVALID_CARD_NUMBER';
+    const BAD_REQUEST_INVALID_CARD_NAME                                             = 'BAD_REQUEST_INVALID_CARD_NAME';
+    const BAD_REQUEST_CARD_NOT_ALLOWED_BY_BANK                                      = 'BAD_REQUEST_CARD_NOT_ALLOWED_BY_BANK';
+    const BAD_REQUEST_CARD_EXPIRED                                                  = 'BAD_REQUEST_CARD_EXPIRED';
+    const GATEWAY_ERROR_VERSION_ERROR                                               = 'GATEWAY_ERROR_VERSION_ERROR';
+    const GATEWAY_ERROR_INVALID_DIGITAL_RECEIPT                                     = 'GATEWAY_ERROR_INVALID_DIGITAL_RECEIPT';
+    const GATEWAY_ERROR_INVALID_TXN_LOG_STRING                                      = 'GATEWAY_ERROR_INVALID_TXN_LOG_STRING';
+    const GATEWAY_ERROR_UNSUPPORTED_ACQUIRER                                        = 'GATEWAY_ERROR_UNSUPPORTED_ACQUIRER';
+    const GATEWAY_ERROR_PARSE_ERROR                                                 = 'GATEWAY_ERROR_PARSE_ERROR';
+    const GATEWAY_ERROR_FILE_ERROR                                                  = 'GATEWAY_ERROR_FILE_ERROR';
+    const BAD_REQUEST_INVALID_CARD_EXPIRY                                           = 'BAD_REQUEST_INVALID_CARD_EXPIRY';
+    const GATEWAY_ERROR_SQL_ERROR                                                   = 'GATEWAY_ERROR_SQL_ERROR';
+    const GATEWAY_ERROR_DELETING_TERMINAL                                           = 'GATEWAY_ERROR_CREATING_TERMINAL';
+    const GATEWAY_ERROR_CREATING_TERMINAL                                           = 'GATEWAY_ERROR_CREATING_TERMINAL';
+    const GATEWAY_ERROR_INVALID_ACKNOWLEDGMENT                                      = 'GATEWAY_ERROR_INVALID_ACKNOWLEDGMENT';
+    const GATEWAY_ERROR_URL_DECODE_ERROR                                            = 'GATEWAY_ERROR_URL_DECODE_ERROR';
+    const GATEWAY_ERROR_INVALID_CARD_TYPE                                           = 'GATEWAY_ERROR_INVALID_CARD_TYPE';
+    const GATEWAY_ERROR_NOT_AUTHORIZED_EXCESSIVE_REFUNDS                            = 'GATEWAY_ERROR_NOT_AUTHORIZED_EXCESSIVE_REFUNDS';
+    const GATEWAY_ERROR_NO_RECORDS_FOUND                                            = 'GATEWAY_ERROR_NO_RECORDS_FOUND';
+    const GATEWAY_ERROR_PERMISSION_DENIED_FOR_ACTION                                = 'GATEWAY_ERROR_PERMISSION_DENIED_FOR_ACTION';
+    const BAD_REQUEST_NON_3DS_INTERNATIONAL_NOT_ALLOWED                             = 'BAD_REQUEST_NON_3DS_INTERNATIONAL_NOT_ALLOWED';
+
+    // UPI (NPCI) response codes mapping
+    const GATEWAY_ERROR_TRANSACTION_PENDING                                         = 'GATEWAY_ERROR_TRANSACTION_PENDING';
+    const GATEWAY_ERROR_REMITTER_CBS_OFFLINE                                        = 'GATEWAY_ERROR_REMITTER_CBS_OFFLINE';
+    const GATEWAY_ERROR_INVALID_TRANSACTION_INAPPROPRIATE_CODE_BENEFICIARY          = 'GATEWAY_ERROR_INVALID_TRANSACTION_INAPPROPRIATE_CODE_BENEFICIARY';
+    const GATEWAY_ERROR_INACTIVE_DORMANT_BENEFICIARY_ACCOUNT                        = 'GATEWAY_ERROR_INACTIVE_DORMANT_BENEFICIARY_ACCOUNT';
+    const GATEWAY_ERROR_BENEFICIARY_ACCOUNT_DOES_NOT_EXIST                          = 'GATEWAY_ERROR_BENEFICIARY_ACCOUNT_DOES_NOT_EXIST';
+    const GATEWAY_ERROR_INVALID_BENEFICIARY_CREDENTIALS                             = 'GATEWAY_ERROR_INVALID_BENEFICIARY_CREDENTIALS';
+    const GATEWAY_ERROR_BENEFICIARY_INVALID_AMOUNT                                  = 'GATEWAY_ERROR_BENEFICIARY_INVALID_AMOUNT';
+    const GATEWAY_ERROR_BENEFICIARY_ACCOUNT_BLOCKED                                 = 'GATEWAY_ERROR_BENEFICIARY_ACCOUNT_BLOCKED';
+    const GATEWAY_ERROR_BENEFICIARY_INVALID_FORMAT                                  = 'GATEWAY_ERROR_BENEFICIARY_INVALID_FORMAT';
+    const GATEWAY_ERROR_BENEFICIARY_CBS_OFFLINE                                     = 'GATEWAY_ERROR_BENEFICIARY_CBS_OFFLINE';
+    const GATEWAY_ERROR_BENEFICIARY_INTERNAL_EXCEPTION                              = 'GATEWAY_ERROR_BENEFICIARY_INTERNAL_EXCEPTION';
+    const GATEWAY_ERROR_BENEFICIARY_COMPLIANCE_VIOLATION                            = 'GATEWAY_ERROR_BENEFICIARY_COMPLIANCE_VIOLATION';
+    const GATEWAY_ERROR_BENEFICIARY_TRANSACTION_NOT_PERMITTED                       = 'GATEWAY_ERROR_BENEFICIARY_TRANSACTION_NOT_PERMITTED';
+    const GATEWAY_ERROR_BENEFICIARY_EXPIRED_CARD                                    = 'GATEWAY_ERROR_BENEFICIARY_EXPIRED_CARD';
+    const GATEWAY_ERROR_BENEFICIARY_NO_CARD_RECORD                                  = 'GATEWAY_ERROR_BENEFICIARY_NO_CARD_RECORD';
+    const GATEWAY_ERROR_INTERNAL_SERVER_ERROR                                       = 'GATEWAY_ERROR_INTERNAL_SERVER_ERROR';
+    const GATEWAY_ERROR_CARD_ISSUING_BANK_UNAVAILABLE                               = 'GATEWAY_ERROR_CARD_ISSUING_BANK_UNAVAILABLE';
+    const GATEWAY_ERROR_CARD_NETWORK_UNABLE_TO_ROUTE                                = 'GATEWAY_ERROR_CARD_NETWORK_UNABLE_TO_ROUTE';
+
+    const GATEWAY_ERROR_INVALID_TRANSACTION_INAPPROPRIATE_CODE_REMITTER             = 'GATEWAY_ERROR_INVALID_TRANSACTION_INAPPROPRIATE_CODE_REMITTER';
+    const GATEWAY_ERROR_PSP_NOT_AVAILABLE                                           = 'GATEWAY_ERROR_PSP_NOT_AVAILABLE';
+    const GATEWAY_ERROR_CONNECTION_TIMEOUT_IN_REQPAY_CREDIT                         = 'GATEWAY_ERROR_CONNECTION_TIMEOUT_IN_REQPAY_CREDIT';
+    const GATEWAY_ERROR_CONNECTION_TIMEOUT_IN_REQPAY_DEBIT                          = 'GATEWAY_ERROR_CONNECTION_TIMEOUT_IN_REQPAY_DEBIT';
+    const GATEWAY_ERROR_CREDIT_TIMEOUT                                              = 'GATEWAY_ERROR_CREDIT_TIMEOUT';
+    const GATEWAY_ERROR_CREDIT_FAILED                                               = 'GATEWAY_ERROR_CREDIT_FAILED';
+    const GATEWAY_ERROR_CREDIT_REVERSAL_TIMEOUT                                     = 'GATEWAY_ERROR_CREDIT_REVERSAL_TIMEOUT';
+    const GATEWAY_ERROR_VALIDATION_ERROR                                            = 'GATEWAY_ERROR_VALIDATION_ERROR';
+    const GATEWAY_ERROR_NO_ORIGINAL_DEBIT_CREDIT_REQUEST_FOUND                      = 'GATEWAY_ERROR_NO_ORIGINAL_DEBIT_CREDIT_REQUEST_FOUND';
+    const GATEWAY_ERROR_TRANSACTION_NOT_PERMITTED                                   = 'GATEWAY_ERROR_TRANSACTION_NOT_PERMITTED';
+    const GATEWAY_ERROR_TERMINAL_NOT_ALLOWED                                        = 'GATEWAY_ERROR_TERMINAL_NOT_ALLOWED';
+    const GATEWAY_ERROR_INSUFFICIENT_FUNDS_REMITTER_ACCOUNT                         = 'GATEWAY_ERROR_INSUFFICIENT_FUNDS_REMITTER_ACCOUNT';
+    const GATEWAY_ERROR_PAYMENT_DECLINED_BY_BANK_DUE_TO_RISK_BENEFICARY             = 'GATEWAY_ERROR_PAYMENT_DECLINED_BY_BANK_DUE_TO_RISK_BENEFICARY';
+    const GATEWAY_ERROR_BENEFICIARY_CUTOFF_IN_PROGRESS                              = 'GATEWAY_ERROR_BENEFICIARY_CUTOFF_IN_PROGRESS';
+    const GATEWAY_ERROR_BANK_ACCOUNT_CREDIT_PROCESS_FAILED                          = 'GATEWAY_ERROR_BANK_ACCOUNT_CREDIT_PROCESS_FAILED';
+    const GATEWAY_ERROR_BENEFICIARY_DUPLICATE_RRN_FOUND                             = 'GATEWAY_ERROR_BENEFICIARY_DUPLICATE_RRN_FOUND';
+    const GATEWAY_ERROR_REMITTER_DUPLICATE_RRN_FOUND                                = 'GATEWAY_ERROR_REMITTER_DUPLICATE_RRN_FOUND';
+    const GATEWAY_ERROR_DO_NOT_HONOUR_BENEFICIARY                                   = 'GATEWAY_ERROR_DO_NOT_HONOUR_BENEFICIARY';
+    const GATEWAY_ERROR_DO_NOT_HONOUR_REMITTER                                      = 'GATEWAY_ERROR_DO_NOT_HONOUR_REMITTER';
+    const GATEWAY_ERROR_PAYMENT_DECLINED_BY_BANK_DUE_TO_RISK_REMITTER               = 'GATEWAY_ERROR_PAYMENT_DECLINED_BY_BANK_DUE_TO_RISK_REMITTER';
+    const GATEWAY_ERROR_REMITTER_CUTOFF_IN_PROGRESS                                 = 'GATEWAY_ERROR_REMITTER_CUTOFF_IN_PROGRESS';
+    const GATEWAY_ERROR_INACTIVE_DORMANT_REMITTER_ACCOUNT                           = 'GATEWAY_ERROR_INACTIVE_DORMANT_REMITTER_ACCOUNT';
+    const GATEWAY_ERROR_REMITTER_ACCOUNT_BLOCKED                                    = 'GATEWAY_ERROR_REMITTER_ACCOUNT_BLOCKED';
+    const GATEWAY_ERROR_REMITTER_TRANSACTION_NOT_PERMITTED                          = 'GATEWAY_ERROR_REMITTER_TRANSACTION_NOT_PERMITTED';
+    const GATEWAY_ERROR_REMITTER_INVALID_AMOUNT                                     = 'GATEWAY_ERROR_REMITTER_INVALID_AMOUNT';
+    const GATEWAY_ERROR_REMITTER_INVALID_FORMAT                                     = 'GATEWAY_ERROR_REMITTER_INVALID_FORMAT';
+    const GATEWAY_ERROR_REMITTER_CARD_EXPIRED                                       = 'GATEWAY_ERROR_REMITTER_CARD_EXPIRED';
+    const GATEWAY_ERROR_REMITTER_NO_CARD_RECORD                                     = 'GATEWAY_ERROR_REMITTER_NO_CARD_RECORD';
+    const GATEWAY_ERROR_REVERSAL_FAILURE                                            = 'GATEWAY_ERROR_REVERSAL_FAILURE';
+    const GATEWAY_ERROR_REMITTER_COMPLIANCE_VIOLATION                               = 'GATEWAY_ERROR_REMITTER_COMPLIANCE_VIOLATION';
+    const GATEWAY_ERROR_UPI_REQAUTH_TIMEOUT                                         = 'GATEWAY_ERROR_UPI_REQAUTH_TIMEOUT';
+    const GATEWAY_ERROR_ENCRYPTION_ERROR                                            = 'GATEWAY_ERROR_ENCRYPTION_ERROR';
+    const GATEWAY_ERROR_DEBIT_FAILED                                                = 'GATEWAY_ERROR_DEBIT_FAILED';
+    const GATEWAY_ERROR_TRANSACTION_DETAILS_MISMATCH                                = 'GATEWAY_ERROR_TRANSACTION_DETAILS_MISMATCH';
+    const GATEWAY_ERROR_DEBIT_CAP_EXCEEDED                                          = 'GATEWAY_ERROR_DEBIT_CAP_EXCEEDED';
+    const GATEWAY_ERROR_PAYMENT_NOT_FOUND                                           = 'GATEWAY_ERROR_PAYMENT_NOT_FOUND';
+    const GATEWAY_ERROR_DEBIT_FAILED_AT_BANK                                        = 'GATEWAY_ERROR_DEBIT_FAILED_AT_BANK';
+    const GATEWAY_ERROR_DEBIT_TIMEOUT                                               = 'GATEWAY_ERROR_DEBIT_TIMEOUT';
+    const GATEWAY_ERROR_VPA_RESOLUTION_FAILED                                       = 'GATEWAY_ERROR_VPA_RESOLUTION_FAILED';
+    const GATEWAY_ERROR_REQAUTH_DECLINED                                            = 'GATEWAY_ERROR_REQAUTH_DECLINED';
+    const GATEWAY_ERROR_NPCI_RESPONSE_TIMEOUT                                       = 'GATEWAY_ERROR_NPCI_RESPONSE_TIMEOUT';
+    const GATEWAY_ERROR_PRIOR_TRANSACTION_IN_PROGRESS                               = 'GATEWAY_ERROR_PRIOR_TRANSACTION_IN_PROGRESS';
+    const GATEWAY_ERROR_RECONCILE_ERROR                                             = 'GATEWAY_ERROR_RECONCILE_ERROR';
+    const GATEWAY_ERROR_TERMINAL_DISABLE_FAILED                                     = 'GATEWAY_ERROR_TERMINAL_DISABLE_FAILED';
+    const GATEWAY_ERROR_TERMINAL_ENABLE_FAILED                                      = 'GATEWAY_ERROR_TERMINAL_ENABLE_FAILED';
+    const GATEWAY_ERROR_AUTHENTICATION_FAILED                                       = 'GATEWAY_ERROR_AUTHENTICATION_FAILED';
+    const GATEWAY_ERROR_TECHNICAL_ERROR                                             = 'GATEWAY_ERROR_TECHNICAL_ERROR';
+    const GATEWAY_ERROR_UPI_COOLING_PERIOD_TRANSACTION_LIMIT_EXCEEDS                = 'GATEWAY_ERROR_UPI_COOLING_PERIOD_TRANSACTION_LIMIT_EXCEEDS';
+    const GATEWAY_ERROR_UPI_PER_DAY_LIMIT_EXCEEDS                                   = 'GATEWAY_ERROR_UPI_PER_DAY_LIMIT_EXCEEDS';
+    const GATEWAY_ERROR_DEBIT_NOT_ALLOWED_FOR_BANK                                  = 'GATEWAY_ERROR_DEBIT_NOT_ALLOWED_FOR_BANK';
+    const GATEWAY_ERROR_REVERSAL_ALREADY_SENT                                       = 'GATEWAY_ERROR_REVERSAL_ALREADY_SENT';
+
+    const BAD_REQUEST_ACTION_CANCELLED                                              = 'BAD_REQUEST_ACTION_CANCELLED';
+    const BAD_REQUEST_ITEM_NOT_FOUND                                                = 'BAD_REQUEST_ITEM_NOT_FOUND';
+    const BAD_REQUEST_ITEM_ALREADY_EXISTS                                           = 'BAD_REQUEST_ITEM_ALREADY_EXISTS';
+    const BAD_REQUEST_OUT_OF_RANGE                                                  = 'BAD_REQUEST_OUT_OF_RANGE';
+    const BAD_REQUEST_ACTION_ABORTED                                                = 'GATEWAY_ERROR_ACTION_ABORTED';
+    const BAD_REQUEST_RESOURCE_EXHAUSTED                                            = 'BAD_REQUEST_RESOURCE_EXHAUSTED';
+    const BAD_REQUEST_FAILED_PRECONDITION                                           = 'BAD_REQUEST_FAILED_PRECONDITION';
+    const BAD_REQUEST_DEADLINE_EXCEEDED                                             = 'BAD_REQUEST_DEADLINE_EXCEEDED';
+
+    const SERVER_ERROR_ACTION_UNIMPLEMENTED                                         = 'SERVER_ERROR_ACTION_UNIMPLEMENTED';
+    const SERVER_ERROR_SERVICE_UNAVAILABLE                                          = 'SERVER_ERROR_SERVICE_UNAVAILABLE';
+    const BAD_REQUEST_VENDOR_PAYMENT_MICRO_SERVICE_FAILED                           = 'BAD_REQUEST_VENDOR_PAYMENT_MICRO_SERVICE_FAILED';
+    const BAD_REQUEST_ACCOUNTING_PAYOUTS_SERVICE_FAILED                             = 'BAD_REQUEST_ACCOUNTING_PAYOUTS_SERVICE_FAILED';
+
+    const BAD_REQUEST_PAYOUTS_NOT_ALLOWED_CURRENTLY                                 = 'BAD_REQUEST_PAYOUTS_NOT_ALLOWED_CURRENTLY';
+    const BAD_REQUEST_FAV_NOT_ALLOWED_CURRENTLY                                     = 'BAD_REQUEST_FAV_NOT_ALLOWED_CURRENTLY';
+    const BAD_REQUEST_MERCHANT_NOT_ENABLED_FOR_2FA_PAYOUT                           = 'BAD_REQUEST_MERCHANT_NOT_ENABLED_FOR_2FA_PAYOUT';
+    const BAD_REQUEST_MERCHANT_NOT_ALLOWED_TO_TRIGGER_2FA_OTP                       = 'BAD_REQUEST_MERCHANT_NOT_ALLOWED_TO_TRIGGER_2FA_OTP';
+
+    const BAD_REQUEST_UPI_MPIN_NOT_SET                                              = 'BAD_REQUEST_UPI_MPIN_NOT_SET';
+    const BAD_REQUEST_UPI_INVALID_ATM_PIN                                           = 'BAD_REQUEST_UPI_INVALID_ATM_PIN';
+    const BAD_REQUEST_REGISTERED_MOBILE_NUMBER_NOT_FOUND                            = 'BAD_REQUEST_REGISTERED_MOBILE_NUMBER_NOT_FOUND';
+    const BAD_REQUEST_EXPIRED_VPA                                                   = 'BAD_REQUEST_EXPIRED_VPA';
+    const BAD_REQUEST_UPI_INVALID_BANK_ACCOUNT                                      = 'BAD_REQUEST_UPI_INVALID_BANK_ACCOUNT';
+    const BAD_REQUEST_TRANSACTION_FREQUENCY_LIMIT_EXCEEDED                          = 'BAD_REQUEST_TRANSACTION_FREQUENCY_LIMIT_EXCEEDED';
+    const BAD_REQUEST_TRANSACTION_AMOUNT_LIMIT_EXCEEDED                             = 'BAD_REQUEST_TRANSACTION_AMOUNT_LIMIT_EXCEEDED';
+    const BAD_REQUEST_TRANSACTION_NOT_ON_HOLD                                       = 'BAD_REQUEST_TRANSACTION_NOT_ON_HOLD';
+    const BAD_REQUEST_FORBIDDEN_TRANSACTION_ON_VPA                                  = 'BAD_REQUEST_FORBIDDEN_TRANSACTION_ON_VPA';
+    const BAD_REQUEST_PSP_DOESNT_EXIST                                              = 'BAD_REQUEST_PSP_DOESNT_EXIST';
+    const BAD_REQUEST_PSP_ERROR                                                     = 'BAD_REQUEST_PSP_ERROR';
+    const BAD_REQUEST_UPI_INVALID_DEVICE_FINGERPRINT                                = 'BAD_REQUEST_UPI_INVALID_DEVICE_FINGERPRINT';
+    const BAD_REQUEST_PAYMENT_UPI_RESTRICTED_VPA                                    = 'BAD_REQUEST_PAYMENT_UPI_RESTRICTED_VPA';
+    const BAD_REQUEST_PAYMENT_UPI_DEVICE_MISSING                                    = 'BAD_REQUEST_PAYMENT_UPI_DEVICE_MISSING';
+    const BAD_REQUEST_PAYMENT_UPI_DEBIT_AND_CREDIT_SAME_ACCOUNT                     = 'BAD_REQUEST_PAYMENT_UPI_DEBIT_AND_CREDIT_SAME_ACCOUNT';
+    const BAD_REQUEST_PAYMENT_UPI_MOBILE_NUMBER_MAPPED_TO_MULTIPLE_CUSTOMERS        = 'BAD_REQUEST_PAYMENT_UPI_MOBILE_NUMBER_MAPPED_TO_MULTIPLE_CUSTOMERS';
+    const BAD_REQUEST_AT_LEAST_ONE_OF_EMAIL_OR_PHONE_REQUIRED                       = 'BAD_REQUEST_AT_LEAST_ONE_OF_EMAIL_OR_PHONE_REQUIRED';
+    const BAD_REQUEST_FUND_ACCOUNT_DOESNT_BELONG_TO_INTENDED_CONTACT                = 'BAD_REQUEST_FUND_ACCOUNT_DOESNT_BELONG_TO_INTENDED_CONTACT';
+    const BAD_REQUEST_INVALID_FUND_ACCOUNT_ID                                       = 'BAD_REQUEST_INVALID_FUND_ACCOUNT_ID';
+    const BAD_REQUEST_EMAIL_TO_BE_REMOVED_NOT_PRESENT                               = 'BAD_REQUEST_EMAIL_TO_BE_REMOVED_NOT_PRESENT';
+    const BAD_REQUEST_DOMAIN_ALREADY_WHITELISTED                                    = 'BAD_REQUEST_DOMAIN_ALREADY_WHITELISTED';
+    const BAD_REQUEST_WHITELISTED_DOMAIN_NOT_FOUND                                  = 'BAD_REQUEST_WHITELISTED_DOMAIN_NOT_FOUND';
+    const BAD_REQUEST_QR_RECEIVER_TYPE_IS_NOT_SUPPORTED                             = 'BAD_REQUEST_QR_RECEIVER_TYPE_IS_NOT_SUPPORTED';
+
+    // payout links
+    const BAD_REQUEST_PAYOUT_LINK_MICRO_SERVICE_FAILED                               = 'BAD_REQUEST_PAYOUT_LINK_MICRO_SERVICE_FAILED';
+    const BAD_REQUEST_PAYOUT_LINK_SEND_EMAIL_FAILED                                  = 'BAD_REQUEST_PAYOUT_LINK_SEND_EMAIL_FAILED';
+    const BAD_REQUEST_CUSTOMER_OTP_DELIVERY_FAILED                                   = 'BAD_REQUEST_CUSTOMER_OTP_DELIVERY_FAILED';
+    const BAD_REQUEST_INVALID_STATE_FOR_OTP_GENERATION                               = 'BAD_REQUEST_INVALID_STATE_FOR_OTP_GENERATION';
+    const BAD_REQUEST_ONLY_VPA_AND_BANK_ACCOUNT_SUPPORTED                            = 'BAD_REQUEST_ONLY_VPA_AND_BANK_ACCOUNT_SUPPORTED';
+    const BAD_REQUEST_INVALID_STATE_FOR_OTP_VERIFICATION                             = 'BAD_REQUEST_INVALID_STATE_FOR_OTP_VERIFICATION';
+    const BAD_REQUEST_INVALID_OTP_AUTH_TOKEN                                         = 'BAD_REQUEST_INVALID_OTP_AUTH_TOKEN';
+    const BAD_REQUEST_CANNOT_GENERATE_OTP_WITHOUT_PHONE_AND_EMAIL                    = 'BAD_REQUEST_CANNOT_GENERATE_OTP_WITHOUT_PHONE_AND_EMAIL';
+    const BAD_REQUEST_CUSTOMER_OTP_GENERATION_FAILED                                 = 'BAD_REQUEST_CUSTOMER_OTP_GENERATION_FAILED';
+    const BAD_REQUEST_PAYOUT_LINK_INVALID_STATUS                                     = 'BAD_REQUEST_PAYOUT_LINK_INVALID_STATUS';
+    const BAD_REQUEST_PAYOUT_LINK_INVALID_STATUS_TRANSITION                          = 'BAD_REQUEST_PAYOUT_LINK_INVALID_STATUS_TRANSITION';
+    const BAD_REQUEST_PAYOUT_LINK_ANOTHER_OPERATION_IN_PROGRESS                      = 'BAD_REQUEST_PAYOUT_LINK_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_EMAIL_NOTIFICATION_WITH_EMPTY_EMAIL                            = 'BAD_REQUEST_EMAIL_NOTIFICATION_WITH_EMPTY_EMAIL';
+    const BAD_REQUEST_SMS_NOTIFICATION_WITH_EMPTY_PHONE                              = 'BAD_REQUEST_SMS_NOTIFICATION_WITH_EMPTY_PHONE';
+    const BAD_REQUEST_INVALID_PAYOUT_LINK_NOTIFICATION_TYPE                          = 'BAD_REQUEST_INVALID_PAYOUT_LINK_NOTIFICATION_TYPE';
+    const BAD_REQUEST_REWRITING_EMAIL_NOT_PERMITTED                                  = 'BAD_REQUEST_REWRITING_EMAIL_NOT_PERMITTED';
+    const BAD_REQUEST_REWRITING_PHONE_NUMBER_NOT_PERMITTED                           = 'BAD_REQUEST_REWRITING_PHONE_NUMBER_NOT_PERMITTED';
+    const BAD_REQUEST_PAYOUT_LINK_INVALID_STATE_FOR_INITIATE_REQUEST                 = 'BAD_REQUEST_PAYOUT_LINK_INVALID_STATE_FOR_INITIATE_REQUEST';
+    const BAD_REQUEST_PAYOUT_LINK_CANNOT_BE_CANCELLED_IN_THIS_STATE                  = 'BAD_REQUEST_PAYOUT_LINK_CANNOT_BE_CANCELLED_IN_THIS_STATE';
+    const BAD_REQUEST_EITHER_CONTACT_ID_OR_INFORMATION_TO_BE_SENT                    = 'BAD_REQUEST_EITHER_CONTACT_ID_OR_INFORMATION_TO_BE_SENT';
+    const BAD_REQUEST_INVALID_CONTACT_ID                                             = 'BAD_REQUEST_INVALID_CONTACT_ID';
+    const BAD_REQUEST_CONTACT_ID_EMAIL_AND_PHONE_NUMBER_MISSING                      = 'BAD_REQUEST_CONTACT_ID_EMAIL_AND_PHONE_NUMBER_MISSING';
+    const BAD_REQUEST_PAYOUT_LINK_SERVICE_UNDER_MAINTAINENCE                         = 'BAD_REQUEST_PAYOUT_LINK_SERVICE_UNDER_MAINTAINENCE';
+    const BAD_REQUEST_FORBIDDEN_BUSINESS_BANKING_NOT_ENABLED                         = 'BAD_REQUEST_FORBIDDEN_BUSINESS_BANKING_NOT_ENABLED';
+    const BAD_REQUEST_PAYOUT_LINK_NOT_SUPPORTED_FOR_TEST_MODE                        = 'BAD_REQUEST_PAYOUT_LINK_NOT_SUPPORTED_FOR_TEST_MODE';
+    const BAD_REQUEST_INVALID_BATCH_TYPE_FOR_PAYOUT_LINK_CREATE_BATCH                = 'BAD_REQUEST_INVALID_BATCH_TYPE_FOR_PAYOUT_LINK_CREATE_BATCH';
+    const BAD_REQUEST_BATCH_ID_MISSING_FOR_PAYOUT_LINK_PROCESS_BATCH                 = 'BAD_REQUEST_BATCH_ID_MISSING_FOR_PAYOUT_LINK_PROCESS_BATCH';
+    const BAD_REQUEST_NO_BANKING_ACCOUNT_FOR_PAYOUT_LINK                             = 'BAD_REQUEST_NO_BANKING_ACCOUNT_FOR_PAYOUT_LINK';
+    const BAD_REQUEST_BANK_ACCOUNT_TYPE_MISMATCH                                     = 'BAD_REQUEST_BANK_ACCOUNT_TYPE_MISMATCH';
+    const BAD_REQUEST_BANK_ACCOUNT_TYPE_NOT_FOUND                                    = 'BAD_REQUEST_BANK_ACCOUNT_TYPE_NOT_FOUND';
+    const BAD_REQUEST_BANK_ACCOUNT_ENTITY_ID_NOT_PRESENT                             = 'BAD_REQUEST_BANK_ACCOUNT_ENTITY_ID_NOT_PRESENT';
+    const BAD_REQUEST_CREDIT_BAS_ID_MISSING = 'BAD_REQUEST_CREDIT_BAS_ID_MISSING';
+
+    // Generic bad requests
+    const BAD_REQUEST_INVALID_ID                                                    = 'BAD_REQUEST_INVALID_ID';
+    const BAD_REQUEST_INVALID_TERMINAL_ID                                           = 'BAD_REQUEST_INVALID_TERMINAL_ID';
+    const BAD_REQUEST_INVALID_IDS                                                   = 'BAD_REQUEST_INVALID_IDS';
+    const BAD_REQUEST_INVALID_QUERY                                                 = 'BAD_REQUEST_INVALID_QUERY';
+    const BAD_REQUEST_INVALID_PASSWORD_RESET_TOKEN                                  = 'BAD_REQUEST_INVALID_PASSWORD_RESET_TOKEN';
+    const BAD_REQUEST_NO_RECORDS_FOUND                                              = 'BAD_REQUEST_NO_RECORDS_FOUND';
+    const BAD_REQUEST_PASSWORD_ALREADY_SET                                          = 'BAD_REQUEST_PASSWORD_ALREADY_SET';
+    const BAD_REQUEST_CHANGE_PASSWORD_NOT_ALLOWED                                   = 'BAD_REQUEST_CHANGE_PASSWORD_NOT_ALLOWED';
+    const BAD_REQUEST_ACCESS_TOKEN_INVALID                                          = 'BAD_REQUEST_ACCESS_TOKEN_INVALID';
+    const BAD_REQUEST_ONLY_HTTPS_ALLOWED                                            = 'BAD_REQUEST_ONLY_HTTPS_ALLOWED';
+    const BAD_REQUEST_FORBIDDEN                                                     = 'BAD_REQUEST_FORBIDDEN';
+    const BAD_REQUEST_HTTP_METHOD_NOT_ALLOWED                                       = 'BAD_REQUEST_HTTP_METHOD_NOT_ALLOWED';
+    const BAD_REQUEST_RATE_LIMIT_EXCEEDED                                           = 'BAD_REQUEST_RATE_LIMIT_EXCEEDED';
+    const BAD_REQUEST_CONFLICT_ALREADY_EXISTS                                       = 'BAD_REQUEST_CONFLICT_ALREADY_EXISTS';
+    const BAD_REQUEST_ERROR                                                         = 'BAD_REQUEST_ERROR';
+    const BAD_REQUEST_ERROR_OWNER_NOT_EXISTS                                        = 'BAD_REQUEST_ERROR_OWNER_NOT_EXISTS';
+    const BAD_REQUEST_DUPLICATE_PAYOUT                                              = 'BAD_REQUEST_DUPLICATE_PAYOUT';
+    const BAD_REQUEST_INVALID_REQUEST_BODY                                          = 'BAD_REQUEST_INVALID_REQUEST_BODY';
+    const BAD_REQUEST_EXTRA_FIELDS_PROVIDED                                         = 'BAD_REQUEST_EXTRA_FIELDS_PROVIDED';
+    const BAD_REQUEST_VALIDATION_FAILURE                                            = 'BAD_REQUEST_VALIDATION_FAILURE';
+    const LEDGER_MERCHANT_BALANCE_GET_ERROR                                         = 'LEDGER_MERCHANT_BALANCE_GET_ERROR';
+    const BAD_REQUEST_INPUT_VALIDATION_FAILURE                                      = 'BAD_REQUEST_INPUT_VALIDATION_FAILURE';
+    const BAD_REQUEST_SIGNATURE_ERROR                                               = 'BAD_REQUEST_SIGNATURE_ERROR';
+    const BAD_REQUEST_REMINDER_NOT_APPLICABLE                                       = 'BAD_REQUEST_REMINDER_NOT_APPLICABLE';
+    const SERVER_ERROR_REMINDER_CALLBACK_FAILED                                     = 'SERVER_ERROR_REMINDER_CALLBACK_FAILED';
+    const BAD_REQUEST_PERMISSION_ERROR                                              = 'BAD_REQUEST_PERMISSION_ERROR';
+    const BAD_REQUEST_APP_TOKEN_NOT_GLOBAL                                          = 'BAD_REQUEST_APP_TOKEN_NOT_GLOBAL';
+    const BAD_REQUEST_INVALID_BANK_FOR_EMANDATE                                     = 'BAD_REQUEST_INVALID_BANK_FOR_EMANDATE';
+    const BAD_REQUEST_WEBHOOK_DETAILS_LOCKED_FOR_MFN                                = 'BAD_REQUEST_WEBHOOK_DETAILS_LOCKED_FOR_MFN';
+    const BAD_REQUEST_PAYOUT_RETRY_FOR_PAYMENT_NOT_ALLOWED                          = 'BAD_REQUEST_PAYOUT_RETRY_FOR_PAYMENT_NOT_ALLOWED';
+    const BAD_REQUEST_PAYOUT_RETRY_NOT_IN_REVERSED                                  = 'BAD_REQUEST_PAYOUT_RETRY_NOT_IN_REVERSED';
+    const BAD_REQUEST_PAYOUT_NOT_QUEUED_STATUS                                      = 'BAD_REQUEST_PAYOUT_NOT_QUEUED_STATUS';
+    const BAD_REQUEST_PAYOUT_NOT_CREATED_STATUS                                     = 'BAD_REQUEST_PAYOUT_NOT_CREATED_STATUS';
+    const BAD_REQUEST_PAYOUT_NOT_QUEUED_OR_SCHEDULED_STATUS                         = 'BAD_REQUEST_PAYOUT_NOT_QUEUED_OR_SCHEDULED_STATUS';
+    const BAD_REQUEST_PAYOUT_NOT_PENDING_STATUS                                     = 'BAD_REQUEST_PAYOUT_NOT_PENDING_STATUS';
+    const BAD_REQUEST_PAYOUT_NOT_BATCH_SUBMITTED_STATUS                             = 'BAD_REQUEST_PAYOUT_NOT_BATCH_SUBMITTED_STATUS';
+    const BAD_REQUEST_PAYOUT_NOT_CREATE_REQUEST_SUBMITTED_STATUS                    = 'BAD_REQUEST_PAYOUT_NOT_CREATE_REQUEST_SUBMITTED_STATUS';
+    const BAD_REQUEST_PAYOUT_INVALID_STATE                                          = 'BAD_REQUEST_PAYOUT_INVALID_STATE';
+    const BAD_REQUEST_PAYOUT_WORKFLOW_ACTION_FAILED                                 = 'BAD_REQUEST_PAYOUT_WORKFLOW_ACTION_FAILED';
+    const BAD_REQUEST_PAYOUT_WORKFLOW_FAILURE                                       = 'BAD_REQUEST_PAYOUT_WORKFLOW_FAILURE';
+    const BAD_REQUEST_WORKFLOW_CONFIG_ID_INVALID                                    = 'BAD_REQUEST_WORKFLOW_CONFIG_ID_INVALID';
+    const BAD_REQUEST_WORKFLOW_MERCHANT_WITH_PENDING_PAYOUTS                        = 'BAD_REQUEST_WORKFLOW_MERCHANT_WITH_PENDING_PAYOUTS';
+    const BAD_REQUEST_WORKFLOW_ORG_ID_IS_INCORRECT                                  = 'BAD_REQUEST_WORKFLOW_ORG_ID_IS_INCORRECT';
+    const BAD_REQUEST_WORKFLOW_MERCHANT_WITH_PENDING_PAYOUT_LINKS                   = 'BAD_REQUEST_WORKFLOW_MERCHANT_WITH_PENDING_PAYOUT_LINKS';
+    const SERVER_ERROR_WORKFLOW_CONFIG_UPDATE_FAILED                                = 'SERVER_ERROR_WORKFLOW_CONFIG_UPDATE_FAILED';
+    const SERVER_ERROR_WORKFLOW_CONFIG_CREATE_FAILED                                = 'SERVER_ERROR_WORKFLOW_CONFIG_CREATE_FAILED';
+    const SERVER_ERROR_WORKFLOW_CONFIG_DELETE_FAILED                                = 'SERVER_ERROR_WORKFLOW_CONFIG_DELETE_FAILED';
+    const SERVER_ERROR_WORKFLOW_CONFIG_GET_FAILED                                   = 'SERVER_ERROR_WORKFLOW_CONFIG_GET_FAILED';
+    const SERVER_ERROR_WORKFLOW_CREATE_FAILED                                       = 'SERVER_ERROR_WORKFLOW_CREATE_FAILED';
+    const SERVER_ERROR_WORKFLOW_LIST_BY_IDS_FAILED                                  = 'SERVER_ERROR_WORKFLOW_LIST_BY_IDS_FAILED';
+    const SERVER_ERROR_WORKFLOW_LIST_FAILED                                         = 'SERVER_ERROR_WORKFLOW_LIST_FAILED';
+    const SERVER_ERROR_WORKFLOW_ADD_ASSIGNEE_FAILED                                 = 'SERVER_ERROR_WORKFLOW_ADD_ASSIGNEE_FAILED';
+    const SERVER_ERROR_WORKFLOW_REMOVE_ASSIGNEE_FAILED                              = 'SERVER_ERROR_WORKFLOW_REMOVE_ASSIGNEE_FAILED';
+    const SERVER_ERROR_CREATE_COMMENT_FAILED                                        = 'SERVER_ERROR_CREATE_COMMENT_FAILED';
+    const SERVER_ERROR_LIST_COMMENTS_FAILED                                         = 'SERVER_ERROR_LIST_COMMENTS_FAILED';
+    const SERVER_ERROR_WORKFLOW_GET_FAILED                                          = 'SERVER_ERROR_WORKFLOW_GET_FAILED';
+    const SERVER_ERROR_WORKFLOW_ACTION_CREATE_FAILED                                = 'SERVER_ERROR_WORKFLOW_ACTION_CREATE_FAILED';
+    const SERVER_ERROR_WORKFLOW_DIRECT_ACTION_CREATE_FAILED                         = 'SERVER_ERROR_WORKFLOW_DIRECT_ACTION_CREATE_FAILED';
+    const SERVER_ERROR_WORKFLOW_STATE_ID_INVALID                                    = 'SERVER_ERROR_WORKFLOW_STATE_ID_INVALID';
+    const BAD_REQUEST_WORKFLOW_CONFIG_CREATE_FAILED                                 = 'BAD_REQUEST_WORKFLOW_CONFIG_CREATE_FAILED';
+    const BAD_REQUEST_WORKFLOW_CONFIG_UPDATE_FAILED                                 = 'BAD_REQUEST_WORKFLOW_CONFIG_UPDATE_FAILED';
+    const BAD_REQUEST_WORKFLOW_CONFIG_DELETE_FAILED                                 = 'BAD_REQUEST_WORKFLOW_CONFIG_DELETE_FAILED';
+    const BAD_REQUEST_WORKFLOW_STATE_CALLBACK                                       = 'BAD_REQUEST_WORKFLOW_STATE_CALLBACK';
+    const BAD_REQUEST_WORKFLOW_STATE_CALLBACK_DUPLICATE                             = 'BAD_REQUEST_WORKFLOW_STATE_CALLBACK_DUPLICATE';
+    const BAD_REQUEST_WORKFLOW_SERVICE_ILLEGAL_ACCESS                               = 'BAD_REQUEST_WORKFLOW_SERVICE_ILLEGAL_ACCESS';
+    const BAD_REQUEST_MORE_THAN_ONE_ROLE_FOR_A_LEVEL                                = 'BAD_REQUEST_MORE_THAN_ONE_ROLE_FOR_A_LEVEL';
+    const BAD_REQUEST_PAYOUT_MODE_REQUIRED                                          = 'BAD_REQUEST_PAYOUT_MODE_REQUIRED';
+    const BAD_REQUEST_PAYOUT_INVALID_MODE                                           = 'BAD_REQUEST_PAYOUT_INVALID_MODE';
+    const BAD_REQUEST_PAYOUT_INVALID_SOURCE_TYPE                                    = 'BAD_REQUEST_PAYOUT_INVALID_SOURCE_TYPE';
+    const BAD_REQUEST_PAYOUT_MODE_NOT_SUPPORTED                                     = 'BAD_REQUEST_PAYOUT_MODE_NOT_SUPPORTED';
+    const BAD_REQUEST_BUNDLE_PRICING_SUBSCRIPTION_SUPPORTED_IN_ONLY_LIVE_MODE       = 'BAD_REQUEST_BUNDLE_PRICING_SUBSCRIPTION_SUPPORTED_IN_ONLY_LIVE_MODE';
+    const BAD_REQUEST_DECRYPTION_FAILED                                             = 'BAD_REQUEST_DECRYPTION_FAILED';
+    const BAD_REQUEST_SIGNING_KEY_EXPIRED                                           = 'BAD_REQUEST_SIGNING_KEY_EXPIRED';
+    const BAD_REQUEST_MESSAGE_EXPIRED                                               = 'BAD_REQUEST_MESSAGE_EXPIRED';
+    const BAD_REQUEST_MERCHANT_ID_DOES_NOT_MATCH                                    = 'BAD_REQUEST_MERCHANT_ID_DOES_NOT_MATCH';
+    const BAD_REQUEST_AMOUNT_MISMATCH                                               = 'BAD_REQUEST_AMOUNT_MISMATCH';
+    const BAD_REQUEST_REQUIRED_PERMISSION_NOT_FOUND                                 = 'BAD_REQUEST_REQUIRED_PERMISSION_NOT_FOUND';
+    const BAD_REQUEST_BATCH_TYPE_PERMISSION_MISSING                                 = 'BAD_REQUEST_BATCH_TYPE_PERMISSION_MISSING';
+    const BAD_REQUEST_QUEUED_PAYOUT_INITIATE_ANOTHER_OPERATION_IN_PROGRESS          = 'BAD_REQUEST_QUEUED_PAYOUT_INITIATE_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_INVALID_ACTION                                                = 'BAD_REQUEST_INVALID_ACTION';
+    const BAD_REQUEST_ENTITY_DOES_NOT_EXIST                                         = 'BAD_REQUEST_ENTITY_DOES_NOT_EXIST';
+    const BAD_REQUEST_EDIT_TRANSACTION_LIMIT_REQUEST_MADE_IN_LAST_30_DAYS           = 'BAD_REQUEST_EDIT_TRANSACTION_LIMIT_REQUEST_MADE_IN_LAST_30_DAYS';
+    const BAD_REQUEST_EDIT_TRANSACTION_LIMIT_CTS_OR_FTS_MORE_THAN_5                 = 'BAD_REQUEST_EDIT_TRANSACTION_LIMIT_CTS_OR_FTS_MORE_THAN_5';
+
+    const BAD_REQUEST_APP_ID_INVALID                                                = 'BAD_REQUEST_APP_ID_INVALID';
+    const BAD_REQUEST_MERCHANT_APP_MAPPING_DOES_NOT_EXIST                           = 'BAD_REQUEST_MERCHANT_APP_MAPPING_DOES_NOT_EXIST';
+    const BAD_REQUEST_DUPLICATE_TAG                                                 = 'BAD_REQUEST_DUPLICATE_TAG';
+    const BAD_REQUEST_APP_DOES_NOT_EXIST                                            = 'BAD_REQUEST_APP_DOES_NOT_EXIST';
+    const BAD_REQUEST_DUPLICATE_MERCHANT_TAG                                        = 'BAD_REQUEST_DUPLICATE_MERCHANT_TAG';
+    const BAD_REQUEST_MERCHANT_TAG_DOES_NOT_EXIST                                   = 'BAD_REQUEST_MERCHANT_TAG_DOES_NOT_EXIST';
+    const BAD_REQUEST_APP_ALREADY_EXIST                                             = 'BAD_REQUEST_APP_ALREADY_EXIST';
+    const BAD_REQUEST_MERCHANT_TAG_IN_USE                                           = 'BAD_REQUEST_MERCHANT_TAG_IN_USE';
+    const BAD_REQUEST_APP_ALREADY_IN_USE                                            = 'BAD_REQUEST_APP_ALREADY_IN_USE';
+    const BAD_REQUEST_APP_TAG_MAPPING_DOES_NOT_EXIST                                = 'BAD_REQUEST_APP_TAG_MAPPING_DOES_NOT_EXIST';
+    const BAD_REQUEST_EMPTY_DELETE_LIST                                             = 'BAD_REQUEST_EMPTY_DELETE_LIST';
+
+    const BAD_REQUEST_MERCHANT_ACCOUNT_DISABLED                                     = 'BAD_REQUEST_MERCHANT_ACCOUNT_DISABLED';
+    const BAD_REQUEST_MERCHANT_TXN_LIMIT_EXCEEDED                                   = 'BAD_REQUEST_MERCHANT_TXN_LIMIT_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_OTP_REQUIRED                                          = 'BAD_REQUEST_PAYMENT_OTP_REQUIRED';
+    const BAD_REQUEST_DUPLICATE_TRANSACTION                                         = 'BAD_REQUEST_DUPLICATE_TRANSACTION';
+
+    // Free payout
+    const BAD_REQUEST_FREE_PAYOUT_SUPPORTED_MODES_ARRAY_DUPLICATE_VALUE             = 'BAD_REQUEST_FREE_PAYOUT_SUPPORTED_MODES_ARRAY_DUPLICATE_VALUE';
+    const BAD_REQUEST_FREE_PAYOUT_UPDATE_ANOTHER_OPERATION_IN_PROGRESS              = 'BAD_REQUEST_FREE_PAYOUT_UPDATE_ANOTHER_OPERATION_IN_PROGRESS';
+
+    // Sub Virtual Account
+    const BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_ALREADY_EXISTS                            = 'BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_ALREADY_EXISTS';
+    const BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_DOES_NOT_EXIST                            = 'BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_DOES_NOT_EXIST';
+    const BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_ALREADY_ENABLED                           = 'BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_ALREADY_ENABLED';
+    const BAD_REQUEST_SUB_MERCHANT_NOT_LIVE_ACTION_DENIED                           = 'BAD_REQUEST_SUB_MERCHANT_NOT_LIVE_ACTION_DENIED';
+    const BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_ALREADY_DISABLED                          = 'BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_ALREADY_DISABLED';
+    const BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_TRANSFER_DISABLED                         = 'BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_TRANSFER_DISABLED';
+    const BAD_REQUEST_MASTER_MERCHANT_NOT_LIVE_ACTION_DENIED                        = 'BAD_REQUEST_MASTER_MERCHANT_NOT_LIVE_ACTION_DENIED';
+    const BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_FEATURE_NOT_ENABLED                       = 'BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_FEATURE_NOT_ENABLED';
+    const BAD_REQUEST_BUSINESS_BANKING_NOT_ENABLED_FOR_SUB_MERCHANT                 = 'BAD_REQUEST_BUSINESS_BANKING_NOT_ENABLED_FOR_SUB_MERCHANT';
+    const BAD_REQUEST_BUSINESS_BANKING_NOT_ENABLED_FOR_MASTER_MERCHANT              = 'BAD_REQUEST_BUSINESS_BANKING_NOT_ENABLED_FOR_MASTER_MERCHANT';
+    const BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_TRANSFER_NOT_ENOUGH_BANKING_BALANCE       = 'BAD_REQUEST_SUB_VIRTUAL_ACCOUNT_TRANSFER_NOT_ENOUGH_BANKING_BALANCE';
+
+    // Fee Recovery
+    const BAD_REQUEST_INTERNAL_CONTACT_CREATE_UPDATE_NOT_PERMITTED                  = 'BAD_REQUEST_INTERNAL_CONTACT_CREATE_UPDATE_NOT_PERMITTED';
+    const BAD_REQUEST_ONLY_INTERNAL_CONTACT_PERMITTED                               = 'BAD_REQUEST_ONLY_INTERNAL_CONTACT_PERMITTED';
+    const BAD_REQUEST_FEE_RECOVERY_PAYOUT_CANCEL_NOT_PERMITTED                      = 'BAD_REQUEST_FEE_RECOVERY_PAYOUT_CANCEL_NOT_PERMITTED';
+    const BAD_REQUEST_INTERNAL_FUND_ACCOUNT_UPDATE_NOT_PERMITTED                    = 'BAD_REQUEST_INTERNAL_FUND_ACCOUNT_UPDATE_NOT_PERMITTED';
+    const BAD_REQUEST_INTERNAL_FUND_ACCOUNT_CREATION_NOT_PERMITTED                  = 'BAD_REQUEST_INTERNAL_FUND_ACCOUNT_CREATION_NOT_PERMITTED';
+    const BAD_REQUEST_FEE_RECOVERY_INVALID_STATUS                                   = 'BAD_REQUEST_FEE_RECOVERY_INVALID_STATUS';
+    const BAD_REQUEST_FEE_RECOVERY_INVALID_STATUS_TRANSITION                        = 'BAD_REQUEST_FEE_RECOVERY_INVALID_STATUS_TRANSITION';
+    const BAD_REQUEST_FEE_RECOVERY_MANUAL_AMOUNT_MISMATCH                           = 'BAD_REQUEST_FEE_RECOVERY_MANUAL_AMOUNT_MISMATCH';
+    const BAD_REQUEST_FEE_RECOVERY_MANUAL_COLLECTION_FOR_PAYOUT_INVALID             = 'BAD_REQUEST_FEE_RECOVERY_MANUAL_COLLECTION_FOR_PAYOUT_INVALID';
+    const BAD_REQUEST_PAYOUT_TO_INTERNAL_FUND_ACCOUNT_NOT_PERMITTED                 = 'BAD_REQUEST_PAYOUT_TO_INTERNAL_FUND_ACCOUNT_NOT_PERMITTED';
+    const BAD_REQUEST_FEE_RECOVERY_AMOUNT_INSUFFICIENT                              = 'BAD_REQUEST_FEE_RECOVERY_AMOUNT_INSUFFICIENT';
+    const BAD_REQUEST_PAYOUT_STATUS_UPDATE_ALLOWED_ONLY_IN_TEST_MODE                = 'BAD_REQUEST_PAYOUT_STATUS_UPDATE_ALLOWED_ONLY_IN_TEST_MODE';
+    const BAD_REQUEST_FUND_ACCOUNT_ID_IS_REQUIRED                                   = 'BAD_REQUEST_FUND_ACCOUNT_ID_IS_REQUIRED';
+    const BAD_REQUEST_APP_NOT_PERMITTED_TO_CREATE_PAYOUT_ON_THIS_CONTACT_TYPE       = 'BAD_REQUEST_APP_NOT_PERMITTED_TO_CREATE_PAYOUT_ON_THIS_CONTACT_TYPE';
+    const BAD_REQUEST_FEE_RECOVERY_INCORRECT_BALANCE                                = 'BAD_REQUEST_FEE_RECOVERY_INCORRECT_BALANCE';
+    const BAD_REQUEST_FEE_RECOVERY_ALREADY_INITIATED                                = 'BAD_REQUEST_FEE_RECOVERY_ALREADY_INITIATED';
+    const BAD_REQUEST_FEE_RECOVERY_CREATE_ATTEMPT_INVALID_SOURCE_ENTITY             = 'BAD_REQUEST_FEE_RECOVERY_CREATE_ATTEMPT_INVALID_SOURCE_ENTITY';
+    const BAD_REQUEST_FEE_RECOVERY_INVALID_TYPE                                     = 'BAD_REQUEST_FEE_RECOVERY_INVALID_TYPE';
+    const BAD_REQUEST_FEE_RECOVERY_BULK_UPDATE_ERROR                                = 'BAD_REQUEST_FEE_RECOVERY_BULK_UPDATE_ERROR';
+    const BAD_REQUEST_FEE_RECOVERY_INCORRECT_TIMESTAMPS                             = 'BAD_REQUEST_FEE_RECOVERY_INCORRECT_TIMESTAMPS';
+    const BAD_REQUEST_LOGIC_ERROR_MULTIPLE_RZP_FEES_CONTACT                         = 'BAD_REQUEST_LOGIC_ERROR_MULTIPLE_RZP_FEES_CONTACT';
+    const BAD_REQUEST_LOGIC_ERROR_NO_FEE_RECOVERY_TYPE_FOR_GIVEN_ENTITY             = 'BAD_REQUEST_LOGIC_ERROR_NO_FEE_RECOVERY_TYPE_FOR_GIVEN_ENTITY';
+    const BAD_REQUEST_LOGIC_ERROR_FEE_RECOVERY_DUPLICATE_DATA                       = 'BAD_REQUEST_LOGIC_ERROR_FEE_RECOVERY_DUPLICATE_DATA';
+    const BAD_REQUEST_FEE_RECOVERY_FOR_GIVEN_ENTITY_ALREADY_EXISTS                  = 'BAD_REQUEST_FEE_RECOVERY_FOR_GIVEN_ENTITY_ALREADY_EXISTS';
+    const BAD_REQUEST_FEE_RECOVERY_FAILED_PAYOUT_TO_REVERSAL                        = 'BAD_REQUEST_FEE_RECOVERY_FAILED_PAYOUT_TO_REVERSAL';
+    const BAD_REQUEST_FEE_RECOVERY_INCORRECT_SCHEDULE_TYPE                          = 'BAD_REQUEST_FEE_RECOVERY_INCORRECT_SCHEDULE_TYPE';
+    const BAD_REQUEST_FEE_RECOVERY_INCORRECT_BALANCE_TYPE                           = 'BAD_REQUEST_FEE_RECOVERY_INCORRECT_BALANCE_TYPE';
+    const BAD_REQUEST_FEE_RECOVERY_AMOUNT_ZERO                                      = 'BAD_REQUEST_FEE_RECOVERY_AMOUNT_ZERO';
+    const BAD_REQUEST_LOGIC_ERROR_FEE_RECOVERY_DEFAULT_SCHEDULE_DOES_NOT_EXIST      = 'BAD_REQUEST_LOGIC_ERROR_FEE_RECOVERY_DEFAULT_SCHEDULE_DOES_NOT_EXIST';
+    const BAD_REQUEST_FEE_RECOVERY_MANUAL_FOR_RZP_FEES_PAYOUT_NOT_SUPPORTED         = 'BAD_REQUEST_FEE_RECOVERY_MANUAL_FOR_RZP_FEES_PAYOUT_NOT_SUPPORTED';
+
+
+    const BAD_REQUEST_INVALID_TRANSACTOR_ID                                         = "BAD_REQUEST_INVALID_TRANSACTOR_ID";
+
+    // Scheduled Payouts
+    const BAD_REQUEST_SCHEDULED_PAYOUT_AUTH_NOT_SUPPORTED                           = 'BAD_REQUEST_SCHEDULED_PAYOUT_AUTH_NOT_SUPPORTED';
+    const BAD_REQUEST_SCHEDULED_PAYOUT_CANCEL_AUTH_NOT_SUPPORTED                    = 'BAD_REQUEST_SCHEDULED_PAYOUT_CANCEL_AUTH_NOT_SUPPORTED';
+    const BAD_REQUEST_SCHEDULED_PAYOUT_INVALID_TIMESTAMP                            = 'BAD_REQUEST_SCHEDULED_PAYOUT_INVALID_TIMESTAMP';
+    const BAD_REQUEST_SCHEDULED_PAYOUT_INVALID_TIME_SLOT                            = 'BAD_REQUEST_SCHEDULED_PAYOUT_INVALID_TIME_SLOT';
+    const BAD_REQUEST_SCHEDULED_PAYOUT_CANCEL_REJECT_APPROVE_INVALID_TIMESTAMP      = 'BAD_REQUEST_SCHEDULED_PAYOUT_CANCEL_REJECT_APPROVE_INVALID_TIMESTAMP';
+    const BAD_REQUEST_PAYOUT_NOT_SCHEDULED_STATUS                                   = 'BAD_REQUEST_PAYOUT_NOT_SCHEDULED_STATUS';
+    const BAD_REQUEST_INVALID_PAYOUT_NOTIFICATION_TYPE                              = 'BAD_REQUEST_INVALID_PAYOUT_NOTIFICATION_TYPE';
+
+    const SERVER_ERROR_CA_MERCHANT_IN_BULK_PAYOUT_VA_FLOW                           = 'SERVER_ERROR_CA_MERCHANT_IN_BULK_PAYOUT_VA_FLOW';
+    const SERVER_ERROR_BALANCE_RECORDS_NOT_AVAILABLE_FOR_MERCHANT                   = 'SERVER_ERROR_BALANCE_RECORDS_NOT_AVAILABLE_FOR_MERCHANT';
+    const BAD_REQUEST_BULK_PAYOUTS_PAYOUT_HEADER_MISMATCH                           = 'BAD_REQUEST_BULK_PAYOUTS_PAYOUT_HEADER_MISMATCH';
+    const BAD_REQUEST_VA_TO_VA_PAYOUTS_BLOCKED                                      = 'BAD_REQUEST_VA_TO_VA_PAYOUTS_BLOCKED';
+    const BAD_REQUEST_VA_TO_VA_PAYOUTS_NOT_ALLOWED                                  = 'BAD_REQUEST_VA_TO_VA_PAYOUTS_NOT_ALLOWED';
+    const BAD_REQUEST_VA_TO_VA_PAYOUTS_NO_ACTIVE_BENEFICIARY_VA_FOUND               = 'BAD_REQUEST_VA_TO_VA_PAYOUTS_NO_ACTIVE_BENEFICIARY_VA_FOUND';
+    const BAD_REQUEST_VA_TO_VA_PAYOUT_ON_SAME_ACCOUNT                               = 'BAD_REQUEST_VA_TO_VA_PAYOUT_ON_SAME_ACCOUNT';
+    const BAD_REQUEST_VA_TO_VA_PAYOUT_ALREADY_PROCESSED                             = 'BAD_REQUEST_VA_TO_VA_PAYOUT_ALREADY_PROCESSED';
+    const BAD_REQUEST_VA_TO_VA_PAYOUT_ALREADY_REVERSED                              = 'BAD_REQUEST_VA_TO_VA_PAYOUT_ALREADY_REVERSED';
+
+    const BAD_REQUEST_CREDIT_TRANSFER_ALREADY_PROCESSED                             = 'BAD_REQUEST_CREDIT_TRANSFER_ALREADY_PROCESSED';
+    const BAD_REQUEST_CREDIT_TRANSFER_ALREADY_FAILED                                = 'BAD_REQUEST_CREDIT_TRANSFER_ALREADY_FAILED';
+    const BAD_REQUEST_CREDIT_TRANSFER_ALREADY_BEING_PROCESSED                       = 'BAD_REQUEST_CREDIT_TRANSFER_ALREADY_BEING_PROCESSED';
+    const BAD_REQUEST_NO_ACTIVE_VIRTUAL_ACCOUNT_FOUND                               = 'BAD_REQUEST_NO_ACTIVE_VIRTUAL_ACCOUNT_FOUND';
+
+    const BAD_REQUEST_SAME_IDEM_KEY_DIFFERENT_REQUEST                               = 'BAD_REQUEST_SAME_IDEM_KEY_DIFFERENT_REQUEST';
+
+    const BAD_REQUEST_CUSTOMER_ID_MISSING                                           = 'BAD_REQUEST_CUSTOMER_ID_MISSING';
+    const BAD_REQUEST_BANK_ACCOUNT_ID_MISSING                                       = 'BAD_REQUEST_BANK_ACCOUNT_ID_MISSING';
+    const BAD_REQUEST_DUPLICATE_VPA                                                 = 'BAD_REQUEST_DUPLICATE_VPA';
+    const BAD_REQUEST_UNMAPPED_VPA                                                  = 'BAD_REQUEST_UNMAPPED_VPA';
+    const BAD_REQUEST_INVALID_P2P                                                   = 'BAD_REQUEST_INVALID_P2P';
+    const BAD_REQUEST_VPA_DOESNT_EXIST                                              = 'BAD_REQUEST_VPA_DOESNT_EXIST';
+    const BAD_REQUEST_DUPLICATE_REQUEST                                             = 'BAD_REQUEST_DUPLICATE_REQUEST';
+    const BAD_REQUEST_P2P_REGISTRATION_CARD_EXPIRED                                 = 'BAD_REQUEST_P2P_REGISTRATION_CARD_EXPIRED';
+
+    // Unauthorized bad requests
+    const BAD_REQUEST_UNAUTHORIZED_BASICAUTH_EXPECTED                               = 'BAD_REQUEST_UNAUTHORIZED_BASICAUTH_EXPECTED';
+    const BAD_REQUEST_UNAUTHORIZED_INVALID_API_KEY                                  = 'BAD_REQUEST_UNAUTHORIZED_INVALID_API_KEY';
+    const BAD_REQUEST_UNAUTHORIZED_INVALID_API_SECRET                               = 'BAD_REQUEST_UNAUTHORIZED_INVALID_API_SECRET';
+    const BAD_REQUEST_UNAUTHORIZED_INVALID_ACCOUNT_ID                               = 'BAD_REQUEST_UNAUTHORIZED_INVALID_ACCOUNT_ID';
+    const BAD_REQUEST_PARTNER_AUTH_NOT_ALLOWED                                      = 'BAD_REQUEST_PARTNER_AUTH_NOT_ALLOWED';
+    const BAD_REQUEST_PARTNER_ACCOUNT_ID_REQUIRED                                   = 'BAD_REQUEST_PARTNER_ACCOUNT_ID_REQUIRED';
+    const BAD_REQUEST_MERCHANT_NOT_UNDER_PARTNER                                    = 'BAD_REQUEST_MERCHANT_NOT_UNDER_PARTNER';
+    const BAD_REQUEST_UNAUTHORIZED_USER_ROLE_MISSING                                = 'BAD_REQUEST_UNAUTHORIZED_USER_ROLE_MISSING';
+    const BAD_REQUEST_BANKING_ROUTE_PERMISSION_MISSING                              = 'BAD_REQUEST_BANKING_ROUTE_PERMISSION_MISSING';
+    const BAD_REQUEST_USER_WITH_ROLE_ALREADY_EXISTS                                 = 'BAD_REQUEST_USER_WITH_ROLE_ALREADY_EXISTS';
+    const BAD_REQUEST_USER_ROLE_NOT_SUPPORTED_FOR_WORKFLOW                          = 'BAD_REQUEST_USER_ROLE_NOT_SUPPORTED_FOR_WORKFLOW';
+    const BAD_REQUEST_UNAUTHORIZED_INVALID_HASH                                     = 'BAD_REQUEST_UNAUTHORIZED_INVALID_HASH';
+    const BAD_REQUEST_BATCH_UPLOAD_INVALID_TOKEN                                    = 'BAD_REQUEST_BATCH_UPLOAD_INVALID_TOKEN';
+    const BAD_REQUEST_CORPORATE_CARD_INVALID_TOKEN                                  = 'BAD_REQUEST_CORPORATE_CARD_INVALID_TOKEN';
+    const BAD_REQUEST_UNABLE_TO_AUTHORIZE_PAYMENT                                   = 'BAD_REQUEST_UNABLE_TO_AUTHORIZE_PAYMENT';
+    const BAD_REQUEST_UNAUTHORIZED_SECRET_NOT_PROVIDED                              = 'BAD_REQUEST_UNAUTHORIZED_SECRET_NOT_PROVIDED';
+    const BAD_REQUEST_UNAUTHORIZED_SECRET_SENT_ON_PUBLIC_ROUTE                      = 'BAD_REQUEST_UNAUTHORIZED_SECRET_SENT_ON_PUBLIC_ROUTE';
+    const BAD_REQUEST_UNAUTHORIZED_API_KEY_NOT_PROVIDED                             = 'BAD_REQUEST_UNAUTHORIZED_API_KEY_NOT_PROVIDED';
+    const BAD_REQUEST_UNAUTHORIZED_API_KEY_EXPIRED                                  = 'BAD_REQUEST_UNAUTHORIZED_API_KEY_EXPIRED';
+    const BAD_REQUEST_UNAUTHORIZED                                                  = 'BAD_REQUEST_UNAUTHORIZED';
+    const BAD_REQUEST_UNAUTHORIZED_INVALID_KEY_TYPE                                 = 'BAD_REQUEST_UNAUTHORIZED_INVALID_KEY_TYPE';
+
+    // OAuth Authorization errors
+    const BAD_REQUEST_UNAUTHORIZED_OAUTH_TOKEN_INVALID                              = 'BAD_REQUEST_UNAUTHORIZED_OAUTH_TOKEN_INVALID';
+    const BAD_REQUEST_UNAUTHORIZED_OAUTH_SCOPE_INVALID                              = 'BAD_REQUEST_UNAUTHORIZED_OAUTH_SCOPE_INVALID';
+    const BAD_REQUEST_UNAUTHORIZED_ACCESS_TO_RAZORPAYX_RESOURCE                     = 'BAD_REQUEST_UNAUTHORIZED_ACCESS_TO_RAZORPAYX_RESOURCE';
+    const BAD_REQUEST_UNAUTHORIZED_OAUTH_MERCHANT_NOT_ACTIVATED                     = 'BAD_REQUEST_UNAUTHORIZED_OAUTH_MERCHANT_NOT_ACTIVATED';
+
+    // Payment bad requests
+    const BAD_REQUEST_PAYMENT_FAILED                                                = 'BAD_REQUEST_PAYMENT_FAILED';
+    const BAD_REQUEST_PAYMENT_PENDING                                               = 'BAD_REQUEST_PAYMENT_PENDING';
+    const BAD_REQUEST_PAYMENT_UPI_COLLECT_REQUEST_PENDING                           = 'BAD_REQUEST_PAYMENT_UPI_COLLECT_REQUEST_PENDING';
+    const BAD_REQUEST_PAYMENT_UPI_COLLECT_REQUEST_EXPIRED                           = 'BAD_REQUEST_PAYMENT_UPI_COLLECT_REQUEST_EXPIRED';
+    const BAD_REQUEST_PAYMENT_UPI_COLLECT_REQUEST_REJECTED                          = 'BAD_REQUEST_PAYMENT_UPI_COLLECT_REQUEST_REJECTED';
+    const BAD_REQUEST_PAYMENT_UPI_MANDATE_AUTO_CAPTURE_NOT_ALLOWED                  = 'BAD_REQUEST_PAYMENT_UPI_MANDATE_AUTO_CAPTURE_NOT_ALLOWED';
+    const BAD_REQUEST_PAYMENT_UPI_COLLECT_MCC_BLOCKED                               = 'BAD_REQUEST_PAYMENT_UPI_COLLECT_MCC_BLOCKED';
+    const BAD_REQUEST_PAYMENT_UPI_COLLECT_MCC_AMOUNT_LIMIT_REACHED                  = 'BAD_REQUEST_PAYMENT_UPI_COLLECT_MCC_AMOUNT_LIMIT_REACHED';
+    const BAD_REQUEST_PAYMENT_ALREADY_SETTLED                                       = 'BAD_REQUEST_PAYMENT_ALREADY_SETTLED';
+
+    // Upi Mandate Error Codes
+    const BAD_REQUEST_PAYMENT_UPI_MANDATE_REVOKED                                   = 'BAD_REQUEST_PAYMENT_UPI_MANDATE_REVOKED';
+    const BAD_REQUEST_PAYMENT_UPI_MANDATE_EXPIRED                                   = 'BAD_REQUEST_PAYMENT_UPI_MANDATE_EXPIRED';
+    const BAD_REQUEST_PAYMENT_UPI_MANDATE_NOT_AVAILABLE_ON_VPA                      = 'BAD_REQUEST_PAYMENT_UPI_MANDATE_NOT_AVAILABLE_ON_VPA';
+    const GATEWAY_ERROR_UPI_MANDATE_UMN_DOESNT_EXIST                                = 'GATEWAY_ERROR_UPI_MANDATE_UMN_DOESNT_EXIST';
+    const GATEWAY_ERROR_FUNDS_BLOCKED_BY_MANDATE                                    = 'GATEWAY_ERROR_FUNDS_BLOCKED_BY_MANDATE';
+    const BAD_REQUEST_PAYMENT_UPI_MANDATE_NOT_REVOKABLE                             = 'BAD_REQUEST_PAYMENT_UPI_MANDATE_NOT_REVOKABLE';
+    const BAD_REQUEST_PAYMENT_UPI_MANDATE_REJECTED                                  = 'BAD_REQUEST_PAYMENT_UPI_MANDATE_REJECTED';
+
+    const BAD_REQUEST_PAYMENT_CANCELLED_BY_USER                                     = 'BAD_REQUEST_PAYMENT_CANCELLED_BY_USER';
+    const BAD_REQUEST_PAYMENT_CANCELLED_BY_PRESSING_BACK_ON_ANDROID                 = 'BAD_REQUEST_PAYMENT_CANCELLED_BY_PRESSING_BACK_ON_ANDROID';
+    const BAD_REQUEST_PAYMENT_CANCELLED_AT_LOGIN_SCREEN                             = 'BAD_REQUEST_PAYMENT_CANCELLED_AT_LOGIN_SCREEN';
+    const BAD_REQUEST_PAYMENT_CANCELLED_AT_WALLET_PAYMENT_PAGE                      = 'BAD_REQUEST_PAYMENT_CANCELLED_AT_WALLET_PAYMENT_PAGE';
+    const BAD_REQUEST_PAYMENT_CANCELLED_AT_NETBANKING_PAYMENT_PAGE                  = 'BAD_REQUEST_PAYMENT_CANCELLED_AT_NETBANKING_PAYMENT_PAGE';
+    const BAD_REQUEST_INVALID_USER_CREDENTIALS                                      = 'BAD_REQUEST_INVALID_USER_CREDENTIALS';
+    const BAD_REQUEST_PAYMENT_ALREADY_PROCESSED                                     = 'BAD_REQUEST_PAYMENT_ALREADY_PROCESSED';
+    const BAD_REQUEST_CARD_MANDATE_CANCELLED_BY_USER                                = 'BAD_REQUEST_CARD_MANDATE_CANCELLED_BY_USER';
+    const BAD_REQUEST_CARD_MANDATE_BIN_NOT_SUPPORTED                                = 'BAD_REQUEST_CARD_MANDATE_BIN_NOT_SUPPORTED';
+    const BAD_REQUEST_TOKEN_MANDATE_MISMATCH                                        = 'BAD_REQUEST_TOKEN_MANDATE_MISMATCH';
+    const BAD_REQUEST_CARD_MANDATE_IS_NOT_ACTIVE                                    = 'BAD_REQUEST_CARD_MANDATE_IS_NOT_ACTIVE';
+    const BAD_REQUEST_CARD_MANDATE_IS_NOT_ACTIVE_CANCELLED                          = 'BAD_REQUEST_CARD_MANDATE_IS_NOT_ACTIVE_CANCELLED';
+    const BAD_REQUEST_CARD_MANDATE_IS_NOT_ACTIVE_PAUSED                             = 'BAD_REQUEST_CARD_MANDATE_IS_NOT_ACTIVE_PAUSED';
+    const BAD_REQUEST_CARD_MANDATE_CARD_NOT_SUPPORTED                               = 'BAD_REQUEST_CARD_MANDATE_CARD_NOT_SUPPORTED';
+    const BAD_REQUEST_CARD_MANDATE_PRE_DEBIT_NOTIFICATION_MAXIMUM_LIMIT_REACHED     = 'BAD_REQUEST_CARD_MANDATE_PRE_DEBIT_NOTIFICATION_MAXIMUM_LIMIT_REACHED';
+    const BAD_REQUEST_CARD_MANDATE_MAXIMUM_ALLOWED_DEBIT_EXCEEDED_IN_CURRENT_CYCLE  = 'BAD_REQUEST_CARD_MANDATE_MAXIMUM_ALLOWED_DEBIT_EXCEEDED_IN_CURRENT_CYCLE';
+    const BAD_REQUEST_CARD_MANDATE_DEBIT_DATE_OUT_OF_RANGE                          = 'BAD_REQUEST_CARD_MANDATE_DEBIT_DATE_OUT_OF_RANGE';
+    const BAD_REQUEST_CARD_MANDATE_MANDATE_NOT_ACTIVE                               = 'BAD_REQUEST_CARD_MANDATE_MANDATE_NOT_ACTIVE';
+    const BAD_REQUEST_CARD_MANDATE_PROMISED_DEBIT_DATE_NOT_HONOURED                 = 'BAD_REQUEST_CARD_MANDATE_PROMISED_DEBIT_DATE_NOT_HONOURED';
+    const BAD_REQUEST_CARD_MANDATE_PAYMENT_ATTEMPTED_BEFORE_MIN_GAP_OF_NOTIFICATION = 'BAD_REQUEST_CARD_MANDATE_PAYMENT_ATTEMPTED_BEFORE_MIN_GAP_OF_NOTIFICATION';
+    const BAD_REQUEST_CARD_MANDATE_PAYMENT_DEBIT_NOT_AS_PER_FREQUENCY               = 'BAD_REQUEST_CARD_MANDATE_PAYMENT_DEBIT_NOT_AS_PER_FREQUENCY';
+    const BAD_REQUEST_CARD_MANDATE_IS_NOT_ACTIVE_EXPIRED                            = 'BAD_REQUEST_CARD_MANDATE_IS_NOT_ACTIVE_EXPIRED';
+    const BAD_REQUEST_CARD_MANDATE_CUSTOMER_NOT_NOTIFIED                            = 'BAD_REQUEST_CARD_MANDATE_CUSTOMER_NOT_NOTIFIED';
+    const BAD_REQUEST_CARD_MANDATE_CUSTOMER_NOT_APPROVED                            = 'BAD_REQUEST_CARD_MANDATE_CUSTOMER_NOT_APPROVED';
+    const BAD_REQUEST_CARD_MANDATE_CUSTOMER_OPTED_OUT_OF_PAYMENT                    = 'BAD_REQUEST_CARD_MANDATE_CUSTOMER_OPTED_OUT_OF_PAYMENT';
+    const BAD_REQUEST_CARD_MANDATE_NOTIFICATION_PAYMENT_AMOUNT_MISMATCH             = 'BAD_REQUEST_CARD_MANDATE_NOTIFICATION_PAYMENT_AMOUNT_MISMATCH';
+    const BAD_REQUEST_CARD_MANDATE_NOTIFICATION_ALREADY_USED                        = 'BAD_REQUEST_CARD_MANDATE_NOTIFICATION_ALREADY_USED';
+    const BAD_REQUEST_CARD_MANDATE_NOTIFICATION_PAYMENT_CURRENCY_MISMATCH           = 'BAD_REQUEST_CARD_MANDATE_NOTIFICATION_PAYMENT_CURRENCY_MISMATCH';
+    const BAD_REQUEST_AMOUNT_GREATER_THAN_CARD_MANDATE_MAX_AMOUNT                   = 'BAD_REQUEST_AMOUNT_GREATER_THAN_CARD_MANDATE_MAX_AMOUNT';
+    const BAD_REQUEST_PAYMENT_ALREADY_CAPTURED_OR_VOIDED                            = 'BAD_REQUEST_PAYMENT_ALREADY_CAPTURED_OR_VOIDED';
+    const BAD_REQUEST_PAYMENT_ALREADY_CAPTURED                                      = 'BAD_REQUEST_PAYMENT_ALREADY_CAPTURED';
+    const BAD_REQUEST_PAYMENT_ALREADY_REFUNDED                                      = 'BAD_REQUEST_PAYMENT_ALREADY_REFUNDED';
+    const BAD_REQUEST_PAYMENT_ALREADY_REFUND_INITIATED                              = 'BAD_REQUEST_PAYMENT_ALREADY_REFUND_INITIATED';
+    const BAD_REQUEST_PAYMENT_INVALID_CAPTURE                                       = 'BAD_REQUEST_PAYMENT_INVALID_CAPTURE';
+    const BAD_REQUEST_PAYMENT_ANOTHER_OPERATION_IN_PROGRESS                         = 'BAD_REQUEST_PAYMENT_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_PAYMENT_CURRENCY_NOT_SUPPORTED                                = 'BAD_REQUEST_PAYMENT_CURRENCY_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_MODE_NOT_SUPPORTED                                    = 'BAD_REQUEST_PAYMENT_MODE_NOT_SUPPORTED';
+    const BAD_REQUEST_GOOGLE_PAY_NOT_ENABLED                                        = 'BAD_REQUEST_GOOGLE_PAY_NOT_ENABLED';
+    const BAD_REQUEST_PAYMENT_VOID_NOT_SUPPORTED                                    = 'BAD_REQUEST_PAYMENT_VOID_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_INVALID_AMOUNT_OR_CURRENCY                            = 'BAD_REQUEST_PAYMENT_INVALID_AMOUNT_OR_CURRENCY';
+    const BAD_REQUEST_PAYMENT_INVALID_FORMAT                                        = 'BAD_REQUEST_PAYMENT_INVALID_FORMAT';
+    const BAD_REQUEST_PAYMENT_INVALID_STATUS                                        = 'BAD_REQUEST_PAYMENT_INVALID_STATUS';
+    const BAD_REQUEST_PAYMENT_CARD_IS_NOT_ARRAY                                     = 'BAD_REQUEST_PAYMENT_CARD_IS_NOT_ARRAY';
+    const BAD_REQUEST_PAYMENT_CAPTURE_ONLY_AUTHORIZED                               = 'BAD_REQUEST_PAYMENT_CAPTURE_ONLY_AUTHORIZED';
+    const BAD_REQUEST_PAYMENT_CAPTURE_CLOSED_VIRTUAL_ACCOUNT                        = 'BAD_REQUEST_PAYMENT_CAPTURE_CLOSED_VIRTUAL_ACCOUNT';
+    const BAD_REQUEST_PAYMENT_CAPTURE_ONLY_PENDING                                  = 'BAD_REQUEST_PAYMENT_CAPTURE_ONLY_PENDING';
+    const BAD_REQUEST_PAYMENT_CONFIG_MARKED_FOR_REFUND                              = 'BAD_REQUEST_PAYMENT_CONFIG_MARKED_FOR_REFUND';
+    const BAD_REQUEST_PAYMENT_CANCEL_ONLY_CREATED                                   = 'BAD_REQUEST_PAYMENT_CANCEL_ONLY_CREATED';
+    const BAD_REQUEST_PAYMENT_CARD_NOT_PROVIDED                                     = 'BAD_REQUEST_PAYMENT_CARD_NOT_PROVIDED';
+    const BAD_REQUEST_PAYMENT_CARD_CVV_NOT_PROVIDED                                 = 'BAD_REQUEST_PAYMENT_CARD_CVV_NOT_PROVIDED';
+    const BAD_REQUEST_PAYMENT_CARD_INVALID_PIN                                      = 'BAD_REQUEST_PAYMENT_CARD_INVALID_PIN';
+    const BAD_REQUEST_PAYMENT_CARD_INVALID_CVV                                      = 'BAD_REQUEST_PAYMENT_CARD_INVALID_CVV';
+    const BAD_REQUEST_PAYMENT_CARD_HOLDER_AUTHENTICATION_FAILED                     = 'BAD_REQUEST_PAYMENT_CARD_HOLDER_AUTHENTICATION_FAILED';
+    const BAD_REQUEST_PAYMENT_CARD_AUTHENTICATION_NOT_AVAILABLE                     = 'BAD_REQUEST_PAYMENT_CARD_AUTHENTICATION_NOT_AVAILABLE';
+    const BAD_REQUEST_CARD_ISSUER_INVALID                                           = 'BAD_REQUEST_CARD_ISSUER_INVALID';
+    const BAD_REQUEST_CARD_NOT_SUPPORTED_FOR_FUND_ACCOUNT                           = 'BAD_REQUEST_CARD_NOT_SUPPORTED_FOR_FUND_ACCOUNT';
+    const BAD_REQUEST_PAYMENT_STATUS_NOT_CAPTURED                                   = 'BAD_REQUEST_PAYMENT_STATUS_NOT_CAPTURED';
+    const BAD_REQUEST_PAYMENT_METHOD_NOT_TRANSFER                                   = 'BAD_REQUEST_PAYMENT_METHOD_NOT_TRANSFER';
+    const BAD_REQUEST_PAYMENT_STATUS_CAPTURE_NOT_PROCESSED                          = 'BAD_REQUEST_PAYMENT_STATUS_CAPTURE_NOT_PROCESSED';
+    const BAD_REQUEST_PAYMENT_PAYOUT_BEFORE_SETTLEMENT                              = 'BAD_REQUEST_PAYMENT_PAYOUT_BEFORE_SETTLEMENT';
+    const BAD_REQUEST_PAYMENT_PAYOUT_AMOUNT_GREATER_THAN_CAPTURED                   = 'BAD_REQUEST_PAYMENT_PAYOUT_AMOUNT_GREATER_THAN_CAPTURED';
+    const BAD_REQUEST_PAYMENT_PAYOUT_AMOUNT_GREATER_THAN_PENDING                    = 'BAD_REQUEST_PAYMENT_PAYOUT_AMOUNT_GREATER_THAN_PENDING';
+    const BAD_REQUEST_PAYOUT_FUND_TRANSFER_ON_CREDIT_CARD_PAYMENT                   = 'BAD_REQUEST_PAYOUT_FUND_TRANSFER_ON_CREDIT_CARD_PAYMENT';
+    const BAD_REQUEST_PAYOUT_AMOUNT_MODE_MISMATCH                                   = 'BAD_REQUEST_PAYOUT_AMOUNT_MODE_MISMATCH';
+    const BAD_REQUEST_FTA_AMOUNT_MODE_MISMATCH                                      = 'BAD_REQUEST_FTA_AMOUNT_MODE_MISMATCH';
+    const BAD_REQUEST_PAYMENT_FULLY_PAIDOUT                                         = 'BAD_REQUEST_PAYMENT_FULLY_PAIDOUT';
+    const BAD_REQUEST_PAYMENT_FULLY_REFUNDED                                        = 'BAD_REQUEST_PAYMENT_FULLY_REFUNDED';
+    const BAD_REQUEST_PAYMENT_REFUND_NOT_SUPPORTED                                  = 'BAD_REQUEST_PAYMENT_REFUND_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_PARTIAL_REFUND_NOT_SUPPORTED                          = 'BAD_REQUEST_PAYMENT_PARTIAL_REFUND_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_REFUND_AMOUNT_GREATER_THAN_CAPTURED                   = 'BAD_REQUEST_PAYMENT_REFUND_AMOUNT_GREATER_THAN_CAPTURED';
+    const BAD_REQUEST_TOTAL_REFUND_AMOUNT_IS_GREATER_THAN_THE_PAYMENT_AMOUNT        = 'BAD_REQUEST_TOTAL_REFUND_AMOUNT_IS_GREATER_THAN_THE_PAYMENT_AMOUNT';
+    const BAD_REQUEST_PAYMENT_AMOUNT_GREATER_THAN_REFUNDED                          = 'BAD_REQUEST_PAYMENT_AMOUNT_GREATER_THAN_REFUNDED';
+    const BAD_REQUEST_PAYMENT_UNDER_DISPUTE_CANNOT_BE_REFUNDED                      = 'BAD_REQUEST_PAYMENT_UNDER_DISPUTE_CANNOT_BE_REFUNDED';
+    const BAD_REQUEST_PAYMENT_CAPTURE_AMOUNT_NOT_EQUAL_TO_AUTH                      = 'BAD_REQUEST_PAYMENT_CAPTURE_AMOUNT_NOT_EQUAL_TO_AUTH';
+    const BAD_REQUEST_PAYMENT_CAPTURE_CURRENCY_MISMATCH                             = 'BAD_REQUEST_PAYMENT_CAPTURE_CURRENCY_MISMATCH';
+    const BAD_REQUEST_PAYMENT_NET_BANKING_NOT_ENABLED                               = 'BAD_REQUEST_PAYMENT_NET_BANKING_NOT_ENABLED';
+    const BAD_REQUEST_PAYMENT_TXN_NOT_PUSHED_TO_NET_BANKING                         = 'BAD_REQUEST_PAYMENT_TXN_NOT_PUSHED_TO_NET_BANKING';
+    const BAD_REQUEST_PAYMENT_TXN_REJECTED_FROM_NET_BANKING                         = 'BAD_REQUEST_PAYMENT_TXN_REJECTED_FROM_NET_BANKING';
+    const BAD_REQUEST_PAYMENT_INVALID_TRANSACTION_DATE                              = 'BAD_REQUEST_PAYMENT_INVALID_TRANSACTION_DATE';
+    const BAD_REQUEST_PAYMENT_RECURRING_NOT_ENABLED                                 = 'BAD_REQUEST_PAYMENT_RECURRING_NOT_ENABLED';
+    const BAD_REQUEST_PAYMENT_RECURRING_AUTH_NOT_SUPPORTED                          = 'BAD_REQUEST_PAYMENT_RECURRING_AUTH_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_AEPS_NOT_ENABLED_FOR_MERCHANT                         = 'BAD_REQUEST_PAYMENT_AEPS_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_EMANDATE_NOT_ENABLED_FOR_MERCHANT                     = 'BAD_REQUEST_PAYMENT_EMANDATE_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_NACH_NOT_ENABLED_FOR_MERCHANT                         = 'BAD_REQUEST_PAYMENT_NACH_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_CRED_NOT_ENABLED_FOR_MERCHANT                         = 'BAD_REQUEST_PAYMENT_CRED_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_APP_NOT_ENABLED_FOR_MERCHANT                          = 'BAD_REQUEST_PAYMENT_APP_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_UPI_NOT_ENABLED_FOR_MERCHANT                          = 'BAD_REQUEST_PAYMENT_UPI_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_UPI_COLLECT_NOT_ENABLED_FOR_MERCHANT                  = 'BAD_REQUEST_PAYMENT_UPI_COLLECT_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_UPI_INTENT_NOT_ENABLED_FOR_MERCHANT                   = 'BAD_REQUEST_PAYMENT_UPI_INTENT_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_CARDLESS_EMI_NOT_ENABLED_FOR_MERCHANT                 = 'BAD_REQUEST_PAYMENT_CARDLESS_EMI_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_COD_NOT_ENABLED_FOR_MERCHANT                          = 'BAD_REQUEST_PAYMENT_COD_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_PAYLATER_NOT_ENABLED_FOR_MERCHANT                     = 'BAD_REQUEST_PAYMENT_PAYLATER_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_INSTRUMENT_NOT_ENABLED                                = 'BAD_REQUEST_PAYMENT_INSTRUMENT_NOT_ENABLED';
+    const BAD_REQUEST_PAYMENT_UPI_INVALID_VPA                                       = 'BAD_REQUEST_PAYMENT_UPI_INVALID_VPA';
+    const BAD_REQUEST_PAYMENT_UPI_INVALID_UPI_NUMBER                                = 'BAD_REQUEST_PAYMENT_UPI_INVALID_UPI_NUMBER';
+    const BAD_REQUEST_PAYMENT_UPI_APP_NOT_SUPPORTED                                 = 'BAD_REQUEST_PAYMENT_UPI_APP_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_UPI_APP_ONE_TIME_MANDATE_NOT_SUPPORTED                = 'BAD_REQUEST_PAYMENT_UPI_APP_ONE_TIME_MANDATE_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_UPI_APP_AUTO_PAY_NOT_SUPPORTED                        = 'BAD_REQUEST_PAYMENT_UPI_APP_AUTO_PAY_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_UPI_FUNCTION_NOT_SUPPORTED                            = 'BAD_REQUEST_PAYMENT_UPI_FUNCTION_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_BANK_TRANSFER_NOT_ENABLED_FOR_MERCHANT                = 'BAD_REQUEST_PAYMENT_BANK_TRANSFER_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_OFFLINE_NOT_ENABLED_FOR_MERCHANT                      = 'BAD_REQUEST_PAYMENT_OFFLINE_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_BHARAT_QR_NOT_ENABLED_FOR_MERCHANT                    = 'BAD_REQUEST_PAYMENT_BHARAT_QR_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_VIRTUAL_VPA_NOT_ENABLED_FOR_MERCHANT                  = 'BAD_REQUEST_PAYMENT_VIRTUAL_VPA_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_BQR_PAYMENT_FAILED                                            = 'BAD_REQUEST_BQR_PAYMENT_FAILED';
+    const BAD_REQUEST_NETBANKING_USER_NOT_REGISTERED                                = 'BAD_REQUEST_NETBANKING_USER_NOT_REGISTERED';
+    const BAD_REQUEST_PAYMENT_OLA_MONEY_ACCOUNT_DOES_NOT_EXIST_FOR_NUMBER           = 'BAD_REQUEST_PAYMENT_OLA_MONEY_ACCOUNT_DOES_NOT_EXIST_FOR_NUMBER';
+    const BAD_REQUEST_USER_OPT_OUT_WHATSAPP_NOTIFICATION                            = 'BAD_REQUEST_USER_OPT_OUT_WHATSAPP_NOTIFICATION';
+
+    const BAD_REQUEST_CARD_INVALID_NUMBER                                           = 'BAD_REQUEST_CARD_INVALID_NUMBER';
+    const BAD_REQUEST_PAYMENT_BANK_NOT_PROVIDED                                     = 'BAD_REQUEST_PAYMENT_BANK_NOT_PROVIDED';
+    const BAD_REQUEST_PAYMENT_INVALID_BANK_CODE                                     = 'BAD_REQUEST_PAYMENT_INVALID_BANK_CODE';
+    const BAD_REQUEST_PAYMENT_AMOUNT_LESS_THAN_MIN_AMOUNT                           = 'BAD_REQUEST_PAYMENT_AMOUNT_LESS_THAN_MIN_AMOUNT';
+    const BAD_REQUEST_PAYMENT_AMOUNT_LESS_THAN_10_MIN_AMOUNT                        = 'BAD_REQUEST_PAYMENT_AMOUNT_LESS_THAN_10_MIN_AMOUNT';
+    const BAD_REQUEST_PAYMENT_ATOM_NET_BANKING_MIN_AMOUNT_FIFTY                     = 'BAD_REQUEST_PAYMENT_ATOM_NET_BANKING_MIN_AMOUNT_FIFTY';
+    const BAD_REQUEST_PAYMENT_AMOUNT_LESS_THAN_MIN_AMOUNT_FOR_EMI                   = 'BAD_REQUEST_PAYMENT_AMOUNT_LESS_THAN_MIN_AMOUNT_FOR_EMI';
+    const BAD_REQUEST_PAYMENT_AMOUNT_TOO_HIGH                                       = 'BAD_REQUEST_PAYMENT_AMOUNT_TOO_HIGH';
+    const BAD_REQUEST_PAYMENT_AMOUNT_TOO_HIGH_DECLINED_BY_ISSUER                    = 'BAD_REQUEST_PAYMENT_AMOUNT_TOO_HIGH_DECLINED_BY_ISSUER';
+    const BAD_REQUEST_PAYMENT_CONTACT_INCORRECT_FORMAT                              = 'BAD_REQUEST_PAYMENT_CONTACT_INCORRECT_FORMAT';
+    const BAD_REQUEST_PAYMENT_CONTACT_INVALID_COUNTRY_CODE                          = 'BAD_REQUEST_PAYMENT_CONTACT_INVALID_COUNTRY_CODE';
+    const BAD_REQUEST_PAYMENT_CONTACT_TOO_SHORT                                     = 'BAD_REQUEST_PAYMENT_CONTACT_TOO_SHORT';
+    const BAD_REQUEST_PAYMENT_CONTACT_TOO_LONG                                      = 'BAD_REQUEST_PAYMENT_CONTACT_TOO_LONG';
+    const BAD_REQUEST_PAYMENT_CONTACT_ONLY_INDIAN_ALLOWED                           = 'BAD_REQUEST_PAYMENT_CONTACT_ONLY_INDIAN_ALLOWED';
+    const BAD_REQUEST_PAYMENT_CARD_NETWORK_NOT_SUPPORTED                            = 'BAD_REQUEST_PAYMENT_CARD_NETWORK_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_METHOD_NOT_ALLOWED_FOR_ORDER                          = 'BAD_REQUEST_PAYMENT_METHOD_NOT_ALLOWED_FOR_ORDER';
+    const BAD_REQUEST_PAYMENT_CARD_SUBTYPE_NOT_SUPPORTED                            = 'BAD_REQUEST_PAYMENT_CARD_SUBTYPE_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_CARD_SUBTYPE_CONSUMER_NOT_SUPPORTED                   = 'BAD_REQUEST_PAYMENT_CARD_SUBTYPE_CONSUMER_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_CARD_SUBTYPE_BUSINESS_NOT_SUPPORTED                   = 'BAD_REQUEST_PAYMENT_CARD_SUBTYPE_BUSINESS_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_CARD_TYPE_INVALID                                     = 'BAD_REQUEST_PAYMENT_CARD_TYPE_INVALID';
+    const BAD_REQUEST_PAYMENT_CARD_HOLDER_NOT_PERMITTED_TXN                         = 'BAD_REQUEST_PAYMENT_CARD_HOLDER_NOT_PERMITTED_TXN';
+    const BAD_REQUEST_PAYMENT_CARD_INSUFFICIENT_BALANCE                             = 'BAD_REQUEST_PAYMENT_CARD_INSUFFICIENT_BALANCE';
+    const BAD_REQUEST_PAYMENT_CARD_DECLINED                                         = 'BAD_REQUEST_PAYMENT_CARD_DECLINED';
+    const BAD_REQUEST_PAYMENT_CARD_EXPIRED                                          = 'BAD_REQUEST_PAYMENT_CARD_EXPIRED';
+    const BAD_REQUEST_PAYMENT_CARD_INVALID_EXPIRY_DATE                              = 'BAD_REQUEST_PAYMENT_CARD_INVALID_EXPIRY_DATE';
+    const BAD_REQUEST_PAYMENT_CARD_DETAILS_INVALID                                  = 'BAD_REQUEST_PAYMENT_CARD_DETAILS_INVALID';
+    const BAD_REQUEST_PAYMENT_CARD_ISSUING_BANK_PREVENTED_AUTHORIZATION             = 'BAD_REQUEST_PAYMENT_CARD_ISSUING_BANK_PREVENTED_AUTHORIZATION';
+    const BAD_REQUEST_PAYMENT_CARD_NUMBER_NOT_LEGITIMATE                            = 'BAD_REQUEST_PAYMENT_CARD_NUMBER_NOT_LEGITIMATE';
+    const BAD_REQUEST_PAYMENT_CARD_NUMBER_POSSIBLY_INVALID                          = 'BAD_REQUEST_PAYMENT_CARD_NUMBER_POSSIBLY_INVALID';
+    const BAD_REQUEST_PAYMENT_CARD_WITHDRAWAL_AMOUNT_LIMITS_EXCEEDED                = 'BAD_REQUEST_PAYMENT_CARD_WITHDRAWAL_AMOUNT_LIMITS_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_CARD_DAILY_WITHDRAWAL_FREQUENCY_LIMITS_EXCEEDED       = 'BAD_REQUEST_PAYMENT_CARD_DAILY_WITHDRAWAL_FREQUENCY_LIMITS_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_CARD_ISSUING_BANK_NOT_PERMITTING_PAYMENT              = 'BAD_REQUEST_PAYMENT_CARD_ISSUING_BANK_NOT_PERMITTING_PAYMENT';
+    const BAD_REQUEST_PAYMENT_CARD_CVV_LENGTH_MUST_BE_THREE                         = 'BAD_REQUEST_PAYMENT_CARD_CVV_LENGTH_MUST_BE_THREE';
+    const BAD_REQUEST_PAYMENT_CARD_AMEX_CVV_LENGTH_MUST_BE_FOUR                     = 'BAD_REQUEST_PAYMENT_CARD_AMEX_CVV_LENGTH_MUST_BE_FOUR';
+    const BAD_REQUEST_PAYMENT_TERMINAL_STATE_CODE_EXCEEDED_LENGTH                   = 'BAD_REQUEST_PAYMENT_TERMINAL_STATE_CODE_EXCEEDED_LENGTH';
+    const BAD_REQUEST_PAYMENT_CARD_INTERNATIONAL_NOT_ALLOWED                        = 'BAD_REQUEST_PAYMENT_CARD_INTERNATIONAL_NOT_ALLOWED';
+    const BAD_REQUEST_PAYMENT_INTERNATIONAL_RECURRING_NOT_ALLOWED_FOR_MERCHANT      = 'BAD_REQUEST_PAYMENT_INTERNATIONAL_RECURRING_NOT_ALLOWED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_CARD_AUTHENTICATION_INVALID                           = 'BAD_REQUEST_PAYMENT_CARD_AUTHENTICATION_INVALID';
+    const BAD_REQUEST_PAYMENT_CARD_RECURRING_NOT_SUPPORTED                          = 'BAD_REQUEST_PAYMENT_CARD_RECURRING_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_BANK_RECURRING_NOT_SUPPORTED                          = 'BAD_REQUEST_PAYMENT_BANK_RECURRING_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_AMOUNT_GREATER_THAN_TOKEN_MAX_AMOUNT                  = 'BAD_REQUEST_PAYMENT_AMOUNT_GREATER_THAN_TOKEN_MAX_AMOUNT';
+    const BAD_REQUEST_PAYMENT_BLOCKED_DUE_TO_FRAUD                                  = 'BAD_REQUEST_PAYMENT_BLOCKED_DUE_TO_FRAUD';
+    const BAD_REQUEST_PAYMENT_TIMED_OUT                                             = 'BAD_REQUEST_PAYMENT_TIMED_OUT';
+    const BAD_REQUEST_PAYMENT_CARD_MANDATE_NOTIFICATION_NOT_SENT                    = 'BAD_REQUEST_PAYMENT_CARD_MANDATE_NOTIFICATION_NOT_SENT';
+    const BAD_REQUEST_PAYMENT_CARD_MANDATE_NOTIFICATION_VERIFY_FAILED               = 'BAD_REQUEST_PAYMENT_CARD_MANDATE_NOTIFICATION_VERIFY_FAILED';
+    const BAD_REQUEST_TOKEN_BASED_CARD_MANDATE                                      = 'BAD_REQUEST_TOKEN_BASED_CARD_MANDATE';
+    const BAD_REQUEST_TOKEN_NOT_REPORTED_TO_MANDATE_HUB                             = 'BAD_REQUEST_TOKEN_NOT_REPORTED_TO_MANDATE_HUB';
+    const BAD_REQUEST_PAYMENT_TIMED_OUT_AT_GATEWAY                                  = 'BAD_REQUEST_PAYMENT_TIMED_OUT_AT_GATEWAY';
+    const BAD_REQUEST_PAYMENT_TIMED_OUT_AT_WALLET_PAYMENT_PAGE                      = 'BAD_REQUEST_PAYMENT_TIMED_OUT_AT_WALLET_PAYMENT_PAGE';
+    const BAD_REQUEST_PAYMENT_BANK_NOT_ENABLED_FOR_MERCHANT                         = 'BAD_REQUEST_PAYMENT_BANK_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_WALLET_NOT_SUPPORTED                                  = 'BAD_REQUEST_PAYMENT_WALLET_NOT_SUPPORTED';
+    const BAD_REQUEST_PAYMENT_WALLET_NOT_PROVIDED                                   = 'BAD_REQUEST_PAYMENT_WALLET_NOT_PROVIDED';
+    const BAD_REQUEST_PAYMENT_WALLET_NOT_ENABLED_FOR_MERCHANT                       = 'BAD_REQUEST_PAYMENT_WALLET_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_CARD_NOT_ENABLED_FOR_MERCHANT                         = 'BAD_REQUEST_PAYMENT_CARD_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_GOOGLE_PAY_METHODS_NOT_ENABLED_FOR_MERCHANT                   = 'BAD_REQUEST_GOOGLE_PAY_METHODS_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_NETBANKING_NOT_ENABLED_FOR_MERCHANT                   = 'BAD_REQUEST_PAYMENT_NETBANKING_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_EMI_NOT_ENABLED_FOR_MERCHANT                          = 'BAD_REQUEST_PAYMENT_EMI_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_PAYMENT_EMI_NOT_AVAILABLE_ON_CARD                             = 'BAD_REQUEST_PAYMENT_EMI_NOT_AVAILABLE_ON_CARD';
+    const BAD_REQUEST_PAYMENT_EMI_PLAN_NOT_EXIST                                    = 'BAD_REQUEST_PAYMENT_EMI_PLAN_NOT_EXIST';
+    const BAD_REQUEST_PAYMENT_DECLINED_BY_CLICKING_CANCEL                           = 'BAD_REQUEST_PAYMENT_DECLINED_BY_CLICKING_CANCEL';
+    const BAD_REQUEST_PAYMENT_DECLINED_BY_GATEWAY                                   = 'BAD_REQUEST_PAYMENT_DECLINED_BY_GATEWAY';
+    const BAD_REQUEST_PAYMENT_DECLINED_BY_BANK                                      = 'BAD_REQUEST_PAYMENT_DECLINED_BY_BANK';
+    const BAD_REQUEST_PAYMENT_NO_RESPONSE_RECEIVED_FROM_BANK                        = 'BAD_REQUEST_PAYMENT_NO_RESPONSE_RECEIVED_FROM_BANK';
+    const BAD_REQUEST_PAYMENT_BANK_SYSTEM_ERROR                                     = 'BAD_REQUEST_PAYMENT_BANK_SYSTEM_ERROR';
+    const BAD_REQUEST_PAYMENT_FAILED_MAYBE_DUE_TO_INVALID_INPUT                     = 'BAD_REQUEST_PAYMENT_FAILED_MAYBE_DUE_TO_INVALID_INPUT';
+    const BAD_REQUEST_PAYMENT_FAILED_MISSING_ORDER_ID                               = 'BAD_REQUEST_PAYMENT_FAILED_MISSING_ORDER_ID';
+    const BAD_REQUEST_PAYMENT_FAILED_DUE_TO_INVALID_BIN                             = 'BAD_REQUEST_PAYMENT_FAILED_DUE_TO_INVALID_BIN';
+    const BAD_REQUEST_PAYMENT_FAILED_BECAUSE_SESSION_EXPIRED                        = 'BAD_REQUEST_PAYMENT_FAILED_BECAUSE_SESSION_EXPIRED';
+    const BAD_REQUEST_PAYMENT_FAILED_FEATURE_FORCE_TERMINAL_ID_NOT_ENABLED          = 'BAD_REQUEST_PAYMENT_FAILED_FEATURE_FORCE_TERMINAL_ID_NOT_ENABLED';
+    const BAD_REQUEST_PAYMENT_CANCELLED                                             = 'BAD_REQUEST_PAYMENT_CANCELLED';
+    const BAD_REQUEST_PAYMENT_DECLINED_CONTACT_ISSUING_BANK                         = 'BAD_REQUEST_PAYMENT_DECLINED_CONTACT_ISSUING_BANK';
+    const BAD_REQUEST_PAYMENT_DECLINED_3DSECURE_AUTH_FAILED                         = 'BAD_REQUEST_PAYMENT_DECLINED_3DSECURE_AUTH_FAILED';
+    const BAD_REQUEST_PAYMENT_AMEX_3DSECURE_AUTH_FAILED                             = 'BAD_REQUEST_PAYMENT_AMEX_3DSECURE_AUTH_FAILED';
+    const BAD_REQUEST_PAYMENT_DECLINED_BY_BANK_DUE_TO_RISK                          = 'BAD_REQUEST_PAYMENT_DECLINED_BY_BANK_DUE_TO_RISK';
+    const BAD_REQUEST_PAYMENT_DECLINED_BY_BANK_DUE_TO_BLOCKED_CARD                  = 'BAD_REQUEST_PAYMENT_DECLINED_BY_BANK_DUE_TO_BLOCKED_CARD';
+    const BAD_REQUEST_PAYMENT_DECLINED_BY_GATEWAY_DUE_TO_RISK                       = 'BAD_REQUEST_PAYMENT_DECLINED_BY_GATEWAY_DUE_TO_RISK';
+    const BAD_REQUEST_PAYMENT_CARD_NOT_ENROLLED_FOR_3DSECURE                        = 'BAD_REQUEST_PAYMENT_CARDHOLDER_NOT_ENROLLED_IN_3DSECURE_AUTH';
+    const BAD_REQUEST_PAYMENT_CARD_NOT_LINKED_WITH_MOBILE                           = 'BAD_REQUEST_PAYMENT_CARD_NOT_LINKED_WITH_MOBILE';
+    const BAD_REQUEST_PAYMENT_INVALID_MOBILE                                        = 'BAD_REQUEST_PAYMENT_INVALID_MOBILE';
+    const BAD_REQUEST_PAYMENT_INVALID_EMAIL                                         = 'BAD_REQUEST_PAYMENT_INVALID_EMAIL';
+    const BAD_REQUEST_PAYMENT_WALLET_PER_DAY_LIMIT_EXCEEDED                         = 'BAD_REQUEST_PAYMENT_WALLET_PER_DAY_LIMIT_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_WALLET_PER_WEEK_LIMIT_EXCEEDED                        = 'BAD_REQUEST_PAYMENT_WALLET_PER_WEEK_LIMIT_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_WALLET_PER_MONTH_LIMIT_EXCEEDED                       = 'BAD_REQUEST_PAYMENT_WALLET_PER_MONTH_LIMIT_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_WALLET_PER_PAYMENT_AMOUNT_CROSSED                     = 'BAD_REQUEST_PAYMENT_WALLET_PER_PAYMENT_AMOUNT_CROSSED';
+    const BAD_REQUEST_PAYMENT_WALLET_BLOCKED_CARD                                   = 'BAD_REQUEST_PAYMENT_WALLET_BLOCKED_CARD';
+    const BAD_REQUEST_PAYMENT_WALLET_BLOCKED_MOBILE_NUMBER                          = 'BAD_REQUEST_PAYMENT_WALLET_BLOCKED_MOBILE_NUMBER';
+    const BAD_REQUEST_PAYMENT_WALLET_BLOCKED_IP_ADDRESS                             = 'BAD_REQUEST_PAYMENT_WALLET_BLOCKED_IP_ADDRESS';
+    const BAD_REQUEST_PAYMENT_WALLET_BLOCKED_CUSTOMER                               = 'BAD_REQUEST_PAYMENT_WALLET_BLOCKED_CUSTOMER';
+    const BAD_REQUEST_PAYMENT_WALLET_MAX_WRONG_ATTEMPT_LIMIT_CROSSED                = 'BAD_REQUEST_PAYMENT_WALLET_MAX_WRONG_ATTEMPT_LIMIT_CROSSED';
+    const BAD_REQUEST_PAYMENT_WALLET_MAX_AMOUNT_LIMIT_CROSSED_FOR_CUSTOMER          = 'BAD_REQUEST_PAYMENT_WALLET_MAX_AMOUNT_LIMIT_CROSSED';
+    const BAD_REQUEST_PAYMENT_WALLET_NOT_ACTIVATED                                  = 'BAD_REQUEST_PAYMENT_WALLET_NOT_ACTIVATED';
+    const BAD_REQUEST_PAYMENT_WALLET_USER_DOES_NOT_EXIST                            = 'BAD_REQUEST_PAYMENT_WALLET_USER_DOES_NOT_EXIST';
+    const BAD_REQUEST_PAYMENT_WALLET_ACCOUNT_INVALID_MOBILE                         = 'BAD_REQUEST_PAYMENT_WALLET_ACCOUNT_INVALID_MOBILE';
+    const BAD_REQUEST_PAYMENT_WALLET_ACCOUNT_INVALID_CREDENTIALS                    = 'BAD_REQUEST_PAYMENT_WALLET_ACCOUNT_INVALID_CREDENTIALS';
+    const BAD_REQUEST_PAYMENT_WALLET_ACCOUNT_ALREADY_EXIST_WITH_EMAIL               = 'BAD_REQUEST_PAYMENT_WALLET_ACCOUNT_ALREADY_EXIST_WITH_EMAIL';
+    const BAD_REQUEST_PAYMENT_WALLET_ACCOUNT_ALREADY_EXIST_WITH_CONTACT             = 'BAD_REQUEST_PAYMENT_WALLET_ACCOUNT_ALREADY_EXIST_WITH_CONTACT';
+    const BAD_REQUEST_PAYMENT_WALLET_ACCOUNT_INACTIVE                               = 'BAD_REQUEST_PAYMENT_WALLET_ACCOUNT_INACTIVE';
+    const BAD_REQUEST_PAYMENT_WALLET_NO_USER_WITH_CELL                              = 'BAD_REQUEST_PAYMENT_WALLET_NO_USER_WITH_CELL';
+    const BAD_REQUEST_PAYMENT_WALLET_AUTHENTICATION_FAILED                          = 'BAD_REQUEST_PAYMENT_WALLET_AUTHENTICATION_FAILED';
+    const BAD_REQUEST_PAYMENT_WALLET_INSUFFICIENT_BALANCE                           = 'BAD_REQUEST_PAYMENT_WALLET_INSUFFICIENT_BALANCE';
+    const BAD_REQUEST_WALLET_PAYOUT_INSUFFICIENT_BALANCE                            = 'BAD_REQUEST_WALLET_PAYOUT_INSUFFICIENT_BALANCE';
+    const BAD_REQUEST_PAYMENT_WALLET_CUSTOMER_TOKEN_NOT_FOUND                       = 'BAD_REQUEST_PAYMENT_WALLET_CUSTOMER_TOKEN_NOT_FOUND';
+    const BAD_REQUEST_PAYMENT_WALLET_INVALID_GATEWAY_TOKEN                          = 'BAD_REQUEST_PAYMENT_WALLET_INVALID_GATEWAY_TOKEN';
+    const BAD_REQUEST_PAYMENT_WALLET_CONTACT_PAYUMONEY                              = 'BAD_REQUEST_PAYMENT_WALLET_CONTACT_PAYUMONEY';
+    const BAD_REQUEST_AIRTEL_MONEY_ACCOUNT_BLOCKED                                  = 'BAD_REQUEST_AIRTEL_MONEY_ACCOUNT_BLOCKED';
+    const BAD_REQUEST_AIRTEL_MONEY_RESET_MPIN                                       = 'BAD_REQUEST_AIRTEL_MONEY_RESET_MPIN';
+    const BAD_REQUEST_CONTACT_AIRTEL_MONEY_CUSTOMER_CARE_FOR_REFUND                 = 'BAD_REQUEST_CONTACT_AIRTEL_MONEY_CUSTOMER_CARE_FOR_REFUND';
+    const BAD_REQUEST_PAYMENT_TOPUP_INVALID_WALLET_TOKEN                            = 'BAD_REQUEST_PAYMENT_TOPUP_INVALID_WALLET_TOKEN';
+    const BAD_REQUEST_PAYMENT_OTP_VALIDATION_ATTEMPT_LIMIT_EXCEEDED                 = 'BAD_REQUEST_PAYMENT_OTP_VALIDATION_ATTEMPT_LIMIT_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_OTP_ATTEMPT_LIMIT_EXCEEDED                            = 'BAD_REQUEST_PAYMENT_OTP_ATTEMPT_LIMIT_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_OTP_INCORRECT                                         = 'BAD_REQUEST_PAYMENT_OTP_INCORRECT';
+    const BAD_REQUEST_PAYMENTS_INVALID_OTP_TRY_NEW                                  = 'BAD_REQUEST_PAYMENTS_INVALID_OTP_TRY_NEW';
+    const BAD_REQUEST_PAYMENT_OTP_INCORRECT_OR_EXPIRED                              = 'BAD_REQUEST_PAYMENT_OTP_INCORRECT_OR_EXPIRED';
+    const BAD_REQUEST_PAYMENT_OTP_EXPIRED                                           = 'BAD_REQUEST_PAYMENT_OTP_EXPIRED';
+    const BAD_REQUEST_PAYMENT_OTP_SUBMIT_FOR_3DS_AUTH                               = 'BAD_REQUEST_PAYMENT_OTP_SUBMIT_FOR_3DS_AUTH';
+    const BAD_REQUEST_PAYMENT_PIN_INCORRECT                                         = 'BAD_REQUEST_PAYMENT_PIN_INCORRECT';
+    const BAD_REQUEST_PAYMENT_PIN_ATTEMPTS_EXCEEDED                                 = 'BAD_REQUEST_PAYMENT_PIN_ATTEMPTS_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_MAX_TRANSACTIONS_PER_ORDER_EXCEEDED                   = 'BAD_REQUEST_PAYMENT_MAX_TRANSACTIONS_PER_ORDER_EXCEEDED';
+    const BAD_REQUEST_ORDER_EXISTS                                                  = 'BAD_REQUEST_ORDER_EXISTS';
+    const BAD_REQUEST_ORDER_DOES_NOT_EXIST                                          = 'BAD_REQUEST_ORDER_DOES_NOT_EXIST';
+    const BAD_REQUEST_ORDER_INVALID_OFFER                                           = 'BAD_REQUEST_ORDER_INVALID_OFFER';
+    const BAD_REQUEST_ORDER_MULTIPLE_OFFERS                                         = 'BAD_REQUEST_ORDER_MULTIPLE_OFFERS';
+    const BAD_REQUEST_ORDER_CURRENCY_NOT_SUPPORTED                                  = 'BAD_REQUEST_ORDER_CURRENCY_NOT_SUPPORTED';
+    const BAD_REQUEST_ORDER_ANOTHER_OPERATION_IN_PROGRESS                           = 'BAD_REQUEST_ORDER_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_PAYMENT_ORDER_AMOUNT_MISMATCH                                 = 'BAD_REQUEST_PAYMENT_ORDER_AMOUNT_MISMATCH';
+    const BAD_REQUEST_PAYMENT_AMOUNT_MORE_THAN_ORDER_AMOUNT_DUE                     = 'BAD_REQUEST_PAYMENT_AMOUNT_MORE_THAN_ORDER_AMOUNT_DUE';
+    const BAD_REQUEST_PAYMENT_AMOUNT_LESS_THAN_MINIMUM_ALLOWED_AMOUNT               = 'BAD_REQUEST_PAYMENT_AMOUNT_LESS_THAN_MINIMUM_ALLOWED_AMOUNT';
+    const BAD_REQUEST_PAYMENT_ORDER_CURRENCY_MISMATCH                               = 'BAD_REQUEST_PAYMENT_ORDER_CURRENCY_MISMATCH';
+    const BAD_REQUEST_PAYMENT_LINK_CURRENCY_MISMATCH                                = 'BAD_REQUEST_PAYMENT_LINK_CURRENCY_MISMATCH';
+    const BAD_REQUEST_PAYMENT_ORDER_ALREADY_PAID                                    = 'BAD_REQUEST_PAYMENT_ORDER_ALREADY_PAID';
+    const BAD_REQUEST_PAYMENT_PARES_XML_SIGNATURE_ERROR                             = 'BAD_REQUEST_PAYMENT_PARES_XML_SIGNATURE_ERROR';
+    const BAD_REQUEST_INVALID_XML_SCHEMA                                            = 'BAD_REQUEST_INVALID_XML_SCHEMA';
+    const BAD_REQUEST_PAYMENT_ABORTED                                               = 'BAD_REQUEST_PAYMENT_ABORTED';
+    const BAD_REQUEST_PAYMENT_MISSING_DATA                                          = 'BAD_REQUEST_PAYMENT_MISSING_DATA';
+    const BAD_REQUEST_PAYMENT_PARTIAL_AMOUNT_APPROVED                               = 'BAD_REQUEST_PAYMENT_PARTIAL_AMOUNT_APPROVED';
+    const BAD_REQUEST_PAYMENT_PROBLEM_IN_UPDATING                                   = 'BAD_REQUEST_PAYMENT_PROBLEM_IN_UPDATING';
+    const BAD_REQUEST_PAYMENT_FEES_GREATER_THAN_AMOUNT                              = 'BAD_REQUEST_PAYMENT_FEES_GREATER_THAN_AMOUNT';
+    const BAD_REQUEST_FUND_ACCOUNT_VALIDATION_INSUFFICIENT_BALANCE                  = 'BAD_REQUEST_FUND_ACCOUNT_VALIDATION_INSUFFICIENT_BALANCE';
+    const BAD_REQUEST_FUND_ACCOUNT_VALIDATION_NOT_SUPPORTED_BALANCE                 = 'BAD_REQUEST_FUND_ACCOUNT_VALIDATION_NOT_SUPPORTED_BALANCE';
+    const BAD_REQUEST_PAYMENT_CANNOT_BE_CANCELLED                                   = 'BAD_REQUEST_PAYMENT_CANNOT_BE_CANCELLED';
+    const BAD_REQUEST_PAYMENT_ALREADY_UNDER_DISPUTE                                 = 'BAD_REQUEST_PAYMENT_ALREADY_UNDER_DISPUTE';
+    const BAD_REQUEST_DISPUTE_AMOUNT_GREATER_THAN_PAYMENT_AMOUNT                    = 'BAD_REQUEST_DISPUTE_AMOUNT_GREATER_THAN_PAYMENT_AMOUNT';
+    const BAD_REQUEST_CANNOT_UPDATE_CLOSED_DISPUTE                                  = 'BAD_REQUEST_CANNOT_UPDATE_CLOSED_DISPUTE';
+    const BAD_REQUEST_PAYMENT_UPI_REQUEST_TIMED_OUT                                 = 'BAD_REQUEST_PAYMENT_UPI_REQUEST_TIMED_OUT';
+    const BAD_REQUEST_PAYMENT_UPI_MULTIPLE_ACCOUNTS_LINKED                          = 'BAD_REQUEST_PAYMENT_UPI_MULTIPLE_ACCOUNTS_LINKED';
+    const BAD_REQUEST_PAYMENT_REVERSAL_NOT_SUPPORTED                                = 'BAD_REQUEST_PAYMENT_REVERSAL_NOT_SUPPORTED';
+    const BAD_REQUEST_REFUND_PARTIAL_VOID_NOT_SUPPORTED                             = 'BAD_REQUEST_REFUND_PARTIAL_VOID_NOT_SUPPORTED';
+    const BAD_REQUEST_GATEWAY_REFUND_ABSENT                                         = 'BAD_REQUEST_GATEWAY_REFUND_ABSENT';
+    const BAD_REQUEST_INVALID_GATEWAY                                               = 'BAD_REQUEST_INVALID_GATEWAY';
+    const BAD_REQUEST_APP_TOKEN_ABSENT                                              = 'BAD_REQUEST_APP_TOKEN_ABSENT';
+    const BAD_REQUEST_PAYMENT_SUBSCRIPTION_NOT_RECURRING                            = 'BAD_REQUEST_PAYMENT_SUBSCRIPTION_NOT_RECURRING';
+    const BAD_REQUEST_PAYMENT_NOT_AUTHORIZED                                        = 'BAD_REQUEST_PAYMENT_NOT_AUTHORIZED';
+    const BAD_REQUEST_NOT_CARD_PAYMENT                                              = 'BAD_REQUEST_NOT_CARD_PAYMENT';
+    const BAD_REQUEST_SUBSCRIPTION_TOKEN_ALREADY_ASSOCIATED                         = 'BAD_REQUEST_SUBSCRIPTION_TOKEN_ALREADY_ASSOCIATED';
+    const BAD_REQUEST_SUBSCRIPTION_TOKEN_NOT_ASSOCIATED                             = 'BAD_REQUEST_SUBSCRIPTION_TOKEN_NOT_ASSOCIATED';
+    const BAD_REQUEST_SUBSCRIPTION_TOTAL_COUNT_EXCEEDED                             = 'BAD_REQUEST_SUBSCRIPTION_TOTAL_COUNT_EXCEEDED';
+    const BAD_REQUEST_BANK_REQUIRED_WITH_ACCOUNT_NUMBER                             = 'BAD_REQUEST_BANK_REQUIRED_WITH_ACCOUNT_NUMBER';
+    const BAD_REQUEST_SUBSCRIPTION_IN_TERMINAL_STATE                                = 'BAD_REQUEST_SUBSCRIPTION_IN_TERMINAL_STATE';
+    const BAD_REQUEST_SUBSCRIPTION_NOT_IN_ACTIVE_OR_HALTED_STATE                    = 'BAD_REQUEST_SUBSCRIPTION_NOT_IN_ACTIVE_OR_HALTED_STATE';
+    const BAD_REQUEST_SUBSCRIPTION_NOT_IN_PENDING_STATE                             = 'BAD_REQUEST_SUBSCRIPTION_NOT_IN_PENDING_STATE';
+    const BAD_REQUEST_OPERATION_NOT_ALLOWED_IN_LIVE                                 = 'BAD_REQUEST_OPERATION_NOT_ALLOWED_IN_LIVE';
+    const BAD_REQUEST_USER_ID_HEADER_MISSING_FROM_REQUEST                           = 'BAD_REQUEST_USER_ID_HEADER_MISSING_FROM_REQUEST';
+    const BAD_REQUEST_USER_ID_COULD_NOT_BE_RESOLVED                                 = 'BAD_REQUEST_USER_ID_COULD_NOT_BE_RESOLVED';
+    const BAD_REQUEST_SUBSCRIPTION_NOT_TEST_CHARGEABLE                              = 'BAD_REQUEST_SUBSCRIPTION_NOT_TEST_CHARGEABLE';
+    const BAD_REQUEST_SUBSCRIPTION_INVOICE_CANNOT_BE_CHARGED                        = 'BAD_REQUEST_SUBSCRIPTION_INVOICE_CANNOT_BE_CHARGED';
+    const BAD_REQUEST_SUBSCRIPTION_2FA_NOT_ALLOWED                                  = 'BAD_REQUEST_SUBSCRIPTION_2FA_NOT_ALLOWED';
+    const BAD_REQUEST_SUBSCRIPTION_CARD_CHANGE_NOT_ALLOWED                          = 'BAD_REQUEST_SUBSCRIPTION_CARD_CHANGE_NOT_ALLOWED';
+    const BAD_REQUEST_SUBSCRIPTION_CUSTOMER_NOT_FOUND                               = 'BAD_REQUEST_SUBSCRIPTION_CUSTOMER_NOT_FOUND';
+    const BAD_REQUEST_SUBSCRIPTION_CUSTOMER_ID_SENT_IN_INPUT                        = 'BAD_REQUEST_SUBSCRIPTION_CUSTOMER_ID_SENT_IN_INPUT';
+    const BAD_REQUEST_SUBSCRIPTION_SAVE_CARD_DISABLED                               = 'BAD_REQUEST_SUBSCRIPTION_SAVE_CARD_DISABLED';
+    const BAD_REQUEST_SUBSCRIPTION_PAYMENT_WITHOUT_SAVING                           = 'BAD_REQUEST_SUBSCRIPTION_PAYMENT_WITHOUT_SAVING';
+    const BAD_REQUEST_SUBSCRIPTION_ANOTHER_OPERATION_IN_PROGRESS                    = 'BAD_REQUEST_SUBSCRIPTION_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_SUBSCRIPTION_INVALID_STATUS                                   = 'BAD_REQUEST_SUBSCRIPTION_INVALID_STATUS';
+    const BAD_REQUEST_SUBSCRIPTION_SCHEDULED_FAILURE                                = 'BAD_REQUEST_SUBSCRIPTION_SCHEDULED_FAILURE';
+    const BAD_REQUEST_SUBSCRIPTION_CYCLE_NOT_RUNNING                                = 'BAD_REQUEST_SUBSCRIPTION_CYCLE_NOT_RUNNING';
+    const BAD_REQUEST_SUBSCRIPTION_LAST_CYCLE_CANNOT_CANCEL                         = 'BAD_REQUEST_SUBSCRIPTION_LAST_CYCLE_CANNOT_CANCEL';
+    const BAD_REQUEST_ADDON_DELETE_NOT_ALLOWED                                      = 'BAD_REQUEST_ADDON_DELETE_NOT_ALLOWED';
+    const BAD_REQUEST_SUBSCRIPTION_ALREADY_AUTHENTICATED                            = 'BAD_REQUEST_SUBSCRIPTION_ALREADY_AUTHENTICATED';
+    const BAD_REQUEST_SUBSCRIPTION_PAYMENT_PARAMS_MISSING                           = 'BAD_REQUEST_SUBSCRIPTION_PAYMENT_PARAMS_MISSING';
+    const BAD_REQUEST_CARDLESS_EMI_USER_DOES_NOT_EXIST                              = 'BAD_REQUEST_CARDLESS_EMI_USER_DOES_NOT_EXIST';
+    const BAD_REQUEST_EMI_DURATION_NOT_VALID                                        = 'BAD_REQUEST_EMI_DURATION_NOT_VALID';
+    const BAD_REQUEST_PAYMENT_EMI_LIMIT_EXCEED                                      = 'BAD_REQUEST_PAYMENT_EMI_LIMIT_EXCEED';
+    const BAD_REQUEST_RECURRING_TOKEN_EXPIRED                                       = 'BAD_REQUEST_RECURRING_TOKEN_EXPIRED';
+    const BAD_REQUEST_AUTO_RECURRING_NOT_SUPPORTED_ON_IIN                           = 'BAD_REQUEST_AUTO_RECURRING_NOT_SUPPORTED_ON_IIN';
+    const BAD_REQUEST_TOKENISATION_FAILED_FOR_RECURRING_CARD                        = 'BAD_REQUEST_TOKENISATION_FAILED_FOR_RECURRING_CARD';
+    const BAD_REQUEST_FAILED_REPORTING_TO_MANDATE_HUB                               = 'BAD_REQUEST_FAILED_REPORTING_TO_MANDATE_HUB';
+    const BAD_REQUEST_CARDHOLDER_STOPPED_WITHDRAWALS                                = 'BAD_REQUEST_CARDHOLDER_STOPPED_WITHDRAWALS';
+    const BAD_REQUEST_PAYMENT_CARD_WITHDRAWAL_LIMITS_EXCEEDED                       = 'BAD_REQUEST_PAYMENT_CARD_WITHDRAWAL_LIMITS_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_INVALID_MERCHANT_NAME                                 = 'BAD_REQUEST_PAYMENT_INVALID_MERCHANT_NAME';
+    const BAD_REQUEST_CARD_INTERNATIONAL_NOT_ALLOWED_FOR_PAYMENT_GATEWAY            = 'BAD_REQUEST_CARD_INTERNATIONAL_NOT_ALLOWED_FOR_PAYMENT_GATEWAY';
+    const BAD_REQUEST_CARD_INTERNATIONAL_NOT_ALLOWED_FOR_PAYMENT_LINKS              = 'BAD_REQUEST_CARD_INTERNATIONAL_NOT_ALLOWED_FOR_PAYMENT_LINKS';
+    const BAD_REQUEST_CARD_INTERNATIONAL_NOT_ALLOWED_FOR_PAYMENT_PAGES              = 'BAD_REQUEST_CARD_INTERNATIONAL_NOT_ALLOWED_FOR_PAYMENT_PAGES';
+    const BAD_REQUEST_CARD_INTERNATIONAL_NOT_ALLOWED_FOR_INVOICES                   = 'BAD_REQUEST_CARD_INTERNATIONAL_NOT_ALLOWED_FOR_INVOICES';
+
+    // Paylater gateway errors
+    const BAD_REQUEST_PAYLATER_USER_DOES_NOT_EXIST                                  = 'BAD_REQUEST_PAYLATER_USER_DOES_NOT_EXIST';
+    const GATEWAY_ERROR_PAYLATER_INVALID_TOKEN                                      = 'GATEWAY_ERROR_PAYLATER_INVALID_TOKEN';
+    const BAD_REQUEST_PAYLATER_INVALID_MERCHANT_NAME                                = 'BAD_REQUEST_PAYLATER_INVALID_MERCHANT_NAME';
+    const BAD_REQUEST_PAYLATER_MINIMUM_AMOUNT_REQUIRED                              = 'BAD_REQUEST_PAYLATER_MINIMUM_AMOUNT_REQUIRED';
+    const BAD_REQUEST_PAYLATER_MAXIMUM_AMOUNT_LIMIT                                 = 'BAD_REQUEST_PAYLATER_MAXIMUM_AMOUNT_LIMIT';
+    const GATEWAY_ERROR_PAYLATER_PAYMENT_FAILED_PARTNER                             = 'GATEWAY_ERROR_PAYLATER_PAYMENT_FAILED_PARTNER';
+    const BAD_REQUEST_PAYLATER_CREDIT_LIMIT_EXHAUSTED                               = 'BAD_REQUEST_PAYLATER_CREDIT_LIMIT_EXHAUSTED';
+    const BAD_REQUEST_PAYLATER_CREDIT_LIMIT_NOT_ACTIVATED                           = 'BAD_REQUEST_PAYLATER_CREDIT_LIMIT_NOT_ACTIVATED';
+    const BAD_REQUEST_PAYLATER_CREDIT_LIMIT_NOT_APPROVED                            = 'BAD_REQUEST_PAYLATER_CREDIT_LIMIT_NOT_APPROVED';
+    const BAD_REQUEST_PAYLATER_CREDIT_LIMIT_EXPIRED                                 = 'BAD_REQUEST_PAYLATER_CREDIT_LIMIT_EXPIRED';
+    const BAD_REQUEST_PAYLATER_INVALID_ACCESS_KEY                                   = 'BAD_REQUEST_PAYLATER_INVALID_ACCESS_KEY';
+
+    // Debit card EMI errors
+    const BAD_REQUEST_DEBIT_EMI_CUSTOMER_NOT_ELIGIBLE                               = 'BAD_REQUEST_DEBIT_EMI_CUSTOMER_NOT_ELIGIBLE';
+    // HDFC wants us to show a specific error message here to customers. Hence adding gateway specific internal error code.
+    const BAD_REQUEST_HDFC_DEBIT_EMI_CUSTOMER_NOT_ELIGIBLE                          = 'BAD_REQUEST_HDFC_DEBIT_EMI_CUSTOMER_NOT_ELIGIBLE';
+    const BAD_REQUEST_DEBIT_EMI_HDFC_MAXIMUM_AMOUNT_LIMIT                           = 'BAD_REQUEST_DEBIT_EMI_HDFC_MAXIMUM_AMOUNT_LIMIT';
+
+    const BAD_REQUEST_CARD_INVALID_DATA                                             = 'BAD_REQUEST_CARD_INVALID_DATA';
+    const BAD_REQUEST_CASHBACK_EXCEEDS_ISSUER_LIMIT                                 = 'BAD_REQUEST_CASHBACK_EXCEEDS_ISSUER_LIMIT';
+    const BAD_REQUEST_PAYMENT_POSSIBLE_FRAUD                                        = 'BAD_REQUEST_PAYMENT_POSSIBLE_FRAUD';
+    const BAD_REQUEST_PAYMENT_POSSIBLE_FRAUD_WEBSITE_MISMATCH                       = 'BAD_REQUEST_PAYMENT_POSSIBLE_FRAUD_WEBSITE_MISMATCH';
+    const BAD_REQUEST_PAYMENT_POSSIBLE_FRAUD_GATEWAY                                = 'BAD_REQUEST_PAYMENT_POSSIBLE_FRAUD_GATEWAY';
+    const BAD_REQUEST_CARD_AVS_FAILED                                               = 'BAD_REQUEST_CARD_AVS_FAILED';
+    const BAD_REQUEST_CARD_STOLEN_OR_LOST                                           = 'BAD_REQUEST_CARD_STOLEN_OR_LOST';
+    const BAD_REQUEST_CARD_ISSUING_BANK_UNAVAILABLE                                 = 'BAD_REQUEST_CARD_ISSUING_BANK_UNAVAILABLE';
+    const BAD_REQUEST_CARD_INACTIVE                                                 = 'BAD_REQUEST_CARD_INACTIVE';
+    const BAD_REQUEST_CARD_CREDIT_LIMIT_REACHED                                     = 'BAD_REQUEST_CARD_CREDIT_LIMIT_REACHED';
+    const BAD_REQUEST_CARD_FROZEN                                                   = 'BAD_REQUEST_CARD_FROZEN';
+    const BAD_REQUEST_CARD_DAILY_LIMIT_REACHED                                      = 'BAD_REQUEST_CARD_DAILY_LIMIT_REACHED';
+    const BAD_REQUEST_CARD_BILL_SHIP_MISMATCH                                       = 'BAD_REQUEST_CARD_BILL_SHIP_MISMATCH';
+    const BAD_REQUEST_INVALID_PARAMETERS                                            = 'BAD_REQUEST_INVALID_PARAMETERS';
+    const BAD_REQUEST_INVOICE_STATUS_UNAVAILABLE                                    = 'BAD_REQUEST_INVOICE_STATUS_UNAVAILABLE';
+    const BAD_REQUEST_INVALID_MESSAGE_KEYWORD                                       = 'BAD_REQUEST_INVALID_MESSAGE_KEYWORD';
+    const BAD_REQUEST_MISSING_FIELDS_MESSAGE                                        = 'BAD_REQUEST_MISSING_FIELDS_MESSAGE';
+    const BAD_REQUEST_END_AT_AND_TOTAL_COUNT_SENT                                   = 'BAD_REQUEST_END_AT_AND_TOTAL_COUNT_SENT';
+    const BAD_REQUEST_SUBSCRIPTION_CURRENT_TIME_PAST_START_TIME                     = 'BAD_REQUEST_SUBSCRIPTION_CURRENT_TIME_PAST_START_TIME';
+    const BAD_REQUEST_INVOICE_CHARGE_FAILED                                         = 'BAD_REQUEST_INVOICE_CHARGE_FAILED';
+
+    const BAD_REQUEST_UNSUPPORTED_CHARACTER_SET                                     = 'BAD_REQUEST_UNSUPPORTED_CHARACTER_SET';
+
+    const SERVER_ERROR_UPI_TRANSFER_PROCESSING_FAILED                               = 'SERVER_ERROR_UPI_TRANSFER_PROCESSING_FAILED';
+    const SERVER_ERROR_QR_PAYMENT_PROCESSING_FAILED                                 = 'SERVER_ERROR_QR_PAYMENT_PROCESSING_FAILED';
+
+    const BAD_REQUEST_PAYMENT_ORDER_ID_REQUIRED                                     = 'BAD_REQUEST_PAYMENT_ORDER_ID_REQUIRED';
+    const BAD_REQUEST_ORDER_METHOD_REQUIRED_FOR_MERCHANT                            = 'BAD_REQUEST_ORDER_METHOD_REQUIRED_FOR_MERCHANT';
+    const BAD_REQUEST_ORDER_ACCOUNT_NUMBER_REQUIRED_FOR_MERCHANT                    = 'BAD_REQUEST_ORDER_ACCOUNT_NUMBER_REQUIRED_FOR_MERCHANT';
+    const BAD_REQUEST_ORDER_ACCOUNT_NUMBER_INCORRECT_LENGTH                         = 'BAD_REQUEST_ORDER_ACCOUNT_NUMBER_INCORRECT_LENGTH';
+    const BAD_REQUEST_ORDER_BANK_INVALID                                            = 'BAD_REQUEST_ORDER_BANK_INVALID';
+    const BAD_REQUEST_ORDER_BANK_NOT_ENABLED_FOR_MERCHANT                           = 'BAD_REQUEST_ORDER_BANK_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_ORDER_BANK_DOES_NOT_MATCH_PAYMENT_BANK                        = 'BAD_REQUEST_ORDER_BANK_DOES_NOT_MATCH_PAYMENT_BANK';
+    const BAD_REQUEST_PAYMENT_METHOD_DOES_NOT_MATCH_ORDER_METHOD                    = 'BAD_REQUEST_PAYMENT_METHOD_DOES_NOT_MATCH_ORDER_METHOD';
+    const BAD_REQUEST_ORDER_RECEIPT_REQUIRED                                        = 'BAD_REQUEST_ORDER_RECEIPT_REQUIRED';
+    const BAD_REQUEST_ORDER_RECEIPT_NOT_UNIQUE                                      = 'BAD_REQUEST_ORDER_RECEIPT_NOT_UNIQUE';
+    const BAD_REQUEST_REFUND_ALREADY_IN_UNPROCESSED_LIST                            = 'BAD_REQUEST_REFUND_ALREADY_IN_UNPROCESSED_LIST';
+
+    const BAD_REQUEST_PAYMENT_NETBANKING_CANCELLED_BY_USER                          = 'BAD_REQUEST_PAYMENT_NETBANKING_CANCELLED_BY_USER';
+
+    const BAD_REQUEST_REFUND_FAILED                                                 = 'BAD_REQUEST_REFUND_FAILED';
+    const BAD_REQUEST_REFUND_NOT_ALLOWED                                            = 'BAD_REQUEST_REFUND_NOT_ALLOWED';
+    const BAD_REQUEST_REFUND_NOT_SUPPORTED_BY_THE_BANK                              = 'BAD_REQUEST_REFUND_NOT_SUPPORTED_BY_THE_BANK';
+    const BAD_REQUEST_ONLY_INSTANT_REFUND_SUPPORTED                                 = 'BAD_REQUEST_ONLY_INSTANT_REFUND_SUPPORTED';
+    const BAD_REQUEST_CARD_REFUND_NOT_ALLOWED                                       = 'BAD_REQUEST_CARD_REFUND_NOT_ALLOWED';
+    const BAD_REQUEST_REFUND_NOT_ENOUGH_BALANCE                                     = 'BAD_REQUEST_REFUND_NOT_ENOUGH_BALANCE';
+    const BAD_REQUEST_REFUND_NOT_ENOUGH_BALANCE_FALLBACK                            = 'BAD_REQUEST_REFUND_NOT_ENOUGH_BALANCE_FALLBACK';
+    const BAD_REQUEST_REFUND_NOT_ENOUGH_CREDITS                                     = 'BAD_REQUEST_REFUND_NOT_ENOUGH_CREDITS';
+    const BAD_REQUEST_REFUND_INVALID_EVENT_TO_PROCESS                               = 'BAD_REQUEST_REFUND_INVALID_EVENT_TO_PROCESS';
+    const BAD_REQUEST_REFUND_ALREADY_PROCESSED                                      = 'BAD_REQUEST_REFUND_ALREADY_PROCESSED';
+    const BAD_REQUEST_ALL_FTA_NOT_FAILED                                            = 'BAD_REQUEST_ALL_FTA_NOT_FAILED';
+    const BAD_REQUEST_REFUND_NOT_IN_CREATED                                         = 'BAD_REQUEST_REFUND_NOT_IN_CREATED';
+    const BAD_REQUEST_REFUND_NOT_SCROOGE                                            = 'BAD_REQUEST_REFUND_NOT_SCROOGE';
+    const BAD_REQUEST_REFUND_PAYMENT_OLDER_THAN_SIX_MONTHS                          = 'BAD_REQUEST_REFUND_PAYMENT_OLDER_THAN_SIX_MONTHS';
+    const BAD_REQUEST_REFUND_INVALID_STATE_UPDATE                                   = 'BAD_REQUEST_REFUND_INVALID_STATE_UPDATE';
+    const BAD_REQUEST_REFUND_INVALID_STATE_FOR_RETRY                                = 'BAD_REQUEST_REFUND_INVALID_STATE_FOR_RETRY';
+    const BAD_REQUEST_SCROOGE_DASHBOARD_ERROR                                       = 'BAD_REQUEST_SCROOGE_DASHBOARD_ERROR';
+    const BAD_REQUEST_REFUND_JOURNAL_NOT_FOUND_ERROR                                = 'BAD_REQUEST_REFUND_JOURNAL_NOT_FOUND_ERROR';
+    const BAD_REQUEST_REFUND_REVERSAL_NOT_APPLICABLE                                = 'BAD_REQUEST_REFUND_REVERSAL_NOT_APPLICABLE';
+
+    const BAD_REQUEST_PAYOUT_NOT_ENOUGH_BALANCE                                     = 'BAD_REQUEST_PAYOUT_NOT_ENOUGH_BALANCE';
+    const BAD_REQUEST_PAYOUT_NOT_ENOUGH_BALANCE_BANKING                             = 'BAD_REQUEST_PAYOUT_NOT_ENOUGH_BALANCE_BANKING';
+    const BAD_REQUEST_MERCHANT_FUNDS_ON_HOLD                                        = 'BAD_REQUEST_MERCHANT_FUNDS_ON_HOLD';
+    const BAD_REQUEST_MERCHANT_EMAIL_ALREADY_EXISTS                                 = 'BAD_REQUEST_MERCHANT_EMAIL_ALREADY_EXISTS';
+    const BAD_REQUEST_MERCHANT_FUNDS_ALREADY_ON_HOLD                                = 'BAD_REQUEST_MERCHANT_FUNDS_ALREADY_ON_HOLD';
+    const BAD_REQUEST_MERCHANT_FUNDS_ALREADY_RELEASED                               = 'BAD_REQUEST_MERCHANT_FUNDS_ALREADY_RELEASED';
+    const BAD_REQUEST_RECEIPT_EMAILS_ALREADY_ENABLED                                = 'BAD_REQUEST_RECEIPT_EMAILS_ALREADY_ENABLED';
+    const BAD_REQUEST_RECEIPT_EMAILS_ALREADY_DISABLED                               = 'BAD_REQUEST_RECEIPT_EMAILS_ALREADY_DISABLED';
+    const BAD_REQUEST_INTERNATIONAL_ALREADY_ENABLED                                 = 'BAD_REQUEST_INTERNATIONAL_ALREADY_ENABLED';
+    const BAD_REQUEST_INTERNATIONAL_ALREADY_DISABLED                                = 'BAD_REQUEST_INTERNATIONAL_ALREADY_DISABLED';
+    const BAD_REQUEST_PAYOUT_FAILED_UNKNOWN_ERROR                                   = 'BAD_REQUEST_PAYOUT_FAILED_UNKNOWN_ERROR';
+
+    const BAD_REQUEST_BATCH_FILE_EXCEED_LIMIT                                       = 'BAD_REQUEST_BATCH_FILE_EXCEED_LIMIT';
+    const BAD_REQUEST_BATCH_FILE_EMPTY                                              = 'BAD_REQUEST_BATCH_FILE_EMPTY';
+    const BAD_REQUEST_BATCH_FILE_INVALID_TYPE                                       = 'BAD_REQUEST_BATCH_FILE_INVALID_TYPE';
+    const BAD_REQUEST_BATCH_FILE_INVALID_PAYMENT_ID                                 = 'BAD_REQUEST_BATCH_FILE_INVALID_PAYMENT_ID';
+    const BAD_REQUEST_BATCH_FILE_INVALID_TRANSFER_ID                                = 'BAD_REQUEST_BATCH_FILE_INVALID_TRANSFER_ID';
+    const BAD_REQUEST_BATCH_FILE_INVALID_AMOUNT                                     = 'BAD_REQUEST_BATCH_FILE_INVALID_AMOUNT';
+    const BAD_REQUEST_BATCH_FILE_INVALID_HEADERS                                    = 'BAD_REQUEST_BATCH_FILE_INVALID_HEADERS';
+    const BAD_REQUEST_BATCH_FILE_DUPLICATE_PAYMENT_ID                               = 'BAD_REQUEST_BATCH_FILE_DUPLICATE_PAYMENT_ID';
+    const BAD_REQUEST_BATCH_FILE_DUPLICATE_TRANSFER_ID                              = 'BAD_REQUEST_BATCH_FILE_DUPLICATE_TRANSFER_ID';
+    const BAD_REQUEST_BATCH_FILE_DUPLICATE_CONTACTS                                 = 'BAD_REQUEST_BATCH_FILE_DUPLICATE_CONTACTS';
+    const BAD_REQUEST_BATCH_FILE_ALREADY_PROCESSED                                  = 'BAD_REQUEST_BATCH_FILE_ALREADY_PROCESSED';
+    const BAD_REQUEST_BATCH_FILE_UNDER_PROCESSING                                   = 'BAD_REQUEST_BATCH_FILE_UNDER_PROCESSING';
+    const BAD_REQUEST_BATCH_FILE_CANNOT_BE_RETRIED                                  = 'BAD_REQUEST_BATCH_FILE_CANNOT_BE_RETRIED';
+    const BAD_REQUEST_BATCH_FILE_STATUS_INVALID_FOR_CANCEL                          = 'BAD_REQUEST_BATCH_FILE_STATUS_INVALID_FOR_CANCEL';
+    const BAD_REQUEST_BATCH_FILE_INVALID_RZP_REF_NO                                 = 'BAD_REQUEST_BATCH_FILE_INVALID_RZP_REF_NO';
+    const BAD_REQUEST_BATCH_FILE_INVALID_APPLICATION_NO                             = 'BAD_REQUEST_BATCH_FILE_INVALID_APPLICATION_NO';
+    const BAD_REQUEST_BATCH_FILE_INVALID_ACCOUNT_NO                                 = 'BAD_REQUEST_BATCH_FILE_INVALID_ACCOUNT_NO';
+    const BAD_REQUEST_BATCH_FILE_INVALID_COMMENT                                    = 'BAD_REQUEST_BATCH_FILE_INVALID_COMMENT';
+    const BAD_REQUEST_BATCH_FILE_INVALID_SPEED                                      = 'BAD_REQUEST_BATCH_FILE_INVALID_SPEED';
+    const BAD_REQUEST_PAYOUT_BATCH_FILE_MISSING_MANDATORY_HEADERS                   = 'BAD_REQUEST_PAYOUT_BATCH_FILE_MISSING_MANDATORY_HEADERS';
+    const BAD_REQUEST_PAYOUT_LINKS_BATCH_FILE_MISSING_MANDATORY_HEADERS             = 'BAD_REQUEST_PAYOUT_LINKS_BATCH_FILE_MISSING_MANDATORY_HEADERS';
+    const BAD_REQUEST_PAYOUT_LINKS_BATCH_FILE_DUPLICATE_HEADERS                     = 'BAD_REQUEST_PAYOUT_LINKS_BATCH_FILE_DUPLICATE_HEADERS';
+    const BAD_REQUEST_BATCH_PROCESSING_PROCESSED                                    = 'BAD_REQUEST_BATCH_PROCESSING_PROCESSED';
+
+    const BAD_REQUEST_BATCH_FILE_INSTANT_REFUNDS_DISABLED                           = 'BAD_REQUEST_BATCH_FILE_INSTANT_REFUNDS_DISABLED';
+    const BAD_REQUEST_BATCH_ANOTHER_OPERATION_IN_PROGRESS                           = 'BAD_REQUEST_BATCH_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_BATCH_NOTIFICATIONS_SENT_ALREADY                              = 'BAD_REQUEST_BATCH_NOTIFICATIONS_SENT_ALREADY';
+    const BAD_REQUEST_BATCH_STATS_NOT_SUPPORTED_FOR_TYPE                            = 'BAD_REQUEST_BATCH_STATS_NOT_SUPPORTED_FOR_TYPE';
+    const BAD_REQUEST_ANOTHER_OPERATION_IN_PROGRESS                                 = 'BAD_REQUEST_ANOTHER_OPERATION_IN_PROGRESS';
+    const SERVER_ERROR_ANOTHER_OPERATION_PROGRESS_SAME_IDEM_KEY                     = 'SERVER_ERROR_ANOTHER_OPERATION_PROGRESS_SAME_IDEM_KEY';
+    const BAD_REQUEST_CONFLICT_ANOTHER_OPERATION_PROGRESS_SAME_IDEM_KEY             = 'BAD_REQUEST_CONFLICT_ANOTHER_OPERATION_PROGRESS_SAME_IDEM_KEY';
+    const BAD_REQUEST_ANOTHER_MPAN_ISSUE_IN_PROGRESS                                = 'BAD_REQUEST_ANOTHER_MPAN_ISSUE_IN_PROGRESS';
+
+    const BAD_REQUEST_COMMISSION_TDS_SETTLEMENT_OPERATION_IN_PROGRESS               = 'BAD_REQUEST_COMMISSION_TDS_SETTLEMENT_OPERATION_IN_PROGRESS';
+
+    const BAD_REQUEST_SETTLEMENT_NOT_FOUND                                          = 'BAD_REQUEST_SETTLEMENT_NOT_FOUND';
+
+    const BAD_REQUEST_INVOICE_RECEIPT_ANOTHER_OPERATION_IN_PROGRESS                 = 'BAD_REQUEST_INVOICE_RECEIPT_ANOTHER_OPERATION_IN_PROGRESS';
+
+    const BAD_REQUEST_LAMBDA_ANOTHER_OPERATION_IN_PROGRESS                          = 'BAD_REQUEST_LAMBDA_ANOTHER_OPERATION_IN_PROGRESS';
+
+    const BAD_REQUEST_URL_NOT_FOUND                                                 = 'BAD_REQUEST_URL_NOT_FOUND';
+
+    const BAD_REQUEST_NO_MATCHING_ENTITY                                            = 'BAD_REQUEST_NO_MATCHING_ENTITY';
+
+    const BAD_FEATURE_PERMISSION_NOT_FOUND                                          = 'BAD_FEATURE_PERMISSION_NOT_FOUND';
+
+    const BAD_REQUEST_ROUTE_DISABLED                                                = 'BAD_REQUEST_ROUTE_DISABLED';
+    const BAD_REQUEST_NOTES_SHOULD_BE_ARRAY                                         = 'BAD_REQUEST_NOTES_SHOULD_BE_ARRAY';
+    const BAD_REQUEST_NOTES_TOO_MANY_KEYS                                           = 'BAD_REQUEST_NOTES_TOO_MANY_KEYS';
+    const BAD_REQUEST_NOTES_VALUE_CANNOT_BE_ARRAY                                   = 'BAD_REQUEST_NOTES_VALUE_CANNOT_BE_ARRAY';
+    const BAD_REQUEST_NOTES_KEY_TOO_LARGE                                           = 'BAD_REQUEST_NOTES_KEY_TOO_LARGE';
+    const BAD_REQUEST_NOTES_VALUE_TOO_LARGE                                         = 'BAD_REQUEST_NOTES_VALUE_TOO_LARGE';
+    const BAD_REQUEST_LINKED_ACCOUNT_NOTES_KEY_MISSING                              = 'BAD_REQUEST_LINKED_ACCOUNT_NOTES_KEY_MISSING';
+    const BAD_REQUEST_INVALID_TRANSACTION_AMOUNT                                    = 'BAD_REQUEST_INVALID_TRANSACTION_AMOUNT';
+
+    const BAD_REQUEST_UNKNOWN_SCHEDULE                                              = 'BAD_REQUEST_UNKNOWN_SCHEDULE';
+    const BAD_REQUEST_INVALID_SCHEDULE                                              = 'BAD_REQUEST_INVALID_SCHEDULE';
+    const BAD_REQUEST_SCHEDULE_REQUIRED                                             = 'BAD_REQUEST_SCHEDULE_REQUIRED';
+    const BAD_REQUEST_SCHEDULE_INVALID_PERIOD                                       = 'BAD_REQUEST_SCHEDULE_INVALID_PERIOD';
+    const BAD_REQUEST_SCHEDULE_INVALID_TYPE                                         = 'BAD_REQUEST_SCHEDULE_INVALID_TYPE';
+    const BAD_REQUEST_SCHEDULE_ANCHOR_NOT_PERMITTED                                 = 'BAD_REQUEST_SCHEDULE_ANCHOR_NOT_PERMITTED';
+    const BAD_REQUEST_SCHEDULE_HOURLY_HOUR_NOT_PERMITTED                            = 'BAD_REQUEST_SCHEDULE_HOURLY_HOUR_NOT_PERMITTED';
+    const BAD_REQUEST_SCHEDULE_HOURLY_WITHOUT_INTERVAL                              = 'BAD_REQUEST_SCHEDULE_HOURLY_WITHOUT_INTERVAL';
+    const BAD_REQUEST_SCHEDULE_IN_USE                                               = 'BAD_REQUEST_SCHEDULE_IN_USE';
+
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_DISALLOWED_FOR_ACCOUNT                        = 'BAD_REQUEST_VIRTUAL_ACCOUNT_DISALLOWED_FOR_ACCOUNT';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_DISALLOWED_FOR_ORDER                          = 'BAD_REQUEST_VIRTUAL_ACCOUNT_DISALLOWED_FOR_ORDER';
+    const BAD_REQUEST_QR_CODE_DISALLOWED_FOR_ORDER                                  = 'BAD_REQUEST_QR_CODE_DISALLOWED_FOR_ORDER';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_RECEIVER_TYPES                        = 'BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_RECEIVER_TYPES';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_IDENTICAL_DESCRIPTOR                          = 'BAD_REQUEST_VIRTUAL_ACCOUNT_IDENTICAL_DESCRIPTOR';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_DESCRIPTOR_LENGTH                     = 'BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_DESCRIPTOR_LENGTH';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_DESCRIPTOR                            = 'BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_DESCRIPTOR';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_UNAVAILABLE                                   = 'BAD_REQUEST_VIRTUAL_ACCOUNT_UNAVAILABLE';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_OPERATION_IN_PROGRESS                         = 'BAD_REQUEST_VIRTUAL_ACCOUNT_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_RECEIVER_IN_PROGRESS                      = 'BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_RECEIVER_IN_PROGRESS';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_RECEIVER_ALREADY_PRESENT                      = 'BAD_REQUEST_VIRTUAL_ACCOUNT_RECEIVER_ALREADY_PRESENT';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_PAYER_IFSC                            = 'BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_PAYER_IFSC';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_RECEIVER_TYPES_NOT_ALLOWED                    = 'BAD_REQUEST_VIRTUAL_ACCOUNT_RECEIVER_TYPES_NOT_ALLOWED';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_RECEIVER_WITH_ORDER                       = 'BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_RECEIVER_WITH_ORDER';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_IN_PROGRESS                 = 'BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_IN_PROGRESS';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_CLOSED                                        = 'BAD_REQUEST_VIRTUAL_ACCOUNT_CLOSED';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_LIMIT_EXCEEDED              = 'BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_LIMIT_EXCEEDED';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_ALREADY_EXISTS              = 'BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_ALREADY_EXISTS';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_IFSC_REQUIRED               = 'BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_IFSC_REQUIRED';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_INVALID_IFSC                = 'BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_INVALID_IFSC';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_BANK_ACCOUNT_REQUIRED       = 'BAD_REQUEST_VIRTUAL_ACCOUNT_ADD_ALLOWED_PAYER_BANK_ACCOUNT_REQUIRED';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_ALLOWED_PAYER_ID                      = 'BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_ALLOWED_PAYER_ID';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_EXPIRY_DATE                           = 'BAD_REQUEST_VIRTUAL_ACCOUNT_INVALID_EXPIRY_DATE';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_EXPIRY_LESS_THAN_CURRENT_TIME                 = 'BAD_REQUEST_VIRTUAL_ACCOUNT_EXPIRY_LESS_THAN_CURRENT_TIME';
+    const BAD_REQUEST_BANK_TRANSFER_FEE_CALCULATED_GREATER_THAN_PAYMENT_AMOUNT      = 'BAD_REQUEST_BANK_TRANSFER_FEE_CALCULATED_GREATER_THAN_PAYMENT_AMOUNT';
+    const BAD_REQUEST_VIRTUAL_ACCOUNT_FEATURE_NOT_ALLOWED_FOR_MERCHANT              = 'BAD_REQUEST_VIRTUAL_ACCOUNT_FEATURE_NOT_ALLOWED_FOR_MERCHANT';
+
+    const SERVER_ERROR_QR_CODE_GENERATION_FAILURE                                   = 'SERVER_ERROR_QR_CODE_GENERATION_FAILURE';
+
+    const BAD_REQUEST_QR_CODE_REF_ID_GENERATION_FAILURE                             = 'BAD_REQUEST_QR_CODE_REF_ID_GENERATION_FAILURE';
+    const BAD_REQUEST_STATIC_QR_CODE_EXPIRY_FAILURE                                 = 'BAD_REQUEST_STATIC_QR_CODE_EXPIRY_FAILURE';
+    const BAD_REQUEST_CLOSE_STATIC_QR_CODE_FAILURE                                  = 'BAD_REQUEST_CLOSE_STATIC_QR_CODE_FAILURE';
+    const BAD_REQUEST_DYNAMIC_QR_CODE_FIXED_AMOUNT_FAILURE                          = 'BAD_REQUEST_DYNAMIC_QR_CODE_FIXED_AMOUNT_FAILURE';
+
+    const BAD_REQUEST_QR_CODE_CONFIG_NO_PREVIOUS_CONFIG                             = 'BAD_REQUEST_QR_CODE_CONFIG_NO_PREVIOUS_CONFIG';
+    const BAD_REQUEST_QR_CODE_CONFIG_EXPERIMENT_NOT_ENABLED_FOR_MERCHANT            = 'BAD_REQUEST_QR_CODE_CONFIG_EXPERIMENT_NOT_ENABLED_FOR_MERCHANT';
+    const BAD_REQUEST_QR_CODE_CONFIG_INVALID_CUT_OFF_TIME_NON_POSITIVE_CUTOFF       = 'BAD_REQUEST_QR_CODE_CONFIG_INVALID_CUT_OFF_TIME_NON_POSITIVE_CUTOFF';
+    const BAD_REQUEST_QR_CODE_CONFIG_INVALID_CUT_OFF_TIME_TOO_HIGH                  = 'BAD_REQUEST_QR_CODE_CONFIG_INVALID_CUT_OFF_TIME_TOO_HIGH';
+    const BAD_REQUEST_QR_CODE_CONFIG_INVALID_CUT_OFF_TIME_EMPTY                     = 'BAD_REQUEST_QR_CODE_CONFIG_INVALID_CUT_OFF_TIME_EMPTY';
+    const BAD_REQUEST_QR_CODE_CONFIG_INVALID_CUT_OFF_TIME_ALPHA_NUMERIC             = 'BAD_REQUEST_QR_CODE_CONFIG_INVALID_CUT_OFF_TIME_ALPHA_NUMERIC';
+
+
+    //OTC Errors
+    const BAD_REQUEST_ALREADY_PROCESSED                                         = 'BAD_REQUEST_ALREADY_PROCESSED';
+    const BAD_REQUEST_CHALLAN_NOT_FOUND                                     = 'BAD_REQUEST_CHALLAN_NOT_FOUND';
+    const BAD_REQUEST_CHALLAN_EXPIRED                                           = 'BAD_REQUEST_CHALLAN_EXPIRED';
+    const BAD_REQUEST_CLIENT_CODE_NOT_FOUND                                     = 'BAD_REQUEST_CLIENT_CODE_NOT_FOUND';
+    const BAD_REQUEST_IDENTIFICATION_ID_NOT_FOUND                               = 'BAD_REQUEST_IDENTIFICATION_ID_NOT_FOUND';
+    const BAD_REQUEST_MERCHANT_OTC_NOT_ENABLED                                  = 'BAD_REQUEST_MERCHANT_OTC_NOT_ENABLED';
+    const BAD_REQUEST_CHALLAN_DOES_NOT_HAVE_ORDER                               = 'BAD_REQUEST_CHALLAN_DOES_NOT_HAVE_ORDER';
+    const BAD_REQUEST_CLIENT_CODE_CHALLAN_MISMATCH                              = 'BAD_REQUEST_CLIENT_CODE_CHALLAN_MISMATCH';
+
+
+    // Virtual VPA Prefix
+    const BAD_REQUEST_VIRTUAL_VPA_PREFIX_UNAVAILABLE                                = 'BAD_REQUEST_VIRTUAL_VPA_PREFIX_UNAVAILABLE';
+    const BAD_REQUEST_VIRTUAL_VPA_PREFIX_NOT_ALLOWED                                = 'BAD_REQUEST_VIRTUAL_VPA_PREFIX_NOT_ALLOWED';
+
+    const BAD_REQUEST_BUSINESS_INFRINGEMENT_PHRASES                                 = 'BAD_REQUEST_BUSINESS_INFRINGEMENT_PHRASES';
+
+    const BAD_REQUEST_ACCOUNT_CLOSED                                                = 'BAD_REQUEST_ACCOUNT_CLOSED';
+    const BAD_REQUEST_ACCOUNT_HOLDER_EXPIRED                                        = 'BAD_REQUEST_ACCOUNT_HOLDER_EXPIRED';
+    const BAD_REQUEST_ACCOUNT_NUMBER_MISMATCH                                       = 'BAD_REQUEST_ACCOUNT_NUMBER_MISMATCH';
+    const BAD_REQUEST_ACCOUNT_BLOCKED                                               = 'BAD_REQUEST_ACCOUNT_BLOCKED';
+    const BAD_REQUEST_ACCOUNT_DORMANT                                               = 'BAD_REQUEST_ACCOUNT_DORMANT';
+    const BAD_REQUEST_NO_DR_ALLOWED                                                 = 'BAD_REQUEST_NO_DR_ALLOWED';
+    const BAD_REQUEST_TRANSACTION_AMOUT_GREATER_THAN_REGISTERED_AMOUNT              = 'BAD_REQUEST_TRANSACTION_AMOUT_GREATER_THAN_REGISTERED_AMOUNT';
+    const BAD_REQUEST_FREQUENCY_DEBIT_LIMIT_EXCEEDED                                = 'BAD_REQUEST_FREQUENCY_DEBIT_LIMIT_EXCEEDED';
+
+    const BAD_REQUEST_RAZORPAYX_ACCOUNT_NUMBER_IS_INVALID                           = 'BAD_REQUEST_RAZORPAYX_ACCOUNT_NUMBER_IS_INVALID';
+
+    const BAD_REQUEST_CORPORATE_CARD_INVALID_EXPIRY_DATE                            = 'BAD_REQUEST_CORPORATE_CARD_INVALID_EXPIRY_DATE';
+    const BAD_REQUEST_PRICING_ID_REQURED                                            = 'BAD_REQUEST_PRICING_ID_REQURED';
+    const BAD_REQUEST_PRICING_RATE_NOT_DEFINED                                      = 'BAD_REQUEST_PRICING_RATE_NOT_DEFINED';
+    const BAD_REQUEST_PRICING_GATEWAY_REQUIRED                                      = 'BAD_REQUEST_PRICING_GATEWAY_REQUIRED';
+    const BAD_REQUEST_PRICING_RULE_ALREADY_DEFINED                                  = 'BAD_REQUEST_PRICING_RULE_ALREADY_DEFINED';
+    const BAD_REQUEST_PRICING_NOT_DEFINED_FOR_MERCHANT                              = 'BAD_REQUEST_PRICING_NOT_DEFINED_FOR_MERCHANT';
+    const BAD_REQUEST_PRICING_FIELD_NOT_REQUIRED_FOR_NB                             = 'BAD_REQUEST_PRICING_FIELD_NOT_REQUIRED_FOR_NB';
+    const BAD_REQUEST_PRICING_RULE_FOR_AMEX_NOT_PRESENT                             = 'BAD_REQUEST_PRICING_RULE_FOR_AMEX_NOT_PRESENT';
+    const BAD_REQUEST_PRICING_PLAN_WITH_SAME_NAME_EXISTS                            = 'BAD_REQUEST_PRICING_PLAN_WITH_SAME_NAME_EXISTS';
+    const BAD_REQUEST_PRICING_RULE_FOR_AMOUNT_RANGE_OVERLAP                         = 'BAD_REQUEST_PRICING_RULE_FOR_AMOUNT_RANGE_OVERLAP';
+    const BAD_REQUEST_PRICING_PLAN_CANNOT_HAVE_MULTIPLE_TYPES                       = 'BAD_REQUEST_PRICING_PLAN_CANNOT_HAVE_MULTIPLE_TYPES';
+    const BAD_REQUEST_PRICING_RULE_FOR_CARD_NETWORK_NOT_PRESENT                     = 'BAD_REQUEST_PRICING_RULE_FOR_CARD_NETWORK_NOT_PRESENT';
+    const BAD_REQUEST_PRICING_TYPE_COMMISSION_INVALID_FOR_NON_RZP_ORG               = 'BAD_REQUEST_PRICING_TYPE_COMMISSION_INVALID_FOR_NON_RZP_ORG';
+    const BAD_REQUEST_PRICING_TYPE_BUY_PRICING_INVALID_FOR_NON_RZP_ORG              = 'BAD_REQUEST_PRICING_TYPE_BUY_PRICING_INVALID_FOR_NON_RZP_ORG';
+    const BAD_REQUEST_PRICING_RULE_FEE_BEARER_MISMATCH                              = 'BAD_REQUEST_PRICING_RULE_FEE_BEARER_MISMATCH';
+    const BAD_REQUEST_SAME_PRICING_RULE_ALREADY_EXISTS                              = 'BAD_REQUEST_SAME_PRICING_RULE_ALREADY_EXISTS';
+    const BAD_REQUEST_BUY_PRICING_RANGE_VALIDATION_FAILED                           = 'BAD_REQUEST_BUY_PRICING_RANGE_VALIDATION_FAILED';
+
+    const BAD_REQUEST_ANOTHER_PRICING_UPDATE_IN_PROGRESS                            = 'BAD_REQUEST_ANOTHER_PRICING_UPDATE_IN_PROGRESS';
+
+    const BAD_REQUEST_PRODUCT_OFFER_AMOUNT_NOT_SUPPORTED                            = 'BAD_REQUEST_PRODUCT_OFFER_AMOUNT_NOT_SUPPORTED';
+    const BAD_REQUEST_MERCHANT_RECURRING_PAYMENTS_NOT_SUPPORTED                     = 'BAD_REQUEST_MERCHANT_RECURRING_PAYMENTS_NOT_SUPPORTED';
+    const BAD_REQUEST_MERCHANT_ACTIVATION_FORM_NOT_SUBMITTED                        = 'BAD_REQUEST_MERCHANT_ACTIVATION_FORM_NOT_SUBMITTED';
+    const BAD_REQUEST_PARTNER_FORM_UNDER_NEEDS_CLARIFICATION                        = 'BAD_REQUEST_PARTNER_FORM_UNDER_NEEDS_CLARIFICATION';
+    const BAD_REQUEST_MERCHANT_ALREADY_ACTIVATED                                    = 'BAD_REQUEST_MERCHANT_ALREADY_ACTIVATED';
+    const BAD_REQUEST_MERCHANT_NOT_ACTIVATED                                        = 'BAD_REQUEST_MERCHANT_NOT_ACTIVATED';
+    const BAD_REQUEST_MERCHANT_ALREADY_ARCHIVED                                     = 'BAD_REQUEST_MERCHANT_ALREADY_ARCHIVED';
+    const MERCHANT_EMAIL_AND_INPUT_EMAIL_DIFFERENT                                  = 'MERCHANT_EMAIL_AND_INPUT_EMAIL_DIFFERENT';
+    const BAD_REQUEST_MERCHANT_USER_NOT_PRESENT                                     = 'BAD_REQUEST_MERCHANT_USER_NOT_PRESENT';
+    const BAD_REQUEST_MERCHANT_NOT_ARCHIVED                                         = 'BAD_REQUEST_MERCHANT_NOT_ARCHIVED';
+    const BAD_REQUEST_MERCHANT_CANNOT_BE_ARCHIVED                                   = 'BAD_REQUEST_MERCHANT_CANNOT_BE_ARCHIVED';
+    const BAD_REQUEST_MERCHANT_ALREADY_SUSPENDED                                    = 'BAD_REQUEST_MERCHANT_ALREADY_SUSPENDED';
+    const BAD_REQUEST_MERCHANT_NOT_SUSPENDED                                        = 'BAD_REQUEST_MERCHANT_NOT_SUSPENDED';
+    const BAD_REQUEST_MERCHANT_SUSPENDED                                            = 'BAD_REQUEST_MERCHANT_SUSPENDED';
+    const BAD_REQUEST_MERCHANT_ACTION_NOT_SUPPORTED                                 = 'BAD_REQUEST_MERCHANT_ACTION_NOT_SUPPORTED';
+    const BAD_REQUEST_BATCH_ACTION_NOT_SUPPORTED                                    = 'BAD_REQUEST_BATCH_ACTION_NOT_SUPPORTED';
+    const BAD_REQUEST_BATCH_ACTION_ENTITY_NOT_SUPPORTED                             = 'BAD_REQUEST_BATCH_ACTION_ENTITY_NOT_SUPPORTED';
+    const BAD_REQUEST_ACCOUNT_ACTION_NOT_SUPPORTED                                  = 'BAD_REQUEST_ACCOUNT_ACTION_NOT_SUPPORTED';
+    const BAD_REQUEST_ACCOUNT_REGISTRATION_ADDRESS_REQUIRED                         = 'BAD_REQUEST_ACCOUNT_REGISTRATION_ADDRESS_REQUIRED';
+    const BAD_REQUEST_MERCHANT_DETAIL_DOES_NOT_EXISTS                               = 'BAD_REQUEST_MERCHANT_DETAIL_DOES_NOT_EXISTS';
+    const BAD_REQUEST_MERCHANT_DETAIL_CANNOT_BE_UPDATED                             = 'BAD_REQUEST_MERCHANT_DETAIL_CANNOT_BE_UPDATED';
+    const BAD_REQUEST_CANNOT_UPDATE_COMMON_FIELDS                                   = 'BAD_REQUEST_CANNOT_UPDATE_COMMON_FIELDS';
+    const BAD_REQUEST_MERCHANT_NO_TERMINAL_ASSIGNED                                 = 'BAD_REQUEST_MERCHANT_NO_TERMINAL_ASSIGNED';
+    const BAD_REQUEST_MERCHANT_KEY_ALREADY_CREATED                                  = 'BAD_REQUEST_MERCHANT_KEY_ALREADY_CREATED';
+    const BAD_REQUEST_MERCHANT_NOT_ACTIVATED_KEY_CREATE_FAILED                      = 'BAD_REQUEST_MERCHANT_NOT_ACTIVATED_KEY_CREATE_FAILED';
+    const BAD_REQUEST_MERCHANT_NO_KEY_ACCESS                                        = 'BAD_REQUEST_MERCHANT_NO_KEY_ACCESS';
+    const BAD_REQUEST_MERCHANT_ALREADY_LIVE                                         = 'BAD_REQUEST_MERCHANT_ALREADY_LIVE';
+    const BAD_REQUEST_MERCHANT_NOT_LIVE                                             = 'BAD_REQUEST_MERCHANT_NOT_LIVE';
+    const BAD_REQUEST_MERCHANT_NOT_LIVE_ACTION_DENIED                               = 'BAD_REQUEST_MERCHANT_NOT_LIVE_ACTION_DENIED';
+    const BAD_REQUEST_MERCHANT_ALREADY_INTERNATIONAL                                = 'BAD_REQUEST_MERCHANT_ALREADY_INTERNATIONAL';
+    const BAD_REQUEST_MERCHANT_INTERNATIONAL_NOT_ENABLED                            = 'BAD_REQUEST_MERCHANT_INTERNATIONAL_NOT_ENABLED';
+    const BAD_REQUEST_MERCHANT_TERMINAL_EXISTS_FOR_GATEWAY                          = 'BAD_REQUEST_MERCHANT_TERMINAL_EXISTS_FOR_GATEWAY';
+    const BAD_REQUEST_EMI_PLAN_EXIST                                                = 'BAD_REQUEST_EMI_PLAN_EXIST';
+    const BAD_REQUEST_MERCHANT_NO_BANK_ACCOUNT_FOUND                                = 'BAD_REQUEST_MERCHANT_NO_BANK_ACCOUNT_FOUND';
+    const BAD_REQUEST_ORG_NO_BANK_ACCOUNT_FOUND                                     = 'BAD_REQUEST_ORG_NO_BANK_ACCOUNT_FOUND';
+    const BAD_REQUEST_ORG_BANK_ACCOUNT_ALREADY_EXISTS                               = 'BAD_REQUEST_ORG_BANK_ACCOUNT_ALREADY_EXISTS';
+    const BAD_REQUEST_PARTNER_NO_BANK_ACCOUNT_FOUND                                 = 'BAD_REQUEST_PARTNER_NO_BANK_ACCOUNT_FOUND';
+    const BAD_REQUEST_MERCHANT_BANK_ACCOUNT_ALREADY_PROVIDED                        = 'BAD_REQUEST_MERCHANT_BANK_ACCOUNT_ALREADY_PROVIDED';
+    const BAD_REQUEST_MERCHANT_BANK_ACCOUNT_UPDATE_IN_PROGRESS                      = 'BAD_REQUEST_MERCHANT_BANK_ACCOUNT_UPDATE_IN_PROGRESS';
+    const BAD_REQUEST_MERCHANT_BANK_ACCOUNT_UPDATE_LAXMI_VILAS_BANK_PROHIBITED      = 'BAD_REQUEST_MERCHANT_BANK_ACCOUNT_UPDATE_LAXMI_VILAS_BANK_PROHIBITED';
+    const BAD_REQUEST_MERCHANT_LOGO_TOO_BIG                                         = 'BAD_REQUEST_MERCHANT_LOGO_TOO_BIG';
+    const BAD_REQUEST_MERCHANT_LOGO_NOT_SQUARE                                      = 'BAD_REQUEST_MERCHANT_LOGO_NOT_SQUARE';
+    const BAD_REQUEST_MERCHANT_LOGO_NOT_IMAGE                                       = 'BAD_REQUEST_MERCHANT_LOGO_NOT_IMAGE';
+    const BAD_REQUEST_LOGO_NOT_PRESENT                                              = 'BAD_REQUEST_LOGO_NOT_PRESENT';
+    const BAD_REQUEST_MERCHANT_LOGO_TOO_SMALL                                       = 'BAD_REQUEST_MERCHANT_LOGO_TOO_SMALL';
+    const BAD_REQUEST_MERCHANT_INVALID                                              = 'BAD_REQUEST_MERCHANT_INVALID';
+    const BAD_REQUEST_INVALID_SUBCATEGORY                                           = 'BAD_REQUEST_INVALID_SUBCATEGORY';
+    const INVALID_ARGUMENT_INVALID_ACTIVATION_FLOW                                  = 'INVALID_ARGUMENT_INVALID_ACTIVATION_FLOW';
+    const INVALID_NEEDS_CLARIFICATION_VERSION                                       = 'INVALID_NEEDS_CLARIFICATION_VERSION';
+    const BAD_REQUEST_INVALID_VERIFICATION_TYPE                                     = 'BAD_REQUEST_INVALID_VERIFICATION_TYPE';
+    const INVALID_ARGUMENT_INVALID_FILE_HANDLER_SOURCE                              = 'INVALID_ARGUMENT_INVALID_FILE_HANDLER_SOURCE';
+    const UNHANDLED_KYC_PROCESSOR_TYPE                                              = 'UNHANDLED_KYC_PROCESSOR_TYPE';
+    const BAD_REQUEST_GSTIN_SELF_SERVE_IN_PROGRESS                                  = 'BAD_REQUEST_GSTIN_SELF_SERVE_IN_PROGRESS';
+
+    const GATEWAY_ERROR_INCORRECT_MERCHANT_CONFIGURATION                            = 'GATEWAY_ERROR_INCORRECT_MERCHANT_CONFIGURATION';
+    const BAD_REQUEST_MERCHANT_CONTEXT_NOT_SET                                      = 'BAD_REQUEST_MERCHANT_CONTEXT_NOT_SET';
+    const BAD_REQUEST_MERCHANT_WEBSITE_NOT_SET                                      = 'BAD_REQUEST_MERCHANT_WEBSITE_NOT_SET';
+    const BAD_REQUEST_INVALID_WORKFLOW_TYPE                                         = 'BAD_REQUEST_INVALID_WORKFLOW_TYPE';
+    const BAD_REQUEST_INVALID_INTERNATIONAL_STATUS_CHANGE_REQUEST                   = 'BAD_REQUEST_INVALID_INTERNATIONAL_STATUS_CHANGE_REQUEST';
+    const INVALID_ARGUMENT_INVALID_INTERNATIONAL_ACTIVATION_FLOW                    = 'INVALID_ARGUMENT_INVALID_INTERNATIONAL_ACTIVATION_FLOW';
+    const BAD_REQUEST_MERCHANT_INVALID_MCC_CODE                                     = 'BAD_REQUEST_MERCHANT_INVALID_MCC_CODE';
+    const BAD_REQUEST_MERCHANT_ID_NOT_PASSED                                        = 'BAD_REQUEST_MERCHANT_ID_NOT_PASSED';
+    const BAD_REQUEST_INVALID_WORKFLOW_FOR_PAYOUT                                   = 'BAD_REQUEST_INVALID_WORKFLOW_FOR_PAYOUT';
+    const BAD_REQUEST_DUPLICATE_EXTERNAL_ID                                         = 'BAD_REQUEST_DUPLICATE_EXTERNAL_ID';
+    const BAD_REQUEST_INVALID_BANK_ACCOUNT                                          = 'BAD_REQUEST_INVALID_BANK_ACCOUNT';
+    const BAD_REQUEST_VIRTUAL_BANK_ACCOUNT                                          = 'BAD_REQUEST_VIRTUAL_BANK_ACCOUNT';
+
+    // Features
+    const BAD_REQUEST_MERCHANT_UNEDITABLE_FEATURE                                   = 'BAD_REQUEST_MERCHANT_UNEDITABLE_FEATURE';
+    const BAD_REQUEST_MERCHANT_FEATURE_UNEDITABLE_IN_LIVE                           = 'BAD_REQUEST_MERCHANT_FEATURE_UNEDITABLE_IN_LIVE';
+    const BAD_REQUEST_MERCHANT_FEATURE_ALREADY_ASSIGNED                             = 'BAD_REQUEST_MERCHANT_FEATURE_ALREADY_ASSIGNED';
+    const BAD_REQUEST_MERCHANT_FEATURE_NOT_EXIST                                    = 'BAD_REQUEST_MERCHANT_FEATURE_NOT_EXIST';
+    const BAD_REQUEST_MERCHANT_FEATURE_ONBOARDING_STATUS_INVALID                    = 'BAD_REQUEST_MERCHANT_FEATURE_ONBOARDING_STATUS_INVALID';
+    const BAD_REQUEST_MERCHANT_FEATURE_ACTIVATION_FORM_ALREADY_SUBMITTED            = 'BAD_REQUEST_MERCHANT_FEATURE_ACTIVATION_FORM_ALREADY_SUBMITTED';
+
+    const BAD_REQUEST_MERCHANT_FEATURE_UNAVAILABLE                                  = 'BAD_REQUEST_MERCHANT_FEATURE_UNAVAILABLE';
+
+    const BAD_REQUEST_MERCHANT_DETAIL_ALREADY_LOCKED                                = 'BAD_REQUEST_MERCHANT_DETAIL_ALREADY_LOCKED';
+    const BAD_REQUEST_STAKEHOLDER_ALREADY_EXISTS                                    = 'BAD_REQUEST_STAKEHOLDER_ALREADY_EXISTS';
+    const BAD_REQUEST_MERCHANT_DETAIL_FILE_TYPE                                     = 'BAD_REQUEST_MERCHANT_DETAIL_FILE_TYPE';
+    const BAD_REQUEST_MERCHANT_BUSINESS_NAME_REQUIRED                               = 'BAD_REQUEST_MERCHANT_BUSINESS_NAME_REQUIRED';
+    const BAD_REQUEST_MERCHANT_PAN_NAME_REQUIRED                                    = 'BAD_REQUEST_MERCHANT_PAN_NAME_REQUIRED';
+    const BAD_REQUEST_MERCHANT_EXTRA_FIELDS_PRESENT_IN_INPUT                        = 'BAD_REQUEST_MERCHANT_EXTRA_FIELDS_PRESENT_IN_INPUT';
+    const BAD_REQUEST_UNREGISTERED_NOT_SUPPORTED                                    = 'BAD_REQUEST_UNREGISTERED_NOT_SUPPORTED';
+    const BAD_REQUEST_UNSUPPORTED_BUSINESS_CATEGORY                                 = 'BAD_REQUEST_UNSUPPORTED_BUSINESS_CATEGORY';
+    const BAD_REQUEST_MERCHANT_HANDLE_UPPERCASE_ONLY                                = 'BAD_REQUEST_MERCHANT_HANDLE_UPPERCASE_ONLY';
+    const BAD_REQUEST_MERCHANT_UNARCHIVE_BEFORE_ACTIVATION                          = 'BAD_REQUEST_MERCHANT_UNARCHIVE_BEFORE_ACTIVATION';
+    const BAD_REQUEST_CANNOT_ADD_SUBMERCHANT                                        = 'BAD_REQUEST_CANNOT_ADD_SUBMERCHANT';
+    const BAD_REQUEST_MERCHANT_ID_DOES_NOT_EXIST                                    = 'BAD_REQUEST_MERCHANT_ID_DOES_NOT_EXIST';
+    const BAD_REQUEST_PARTNER_ID_DOES_NOT_EXIST                                     = 'BAD_REQUEST_PARTNER_ID_DOES_NOT_EXIST';
+    const BAD_REQUEST_SUBMERCHANT_WITHOUT_EMAIL_NOT_ALLOWED                         = 'BAD_REQUEST_SUBMERCHANT_WITHOUT_EMAIL_NOT_ALLOWED';
+    const BAD_REQUEST_ACCOUNT_CODE_NOT_ENABLED                                      = 'BAD_REQUEST_ACCOUNT_CODE_NOT_ENABLED';
+    const BAD_REQUEST_ACCOUNT_CODE_ALREADY_USED                                     = 'BAD_REQUEST_ACCOUNT_CODE_ALREADY_USED';
+    const BAD_REQUEST_INVALID_ACCOUNT_CODE                                          = 'BAD_REQUEST_INVALID_ACCOUNT_CODE';
+    const BAD_REQUEST_OPERATION_NOT_ALLOWED_FOR_TEST_ACCOUNT                        = 'BAD_REQUEST_OPERATION_NOT_ALLOWED_FOR_TEST_ACCOUNT';
+    const BAD_REQUEST_ACTION_NOT_ALLOWED_FOR_SELF_USER                              = 'BAD_REQUEST_ACTION_NOT_ALLOWED_FOR_SELF_USER';
+    const BAD_REQUEST_USER_DOES_NOT_BELONG_TO_MERCHANT                              = 'BAD_REQUEST_USER_DOES_NOT_BELONG_TO_MERCHANT';
+    const BAD_REQUEST_ACTION_NOT_ALLOWED_FOR_OWNER_ROLE                             = 'BAD_REQUEST_ACTION_NOT_ALLOWED_FOR_OWNER_ROLE';
+    const BAD_REQUEST_PARTNER_OWNER_NOT_PRESENT_FOR_USER                            = 'BAD_REQUEST_PARTNER_OWNER_NOT_PRESENT_FOR_USER';
+    const BAD_REQUEST_SHARED_TERMINAL_CANNOT_BE_COPIED                              = 'BAD_REQUEST_SHARED_TERMINAL_CANNOT_BE_COPIED';
+    const BAD_REQUEST_SHARED_TERMINAL_MERCHANT_CANNOT_BE_CHANGED                    = 'BAD_REQUEST_SHARED_TERMINAL_MERCHANT_CANNOT_BE_CHANGED';
+    const BAD_REQUEST_TERMINAL_NO_GATEWAY_MAPPING_FOR_DIRECTSETTLEMENT              = 'BAD_REQUEST_TERMINAL_NO_GATEWAY_MAPPING_FOR_DIRECTSETTLEMENT';
+    const BAD_REQUEST_PLAN_ID_IS_NOT_REQUIRED                                       = 'BAD_REQUEST_PLAN_ID_IS_NOT_REQUIRED';
+    const BAD_REQUEST_MULTIPLE_PLAN_NAME_ON_SAME_GATEWAY_MERCHANT_ID                = 'BAD_REQUEST_MULTIPLE_PLAN_NAME_ON_SAME_GATEWAY_MERCHANT_ID';
+    const BAD_REQUEST_BUY_PRICING_PLAN_WITH_NAME_DOES_NOT_EXIST                     = 'BAD_REQUEST_BUY_PRICING_PLAN_WITH_NAME_DOES_NOT_EXIST';
+    const BAD_REQUEST_SUB_MERCHANT_ALREADY_ASSIGNED_TO_TERMINAL                     = 'BAD_REQUEST_SUB_MERCHANT_ALREADY_ASSIGNED_TO_TERMINAL';
+    const BAD_REQUEST_SUB_MERCHANT_EMAIL_SAME_AS_PARENT_EMAIL                       = 'BAD_REQUEST_SUB_MERCHANT_EMAIL_SAME_AS_PARENT_EMAIL';
+    const BAD_REQUEST_UNSUPPORTED_BUSINESS_SUBCATEGORY                              = 'BAD_REQUEST_UNSUPPORTED_BUSINESS_SUBCATEGORY';
+    const BAD_REQUEST_TERMINAL_ONBOARDING_DISABLED                                  = 'BAD_REQUEST_TERMINAL_ONBOARDING_DISABLED';
+    const BAD_REQUEST_ONLY_DEACTIVATED_TERMINALS_CAN_BE_ENABLED                     = 'BAD_REQUEST_ONLY_DEACTIVATED_TERMINALS_CAN_BE_ENABLED';
+    const BAD_REQUEST_ACTIVATED_OR_DEACTIVATED_TERMINAL_CAN_BE_BULK_ENABLED         = 'BAD_REQUEST_ACTIVATED_OR_DEACTIVATED_TERMINAL_CAN_BE_BULK_ENABLED';
+    const BAD_REQUEST_ONLY_50_TERMINALS_ENABLED_IN_BULK                             = 'BAD_REQUEST_ONLY_50_TERMINALS_ENABLED_IN_BULK';
+    const BAD_REQUEST_ONLY_PENDING_OR_ACTIVATED_TERMINALS_CAN_BE_DISABLED           = 'BAD_REQUEST_ONLY_PENDING_OR_ACTIVATED_TERMINALS_CAN_BE_DISABLED';
+    const BAD_REQUEST_TERMINAL_STATUS_SHOULD_BE_ACTIVATED_OR_PENDING_TO_ENABLE      = 'BAD_REQUEST_TERMINAL_STATUS_SHOULD_BE_ACTIVATED_OR_PENDING_TO_ENABLE';
+    const BAD_REQUEST_TERMINAL_ONBOARDING_ALREADY_REQUESTED                         = 'BAD_REQUEST_TERMINAL_ONBOARDING_ALREADY_REQUESTED';
+    const BAD_REQUEST_MCC_IS_BARRED                                                 = 'BAD_REQUEST_MCC_IS_BARRED';
+    const BAD_REQUEST_PAYPAL_ONBOARDING_NOT_ALLOWED                                 = 'BAD_REQUEST_PAYPAL_ONBOARDING_NOT_ALLOWED';
+    const BAD_REQUEST_MERCHANT_EMAIL_DOES_NOT_EXIST                                 = 'BAD_REQUEST_MERCHANT_EMAIL_DOES_NOT_EXIST';
+    const BAD_REQUEST_INVALID_MPAN                                                  = 'BAD_REQUEST_INVALID_MPAN';
+    const BAD_REQUEST_INVALID_MPAN_FOR_NETWORK                                      = 'BAD_REQUEST_INVALID_MPAN_FOR_NETWORK';
+    const BAD_REQUEST_CREATED_TERMINAL_CANNOT_BE_BULK_UPDATED                       = 'BAD_REQUEST_CREATED_TERMINAL_CANNOT_BE_BULK_UPDATED';
+    const BAD_REQUEST_MERCHANT_REFERRAL_DOES_NOT_EXIST                              = 'BAD_REQUEST_MERCHANT_REFERRAL_DOES_NOT_EXIST';
+    const BAD_REQUEST_PARTNER_MERCHANT_MAPPING_NOT_FOUND                            = 'BAD_REQUEST_PARTNER_MERCHANT_MAPPING_NOT_FOUND';
+    const BAD_REQUEST_SUBM_NO_DOC_ONBOARDING_NOT_ENABLED_FOR_PARTNER                = 'BAD_REQUEST_SUBM_NO_DOC_ONBOARDING_NOT_ENABLED_FOR_PARTNER';
+    const BAD_REQUEST_PARTNER_REFERRAL_DOES_NOT_EXIST                               = 'BAD_REQUEST_PARTNER_REFERRAL_DOES_NOT_EXIST';
+    const BAD_REQUEST_AUTHZ_ROLES_NOT_FOUND                                         = 'BAD_REQUEST_AUTHZ_ROLES_NOT_FOUND';
+
+    //Partner activation error codes
+    const BAD_REQUEST_PARTNER_ACTIVATION_OPERATION_IN_PROGRESS                      = 'BAD_REQUEST_PARTNER_ACTIVATION_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_PARTNER_ACTIVATION_ALREADY_LOCKED                             = 'BAD_REQUEST_PARTNER_ACTIVATION_ALREADY_LOCKED';
+    const BAD_REQUEST_PARTNER_ACTION_NOT_SUPPORTED                                  = 'BAD_REQUEST_PARTNER_ACTION_NOT_SUPPORTED';
+    const BAD_REQUEST_PARTNER_COMMISSIONS_ALREADY_ON_HOLD                           = 'BAD_REQUEST_PARTNER_COMMISSIONS_ALREADY_ON_HOLD';
+    const BAD_REQUEST_PARTNER_COMMISSIONS_ALREADY_RELEASED                          = 'BAD_REQUEST_PARTNER_COMMISSIONS_ALREADY_RELEASED';
+    const BAD_REQUEST_PARTNER_IS_NOT_ACTIVATED                                      = 'BAD_REQUEST_PARTNER_IS_NOT_ACTIVATED';
+    const BAD_REQUEST_PARTNER_ADD_MINIMUM_SUBM                                      = 'BAD_REQUEST_PARTNER_ADD_MINIMUM_SUBM';
+    const BAD_REQUEST_MERCHANT_FORM_UNDER_NEEDS_CLARIFICATION                       = 'BAD_REQUEST_MERCHANT_FORM_UNDER_NEEDS_CLARIFICATION';
+    const BAD_REQUEST_GATEWAY_TERMINAL_MAX_LIMIT_REACHED                            = 'BAD_REQUEST_GATEWAY_TERMINAL_MAX_LIMIT_REACHED';
+    const BAD_REQUEST_TERMINAL_WITH_SAME_FIELD_ALREADY_EXISTS                       = 'BAD_REQUEST_TERMINAL_WITH_SAME_FIELD_ALREADY_EXISTS';
+    const BAD_REQUEST_TERMINALS_SERVICE_DUPLICATE_TERMINAL_EXISTS                   = 'BAD_REQUEST_TERMINALS_SERVICE_DUPLICATE_TERMINAL_EXISTS';
+    const BAD_REQUEST_GATEWAY_CANNOT_TOPUP                                          = 'BAD_REQUEST_GATEWAY_CANNOT_TOPUP';
+
+    const BAD_REQUEST_GATEWAY_FILE_ANOTHER_OPERATION_IN_PROGRESS                    = 'BAD_REQUEST_GATEWAY_FILE_ANOTHER_OPERATION_IN_PROGRESS';
+
+
+    const BAD_REQUEST_KEY_EXPIRED                                                   = 'BAD_REQUEST_KEY_EXPIRED';
+    const BAD_REQUEST_KEY_EXPIRING_SOON                                             = 'BAD_REQUEST_KEY_EXPIRING_SOON';
+    const BAD_REQUEST_KEY_OF_DEMO_ACCOUNT                                           = 'BAD_REQUEST_KEY_OF_DEMO_ACCOUNT';
+
+    const BAD_REQUEST_PAYMENT_VERIFICATION_FAILED                                   = 'BAD_REQUEST_PAYMENT_VERIFICATION_FAILED';
+    const BAD_REQUEST_PAYMENT_NOT_FOUND                                             = 'BAD_REQUEST_PAYMENT_NOT_FOUND';
+
+    const BAD_REQUEST_INVALID_CHECKOUT_ID                                           = 'BAD_REQUEST_INVALID_CHECKOUT_ID';
+    const BAD_REQUEST_INVALID_PLATFORM                                              = 'BAD_REQUEST_INVALID_PLATFORM';
+    const BAD_REQUEST_INVALID_LIBRARY                                               = 'BAD_REQUEST_INVALID_LIBRARY';
+    const BAD_REQUEST_INVALID_BROWSER                                               = 'BAD_REQUEST_INVALID_BROWSER';
+    const BAD_REQUEST_INVALID_OS                                                    = 'BAD_REQUEST_INVALID_OS';
+    const BAD_REQUEST_INVALID_DEVICE                                                = 'BAD_REQUEST_INVALID_DEVICE';
+    const BAD_REQUEST_INVALID_INTEGRATION                                           = 'BAD_REQUEST_INVALID_INTEGRATION';
+
+    const BAD_REQUEST_REPORTING_INTEGRATION                                         = 'BAD_REQUEST_REPORTING_INTEGRATION';
+    const BAD_REQUEST_REPORTING_OTHER_ORG_INVALID_REQUEST                           = 'BAD_REQUEST_REPORTING_OTHER_ORG_INVALID_REQUEST';
+    const BAD_REQUEST_REPORTING_ADMIN_NOT_ALLOWED_MERCHANT_REPORTS                  = 'BAD_REQUEST_REPORTING_ADMIN_NOT_ALLOWED_MERCHANT_REPORTS';
+    const BAD_REQUEST_UFH_INTEGRATION                                               = 'BAD_REQUEST_UFH_INTEGRATION';
+    const BAD_REQUEST_CAPITAL_INTEGRATION                                           = 'BAD_REQUEST_CAPITAL_INTEGRATION';
+    const BAD_REQUEST_KYC_INTEGRATION                                               = 'BAD_REQUEST_KYC_INTEGRATION';
+    const BAD_REQUEST_INVALID_STATUS_CODE                                           = 'BAD_REQUEST_INVALID_STATUS_CODE';
+    const BAD_REQUEST_KYC_ID_MISSING                                                = 'BAD_REQUEST_KYC_ID_MISSING';
+    const BAD_REQUEST_INVALID_RESPONSE_BODY                                         = 'BAD_REQUEST_INVALID_RESPONSE_BODY';
+
+    // Partner Kyc Access
+    const BAD_REQUEST_KYC_ACCESS_ALREADY_APPROVED                                   = 'BAD_REQUEST_KYC_ACCESS_ALREADY_APPROVED';
+    const BAD_REQUEST_KYC_ACCESS_ALREADY_REJECTED                                   = 'BAD_REQUEST_KYC_ACCESS_ALREADY_REJECTED';
+
+    //
+    // BVS
+    //
+    const BAD_REQUEST_PENNY_TESTING_ATTEMPTS_EXHAUSTED                              = 'BAD_REQUEST_PENNY_TESTING_ATTEMPTS_EXHAUSTED';
+    const VENDOR_CONNECTION_ERROR                                                   = 'VENDOR_CONNECTION_ERROR';
+    const BAD_REQUEST_COMPANY_SEARCH_RETRIES_EXHAUSTED                              = 'BAD_REQUEST_COMPANY_SEARCH_RETRIES_EXHAUSTED';
+    const SERVER_ERROR_VALIDATION_ID_MISSING                                        = 'SERVER_ERROR_VALIDATION_ID_MISSING';
+    const SERVER_ERROR_VALIDATION_STATUS_MISSING                                    = 'SERVER_ERROR_VALIDATION_STATUS_MISSING';
+    const SERVER_ERROR_UNHANDLED_ARTEFACT_TYPE                                      = 'SERVER_ERROR_UNHANDLED_ARTEFACT_TYPE';
+    const SERVER_ERROR_UNHANDLED_ARTEFACT_VALIDATION_STATUS                         = 'SERVER_ERROR_UNHANDLED_ARTEFACT_VALIDATION_STATUS';
+    const SERVER_ERROR_BVS_CONFIG_FILE_MISSING_FOR_ARTEFACT_TYPE                    = 'SERVER_ERROR_BVS_CONFIG_FILE_MISSING_FOR_ARTEFACT_TYPE';
+
+    const SERVER_ERROR_JSON_ENCODE_FALSE                                            = 'SERVER_ERROR_JSON_ENCODE_FALSE';
+    const SERVER_ERROR_IDEM_KEY_ROUTE_ENTITY_MAPPING_ABSENT                         = 'SERVER_ERROR_IDEM_KEY_ROUTE_ENTITY_MAPPING_ABSENT';
+    const SERVER_ERROR_PAYOUT_SERVICE_IDEM_KEY_SOURCE_UNMAPPED                      = 'SERVER_ERROR_PAYOUT_SERVICE_IDEM_KEY_SOURCE_UNMAPPED';
+    const SERVER_ERROR_PAYOUT_SERVICE_IDEM_KEY_SOURCE_NOT_FOUND                     = 'SERVER_ERROR_PAYOUT_SERVICE_IDEM_KEY_SOURCE_NOT_FOUND';
+    const SERVER_ERROR_BANKING_ACCOUNT_GATEWAY_PROCESSOR_CLASS_ABSENCE              = 'SERVER_ERROR_BANKING_ACCOUNT_GATEWAY_PROCESSOR_CLASS_ABSENCE';
+    const SERVER_ERROR_GATEWAY_BATCH_PROCESSOR_CLASS_ABSENCE                        = 'SERVER_ERROR_GATEWAY_BATCH_PROCESSOR_CLASS_ABSENCE';
+    const SERVER_ERROR_LOCKED_BALANCE_SET_FOR_NON_BANKING                           = 'SERVER_ERROR_LOCKED_BALANCE_SET_FOR_NON_BANKING';
+    const SERVER_ERROR_INCORRECT_ENTITY_DELETE                                      = 'SERVER_ERROR_INCORRECT_ENTITY_DELETE';
+    const SERVER_ERROR_NO_TERMINAL_FOUND                                            = 'SERVER_ERROR_NO_TERMINAL_FOUND';
+    const SERVER_ERROR_MOZART_PARALLELIZER_ERROR                                    = 'SERVER_ERROR_MOZART_PARALLELIZER_ERROR';
+    const SERVER_ERROR_GATEWAY_NOT_SET                                              = 'SERVER_ERROR_GATEWAY_NOT_SET';
+    const SERVER_ERROR_GATEWAY_FIELD_MISMATCH                                       = 'SERVER_ERROR_GATEWAY_FIELD_MISMATCH';
+    const SERVER_ERROR_INVALID_ARGUMENT                                             = 'SERVER_ERROR_INVALID_ARGUMENT';
+    const SERVER_ERROR_DB_QUERY_FAILED                                              = 'SERVER_ERROR_DB_QUERY_FAILED';
+    const SERVER_ERROR_LOGICAL_ERROR                                                = 'SERVER_ERROR_LOGICAL_ERROR';
+    const SERVER_ERROR_AMOUNT_TAMPERED                                              = 'SERVER_ERROR_AMOUNT_TAMPERED';
+    const SERVER_ERROR_INTEGRATION_ERROR                                            = 'SERVER_ERROR_INTEGRATION_ERROR';
+    const SERVER_ERROR_SETTLEMENTS_FAILED                                           = 'SERVER_ERROR_SETTLEMENTS_FAILED';
+    const SERVER_ERROR_RUNTIME_ERROR                                                = 'SERVER_ERROR_RUNTIME_ERROR';
+    const SERVER_ERROR_ASSERTION_ERROR                                              = 'SERVER_ERROR_ASSERTION_ERROR';
+    const SERVER_ERROR_PAYMENT_ABORTED                                              = 'SERVER_ERROR_PAYMENT_ABORTED';
+    const SERVER_ERROR_TO_STRING_EXCEPTION                                          = 'SERVER_ERROR_TO_STRING_EXCEPTION';
+    const SERVER_ERROR_MYSQL_ENTRY_NOT_FOUND                                        = 'SERVER_ERROR_MYSQL_ENTRY_NOT_FOUND';
+    const SERVER_ERROR_PAYOUT_INCORRECTLY_MARKED_AS_REVERSED                        = 'SERVER_ERROR_PAYOUT_INCORRECTLY_MARKED_AS_REVERSED';
+    const SERVER_ERROR_PAYOUT_TXN_MISSING_FOR_REVERSAL_TXN                          = 'SERVER_ERROR_PAYOUT_TXN_MISSING_FOR_REVERSAL_TXN';
+    const SERVER_ERROR_AWS_FAILURE                                                  = 'SERVER_ERROR_AWS_FAILURE';
+    const SERVER_ERROR_PRICING_RULE_ABSENT                                          = 'SERVER_ERROR_PRICING_RULE_ABSENT';
+    const SERVER_ERROR_MISSING_HANDLER                                              = 'SERVER_ERROR_MISSING_HANDLER';
+    const SERVER_ERROR_CARD_NUMBER_LOGGED                                           = 'SERVER_ERROR_CARD_NUMBER_LOGGED';
+    const SERVER_ERROR_INVOICE_ID_EMPTY                                             = 'SERVER_ERROR_INVOICE_ID_EMPTY';
+    const SERVER_ERROR_INVALID_DURATION                                             = 'SERVER_ERROR_INVALID_DURATION';
+    const SERVER_ERROR_MULTIPLE_REFUNDS_FOUND                                       = 'SERVER_ERROR_MULTIPLE_REFUNDS_FOUND';
+    const SERVER_ERROR_GATEWAY_NOT_REFUNDED                                         = 'SERVER_ERROR_GATEWAY_NOT_REFUNDED';
+    const SERVER_ERROR_INCORRECT_NUMBER_OF_INVOICES_FOUND                           = 'SERVER_ERROR_INCORRECT_NUMBER_OF_INVOICES_FOUND';
+    const SERVER_ERROR_REDIS_EXCEPTION                                              = 'SERVER_ERROR_REDIS_EXCEPTION';
+    const SERVER_ERROR_SUBSCRIPTION_PAYMENT_NOT_CAPTURED                            = 'SERVER_ERROR_SUBSCRIPTION_PAYMENT_NOT_CAPTURED';
+    const SERVER_ERROR_APP_TOKEN_NOT_PRESENT                                        = 'SERVER_ERROR_APP_TOKEN_NOT_PRESENT';
+    const SERVER_ERROR_MULTIPLE_SUCCESS_TRANSACTIONS_IN_VERIFY                      = 'SERVER_ERROR_MULTIPLE_SUCCESS_TRANSACTIONS_IN_VERIFY';
+    const SERVER_ERROR_GATEWAY_TOKENS_INVALID_COUNT                                 = 'SERVER_ERROR_GATEWAY_TOKENS_INVALID_COUNT';
+    const SERVER_ERROR_PERIOD_NOT_UNANCHORED                                        = 'SERVER_ERROR_PERIOD_NOT_UNANCHORED';
+    const SERVER_ERROR_PERIOD_NOT_ANCHORED                                          = 'SERVER_ERROR_PERIOD_NOT_ANCHORED';
+    const SERVER_ERROR_LOG_RISK                                                     = 'SERVER_ERROR_LOG_RISK';
+    const SERVER_ERROR_INVALID_RESPONSE                                             = 'SERVER_ERROR_INVALID_RESPONSE';
+    const SERVER_ERROR_TOKEN_INVALID_RECURRING_STATUS                               = 'SERVER_ERROR_TOKEN_INVALID_RECURRING_STATUS';
+    const SERVER_ERROR_ES_OPERATION_ERRORED                                         = 'SERVER_ERROR_ES_OPERATION_ERRORED';
+    const SERVER_ERROR_SUBSCRIPTION_NOT_PENDING                                     = 'SERVER_ERROR_SUBSCRIPTION_NOT_PENDING';
+    const SERVER_ERROR_TOO_MANY_SUBSCRIPTION_INVOICES_FOUND                         = 'SERVER_ERROR_TOO_MANY_SUBSCRIPTION_INVOICES_FOUND';
+    const SERVER_ERROR_SUBSCRIPTION_INVOICE_BAD_STATUS                              = 'SERVER_ERROR_SUBSCRIPTION_INVOICE_BAD_STATUS';
+    const SERVER_ERROR_SUBSCRIPTION_WRONG_STATUS_UPDATE                             = 'SERVER_ERROR_SUBSCRIPTION_WRONG_STATUS_UPDATE';
+    const SERVER_ERROR_SUBSCRIPTION_WRONG_STATUS_UPDATED_FROM                       = 'SERVER_ERROR_SUBSCRIPTION_WRONG_STATUS_UPDATED_FROM';
+    const SERVER_ERROR_SUBSCRIPTION_INVOICE_COUNT_MISMATCH_TOTAL_COUNT              = 'SERVER_ERROR_SUBSCRIPTION_INVOICE_COUNT_MISMATCH_TOTAL_COUNT';
+    const SERVER_ERROR_INVALID_AUTH                                                 = 'SERVER_ERROR_INVALID_AUTH';
+    const SERVER_ERROR_INVALID_FUNCTION_CALL                                        = 'SERVER_ERROR_INVALID_FUNCTION_CALL';
+    const SERVER_ERROR_TOKEN_ABSENT_RECURRING_PAYMENT                               = 'SERVER_ERROR_TOKEN_ABSENT_RECURRING_PAYMENT';
+    const SERVER_ERROR_FTA_MODE_SENT_FOR_VPA                                        = 'SERVER_ERROR_FTA_MODE_SENT_FOR_VPA';
+    const SERVER_ERROR_CARD_TYPE_NOT_SUPPORTED                                      = 'SERVER_ERROR_CARD_TYPE_NOT_SUPPORTED';
+    const SERVER_ERROR_INTENT_TPV_NOT_SUPPORTED                                     = 'SERVER_ERROR_INTENT_TPV_NOT_SUPPORTED';
+
+    const SERVER_ERROR_GATEWAY_FILE_NO_DATA_FOUND                                   = 'SERVER_ERROR_GATEWAY_FILE_NO_DATA_FOUND';
+    const SERVER_ERROR_GATEWAY_FILE_ERROR_GENERATING_DATA                           = 'SERVER_ERROR_GATEWAY_FILE_ERROR_GENERATING_DATA';
+    const SERVER_ERROR_GATEWAY_FILE_ERROR_GENERATING_FILE                           = 'SERVER_ERROR_GATEWAY_FILE_ERROR_GENERATING_FILE';
+    const SERVER_ERROR_GATEWAY_FILE_ERROR_SENDING_FILE                              = 'SERVER_ERROR_GATEWAY_FILE_ERROR_SENDING_FILE';
+    const SERVER_ERROR_GATEWAY_FILE_CLAIMS_LESSER_THAN_REFUNDS                      = 'SERVER_ERROR_GATEWAY_FILE_CLAIMS_LESSER_THAN_REFUNDS';
+    const SERVER_ERROR_FEE_BREAKUP_CREATION_FAILED                                  = 'SERVER_ERROR_FEE_BREAKUP_CREATION_FAILED';
+    const SERVER_ERROR_GATEWAY_FILE_ERROR_FETCHING_FROM_SCROOGE                     = 'SERVER_ERROR_GATEWAY_FILE_ERROR_FETCHING_FROM_SCROOGE';
+    const SERVER_ERROR_GATEWAY_FILE_LOGICAL_ERROR_REFUNDS_OUT_OF_RANGE              = 'SERVER_ERROR_GATEWAY_FILE_LOGICAL_ERROR_REFUNDS_OUT_OF_RANGE';
+
+    const SERVER_ERROR_AUTH_SERVICE_FAILURE                                         = 'SERVER_ERROR_AUTH_SERVICE_FAILURE';
+    const SERVER_ERROR_WEBHOOK_IN_TRANSACTION                                       = 'SERVER_ERROR_WEBHOOK_IN_TRANSACTION';
+    const SERVER_ERROR_SIGNED_XML_EMPTY                                             = 'SERVER_ERROR_SIGNED_XML_EMPTY';
+
+    const SERVER_ERROR_RAZORX_FAILURE                                               = 'SERVER_ERROR_RAZORX_FAILURE';
+
+    const SERVER_ERROR_SPLITZ_FAILURE                                               = 'SERVER_ERROR_SPLITZ_FAILURE';
+    const SERVER_ERROR_GROWTH_FAILURE                                               = 'SERVER_ERROR_GROWTH_FAILURE';
+    const SERVER_ERROR_SPLITZ_BULK_FAILURE                                          = 'SERVER_ERROR_SPLITZ_BULK_FAILURE';
+    const SERVER_ERROR_PARTNERSHIPS_FAILURE                                         = 'SERVER_ERROR_PARTNERSHIPS_FAILURE';
+
+    const SERVER_ERROR_SLAVE_LAG_THRESHOLD_BREACHED                                 = 'SERVER_ERROR_SLAVE_LAG_THRESHOLD_BREACHED';
+
+    const SERVER_ERROR_UFH_SERVICE_FAILURE                                          = 'SERVER_ERROR_UFH_SERVICE_FAILURE';
+    const SERVER_ERROR_UFH_DELETE_SERVICE_FAILURE                                   = 'SERVER_ERROR_UFH_DELETE_SERVICE_FAILURE';
+    const SERVER_ERROR_UFH_FETCH_SERVICE_FAILURE                                    = 'SERVER_ERROR_UFH_FETCH_SERVICE_FAILURE';
+
+    const SERVER_ERROR_HARVESTER_INVALID_RESPONSE                                   = 'SERVER_ERROR_HARVESTER_INVALID_RESPONSE';
+    const SERVER_ERROR_DUPLICATE_SESSION_ID                                         = 'SERVER_ERROR_DUPLICATE_SESSION_ID';
+
+    const SERVER_ERROR_INVALID_ATTEMPT_ID                                           = 'SERVER_ERROR_INVALID_ATTEMPT_ID';
+    const SERVER_ERROR_INVOICE_PDF_GENERATION_FAILED                                = 'SERVER_ERROR_INVOICE_PDF_GENERATION_FAILED';
+
+    const SERVER_ERROR_HASH_MISMATCH                                                = 'SERVER_ERROR_HASH_MISMATCH';
+    // Requests from api service to stork failed unexpectedly.
+    const SERVER_ERROR_STORK_FAILURE                                                = 'SERVER_ERROR_STORK_FAILURE';
+    // Requests from api service to raven failed unexpectedly.
+    const SERVER_ERROR_RAVEN_FAILURE                                                = 'SERVER_ERROR_RAVEN_FAILURE';
+
+    // Templating Service Error Codes
+    const SERVER_ERROR_TEMPLATING_REQUEST_FAILURE                                   = 'SERVER_ERROR_TEMPLATING_REQUEST_FAILURE';
+    const SERVER_ERROR_IN_TEMPLATING_RESPONSE                                       = 'SERVER_ERROR_IN_TEMPLATING_RESPONSE';
+    const BAD_REQUEST_ERROR_IN_TEMPLATING_RESPONSE                                  = 'BAD_REQUEST_ERROR_IN_TEMPLATING_RESPONSE';
+    const BAD_REQUEST_UNAUTHORIZED_NAMESPACE_ACCESS_IN_TEMPLATING_RESPONSE          = 'BAD_REQUEST_UNAUTHORIZED_NAMESPACE_ACCESS_IN_TEMPLATING_RESPONSE';
+    const BAD_REQUEST_ENTITY_ALREADY_EXISTS                                         = 'BAD_REQUEST_ENTITY_ALREADY_EXISTS';
+
+    const SERVER_ERROR_SLACK_APP_REQUEST_FAILURE                                    = 'SERVER_ERROR_SLACK_APP_REQUEST_FAILURE';
+
+    const SERVER_ERROR_MERCHANT_RISKS_FAILURE                                       = 'SERVER_ERROR_MERCHANT_RISKS_FAILURE';
+    const SERVER_ERROR_MERCHANT_RISK_ALERTS_FAILURE                                 = 'SERVER_ERROR_MERCHANT_RISK_ALERTS_FAILURE';
+    const BAD_REQUEST_STORK_WEBHOOK_NOT_FOUND                                       = 'BAD_REQUEST_STORK_WEBHOOK_NOT_FOUND';
+    const BAD_REQUEST_STORK_WEBHOOK_ALREADY_CREATED                                 = 'BAD_REQUEST_STORK_WEBHOOK_ALREADY_CREATED';
+    const BAD_REQUEST_WEBHOOK_VALIDATION_FAILED                                     = 'BAD_REQUEST_WEBHOOK_VALIDATION_FAILED';
+
+    const SERVER_ERROR_BATCH_SERVICE_UPLOAD_FAILURE                                 = 'SERVER_ERROR_BATCH_SERVICE_UPLOAD_FAILURE';
+    const SERVER_ERROR_BATCH_SERVICE_NOT_CALLED                                     = 'SERVER_ERROR_BATCH_SERVICE_NOT_CALLED';
+    const SERVER_ERROR_BATCH_SERVICE_NOT_FOUND                                      = 'SERVER_ERROR_BATCH_SERVICE_NOT_FOUND';
+    const SERVER_ERROR_FILE_NOT_FOUND                                               = 'SERVER_ERROR_FILE_NOT_FOUND';
+    const SERVER_ERROR_PAYOUT_DATA_NOT_IN_ES                                        = 'SERVER_ERROR_PAYOUT_DATA_NOT_IN_ES';
+    const BAD_REQUEST_BATCH_SERVICE_ERROR                                           = 'BAD_REQUEST_BATCH_SERVICE_ERROR';
+
+    const BAD_REQUEST_CUSTOMER_ALREADY_EXISTS                                       = 'BAD_REQUEST_CUSTOMER_ALREADY_EXISTS';
+    const BAD_REQUEST_CUSTOMER_CONTACT_REQUIRED                                     = 'BAD_REQUEST_CUSTOMER_CONTACT_REQUIRED';
+    const BAD_REQUEST_CUSTOMER_CARD_ALREADY_EXISTS                                  = 'BAD_REQUEST_CUSTOMER_CARD_ALREADY_EXISTS';
+    const BAD_REQUEST_CUSTOMER_BANK_ALREADY_EXISTS                                  = 'BAD_REQUEST_CUSTOMER_BANK_ALREADY_EXISTS';
+    const BAD_REQUEST_CUSTOMER_WALLET_ALREADY_EXISTS                                = 'BAD_REQUEST_CUSTOMER_WALLET_ALREADY_EXISTS';
+    const BAD_REQUEST_CUSTOMER_DUPLICATE_NOT_GLOBAL                                 = 'BAD_REQUEST_CUSTOMER_DUPLICATE_NOT_GLOBAL';
+    const BAD_REQUEST_GLOBAL_CUSTOMER_MISMATCH                                      = 'BAD_REQUEST_GLOBAL_CUSTOMER_MISMATCH';
+    const BAD_REQUEST_GATEWAY_TOKEN_EMPTY                                           = 'BAD_REQUEST_GATEWAY_TOKEN_EMPTY';
+    const BAD_REQUEST_GATEWAY_EMPTY_CALLBACK                                        = 'BAD_REQUEST_GATEWAY_EMPTY_CALLBACK';
+    const BAD_REQUEST_TOKEN_NOT_ENABLED_FOR_RECURRING                               = 'BAD_REQUEST_TOKEN_NOT_ENABLED_FOR_RECURRING';
+    const BAD_REQUEST_EMANDATE_TOKEN_PASSED_IN_FIRST_RECURRING                      = 'BAD_REQUEST_EMANDATE_TOKEN_PASSED_IN_FIRST_RECURRING';
+    const BAD_REQUEST_UNCONFIRMED_TOKEN_PASSED_IN_SECOND_RECURRING                  = 'BAD_REQUEST_UNCONFIRMED_TOKEN_PASSED_IN_SECOND_RECURRING';
+    const BAD_REQUEST_NON_ACTIVATED_TOKEN_PASSED_IN_RECURRING                       = 'BAD_REQUEST_NON_ACTIVATED_TOKEN_PASSED_IN_RECURRING';
+    const BAD_REQUEST_TOKEN_STATUS_ALREADY_PAID                                     = 'BAD_REQUEST_TOKEN_STATUS_ALREADY_PAID';
+    const BAD_REQUEST_TOKEN_ABSENT_FOR_RECURRING_PAYMENT                            = 'BAD_REQUEST_TOKEN_ABSENT_FOR_RECURRING_PAYMENT';
+    const BAD_REQUEST_TOKEN_NOT_FOUND                                               = 'BAD_REQUEST_TOKEN_NOT_FOUND';
+    const BAD_REQUEST_PAYMENT_KYC_PENDING                                           = 'BAD_REQUEST_PAYMENT_KYC_PENDING';
+    const BAD_REQUEST_PAYMENT_INVALID_WITHDRAWER_DATA                               = 'BAD_REQUEST_PAYMENT_INVALID_WITHDRAWER_DATA';
+    const BAD_REQUEST_PAYMENT_INVALID_DEBIT_TYPE                                    = 'BAD_REQUEST_PAYMENT_INVALID_DEBIT_TYPE';
+    const BAD_REQUEST_PAYMENT_INVALID_FREQ_PERIOD                                   = 'BAD_REQUEST_PAYMENT_INVALID_FREQ_PERIOD';
+    const BAD_REQUEST_PAYMENT_INVALID_FREQ_SIGN                                     = 'BAD_REQUEST_PAYMENT_INVALID_FREQ_SIGN';
+    const BAD_REQUEST_PAYMENT_INVALID_PERIOD_SIGN                                   = 'BAD_REQUEST_PAYMENT_INVALID_PERIOD_SIGN';
+    const BAD_REQUEST_MANDATE_DATA_MISMATCH                                         = 'BAD_REQUEST_MANDATE_DATA_MISMATCH';
+    const BAD_REQUEST_DRAWER_NOT_AUTHORIZED                                         = 'BAD_REQUEST_DRAWER_NOT_AUTHORIZED';
+    const BAD_REQUEST_MISMATCH_SIGNATURE                                            = 'BAD_REQUEST_MISMATCH_SIGNATURE';
+    const BAD_REQUEST_MISSING_SIGNATURE                                             = 'BAD_REQUEST_MISSING_SIGNATURE';
+    const BAD_REQUEST_INVALID_FREQ                                                  = 'BAD_REQUEST_INVALID_FREQ';
+    const BAD_REQUEST_UNCLEAR_IMAGE                                                 = 'BAD_REQUEST_UNCLEAR_IMAGE';
+    const BAD_REQUEST_INVALID_BANK_NAME                                             = 'BAD_REQUEST_INVALID_BANK_NAME';
+    const BAD_REQUEST_MANDATE_INCOMPLETE                                            = 'BAD_REQUEST_MANDATE_INCOMPLETE';
+    const BAD_REQUEST_MANDATE_OLD_FORMAT                                            = 'BAD_REQUEST_MANDATE_OLD_FORMAT';
+    const ACCOUNT_NUMBER_AMENDED                                                    = 'ACCOUNT_NUMBER_AMENDED';
+    const CANCELLED_ON_CORPORATE_REQUEST                                            = 'CANCELLED_ON_CORPORATE_REQUEST';
+    const CANCELLED_ON_CUSTOMER_REQUEST                                             = 'CANCELLED_ON_CUSTOMER_REQUEST';
+    const PAYMENT_STOPPED                                                           = 'PAYMENT_STOPPED';
+    const BAD_REQUEST_DUPLICATE_UMRN                                                = 'BAD_REQUEST_DUPLICATE_UMRN';
+    const CUSTOMER_REJECTED_PAYMENT                                                 = 'CUSTOMER_REJECTED_PAYMENT';
+    const CUSTOMER_INSOLVENT                                                        = 'CUSTOMER_INSOLVENT';
+    const CUSTOMER_DENIED                                                           = 'CUSTOMER_DENIED';
+    const BAD_REQUEST_ONLY_SYNCED_ENTITIES_CAN_BE_SYNCED                            = 'BAD_REQUEST_ONLY_SYNCED_ENTITIES_CAN_BE_SYNCED';
+    const BAD_REQUEST_INVALID_FIELD_SENT                                            = 'BAD_REQUEST_INVALID_FIELD_SENT';
+
+    const BAD_REQUEST_PAYMENT_ACCOUNT_WITHDRAWAL_FROZEN                             = 'BAD_REQUEST_PAYMENT_ACCOUNT_WITHDRAWAL_FROZEN';
+    const BAD_REQUEST_PAYMENT_INVALID_ACCOUNT                                       = 'BAD_REQUEST_PAYMENT_INVALID_ACCOUNT';
+    const BAD_REQUEST_PAYMENT_CANCELLED_AT_EMANDATE_REGISTRATION                    = 'BAD_REQUEST_PAYMENT_CANCELLED_AT_EMANDATE_REGISTRATION';
+    const BAD_REQUEST_EMANDATE_REGISTRATION_FAILED_JOINT_ACCOUNT                    = 'BAD_REQUEST_EMANDATE_REGISTRATION_FAILED_JOINT_ACCOUNT';
+    const BAD_REQUEST_INVALID_ACCOUNT_HOLDER_NAME                                   = 'BAD_REQUEST_INVALID_ACCOUNT_HOLDER_NAME';
+    const BAD_REQUEST_PAYMENT_CANCELLED_BY_CUSTOMER                                 = 'BAD_REQUEST_PAYMENT_CANCELLED_BY_CUSTOMER';
+    const BAD_REQUEST_PAYMENT_ACCOUNT_MAX_LIMIT_EXCEEDED                            = 'BAD_REQUEST_PAYMENT_ACCOUNT_MAX_LIMIT_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_WORDS_FIGURE_DIFFERS                                  = 'BAD_REQUEST_PAYMENT_WORDS_FIGURE_DIFFERS';
+    const BAD_REQUEST_COMPANY_FOR_STAMP_MISSING                                     = 'BAD_REQUEST_COMPANY_FOR_STAMP_MISSING';
+    const BAD_REQUEST_CORPORATE_NAME_MISMATCH                                       = 'BAD_REQUEST_CORPORATE_NAME_MISMATCH';
+
+    const BAD_REQUEST_EMANDATE_REGISTRATION_DUPLICATE_REQUEST                       = 'BAD_REQUEST_EMANDATE_REGISTRATION_DUPLICATE_REQUEST';
+    const BAD_REQUEST_EMANDATE_REGISTRATION_ALREADY_IN_PROGRESS                     = 'BAD_REQUEST_EMANDATE_REGISTRATION_ALREADY_IN_PROGRESS';
+    const BAD_REQUEST_EMANDATE_REGISTRATION_ALREADY_DECLINED_BY_BANK                = 'BAD_REQUEST_EMANDATE_REGISTRATION_ALREADY_DECLINED_BY_BANK';
+    const BAD_REQUEST_EMANDATE_AMOUNT_LIMIT_EXCEEDED                                = 'BAD_REQUEST_EMANDATE_AMOUNT_LIMIT_EXCEEDED';
+    const BAD_REQUEST_EMANDATE_REGISTRATION_FAILED                                  = 'BAD_REQUEST_EMANDATE_REGISTRATION_FAILED';
+    const BAD_REQUEST_NACH_REGISTRATION_FAILED                                      = 'BAD_REQUEST_NACH_REGISTRATION_FAILED';
+    const BAD_REQUEST_EMANDATE_AADHAAR_NOT_MAPPED                                   = 'BAD_REQUEST_EMANDATE_AADHAAR_NOT_MAPPED';
+    const BAD_REQUEST_EMANDATE_CANCELLED_INACTIVE                                   = 'BAD_REQUEST_EMANDATE_CANCELLED_INACTIVE';
+    const BAD_REQUEST_INVALID_IFSC_CODE                                             = 'BAD_REQUEST_INVALID_IFSC_CODE';
+    const BAD_REQUEST_EMANDATE_FREQUENCY_MISMATCH                                   = 'BAD_REQUEST_EMANDATE_FREQUENCY_MISMATCH';
+    const BAD_REQUEST_EMANDATE_EXPIRED                                              = 'BAD_REQUEST_EMANDATE_EXPIRED';
+    const BAD_REQUEST_EMANDATE_DEBIT_NOT_ALLOWED                                    = 'BAD_REQUEST_EMANDATE_DEBIT_NOT_ALLOWED';
+    const GATEWAY_ERROR_DEBIT_BEFORE_MANDATE_START                                  = 'GATEWAY_ERROR_DEBIT_BEFORE_MANDATE_START';
+    const GATEWAY_ERROR_DEBIT_AFTER_MANDATE_END                                     = 'GATEWAY_ERROR_DEBIT_AFTER_MANDATE_END';
+    const BAD_REQUEST_MANDATE_USER_MISMATCH                                         = 'BAD_REQUEST_MANDATE_USER_MISMATCH';
+    const BAD_REQUEST_EMANDATE_REGISTRATION_ACTION_NEEDED                           = 'BAD_REQUEST_EMANDATE_REGISTRATION_ACTION_NEEDED';
+    const BAD_REQUEST_EMANDATE_SETTLEMENT_FAILED                                    = 'BAD_REQUEST_EMANDATE_SETTLEMENT_FAILED';
+    const BAD_REQUEST_EMANDATE_DEBIT_TIME_BREACHED                                  = 'BAD_REQUEST_EMANDATE_DEBIT_TIME_BREACHED';
+
+    const BAD_REQUEST_RECONCILIATION                                                = 'BAD_REQUEST_RECONCILIATION';
+    const BAD_REQUEST_PAYMENT_ACCOUNT_INSUFFICIENT_BALANCE                          = 'BAD_REQUEST_PAYMENT_ACCOUNT_INSUFFICIENT_BALANCE';
+
+    const BAD_REQUEST_MAXIMUM_SMS_LIMIT_REACHED                                     = 'BAD_REQUEST_MAXIMUM_SMS_LIMIT_REACHED';
+    const SERVER_ERROR_EMAIL_LOGIN_OTP_REDIS_ERROR                                  = 'SERVER_ERROR_EMAIL_LOGIN_OTP_REDIS_ERROR';
+    const SERVER_ERROR_EMAIL_VERIFICATION_OTP_REDIS_ERROR                           = 'SERVER_ERROR_EMAIL_VERIFICATION_OTP_REDIS_ERROR';
+    const BAD_REQUEST_EMAIL_LOGIN_OTP_SEND_THRESHOLD_EXHAUSTED                      = 'BAD_REQUEST_EMAIL_LOGIN_OTP_SEND_THRESHOLD_EXHAUSTED';
+    const BAD_REQUEST_EMAIL_VERIFICATION_OTP_SEND_THRESHOLD_EXHAUSTED               = 'BAD_REQUEST_EMAIL_VERIFICATION_OTP_SEND_THRESHOLD_EXHAUSTED';
+    const BAD_REQUEST_LOGIN_OTP_VERIFICATION_THRESHOLD_EXHAUSTED                    = 'BAD_REQUEST_LOGIN_OTP_VERIFICATION_THRESHOLD_EXHAUSTED';
+    const SERVER_ERROR_LOGIN_OTP_VERIFICATION_REDIS_ERROR                           = 'SERVER_ERROR_LOGIN_OTP_VERIFICATION_REDIS_ERROR';
+    const SERVER_ERROR_VERIFY_OTP_VERIFICATION_REDIS_ERROR                          = 'SERVER_ERROR_VERIFY_OTP_VERIFICATION_REDIS_ERROR';
+    const BAD_REQUEST_OTP_MAXIMUM_ATTEMPTS_REACHED                                  = 'BAD_REQUEST_OTP_MAXIMUM_ATTEMPTS_REACHED';
+    const BAD_REQUEST_OTP_EXPIRED                                                   = 'BAD_REQUEST_OTP_EXPIRED';
+    const BAD_REQUEST_INCORRECT_OTP                                                 = 'BAD_REQUEST_INCORRECT_OTP';
+    const BAD_REQUEST_SMS_FAILED                                                    = 'BAD_REQUEST_SMS_FAILED';
+    const BAD_REQUEST_SMS_OTP_FAILED                                                = 'BAD_REQUEST_SMS_OTP_FAILED';
+    const BAD_REQUEST_EMAIL_OTP_FAILED                                              = 'BAD_REQUEST_EMAIL_OTP_FAILED';
+    const BAD_REQUEST_OTP_LOGIN_LOCKED                                              = 'BAD_REQUEST_OTP_LOGIN_LOCKED';
+    const BAD_REQUEST_VERIFICATION_OTP_VERIFICATION_THRESHOLD_EXHAUSTED             = 'BAD_REQUEST_VERIFICATION_OTP_VERIFICATION_THRESHOLD_EXHAUSTED';
+
+    const BAD_REQUEST_INVALID_COUNTRY                                               = 'BAD_REQUEST_INVALID_COUNTRY';
+
+    const BAD_REQUEST_INVALID_RESPONSE_OTP_GENERATE_RAVEN                           = 'BAD_REQUEST_INVALID_RESPONSE_OTP_GENERATE_RAVEN';
+
+    // Heimdall Error Codes
+    const BAD_REQUEST_ACCESS_DENIED                                                 = 'BAD_REQUEST_ACCESS_DENIED';
+    const BAD_REQUEST_DASHBOARD_IP_NOT_WHITELISTED                                  = 'BAD_REQUEST_DASHBOARD_IP_NOT_WHITELISTED';
+    const BAD_REQUEST_IP_NOT_WHITELISTED                                            = 'BAD_REQUEST_IP_NOT_WHITELISTED';
+    const BAD_REQUEST_IP_FORMAT_INVALID                                             = 'BAD_REQUEST_IP_FORMAT_INVALID';
+    const BAD_REQUEST_IP_WHITELISTING_NOT_ALLOWED_WHEN_OPTED_OUT                    = 'BAD_REQUEST_IP_WHITELISTING_NOT_ALLOWED_WHEN_OPTED_OUT';
+
+    const BAD_REQUEST_ACCESS_DENIED_CA_ONBOARDING_CANNOT_INITIATED_FOR_NON_RZP_ORG_MERCHANTS  =  'BAD_REQUEST_ACCESS_DENIED_CA_ONBOARDING_CANNOT_INITIATED_FOR_NON_RZP_ORG_MERCHANTS';
+
+    const BAD_REQUEST_PASSWORD_EXPIRED                                              = 'BAD_REQUEST_PASSWORD_EXPIRED';
+
+    const BAD_REQUEST_SETTLEMENT_ANOTHER_OPERATION_IN_PROGRESS                      = 'BAD_REQUEST_SETTLEMENT_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_SETTLEMENT_RECONCILIATION_IN_PROGRESS                         = 'BAD_REQUEST_SETTLEMENT_RECONCILIATION_IN_PROGRESS';
+    const BAD_REQUEST_SETTLEMENT_VERIFICATION_IN_PROGRESS                           = 'BAD_REQUEST_SETTLEMENT_VERIFICATION_IN_PROGRESS';
+
+    const BAD_REQUEST_SETTLEMENT_ANOTHER_SETTLEMENT_UPDATE_IN_PROGRESS              = 'BAD_REQUEST_SETTLEMENT_ANOTHER_SETTLEMENT_UPDATE_IN_PROGRESS';
+
+    const BAD_REQUEST_PAYOUT_ANOTHER_OPERATION_IN_PROGRESS                          = 'BAD_REQUEST_PAYOUT_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_PAYOUT_ALREADY_BEING_PROCESSED                                = 'BAD_REQUEST_PAYOUT_ALREADY_BEING_PROCESSED';
+
+    const BAD_REQUEST_INVALID_MERCHANT_INVOICE_NUMBER                               = 'BAD_REQUEST_INVALID_MERCHANT_INVOICE_NUMBER';
+
+    const BAD_REQUEST_FUND_TRANSFER_ANOTHER_OPERATION_IN_PROGRESS                   = 'BAD_REQUEST_FUND_TRANSFER_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_FEE_RECOVERY_ANOTHER_OPERATION_IN_PROGRESS                    = 'BAD_REQUEST_FEE_RECOVERY_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_FUND_TRANSFER_FTS_ANOTHER_OPERATION_IN_PROGRESS               = 'BAD_REQUEST_FUND_TRANSFER_FTS_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_FUND_TRANSFER_ATTEMPT_UPDATE_NOT_ALLOWED                      = 'BAD_REQUEST_FUND_TRANSFER_ATTEMPT_UPDATE_NOT_ALLOWED';
+    const BAD_REQUEST_ANOTHER_FTA_RECONCILIATION_OPERATION_IN_PROGRESS              = 'BAD_REQUEST_ANOTHER_FTA_RECONCILIATION_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_ANOTHER_FTA_TRANSFER_OPERATION_IN_PROGRESS                    = 'BAD_REQUEST_ANOTHER_FTA_TRANSFER_OPERATION_IN_PROGRESS';
+
+    const BAD_REQUEST_INVALID_MAILGUN_WEBHOOK_TYPE                                  = 'BAD_REQUEST_INVALID_MAILGUN_WEBHOOK_TYPE';
+    const BAD_REQUEST_INVALID_MAILGUN_SIGNATURE                                     = 'BAD_REQUEST_INVALID_MAILGUN_SIGNATURE';
+
+    const BAD_REQUEST_INVOICE_EXPIRE_FAILED                                         = 'BAD_REQUEST_INVOICE_EXPIRE_FAILED';
+    const BAD_REQUEST_INVOICE_FEE_BEARER_CUSTOMER                                   = 'BAD_REQUEST_INVOICE_FEE_BEARER_CUSTOMER';
+    const BAD_REQUEST_PAYMENT_LINK_BATCH_ISSUED_ALREADY                             = 'BAD_REQUEST_PAYMENT_LINK_BATCH_ISSUED_ALREADY';
+    const BAD_REQUEST_PAYMENT_LINK_SLUG_GENERATE_FAILED                             = 'BAD_REQUEST_PAYMENT_LINK_SLUG_GENERATE_FAILED';
+
+    const BAD_REQUEST_ITEM_INACTIVE                                                 = 'BAD_REQUEST_ITEM_INACTIVE';
+    const BAD_REQUEST_ITEM_EDIT_NOT_ALLOWED                                         = 'BAD_REQUEST_ITEM_EDIT_NOT_ALLOWED';
+    const BAD_REQUEST_INVALID_ITEM_TAX_DETAILS                                      = 'BAD_REQUEST_INVALID_ITEM_TAX_DETAILS';
+    const BAD_REQUEST_LINK_TYPE_HAS_NO_TAXATION                                     = 'BAD_REQUEST_LINK_TYPE_HAS_NO_TAXATION';
+
+    const BAD_REQUEST_PAYMENT_TRANSFER_AMOUNT_GREATER_THAN_CAPTURED                 = 'BAD_REQUEST_PAYMENT_TRANSFER_AMOUNT_GREATER_THAN_CAPTURED';
+    const BAD_REQUEST_PAYMENT_TRANSFER_AMOUNT_GREATER_THAN_UNTRANSFERRED            = 'BAD_REQUEST_PAYMENT_TRANSFER_AMOUNT_GREATER_THAN_UNTRANSFERRED';
+    const BAD_REQUEST_PAYMENT_TRANSFER_ENTITIES_NOT_SET                             = 'BAD_REQUEST_PAYMENT_TRANSFER_ENTITIES_NOT_SET';
+    const BAD_REQUEST_PAYMENT_TRANSFER_MORE_THAN_ONE_CUSTOMER                       = 'BAD_REQUEST_PAYMENT_TRANSFER_MORE_THAN_ONE_CUSTOMER';
+    const BAD_REQUEST_PAYMENT_TRANSFER_MULTIPLE_ENTITY_TYPES_GIVEN                  = 'BAD_REQUEST_PAYMENT_TRANSFER_MULTIPLE_ENTITY_TYPES_GIVEN';
+    const BAD_REQUEST_PAYMENT_TRANSFER_CURRENCY_MISMATCH                            = 'BAD_REQUEST_PAYMENT_TRANSFER_CURRENCY_MISMATCH';
+    const BAD_REQUEST_ONLY_PAYMENT_TRANSFER_EXPECTED                                = 'BAD_REQUEST_ONLY_PAYMENT_TRANSFER_EXPECTED';
+    const BAD_REQUEST_ONLY_FAILED_TRANSFER_EXPECTED                                 = 'BAD_REQUEST_ONLY_FAILED_TRANSFER_EXPECTED';
+
+    const BAD_REQUEST_TRANSFER_INSUFFICIENT_BALANCE                                 = 'BAD_REQUEST_TRANSFER_INSUFFICIENT_BALANCE';
+    const BAD_REQUEST_TRANSFER_INVALID_ACCOUNT_ID                                   = 'BAD_REQUEST_TRANSFER_INVALID_ACCOUNT_ID';
+    const BAD_REQUEST_TRANSFER_ACCOUNT_NOT_ACTIVATED                                = 'BAD_REQUEST_TRANSFER_ACCOUNT_NOT_ACTIVATED';
+    const BAD_REQUEST_TRANSFER_AMOUNT_GREATER_THAN_ORDER_AMOUNT                     = 'BAD_REQUEST_TRANSFER_AMOUNT_GREATER_THAN_ORDER_AMOUNT';
+    const BAD_REQUEST_TRANSFER_NODES_MORE_THAN_ONE_FOR_BALANCE_TRANSFER             = 'BAD_REQUEST_TRANSFER_NODES_MORE_THAN_ONE_FOR_BALANCE_TRANSFER';
+    const BAD_REQUEST_ACCOUNT_ID_INVALID_FOR_BALANCE_TRANSFER                       = 'BAD_REQUEST_ACCOUNT_ID_INVALID_FOR_BALANCE_TRANSFER';
+    const BAD_REQUEST_INVALID_TRANSFER_AMOUNT_FOR_BALANCE_TRANSFER                  = 'BAD_REQUEST_INVALID_TRANSFER_AMOUNT_FOR_BALANCE_TRANSFER';
+    const BAD_REQUEST_TRANSFER_REVERSAL_AMOUNT_GREATER_THAN_TRANSFERRED             = 'BAD_REQUEST_TRANSFER_REVERSAL_AMOUNT_GREATER_THAN_TRANSFERRED';
+    const BAD_REQUEST_TRANSFER_REVERSAL_AMOUNT_GREATER_THAN_UNREVERSED              = 'BAD_REQUEST_TRANSFER_REVERSAL_AMOUNT_GREATER_THAN_UNREVERSED';
+    const BAD_REQUEST_TRANSFER_REVERSAL_INSUFFICIENT_BALANCE                        = 'BAD_REQUEST_TRANSFER_REVERSAL_INSUFFICIENT_BALANCE';
+    const BAD_REQUEST_LA_TRANSFER_REVERSAL_PERMISSION_MISSING                       = 'BAD_REQUEST_LA_TRANSFER_REVERSAL_PERMISSION_MISSING';
+    const BAD_REQUEST_TRANSFER_FOR_LA_REVERSAL_INVALID                              = 'BAD_REQUEST_TRANSFER_FOR_LA_REVERSAL_INVALID';
+    const BAD_REQUEST_TRANSFER_IN_PROGRESS                                          = 'BAD_REQUEST_TRANSFER_IN_PROGRESS';
+    const BAD_REQUEST_ORDER_TRANSFER_PROCESS_IN_PROGRESS                            = 'BAD_REQUEST_ORDER_TRANSFER_PROCESS_IN_PROGRESS';
+    const BAD_REQUEST_PAYMENT_TRANSFER_PROCESS_IN_PROGRESS                          = 'BAD_REQUEST_PAYMENT_TRANSFER_PROCESS_IN_PROGRESS';
+    const BAD_REQUEST_ORDER_TRANSFER_ENTITIES_NOT_SET                               = 'BAD_REQUEST_ORDER_TRANSFER_ENTITIES_NOT_SET';
+    const BAD_REQUEST_DIRECT_TRANSFER_FEATURE_NOT_ENABLED                           = 'BAD_REQUEST_DIRECT_TRANSFER_FEATURE_NOT_ENABLED';
+    const BAD_REQUEST_BANK_DETAILS_VERIFICATION_PENDING                             = 'BAD_REQUEST_BANK_DETAILS_VERIFICATION_PENDING';
+    const BAD_REQUEST_INCORRECT_BANK_ACCOUNT_DETAILS                                = 'BAD_REQUEST_INCORRECT_BANK_ACCOUNT_DETAILS';
+    const BAD_REQUEST_LINKED_ACCOUNT_SUSPENDED                                      = 'BAD_REQUEST_LINKED_ACCOUNT_SUSPENDED';
+
+    const BAD_REQUEST_UPDATE_ON_HOLD_ALREADY_SETTLED                                = 'BAD_REQUEST_UPDATE_ON_HOLD_ALREADY_SETTLED';
+
+    const BAD_REQUEST_INVALID_ADMIN_EMAIL                                           = 'BAD_REQUEST_INVALID_ADMIN_EMAIL';
+    const BAD_REQUEST_INVALID_ADMIN_EMAIL_HOSTNAME                                  = 'BAD_REQUEST_INVALID_ADMIN_EMAIL_HOSTNAME';
+    const BAD_REQUEST_AUTHENTICATION_FAILED                                         = 'BAD_REQUEST_AUTHENTICATION_FAILED';
+    const BAD_REQUEST_USER_ACCOUNT_LOCKED                                           = 'BAD_REQUEST_USER_ACCOUNT_LOCKED';
+    const BAD_REQUEST_USER_ACCOUNT_DISABLED                                         = 'BAD_REQUEST_USER_ACCOUNT_DISABLED';
+    const BAD_REQUEST_USER_NOT_AUTHENTICATED                                        = 'BAD_REQUEST_USER_NOT_AUTHENTICATED';
+    const BAD_REQUEST_USER_NOT_FOUND                                                = 'BAD_REQUEST_USER_NOT_FOUND';
+    const BAD_REQUEST_USER_ID_NOT_EXPECTED_IN_INPUT                                 = 'BAD_REQUEST_USER_ID_NOT_EXPECTED_IN_INPUT';
+    const BAD_REQUEST_USER_ROLE_INVALID                                             = 'BAD_REQUEST_USER_ROLE_INVALID';
+    const BAD_REQUEST_USER_OAUTH_PROVIDER_INVALID                                   = 'BAD_REQUEST_USER_OAUTH_PROVIDER_INVALID';
+    const BAD_REQUEST_OLD_PASSWORD_MISMATCH                                         = 'BAD_REQUEST_OLD_PASSWORD_MISMATCH';
+    const BAD_REQUEST_OAUTH_ROLE_NOT_FOUND                                          = 'BAD_REQUEST_OAUTH_ROLE_NOT_FOUND';
+    const BAD_REQUEST_TOKEN_EXPIRED_NOT_VALID                                       = 'BAD_REQUEST_TOKEN_EXPIRED_NOT_VALID';
+    const BAD_REQUEST_CAPTCHA_FAILED                                                = 'BAD_REQUEST_CAPTCHA_FAILED';
+    const BAD_REQUEST_CAPTCHA_SCORE_LOW                                             = 'BAD_REQUEST_CAPTCHA_SCORE_LOW';
+    const BAD_REQUEST_INCORRECT_LOGIN_ATTEMPT                                       = 'BAD_REQUEST_INCORRECT_LOGIN_ATTEMPT';
+    const BAD_REQUEST_INVALID_PASSWORD                                              = 'BAD_REQUEST_INVALID_PASSWORD';
+    const BAD_REQUEST_NEW_PASSWORD_SAME_AS_OLD_PASSWORD                             = 'BAD_REQUEST_NEW_PASSWORD_SAME_AS_OLD_PASSWORD';
+    const BAD_REQUEST_CAPTCHA_TOKEN_NOT_PRESENT                                     = 'BAD_REQUEST_CAPTCHA_TOKEN_NOT_PRESENT';
+    const BAD_REQUEST_MULTIPLE_ACCOUNTS_ASSOCIATED                                  = 'BAD_REQUEST_MULTIPLE_ACCOUNTS_ASSOCIATED';
+    const BAD_REQUEST_NO_ACCOUNTS_ASSOCIATED                                        = 'BAD_REQUEST_NO_ACCOUNTS_ASSOCIATED';
+    const BAD_REQUEST_CONTACT_MOBILE_NOT_VERIFIED                                   = 'BAD_REQUEST_CONTACT_MOBILE_NOT_VERIFIED';
+    const BAD_REQUEST_EMAIL_NOT_VERIFIED                                            = 'BAD_REQUEST_EMAIL_NOT_VERIFIED';
+    const BAD_REQUEST_ACTION_NOT_ALLOWED                                            = 'BAD_REQUEST_ACTION_NOT_ALLOWED';
+    const BAD_REQUEST_CONTACT_MOBILE_ALREADY_VERIFIED                               = 'BAD_REQUEST_CONTACT_MOBILE_ALREADY_VERIFIED';
+    const BAD_REQUEST_EMAIL_ALREADY_VERIFIED                                        = 'BAD_REQUEST_EMAIL_ALREADY_VERIFIED';
+    const BAD_REQUEST_ACCOUNT_RECOVERY_PAN_DID_NOT_MATCH                            = 'BAD_REQUEST_ACCOUNT_RECOVERY_PAN_DID_NOT_MATCH';
+
+    const BAD_REQUEST_LIMIT_FOR_UPDATE_CONTACT_MOBILE_EXCEEDED                      = 'BAD_REQUEST_LIMIT_FOR_UPDATE_CONTACT_MOBILE_EXCEEDED';
+
+    const BAD_REQUEST_EMAIL_ASSOCIATED_WITH_ANOTHER_ACCOUNT                         = 'BAD_REQUEST_EMAIL_ASSOCIATED_WITH_ANOTHER_ACCOUNT';
+
+    const BAD_REQUEST_LOCKED_BALANCE_UPDATE_NON_BANKING                             = 'BAD_REQUEST_LOCKED_BALANCE_UPDATE_NON_BANKING';
+
+    const BAD_REQUEST_USER_2FA_ALREADY_SETUP                                        = 'BAD_REQUEST_USER_2FA_ALREADY_SETUP';
+    const BAD_REQUEST_LOCKED_USER_LOGIN                                             = 'BAD_REQUEST_LOCKED_USER_LOGIN';
+    const BAD_REQUEST_LOCKED_ADMIN_LOGIN                                             = 'BAD_REQUEST_LOCKED_ADMIN_LOGIN';
+    const BAD_REQUEST_USER_2FA_LOCKED                                               = 'BAD_REQUEST_USER_2FA_LOCKED';
+    const BAD_REQUEST_2FA_LOGIN_INCORRECT_OTP                                       = 'BAD_REQUEST_2FA_LOGIN_INCORRECT_OTP';
+    const BAD_REQUEST_ADMIN_2FA_LOGIN_INCORRECT_OTP                                 = 'BAD_REQUEST_ADMIN_2FA_LOGIN_INCORRECT_OTP';
+    const BAD_REQUEST_2FA_SETUP_INCORRECT_OTP                                       = 'BAD_REQUEST_2FA_SETUP_INCORRECT_OTP';
+    const BAD_REQUEST_RESTRICTED_USER_CANNOT_SETUP_2FA                              = 'BAD_REQUEST_RESTRICTED_USER_CANNOT_SETUP_2FA';
+    const BAD_REQUEST_RESTRICTED_USER_CANNOT_PERFORM_ACTION                         = 'BAD_REQUEST_RESTRICTED_USER_CANNOT_PERFORM_ACTION';
+    const BAD_REQUEST_MERCHANT_NOT_RESTRICTED_TO_PERFORM_ACTION                     = 'BAD_REQUEST_MERCHANT_NOT_RESTRICTED_TO_PERFORM_ACTION';
+    const BAD_REQUEST_USER_2FA_LOGIN_OTP_REQUIRED                                   = 'BAD_REQUEST_USER_2FA_LOGIN_OTP_REQUIRED';
+    const BAD_REQUEST_USER_2FA_SETUP_REQUIRED                                       = 'BAD_REQUEST_USER_2FA_SETUP_REQUIRED';
+    const BAD_REQUEST_USER_LOGIN_2FA_SETUP_REQUIRED                                 = 'BAD_REQUEST_USER_LOGIN_2FA_SETUP_REQUIRED';
+    const BAD_REQUEST_2FA_SETUP_USER_2FA_NOT_ENABLED                                = 'BAD_REQUEST_2FA_SETUP_USER_2FA_NOT_ENABLED';
+    const BAD_REQUEST_2FA_SETUP_ACCOUNT_LOCKED                                      = 'BAD_REQUEST_2FA_SETUP_ACCOUNT_LOCKED';
+    const BAD_REQUEST_USER_2FA_ENFORCED                                             = 'BAD_REQUEST_USER_2FA_ENFORCED';
+    const BAD_REQUEST_OPERATION_ONLY_ALLOWED_BY_OWNER                               = 'BAD_REQUEST_OPERATION_ONLY_ALLOWED_BY_OWNER';
+    const BAD_REQUEST_OWNER_2FA_SETUP_MANDATORY                                     = 'BAD_REQUEST_OWNER_2FA_SETUP_MANDATORY';
+    const BAD_REQUEST_MERCHANT_RESTRICTED_SETTINGS_NOT_APPLIED                      = 'BAD_REQUEST_MERCHANT_RESTRICTED_SETTINGS_NOT_APPLIED';
+    const BAD_REQUEST_USER_2FA_NOT_ENABLED                                          = 'BAD_REQUEST_USER_2FA_NOT_ENABLED';
+    const BAD_REQUEST_USER_2FA_VALIDATION_REQUIRED                                  = 'BAD_REQUEST_USER_2FA_VALIDATION_REQUIRED';
+    const BAD_REQUEST_USER_OTP_REQUIRED                                             = 'BAD_REQUEST_USER_OTP_REQUIRED';
+    const BAD_REQUEST_INVALID_ID_TOKEN                                              = 'BAD_REQUEST_INVALID_ID_TOKEN';
+    const BAD_REQUEST_INVALID_POA_VERIFICATION_STATUS_CHANGE                        = 'BAD_REQUEST_INVALID_POA_VERIFICATION_STATUS_CHANGE';
+    const BAD_REQUEST_INVALID_BANK_DETAIL_VERIFICATION_STATUS_CHANGE                = 'BAD_REQUEST_INVALID_BANK_DETAIL_VERIFICATION_STATUS_CHANGE';
+    const BAD_REQUEST_ORG_2FA_ENFORCED                                              = 'BAD_REQUEST_ORG_2FA_ENFORCED';
+    const BAD_REQUEST_ADMIN_2FA_LOGIN_OTP_REQUIRED                                   = 'BAD_REQUEST_ADMIN_2FA_LOGIN_OTP_REQUIRED';
+    const BAD_REQUEST_2FA_DISABLED_FOR_DEMO_ACC                                     = 'BAD_REQUEST_2FA_DISABLED_FOR_DEMO_ACC';
+    const BAD_REQUEST_INVALID_MIQ_SHARING_DATE                                      = 'BAD_REQUEST_INVALID_MIQ_SHARING_DATE';
+    const BAD_REQUEST_INVALID_TESTING_CREDENTIALS_DATE                              = 'BAD_REQUEST_INVALID_TESTING_CREDENTIALS_DATE';
+
+    const BAD_REQUEST_INVITATION_USER_ALREADY_INVITED                               = 'BAD_REQUEST_INVITATION_USER_ALREADY_INVITED';
+    const BAD_REQUEST_INVITATION_USER_ALREADY_MEMBER                                = 'BAD_REQUEST_INVITATION_USER_ALREADY_MEMBER';
+    const BAD_REQUEST_INVITATION_ACCEPT_FAILED                                      = 'BAD_REQUEST_INVITATION_ACCEPT_FAILED';
+    const BAD_REQUEST_INVITATION_CREATE_FAILED                                      = 'BAD_REQUEST_INVITATION_CREATE_FAILED';
+
+    const BAD_REQUEST_ADMIN_SELF_EDIT_PROHIBITED                                    = 'BAD_REQUEST_ADMIN_SELF_EDIT_PROHIBITED';
+    const BAD_REQUEST_ADMIN_SELF_INVITE_PROHIBITED                                  = 'BAD_REQUEST_ADMIN_SELF_INVITE_PROHIBITED';
+    const BAD_REQUEST_SUPERADMIN_ROLE_NOT_EDITABLE                                  = 'BAD_REQUEST_SUPERADMIN_ROLE_NOT_EDITABLE';
+    const BAD_REQUEST_INVALID_PERMISSIONS_USAGE                                     = 'BAD_REQUEST_INVALID_PERMISSIONS_USAGE';
+    const BAD_REQUEST_WORKFLOW_PERMISSIONS_CANNOT_BE_REMOVED                        = 'BAD_REQUEST_WORKFLOW_PERMISSIONS_CANNOT_BE_REMOVED';
+    const BAD_REQUEST_WORKFLOW_PERMISSION_EXISTS                                    = 'BAD_REQUEST_WORKFLOW_PERMISSION_EXISTS';
+    const BAD_REQUEST_PERMISSION_DISABLED_FOR_WORKFLOW                              = 'BAD_REQUEST_PERMISSION_DISABLED_FOR_WORKFLOW';
+    const BAD_REQUEST_WORKFLOW_STEP_OP_MISMATCH                                     = 'BAD_REQUEST_WORKFLOW_STEP_OP_MISMATCH';
+    const BAD_REQUEST_WORKFLOW_DUTY_TYPE_INVALID                                    = 'BAD_REQUEST_WORKFLOW_DUTY_TYPE_INVALID';
+    const BAD_REQUEST_WORKFLOW_ENTITY_VALIDATOR_RULE_NOT_FOUND                      = 'BAD_REQUEST_WORKFLOW_ENTITY_VALIDATOR_RULE_NOT_FOUND';
+
+    const BAD_REQUEST_INVALID_WORKFLOW_FOR_NEED_MERCHANT_CLARIFICATION              = 'BAD_REQUEST_INVALID_WORKFLOW_FOR_NEED_MERCHANT_CLARIFICATION';
+    const BAD_REQUEST_MERCHANT_NOT_FOUND_FOR_NEED_MERCHANT_CLARIFICATION            = 'BAD_REQUEST_MERCHANT_NOT_FOUND_FOR_NEED_MERCHANT_CLARIFICATION';
+
+    const BAD_REQUEST_SUPERADMIN_ACCESS_REQUIRED                                    = 'BAD_REQUEST_SUPERADMIN_ACCESS_REQUIRED';
+
+    const BAD_REQUEST_CASHBACK_CRITERIA_MISSING                                     = 'BAD_REQUEST_CASHBACK_CRITERIA_MISSING';
+    const BAD_REQUEST_INVALID_OFFER_DURATION                                        = 'BAD_REQUEST_INVALID_OFFER_DURATION';
+    const BAD_REQUEST_OFFER_ALREADY_EXISTS                                          = 'BAD_REQUEST_OFFER_ALREADY_EXISTS';
+    const BAD_REQUEST_FLAT_CASHBACK_WITH_PERCENT_RATE_OR_MAX_CASHBACK               = 'BAD_REQUEST_FLAT_CASHBACK_WITH_PERCENT_RATE_OR_MAX_CASHBACK';
+    const BAD_REQUEST_MAX_CASHBACK_WITHOUT_PERCENT_RATE                             = 'BAD_REQUEST_MAX_CASHBACK_WITHOUT_PERCENT_RATE';
+    const BAD_REQUEST_IINS_EDITABLE_FOR_CARD_OFFER                                  = 'BAD_REQUEST_IINS_EDITABLE_FOR_CARD_OFFER';
+    const BAD_REQUEST_OFFER_ALREADY_DEACTIVATED                                     = 'BAD_REQUEST_OFFER_ALREADY_DEACTIVATED';
+    const BAD_REQUEST_SUBSCRIPTION_OFFER_METHOD_MISMATCH                            = 'BAD_REQUEST_SUBSCRIPTION_OFFER_METHOD_MISMATCH';
+
+    const BAD_REQUEST_API_CAPTURE_FAILED                                            = 'BAD_REQUEST_API_CAPTURE_FAILED';
+
+    // Workflow Related ErrorCodes
+    const BAD_REQUEST_WORKFLOW_INVALID_CHECKER                                      = 'BAD_REQUEST_WORKFLOW_INVLID_CHECKER';
+    const BAD_REQUEST_WORKFLOW_ACTION_NOT_FOUND                                     = 'BAD_REQUEST_WORKFLOW_ACTION_NOT_FOUND';
+    const BAD_REQUEST_WORKFLOW_ACTION_CLOSE_NOT_AUTHORIZED                          = 'BAD_REQUEST_WORKFLOW_ACTION_CLOSE_NOT_AUTHORIZED';
+    const BAD_REQUEST_ACTION_INVALID_TYPE                                           = 'BAD_REQUEST_ACTION_INVALID_TYPE';
+    const BAD_REQUEST_ACTION_INVALID_METHOD                                         = 'BAD_REQUEST_ACTION_INVALID_METHOD';
+    const BAD_REQUEST_ACTION_NOT_APPROVED                                           = 'BAD_REQUEST_ACTION_NOT_APPROVED';
+    const BAD_REQUEST_ACTION_ALREADY_EXECUTED                                       = 'BAD_REQUEST_ACTION_ALREADY_EXECUTED';
+    const BAD_REQUEST_WORKFLOW_UPDATE_OR_DELETE_NOT_ALLOWED                         = 'BAD_REQUEST_WORKFLOW_UPDATE_OR_DELETE_NOT_ALLOWED';
+    const BAD_REQUEST_WORKFLOW_RULES_UPDATE_OR_DELETE_NOT_ALLOWED                   = 'BAD_REQUEST_WORKFLOW_RULES_UPDATE_OR_DELETE_NOT_ALLOWED';
+    const BAD_REQUEST_WORKFLOW_NOT_ACCESSIBLE                                       = 'BAD_REQUEST_WORKFLOW_NOT_ACCESSIBLE';
+    const BAD_REQUEST_WORKFLOW_STEP_LEVEL_SEQUENCE                                  = 'BAD_REQUEST_WORKFLOW_STEP_LEVEL_SEQUENCE';
+    const BAD_REQUEST_WORKFLOW_STEP_ROLE_LEVEL_UNIQUE                               = 'BAD_REQUEST_WORKFLOW_STEP_ROLE_LEVEL_UNIQUE';
+    const BAD_REQUEST_WORKFLOW_ENTITY_NOT_FOUND                                     = 'BAD_REQUEST_WORKFLOW_ENTITY_NOT_FOUND';
+    const BAD_REQUEST_WORKFLOW_ENTITY_ID_NOT_FOUND                                  = 'BAD_REQUEST_WORKFLOW_ENTITY_ID_NOT_FOUND';
+    const BAD_REQUEST_WORKFLOW_ANOTHER_ACTION_IN_PROGRESS                           = 'BAD_REQUEST_WORKFLOW_ANOTHER_ACTION_IN_PROGRESS';
+    const BAD_REQUEST_WORKFLOW_CLOSE_NOT_SUPPORTED                                  = 'BAD_REQUEST_WORKFLOW_CLOSE_NOT_SUPPORTED';
+    const BAD_REQUEST_CHECK_NOT_REQUIRED_IN_CURRENT_LEVEL                           = 'BAD_REQUEST_CHECK_NOT_REQUIRED_IN_CURRENT_LEVEL';
+    const BAD_REQUEST_ACTION_NOT_IN_OPEN_STATES                                     = 'BAD_REQUEST_ACTION_NOT_IN_OPEN_STATES';
+    const BAD_REQUEST_WORKFLOW_ACTION_CLOSE_UNAUTHORIZED                            = 'BAD_REQUEST_WORKFLOW_ACTION_CLOSE_UNAUTHORIZED';
+    const BAD_REQUEST_WORKFLOW_ACTION_CLOSED                                        = 'BAD_REQUEST_WORKFLOW_ACTION_CLOSED';
+    const BAD_REQUEST_INVALID_STATE                                                 = 'BAD_REQUEST_INVALID_STATE';
+
+    // Gateway Priority API error codes
+    const BAD_REQUEST_INVALID_PAYMENT_METHOD                                        = 'BAD_REQUEST_INVALID_PAYMENT_METHOD';
+    const BAD_REQUEST_INVALID_GATEWAY_FOR_METHOD                                    = 'BAD_REQUEST_INVALID_GATEWAY_FOR_METHOD';
+
+    const BAD_REQUEST_PREVIOUS_RUN_IN_PROGRESS                                      = 'BAD_REQUEST_PREVIOUS_RUN_IN_PROGRESS';
+
+    // ES related error codes
+    const BAD_REQUEST_ES_DEBUG_METHOD_NOT_VALID                                     = 'BAD_REQUEST_ES_DEBUG_METHOD_NOT_VALID';
+    const SERVER_ERROR_NO_ES_PRICING_FOR_POSTPAID_MERCHANT                          = 'SERVER_ERROR_NO_ES_PRICING_FOR_POSTPAID_MERCHANT';
+    const SERVER_ERROR_INVALID_ES_PRICING                                           = 'SERVER_ERROR_INVALID_ES_PRICING';
+    // Error code for data missing during force authorize flow
+    const BAD_REQUEST_PAYMENT_AUTH_DATA_MISSING                                     = 'BAD_REQUEST_PAYMENT_AUTH_DATA_MISSING';
+
+    // File store
+    const BAD_REQUEST_FILE_NOT_FOUND                                                = 'BAD_REQUEST_FILE_NOT_FOUND';
+
+    const BAD_REQUEST_MERCHANT_USER_ACTION_NOT_SUPPORTED                            = 'BAD_REQUEST_MERCHANT_USER_ACTION_NOT_SUPPORTED';
+    const BAD_REQUEST_NOT_SUPPORTED_FEATURE                                         = 'BAD_REQUEST_NOT_SUPPORTED_FEATURE';
+
+    const BAD_REQUEST_TOTAL_LOAD_EXCEEDS_MAX_LOAD                                   = 'BAD_REQUEST_TOTAL_LOAD_EXCEEDS_MAX_LOAD';
+
+    const BAD_REQUEST_INVALID_OAUTH_MAIL_TYPE                                       = 'BAD_REQUEST_INVALID_OAUTH_MAIL_TYPE';
+    const BAD_REQUEST_INVALID_EMAIL_TYPE                                            = 'BAD_REQUEST_INVALID_EMAIL_TYPE';
+
+    const BAD_REQUEST_AUTH_SERVICE_ERROR                                            = 'BAD_REQUEST_AUTH_SERVICE_ERROR';
+
+    const BAD_REQUEST_COUPON_LIMIT_REACHED                                          = 'BAD_REQUEST_COUPON_LIMIT_REACHED';
+    const BAD_REQUEST_COUPON_ALREADY_USED                                           = 'BAD_REQUEST_COUPON_ALREADY_USED';
+    const BAD_REQUEST_COUPON_NOT_VALID_FOR_MERCHANT                                 = 'BAD_REQUEST_COUPON_NOT_VALID_FOR_MERCHANT';
+    const BAD_REQUEST_COUPON_NOT_APPLICABLE                                         = 'BAD_REQUEST_COUPON_NOT_APPLICABLE';
+    const BAD_REQUEST_COUPON_EXPIRED                                                = 'BAD_REQUEST_COUPON_EXPIRED';
+    const BAD_REQUEST_INVALID_COUPON_CODE                                           = 'BAD_REQUEST_INVALID_COUPON_CODE';
+    const BAD_REQUEST_PROMOTION_ALREADY_HAS_COUPON                                  = 'BAD_REQUEST_PROMOTION_ALREADY_HAS_COUPON';
+    const BAD_REQUEST_ACTIVE_PROMOTION_FOR_EVENT_ALREADY_EXISTS                     = 'BAD_REQUEST_ACTIVE_PROMOTION_FOR_EVENT_ALREADY_EXISTS';
+
+    const BAD_REQUEST_COUPON_REQUEST_TIMED_OUT                                      = 'BAD_REQUEST_COUPON_REQUEST_TIMED_OUT';
+    const BAD_REQUEST_ONLY_AMOUNT_CREDITS_COUPON_APPLICABLE                         = 'BAD_REQUEST_ONLY_AMOUNT_CREDITS_COUPON_APPLICABLE';
+
+    const BAD_REQUEST_MERCHANT_ID_NOT_REQUIRED                                      = 'BAD_REQUEST_MERCHANT_ID_NOT_REQUIRED';
+    const BAD_REQUEST_COUPON_ALREADY_EXISTS                                         = 'BAD_REQUEST_COUPON_ALREADY_EXISTS';
+
+    const BAD_REQUEST_SNS_PUBLISH_FAILED                                            = 'BAD_REQUEST_SNS_PUBLISH_FAILED';
+
+    const BAD_REQUEST_ADMIN_TOKEN_MISMATCH                                          = 'BAD_REQUEST_ADMIN_TOKEN_MISMATCH';
+    const BAD_REQUEST_GATEWAY_FILE_NON_RETRIABLE                                    = 'BAD_REQUEST_GATEWAY_FILE_NON_RETRIABLE';
+
+    const BAD_REQUEST_MORPHED_ENTITY_INVALID                                        = 'BAD_REQUEST_MORPHED_ENTITY_INVALID';
+
+    const BAD_REQUEST_PAYMENT_PENDING_AUTHORIZATION                                 = 'BAD_REQUEST_PAYMENT_PENDING_AUTHORIZATION';
+    const BAD_REQUEST_PAYMENT_ALREADY_ACKNOWLEDGED                                  = 'BAD_REQUEST_PAYMENT_ALREADY_ACKNOWLEDGED';
+
+    const BAD_REQUEST_INSUFFICIENT_BALANCE_FOR_ADJUSTMENT                           = 'BAD_REQUEST_INSUFFICIENT_BALANCE_FOR_ADJUSTMENT';
+
+    const BAD_REQUEST_BALANCE_DOES_NOT_EXIST                                        = 'BAD_REQUEST_BALANCE_DOES_NOT_EXIST';
+
+    const BAD_REQUEST_PAYMENT_LINK_NOT_PAYABLE                                      = 'BAD_REQUEST_PAYMENT_LINK_NOT_PAYABLE';
+
+    // Merchant requests
+    const BAD_REQUEST_MERCHANT_REQUEST_INVALID_NAME                                 = 'BAD_REQUEST_MERCHANT_REQUEST_INVALID_NAME';
+    const BAD_REQUEST_MERCHANT_REQUEST_SUBMISSIONS_MISSING                          = 'BAD_REQUEST_MERCHANT_REQUEST_SUBMISSIONS_MISSING';
+
+    // Linked Account
+    const BAD_REQUEST_ACCOUNT_IS_NOT_LINKED_ACCOUNT                                 = 'BAD_REQUEST_ACCOUNT_IS_NOT_LINKED_ACCOUNT';
+    const BAD_REQUEST_DASHBOARD_ACCESS_REQUIRED_TO_ALLOW_REVERSALS                  = 'BAD_REQUEST_DASHBOARD_ACCESS_REQUIRED_TO_ALLOW_REVERSALS';
+    const BAD_REQUEST_LINKED_ACCOUNT_DASHBOARD_ACCESS_ALREADY_GIVEN                 = 'BAD_REQUEST_LINKED_ACCOUNT_DASHBOARD_ACCESS_ALREADY_GIVEN';
+    const BAD_REQUEST_NO_EMAIL_LINKED_ACCOUNT_DASHBOARD_ACCESS                      = 'BAD_REQUEST_NO_EMAIL_LINKED_ACCOUNT_DASHBOARD_ACCESS';
+    const BAD_REQUEST_NO_LINKED_ACCOUNT_DASHBOARD_USERS                             = 'BAD_REQUEST_NO_LINKED_ACCOUNT_DASHBOARD_USERS';
+    const BAD_REQUEST_LINKED_ACCOUNT_CANNOT_BE_INSTANTLY_ACTIVATED                  = 'BAD_REQUEST_LINKED_ACCOUNT_CANNOT_BE_INSTANTLY_ACTIVATED';
+    const BAD_REQUEST_LINKED_ACCOUNT_REVERSAL_ABILITY_ALREADY_GIVEN                 = 'BAD_REQUEST_LINKED_ACCOUNT_REVERSAL_ABILITY_ALREADY_GIVEN';
+    const BAD_REQUEST_LINKED_ACCOUNT_REVERSAL_ABILITY_ALREADY_REMOVED               = 'BAD_REQUEST_LINKED_ACCOUNT_REVERSAL_ABILITY_ALREADY_REMOVED';
+    const BAD_REQUEST_PARENT_MERCHANT_IS_NOT_MARKETPLACE                            = 'BAD_REQUEST_PARENT_MERCHANT_IS_NOT_MARKETPLACE';
+    const BAD_REQUEST_LINKED_ACCOUNT_BANK_ACCOUNT_UPDATE_FEATURE_NOT_ENABLED        = 'BAD_REQUEST_LINKED_ACCOUNT_BANK_ACCOUNT_UPDATE_FEATURE_NOT_ENABLED';
+    const BAD_REQUEST_LINKED_ACCOUNT_ID_DOES_NOT_EXIST                              = 'BAD_REQUEST_LINKED_ACCOUNT_ID_DOES_NOT_EXIST';
+    const BAD_REQUEST_CANNOT_UPDATE_BANK_ACCOUNT_FOR_LINKED_ACCOUNT_NOT_ACTIVATED   = 'BAD_REQUEST_CANNOT_UPDATE_BANK_ACCOUNT_FOR_LINKED_ACCOUNT_NOT_ACTIVATED';
+    const BAD_REQUEST_BANK_ACCOUNT_UPDATE_ALREADY_IN_PROGRESS                       = 'BAD_REQUEST_BANK_ACCOUNT_UPDATE_ALREADY_IN_PROGRESS';
+    const BAD_REQUEST_LINKED_ACCOUNT_CREATION_WITH_DUPLICATE_EMAIL_NOT_ENABLED      = 'BAD_REQUEST_LINKED_ACCOUNT_CREATION_WITH_DUPLICATE_EMAIL_NOT_ENABLED';
+    const BAD_REQUEST_CANNOT_UPDATE_BANK_ACCOUNT                                    = 'BAD_REQUEST_CANNOT_UPDATE_BANK_ACCOUNT';
+    const BAD_REQUEST_URL_NOT_ALLOWED_IN_LINKED_ACCOUNT_NAME                        = 'BAD_REQUEST_URL_NOT_ALLOWED_IN_LINKED_ACCOUNT_NAME';
+    const BAD_REQUEST_ERROR_NOT_MARKETPLACE_MERCHANT                                = 'BAD_REQUEST_ERROR_NOT_MARKETPLACE_MERCHANT';
+
+    // Partners error codes
+    const BAD_REQUEST_OAUTH_APP_NOT_FOUND                                           = 'BAD_REQUEST_OAUTH_APP_NOT_FOUND';
+    const BAD_REQUEST_CLIENT_APPLICATION_NOT_MAPPED                                 = 'BAD_REQUEST_CLIENT_APPLICATION_NOT_MAPPED';
+    const SERVER_ERROR_PARTNER_APP_NOT_FOUND                                        = 'SERVER_ERROR_PARTNER_APP_NOT_FOUND';
+    const BAD_REQUEST_INVALID_PARTNER_ACTION                                        = 'BAD_REQUEST_INVALID_PARTNER_ACTION';
+    const BAD_REQUEST_INVALID_APPLICATION_ID                                        = 'BAD_REQUEST_INVALID_APPLICATION_ID';
+    const BAD_REQUEST_MISSING_APPLICATION_ID                                        = 'BAD_REQUEST_MISSING_APPLICATION_ID';
+    const BAD_REQUEST_INVALID_APPLICATION_TYPE                                      = 'BAD_REQUEST_INVALID_APPLICATION_TYPE';
+    const BAD_REQUEST_PARTNER_SUBMERCHANT_NOT_ACTIVATED                             = 'BAD_REQUEST_PARTNER_SUBMERCHANT_NOT_ACTIVATED';
+    const BAD_REQUEST_DAILY_LIMIT_SUBMERCHANT_INVITE_EXCEEDED                       = 'BAD_REQUEST_DAILY_LIMIT_SUBMERCHANT_INVITE_EXCEEDED';
+    const BAD_REQUEST_DAILY_LIMIT_SUBMERCHANT_ONBOARDING_EXCEEDED                   = 'BAD_REQUEST_DAILY_LIMIT_SUBMERCHANT_ONBOARDING_EXCEEDED';
+    const BAD_REQUEST_APPLICATION_TYPE_UPDATE_NOT_SUPPORTED                         = 'BAD_REQUEST_APPLICATION_TYPE_UPDATE_NOT_SUPPORTED';
+    const BAD_REQUEST_PARTNER_SUBMERCHANT_WHITELABEL_ONBOARDING_EXP_NOT_ENABLED     = 'BAD_REQUEST_PARTNER_SUBMERCHANT_WHITELABEL_ONBOARDING_EXP_NOT_ENABLED';
+    const BAD_REQUEST_PARTNER_LOGO_TOO_BIG                                          = 'BAD_REQUEST_PARTNER_LOGO_TOO_BIG';
+    const BAD_REQUEST_PARTNER_LOGO_NOT_SQUARE                                       = 'BAD_REQUEST_PARTNER_LOGO_NOT_SQUARE';
+    const BAD_REQUEST_PARTNER_LOGO_NOT_IMAGE                                        = 'BAD_REQUEST_PARTNER_LOGO_NOT_IMAGE';
+    const BAD_REQUEST_PARTNER_LOGO_TOO_SMALL                                        = 'BAD_REQUEST_PARTNER_LOGO_TOO_SMALL';
+    const BAD_REQUEST_MANUAL_SETTLEMENT_NOT_ALLOWED                                 = 'BAD_REQUEST_MANUAL_SETTLEMENT_NOT_ALLOWED';
+
+    const SERVER_ERROR_SUBSCRIPTION_SERVICE_TIMEOUT                                 = 'SERVER_ERROR_SUBSCRIPTION_SERVICE_TIMEOUT';
+    const SERVER_ERROR_SUBSCRIPTION_SERVICE_FAILURE                                 = 'SERVER_ERROR_SUBSCRIPTION_SERVICE_FAILURE';
+    const GATEWAY_ERROR_LOAN_ORIGINATION_SYSTEM_TIMEOUT                             = 'GATEWAY_ERROR_LOAN_ORIGINATION_SYSTEM_TIMEOUT';
+    const GATEWAY_ERROR_LOAN_ORIGINATION_SYSTEM_FAILURE                             = 'GATEWAY_ERROR_LOAN_ORIGINATION_SYSTEM_FAILURE';
+    const GATEWAY_ERROR_LINE_OF_CREDIT_TIMEOUT                                      = 'GATEWAY_ERROR_LINE_OF_CREDIT_TIMEOUT';
+    const GATEWAY_ERROR_LINE_OF_CREDIT_FAILURE                                      = 'GATEWAY_ERROR_LINE_OF_CREDIT_FAILURE';
+    const BAD_REQUEST_MERCHANT_IS_NOT_PARTNER                                       = 'BAD_REQUEST_MERCHANT_IS_NOT_PARTNER';
+    const BAD_REQUEST_MERCHANT_IS_ALREADY_PARTNER                                   = 'BAD_REQUEST_MERCHANT_IS_ALREADY_PARTNER';
+    const BAD_REQUEST_ACCESS_NOT_ALLOWED_FOR_RESELLER                               = 'BAD_REQUEST_ACCESS_NOT_ALLOWED_FOR_RESELLER';
+    const BAD_REQUEST_FEATURE_NOT_ALLOWED_FOR_MERCHANT                              = 'BAD_REQUEST_FEATURE_NOT_ALLOWED_FOR_MERCHANT';
+    const BAD_REQUEST_LINKED_ACCOUNT_CANNOT_BE_PARTNER                              = 'BAD_REQUEST_LINKED_ACCOUNT_CANNOT_BE_PARTNER';
+    const BAD_REQUEST_PAYMENT_MDR_UPDATE_IN_PROGRESS                                = 'BAD_REQUEST_PAYMENT_MDR_UPDATE_IN_PROGRESS';
+    const BAD_REQUEST_PARTNER_CANNOT_BE_SUBMERCHANT_TO_ITSELF                       = 'BAD_REQUEST_PARTNER_CANNOT_BE_SUBMERCHANT_TO_ITSELF';
+    const BAD_REQUEST_MARK_AS_PARTNER_ALREADY_IN_PROGRESS                           = 'BAD_REQUEST_MARK_AS_PARTNER_ALREADY_IN_PROGRESS';
+    const BAD_REQUEST_SUBM_CREATE_ENTITIES_IN_PROGRESS                              = 'BAD_REQUEST_SUBM_CREATE_ENTITIES_IN_PROGRESS';
+    const BAD_REQUEST_AGGREGATOR_TO_RESELLER_MIGRATION_IN_PROGRESS                  = 'BAD_REQUEST_AGGREGATOR_TO_RESELLER_MIGRATION_IN_PROGRESS';
+    const BAD_REQUEST_RESELLER_TO_AGGREGATOR_MIGRATION_IN_PROGRESS                  = 'BAD_REQUEST_RESELLER_TO_AGGREGATOR_MIGRATION_IN_PROGRESS';
+
+    const BAD_REQUEST_RESELLER_TO_PURE_PLATFORM_MIGRATION_IN_PROGRESS               = 'BAD_REQUEST_RESELLER_TO_PURE_PLATFORM_MIGRATION_IN_PROGRESS';
+
+    const BAD_REQUEST_SET_DEFAULT_METHODS_ALREADY_IN_PROGRESS                       = 'BAD_REQUEST_SET_DEFAULT_METHODS_ALREADY_IN_PROGRESS';
+    // Razorpay Capital
+    // Financial Data Service
+    const SERVER_ERROR_FINANCIAL_DATA_SERVICE_TIMEOUT                               = 'SERVER_ERROR_FINANCIAL_DATA_SERVICE_TIMEOUT';
+    const SERVER_ERROR_FINANCIAL_DATA_SERVICE_FAILURE                               = 'SERVER_ERROR_FINANCIAL_DATA_SERVICE_FAILURE';
+
+    //Capital Cards Service
+    const GATEWAY_ERROR_CAPITAL_CARDS_TIMEOUT                                      = 'GATEWAY_ERROR_CAPITAL_CARDS_TIMEOUT';
+    const GATEWAY_ERROR_CAPITAL_CARDS_FAILURE                                      = 'GATEWAY_ERROR_CAPITAL_CARDS_FAILURE';
+
+    const SERVER_ERROR_CONFIG_READ_ERROR                                           = 'SERVER_ERROR_CONFIG_READ_ERROR';
+
+    // Ledger Error Codes
+    const SERVER_ERROR_LEDGER_JOURNAL_FETCH_TRANSACTION                            = 'SERVER_ERROR_LEDGER_JOURNAL_FETCH_TRANSACTION';
+    const SERVER_ERROR_LEDGER_ACCOUNT_FETCH_BALANCES                               = 'SERVER_ERROR_LEDGER_ACCOUNT_FETCH_BALANCES';
+    const BAD_REQUEST_API_TRANSACTION_JOURNAL_ID_MISMATCH                          = 'BAD_REQUEST_API_TRANSACTION_JOURNAL_ID_MISMATCH';
+
+    // Inheritance
+    const BAD_REQUEST_INHERITANCE_PARENT_SHOULD_BE_PARTNER_PARENT_OF_SUBMERCHANT    = 'BAD_REQUEST_INHERITANCE_PARENT_SHOULD_BE_PARTNER_PARENT_OF_SUBMERCHANT';
+    const BAD_REQUEST_INHERITANCE_PARENT_ALREADY_SET_FOR_SUBMERCHANT                = 'BAD_REQUEST_INHERITANCE_PARENT_ALREADY_SET_FOR_SUBMERCHANT';
+    const SERVER_ERROR_CORE_PAYMENT_SERVICE_FAILURE                                 = 'SERVER_ERROR_CORE_PAYMENT_SERVICE_FAILURE';
+    const SERVER_ERROR_CORE_PAYMENT_SERVICE_TIMEOUT                                 = 'SERVER_ERROR_CORE_PAYMENT_SERVICE_TIMEOUT';
+
+    // Card Payment Service Error Codes
+    const SERVER_ERROR_CARD_PAYMENT_SERVICE_FAILURE                                 = 'SERVER_ERROR_CARD_PAYMENT_SERVICE_FAILURE';
+    const SERVER_ERROR_CARD_PAYMENT_SERVICE_TIMEOUT                                 = 'SERVER_ERROR_CARD_PAYMENT_SERVICE_TIMEOUT';
+    const SERVER_ERROR_CARD_PAYMENT_SERVICE_EMI_PLAN_SYNC_CALL_FAILED               = 'SERVER_ERROR_CARD_PAYMENT_SERVICE_EMI_PLAN_SYNC_CALL_FAILED';
+    const SERVER_ERROR_CARD_PAYMENT_SERVICE_EMI_PLAN_SYNC_ENABLED                   = 'SERVER_ERROR_CARD_PAYMENT_SERVICE_EMI_PLAN_SYNC_ENABLED';
+
+    // Nb Plus Service Errors
+    const SERVER_ERROR_NBPLUS_PAYMENT_SERVICE_FAILURE                               = 'SERVER_ERROR_NBPLUS_PAYMENT_SERVICE_FAILURE';
+    const SERVER_ERROR_NBPLUS_PAYMENT_SERVICE_TIMEOUT                               = 'SERVER_ERROR_NBPLUS_PAYMENT_SERVICE_TIMEOUT';
+
+    // UPI Payment Service Errors
+    const SERVER_ERROR_UPI_PAYMENT_SERVICE_REQUEST_ERROR                            = 'SERVER_ERROR_UPI_PAYMENT_SERVICE_REQUEST_ERROR';
+    const SERVER_ERROR_UPI_PAYMENT_SERVICE_REQUEST_TIMEOUT                          = 'SERVER_ERROR_UPI_PAYMENT_SERVICE_REQUEST_TIMEOUT';
+    const SERVER_ERROR_UPI_PAYMENT_SERVICE_CONNECTION_FAILED                        = 'SERVER_ERROR_UPI_PAYMENT_SERVICE_CONNECTION_FAILED';
+    const SERVER_ERROR_UPI_PAYMENT_SERVICE_FAILURE                                  = 'SERVER_ERROR_UPI_PAYMENT_SERVICE_FAILURE';
+    const SERVER_ERROR_UPI_PAYMENT_SERVICE_ENTITY_FETCH_ERROR                       = 'SERVER_ERROR_UPI_PAYMENT_SERVICE_ENTITY_FETCH_ERROR';
+
+    const SERVER_ERROR_GOVERNOR_SERVICE_FAILURE                                     = 'SERVER_ERROR_GOVERNOR_SERVICE_FAILURE';
+    const SERVER_ERROR_GOVERNOR_SERVICE_TIMEOUT                                     = 'SERVER_ERROR_GOVERNOR_SERVICE_TIMEOUT';
+    const BAD_REQUEST_ERROR_GOVERNOR                                                = 'BAD_REQUEST_ERROR_GOVERNOR';
+
+    const BAD_REQUEST_ERROR_DOPPLER                                                 = 'BAD_REQUEST_ERROR_DOPPLER';
+    const SERVER_ERROR_DOPPLER_SERVICE_TIMEOUT                                      = 'SERVER_ERROR_DOPPLER_SERVICE_TIMEOUT';
+    const SERVER_ERROR_DOPPLER_SERVICE_FAILURE                                      = 'SERVER_ERROR_DOPPLER_SERVICE_FAILURE';
+    const BAD_REQUEST_MERCHANT_EDIT_OPERATION_IN_PROGRESS                           = 'BAD_REQUEST_MERCHANT_EDIT_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_EDIT_OPERATION_IN_PROGRESS                           = 'BAD_REQUEST_EDIT_OPERATION_IN_PROGRESS';
+
+    const BAD_REQUEST_PAYOUT_OPERATION_FOR_MERCHANT_IN_PROGRESS                     = 'BAD_REQUEST_PAYOUT_OPERATION_FOR_MERCHANT_IN_PROGRESS';
+    const BAD_REQUEST_PAYOUT_AMOUNT_RULE_NOT_FOUND                                  = 'BAD_REQUEST_PAYOUT_AMOUNT_RULE_NOT_FOUND';
+    const BAD_REQUEST_PAYOUT_AMOUNT_RULE_CHANGED                                    = 'BAD_REQUEST_PAYOUT_AMOUNT_RULE_CHANGED';
+    const BAD_REQUEST_PAYOUT_WORKFLOW_EDIT_IN_PROGRESS                              = 'BAD_REQUEST_PAYOUT_WORKFLOW_EDIT_IN_PROGRESS';
+
+    const BAD_REQUEST_INVALID_LOCALE                                                = 'BAD_REQUEST_INVALID_LOCALE';
+    const BAD_REQUEST_RETRY_ATTEMPT_LIMIT_EXCEEDED                                  = 'BAD_REQUEST_RETRY_ATTEMPT_LIMIT_EXCEEDED';
+    const GATEWAY_ERROR_SECURE_CGI_PARAM_KEY_CORRUPT_INVALID                        = 'GATEWAY_ERROR_SECURE_CGI_PARAM_KEY_CORRUPT_INVALID';
+    const GATEWAY_ERROR_APPROVED_VIP                                                = 'GATEWAY_ERROR_APPROVED_VIP';
+    const GATEWAY_ERROR_SECURE_CGI_PARAM_PRIVATE_KEY_CORRUPT_INVALID                = 'GATEWAY_ERROR_SECURE_CGI_PARAM_PRIVATE_KEY_CORRUPT_INVALID';
+    const GATEWAY_ERROR_SECURE_CGI_PARAM_PUBLIC_KEY_CORRUPT_INVALID                 = 'GATEWAY_ERROR_SECURE_CGI_PARAM_PUBLIC_KEY_CORRUPT_INVALID';
+    const GATEWAY_ERROR_GENERIC_TRANSACTION_ERROR                                   = 'GATEWAY_ERROR_GENERIC_TRANSACTION_ERROR';
+    const BAD_REQUEST_TRANSACTIONS_LIMIT_REACHED                                    = 'BAD_REQUEST_TRANSACTIONS_LIMIT_REACHED';
+    const GATEWAY_ERROR_TERMINAL_ERROR                                              = 'GATEWAY_ERROR_TERMINAL_ERROR';
+    const GATEWAY_ERROR_SHARED_TERMINAL_ERROR                                       = 'GATEWAY_ERROR_SHARED_TERMINAL_ERROR';
+    const GATEWAY_ERROR_RECON_NOT_IN_PROGRESS                                       = 'GATEWAY_ERROR_RECON_NOT_IN_PROGRESS';
+    const BAD_REQUEST_COULD_NOT_READ_CARD_MAGNETIC_STRIPE                           = 'BAD_REQUEST_COULD_NOT_READ_CARD_MAGNETIC_STRIPE';
+    const BAD_REQUEST_INVALID_CARD_DETAILS                                          = 'BAD_REQUEST_INVALID_CARD_DETAILS';
+    const GATEWAY_ERROR_PAYMENT_CREATION_FAILED                                     = 'GATEWAY_ERROR_PAYMENT_CREATION_FAILED';
+    const GATEWAY_ERROR_ORDER_CREATION_FAILED                                       = 'GATEWAY_ERROR_ORDER_CREATION_FAILED';
+    const GATEWAY_ERROR_RECEIPT_CREATION_FAILED                                     = 'GATEWAY_ERROR_RECEIPT_CREATION_FAILED';
+    const GATEWAY_ERROR_FINANCIAL_TRANSACTION_HISTORY_FAILED                        = 'GATEWAY_ERROR_FINANCIAL_TRANSACTION_HISTORY_FAILED';
+    const GATEWAY_ERROR_SHOPPING_TRANSACTION_HISTORY_FAILED                         = 'GATEWAY_ERROR_SHOPPING_TRANSACTION_HISTORY_FAILED';
+    const GATEWAY_ERROR_DIGITAL_ORDER_ERROR                                         = 'GATEWAY_ERROR_DIGITAL_ORDER_ERROR';
+    const GATEWAY_ERROR_DIGITAL_RECEIPT_ERROR                                       = 'GATEWAY_ERROR_DIGITAL_ORDER_ERROR';
+    const BAD_REQUEST_PURCHASE_ERROR                                                = 'BAD_REQUEST_PURCHASE_ERROR';
+    const GATEWAY_ERROR_DEFERRED_PAYMENT_SERVICE_UNAVAILABLE                        = 'GATEWAY_ERROR_DEFERRED_PAYMENT_SERVICE_UNAVAILABLE';
+    const BAD_REQUEST_MAX_DEFERRED_PAYMENT_REACHED                                  = 'BAD_REQUEST_MAX_DEFERRED_PAYMENT_REACHED';
+    const GATEWAY_ERROR_INSTANTIATION_ACQUIRER_CONTROLLER_FAILED                    = 'GATEWAY_ERROR_INSTANTIATION_ACQUIRER_CONTROLLER_FAILED';
+    const GATEWAY_ERROR_IO_ERROR                                                    = 'GATEWAY_ERROR_IO_ERROR';
+    const GATEWAY_ERROR_MESSAGE_ERROR                                               = 'GATEWAY_ERROR_MESSAGE_ERROR';
+    const GATEWAY_ERROR_TRANSPORT_ERROR                                             = 'GATEWAY_ERROR_TRANSPORT_ERROR';
+    const GATEWAY_ERROR_SOCKET_ERROR                                                = 'GATEWAY_ERROR_SOCKET_ERROR';
+    const GATEWAY_ERROR_CONNECTION_ERROR                                            = 'GATEWAY_ERROR_CONNECTION_ERROR';
+    const GATEWAY_ERROR_SHOPPING_TRANSACTIONS_REFUND_EXCEEDED                       = 'GATEWAY_ERROR_SHOPPING_TRANSACTIONS_REFUND_EXCEEDED';
+    const GATEWAY_ERROR_MERCHANT_CREATION_ERROR                                     = 'GATEWAY_ERROR_MERCHANT_CREATION_ERROR';
+    const GATEWAY_ERROR_SEND_EMAIL_ERROR                                            = 'GATEWAY_ERROR_SEND_EMAIL_ERROR';
+    const GATEWAY_ERROR_FAILED_DATA_UPDATE                                          = 'GATEWAY_ERROR_FAILED_DATA_UPDATE';
+    const GATEWAY_ERROR_ACQUIRER_UNAVAILABLE                                        = 'GATEWAY_ERROR_ACQUIRER_UNAVAILABLE';
+    const GATEWAY_ERROR_USER_MERCHANT_LIMIT_BREACHED                                = 'GATEWAY_ERROR_USER_MERCHANT_LIMIT_BREACHED';
+    const GATEWAY_ERROR_OUTSTANDING_LIMIT_BREACHED                                  = 'GATEWAY_ERROR_OUTSTANDING_LIMIT_BREACHED';
+
+    const BAD_REQUEST_GATEWAY_DOWNTIME_CONFLICT                                     = 'BAD_REQUEST_GATEWAY_DOWNTIME_CONFLICT';
+    const BAD_REQUEST_PAYMENT_DOWNTIME_MUTEX_TIMED_OUT                              = 'BAD_REQUEST_PAYMENT_DOWNTIME_MUTEX_TIMED_OUT';
+    const BAD_REQUEST_GATEWAY_DOWNTIME_MUTEX_TIMED_OUT                              = 'BAD_REQUEST_GATEWAY_DOWNTIME_MUTEX_TIMED_OUT';
+    const BAD_REQUEST_PAYMENT_DOWNTIME_DUPLICATE_EDIT                               = 'BAD_REQUEST_PAYMENT_DOWNTIME_DUPLICATE_EDIT';
+
+    //TPV - Third party validation
+    //- validations on source accounts through which money gets loaded to va.
+    const BAD_REQUEST_REJECTED_TPV_WITHOUT_REMARKS                                  = 'BAD_REQUEST_REJECTED_TPV_WITHOUT_REMARKS';
+    const BAD_REQUEST_DUPLICATE_TPV                                                 = 'BAD_REQUEST_DUPLICATE_TPV';
+    const BAD_REQUEST_TPV_NOT_EXISTS                                                = 'BAD_REQUEST_TPV_NOT_EXISTS';
+    const BAD_REQUEST_TPV_CREATE_OPERATION_IN_PROGRESS                              = 'BAD_REQUEST_TPV_CREATE_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_TPV_INVALID_MERCHANT_BALANCE_ID                               = 'BAD_REQUEST_TPV_INVALID_MERCHANT_BALANCE_ID';
+    const BAD_REQUEST_TPV_BALANCE_TYPE_DIRECT_NOT_SUPPORTED                         = 'BAD_REQUEST_TPV_BALANCE_TYPE_DIRECT_NOT_SUPPORTED';
+    const BAD_REQUEST_TPV_PRIMARY_BALANCE_NOT_SUPPORTED                             = 'BAD_REQUEST_TPV_PRIMARY_BALANCE_NOT_SUPPORTED';
+    const BAD_REQUEST_TPV_ERROR                                                     = 'BAD_REQUEST_TPV_ERROR';
+    const BAD_REQUEST_FUND_LOADING_REFUND_PAYOUT_CREATION_FAILED                    = 'BAD_REQUEST_FUND_LOADING_REFUND_PAYOUT_CREATION_FAILED';
+
+    // Scrooge error codes
+    const GATEWAY_VERIFY_REFUND_ABSENT                                              = 'GATEWAY_VERIFY_REFUND_ABSENT';
+    const GATEWAY_VERIFY_REFUND_IN_PROCESSING                                       = 'GATEWAY_VERIFY_REFUND_IN_PROCESSING';
+    const GATEWAY_VERIFY_OLDER_REFUNDS_DISABLED                                     = 'GATEWAY_VERIFY_OLDER_REFUNDS_DISABLED';
+    const REFUND_MANUALLY_CONFIRMED_UNPROCESSED                                     = 'REFUND_MANUALLY_CONFIRMED_UNPROCESSED';
+    const REFUND_FTA_MANUALLY_CONFIRMED_UNPROCESSED                                 = 'REFUND_FTA_MANUALLY_CONFIRMED_UNPROCESSED';
+    const GATEWAY_PAYMENT_REVERSAL_VERIFICATION_DISABLED                            = 'GATEWAY_PAYMENT_REVERSAL_VERIFICATION_DISABLED';
+    const BAD_REQUEST_PAYOUT_LESS_THAN_MIN_AMOUNT                                   = 'BAD_REQUEST_PAYOUT_LESS_THAN_MIN_AMOUNT';
+    const GATEWAY_CHARGEBACK_REFUND_FAILURE                                         = 'GATEWAY_CHARGEBACK_REFUND_FAILURE';
+    const GATEWAY_ERROR_REFUND_DEEMED                                               = 'GATEWAY_ERROR_REFUND_DEEMED';
+    const GATEWAY_ERROR_VERIFY_REFUND_NOT_SUPPORTED                                 = 'GATEWAY_ERROR_VERIFY_REFUND_NOT_SUPPORTED';
+
+    // cardless emi error codes
+    const GATEWAY_ERROR_CARDLESS_EMI_INVALID_TOKEN                                  = 'GATEWAY_ERROR_CARDLESS_EMI_INVALID_TOKEN';
+    const BAD_REQUEST_PAYMENT_CARDLESS_EMI_INVALID_PAYMENT_ID                       = 'BAD_REQUEST_PAYMENT_CARDLESS_EMI_INVALID_PAYMENT_ID';
+    const BAD_REQUEST_PAYMENT_CARDLESS_EMI_CONTACT_MISMATCH                         = 'BAD_REQUEST_PAYMENT_CARDLESS_EMI_CONTACT_MISMATCH';
+    const BAD_REQUEST_PAYMENT_CARDLESS_EMI_INVALID_PROVIDER                         = 'BAD_REQUEST_PAYMENT_CARDLESS_EMI_INVALID_PROVIDER';
+    const BAD_REQUEST_EMI_PLANS_DO_NOT_EXIST                                        = 'BAD_REQUEST_EMI_PLANS_DO_NOT_EXIST';
+    const BAD_REQUEST_CARDLESS_EMI_INVALID_TOKEN                                    = 'BAD_REQUEST_CARDLESS_EMI_INVALID_TOKEN';
+    const BAD_REQUEST_CARDLESS_EMI_INVALID_MERCHANT_NAME                            = 'BAD_REQUEST_CARDLESS_EMI_INVALID_MERCHANT_NAME';
+    const BAD_REQUEST_CARDLESS_EMI_INVALID_EMI_PLAN_ID                              = 'BAD_REQUEST_CARDLESS_EMI_INVALID_EMI_PLAN_ID';
+    const BAD_REQUEST_CARDLESS_EMI_MINIMUM_AMOUNT_REQUIRED                          = 'BAD_REQUEST_CARDLESS_EMI_MINIMUM_AMOUNT_REQUIRED';
+    const BAD_REQUEST_CARDLESS_EMI_MAXIMUM_AMOUNT_LIMIT                             = 'BAD_REQUEST_CARDLESS_EMI_MAXIMUM_AMOUNT_LIMIT';
+    const GATEWAY_ERROR_CARDLESS_EMI_PAYMENT_FAILED_PARTNER                         = 'GATEWAY_ERROR_CARDLESS_EMI_PAYMENT_FAILED_PARTNER';
+    const BAD_REQUEST_CARDLESS_EMI_CREDIT_LIMIT_EXHAUSTED                           = 'BAD_REQUEST_CARDLESS_EMI_CREDIT_LIMIT_EXHAUSTED';
+    const BAD_REQUEST_CARDLESS_EMI_CREDIT_LIMIT_NOT_ACTIVATED                       = 'BAD_REQUEST_CARDLESS_EMI_CREDIT_LIMIT_NOT_ACTIVATED';
+    const BAD_REQUEST_CARDLESS_EMI_CREDIT_LIMIT_NOT_APPROVED                        = 'BAD_REQUEST_CARDLESS_EMI_CREDIT_LIMIT_NOT_APPROVED';
+    const BAD_REQUEST_CARDLESS_EMI_CREDIT_LIMIT_EXPIRED                             = 'BAD_REQUEST_CARDLESS_EMI_CREDIT_LIMIT_EXPIRED';
+
+    // redirect error codes
+    const BAD_REQUEST_PAYMENT_REDIRECT_INVALID_AUTH                                 = 'BAD_REQUEST_PAYMENT_REDIRECT_INVALID_AUTH';
+    const BAD_REQUEST_PAYMENT_REDIRECT_NO_INPUT_DETAILS                             = 'BAD_REQUEST_PAYMENT_REDIRECT_NO_INPUT_DETAILS';
+    const BAD_REQUEST_PAYMENT_CANNOT_REDIRECT                                       = 'BAD_REQUEST_PAYMENT_CANNOT_REDIRECT';
+
+    // banking account
+    const BAD_REQUEST_ERROR_SOURCE_ACCOUNT_CREATION_FAILED                                    = 'BAD_REQUEST_ERROR_SOURCE_ACCOUNT_CREATION_FAILED';
+    const BAD_REQUEST_ERROR_BANKING_ACCOUNT_FUND_ACCOUNT_CREATION_FAILED                      = 'BAD_REQUEST_ERROR_BANKING_ACCOUNT_FUND_ACCOUNT_CREATION_FAILED';
+    const BAD_REQUEST_ERROR_DIRECT_FUND_ACCOUNT_AND_SOURCE_ACCOUNT_CREATION_FAILED            = 'BAD_REQUEST_ERROR_DIRECT_FUND_ACCOUNT_AND_SOURCE_ACCOUNT_CREATION_FAILED';
+    const BAD_REQUEST_ERROR_BANKING_ACCOUNT_FUND_ACCOUNT_CREATION_VALIDATION_FAILED           = 'BAD_REQUEST_ERROR_BANKING_ACCOUNT_FUND_ACCOUNT_CREATION_VALIDATION_FAILED';
+    const BAD_REQUEST_ERROR_SOURCE_ACCOUNT_CREATION_VALIDATION_FAILED                         = 'BAD_REQUEST_ERROR_SOURCE_ACCOUNT_CREATION_VALIDATION_FAILED';
+    const BAD_REQUEST_ERROR_DIRECT_FUND_ACCOUNT_AND_SOURCE_ACCOUNT_CREATION_VALIDATION_FAILED = 'BAD_REQUEST_ERROR_DIRECT_FUND_ACCOUNT_AND_SOURCE_ACCOUNT_CREATION_VALIDATION_FAILED';
+    const BAD_REQUEST_ERROR_BANKING_ACCOUNT_ACTIVATION_FAILED                                 = 'BAD_REQUEST_ERROR_BANKING_ACCOUNT_ACTIVATION_FAILED';
+    const BAD_REQUEST_ERROR_WRONG_BANKING_ACCOUNT_CREDENTIALS                                 = 'BAD_REQUEST_ERROR_WRONG_BANKING_ACCOUNT_CREDENTIALS';
+    const BAD_REQUEST_BANKING_ACCOUNT_ACTIVATION_PERMITTED_ONLY_ON_ADMIN_AUTH                 = 'BAD_REQUEST_BANKING_ACCOUNT_ACTIVATION_PERMITTED_ONLY_ON_ADMIN_AUTH';
+    const BAD_REQUEST_BANKING_ACCOUNT_ACTIVATION_DETAILS_ONLY_ON_ADMIN_AUTH                   = 'BAD_REQUEST_BANKING_ACCOUNT_ACTIVATION_DETAILS_ONLY_ON_ADMIN_AUTH';
+    const BAD_REQUEST_BANKING_ACCOUNT_ACTIVATION_DETAILS_UPDATE_NOT_ALLOWED                   = 'BAD_REQUEST_BANKING_ACCOUNT_ACTIVATION_DETAILS_UPDATE_NOT_ALLOWED';
+    const BAD_REQUEST_BANKING_ACCOUNT_ACTIVATION_NOT_PERMITTED                                = 'BAD_REQUEST_BANKING_ACCOUNT_ACTIVATION_NOT_PERMITTED';
+    const BAD_REQUEST_BANKING_ACCOUNT_DETAILS_UPDATE_NOT_ALLOWED_ON_CURRENT_STATUS            = 'BAD_REQUEST_BANKING_ACCOUNT_DETAILS_UPDATE_NOT_ALLOWED_ON_CURRENT_STATUS';
+    const BAD_REQUEST_BANKING_ACCOUNT_ALREADY_ACTIVATED                                       = 'BAD_REQUEST_BANKING_ACCOUNT_ALREADY_ACTIVATED';
+    const BAD_REQUEST_BANKING_ACCOUNT_ALREADY_EXISTS                                          = 'BAD_REQUEST_BANKING_ACCOUNT_ALREADY_EXISTS';
+    const SERVER_ERROR_VAULT_TOKENIZE_FAILED                                                  = 'SERVER_ERROR_VAULT_TOKENIZE_FAILED';
+    const SERVER_ERROR_BANKING_ACCOUNT_NUMBER_LIMIT_REACHED                                   = 'SERVER_ERROR_BANKING_ACCOUNT_NUMBER_LIMIT_REACHED';
+    const BAD_REQUEST_BANKING_ACCOUNT_WEBHOOK_ALREADY_PROCESSED                               = 'BAD_REQUEST_BANKING_ACCOUNT_WEBHOOK_ALREADY_PROCESSED';
+    const BAD_REQUEST_BANKING_ACCOUNT_WEBHOOK_INCORRECT_RZP_REF_NO                            = 'BAD_REQUEST_BANKING_ACCOUNT_WEBHOOK_INCORRECT_RZP_REF_NO';
+    const BAD_REQUEST_BANKING_ACCOUNT_ALREADY_EXIST_WITH_THE_CHANNEL_ASSOCIATED               = 'BAD_REQUEST_BANKING_ACCOUNT_ALREADY_EXIST_WITH_THE_CHANNEL_ASSOCIATED';
+    const BAD_REQUEST_BANKING_ACCOUNT_INCORRECT_FORMAT_FOR_ACCOUNT_OPEN_DATE                  = 'BAD_REQUEST_BANKING_ACCOUNT_INCORRECT_FORMAT_FOR_ACCOUNT_OPEN_DATE';
+    const BAD_REQUEST_BANKING_ACCOUNT_WEBHOOK_RESET_NOT_ALLOWED_FOR_CURRENT_STATUS            = 'BAD_REQUEST_BANKING_ACCOUNT_WEBHOOK_RESET_NOT_ALLOWED_FOR_CURRENT_STATUS';
+    const BAD_REQUEST_BANKING_ACCOUNT_CONSTITUTION_NOT_SUPPORTED                              = 'BAD_REQUEST_BANKING_ACCOUNT_CONSTITUTION_NOT_SUPPORTED';
+    const BAD_REQUEST_BANKING_ACCOUNT_UPDATE_NOT_PERMITTED                                    = 'BAD_REQUEST_BANKING_ACCOUNT_UPDATE_NOT_PERMITTED';
+
+    //on_demand
+    const BAD_REQUEST_ONDEMAND_PAYOUT_REVERSAL_FAILURE                          = 'BAD_REQUEST_ONDEMAND_PAYOUT_REVERSAL_FAILURE';
+    const BAD_REQUEST_AMOUNT_LESS_THAN_MIN_LIMIT_FOR_NON_ES_AUTOMATIC_MERCHANTS = 'BAD_REQUEST_AMOUNT_LESS_THAN_MIN_LIMIT_FOR_NON_ES_AUTOMATIC_MERCHANTS';
+    const BAD_REQUEST_ONDEMAND_SETTLEMENT_AMOUNT_MAX_LIMIT_EXCEEDED             = 'BAD_REQUEST_ONDEMAND_SETTLEMENT_AMOUNT_MAX_LIMIT_EXCEEDED';
+    const BAD_REQUEST_ONDEMAND_SETTLEMENT_LIMIT_EXCEEDED                        = 'BAD_REQUEST_ONDEMAND_SETTLEMENT_LIMIT_EXCEEDED';
+    const BAD_REQUEST_ONDEMAND_SETTLEMENT_BLOCKED                               = 'BAD_REQUEST_ONDEMAND_SETTLEMENT_BLOCKED';
+    const BAD_REQUEST_AMOUNT_LESS_THAN_MIN_ONDEMAND_AMOUNT                      = 'BAD_REQUEST_AMOUNT_LESS_THAN_MIN_ONDEMAND_AMOUNT';
+    const BAD_REQUEST_NON_ES_ON_DEMAND_MERCHANTS_NOT_ALLOWED                    = 'BAD_REQUEST_NON_ES_ON_DEMAND_MERCHANTS_NOT_ALLOWED';
+    const BAD_REQUEST_ES_ON_DEMAND_DISABLED_BY_COLLECTIONS                      = 'BAD_REQUEST_ES_ON_DEMAND_DISABLED_BY_COLLECTIONS';
+    const BAD_REQUEST_NON_ONDEMAND_ROUTE_MERCHANTS_NOT_ALLOWED                  = 'BAD_REQUEST_NON_ONDEMAND_ROUTE_MERCHANTS_NOT_ALLOWED';
+    const BAD_REQUEST_INSUFFICIENT_BALANCE                                      = 'BAD_REQUEST_INSUFFICIENT_BALANCE';
+    const BAD_REQUEST_ONDEMAND_SETTLEMENT_DUPLICATE_REQUEST                     = 'BAD_REQUEST_ONDEMAND_SETTLEMENT_DUPLICATE_REQUEST';
+    const SERVER_ERROR_PRICING_RULE_CREATION_FAILURE                            = 'SERVER_ERROR_PRICING_RULE_CREATION_FAILURE';
+    const SERVER_ERROR_PRICING_RULE_UPDATION_FAILURE                            = 'SERVER_ERROR_PRICING_RULE_UPDATION_FAILURE';
+    const SERVER_ERROR_RAZORPAYX_FAILURE                                        = 'SERVER_ERROR_RAZORPAYX_FAILURE';
+    const SERVER_ERROR_RAZORPAYX_FUND_ACCOUNT_CREATION_FAILURE                  = 'SERVER_ERROR_RAZORPAYX_FUND_ACCOUNT_CREATION_FAILURE';
+    const SERVER_ERROR_RAZORPAYX_CONTACT_CREATION_FAILURE                       = 'SERVER_ERROR_RAZORPAYX_CONTACT_CREATION_FAILURE';
+    const SERVER_ERROR_RAZORPAYX_PAYOUT_CREATION_FAILURE                        = 'SERVER_ERROR_RAZORPAYX_PAYOUT_CREATION_FAILURE';
+
+    const SERVER_ERROR_RAZORPAYX_PAYOUT_REVERSAL                                    = 'SERVER_ERROR_RAZORPAYX_PAYOUT_REVERSAL';
+
+    const SERVER_ERROR_REVERSAL_TXN_ALREADY_CREATED                                 = 'SERVER_ERROR_REVERSAL_TXN_ALREADY_CREATED';
+    const SERVER_ERROR_TRANSACTION_WRONG_SOURCE                                     = 'SERVER_ERROR_TRANSACTION_WRONG_SOURCE';
+    const SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_UTR                            = 'SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_UTR';
+    const SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_REVERSAL_UTR                   = 'SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_REVERSAL_UTR';
+    const SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_REVERSAL_CMS_REF_NO            = 'SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_REVERSAL_CMS_REF_NO';
+    const SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_REVERSAL_GATEWAY_REF_NO        = 'SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_REVERSAL_GATEWAY_REF_NO';
+    const SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_CMS_REF_NO_FOR_IFT             = 'SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_CMS_REF_NO_FOR_IFT';
+    const SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_GATEWAY_REF_NO_FOR_IFT         = 'SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_GATEWAY_REF_NO_FOR_IFT';
+    const SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_CMS_REF_NO_FOR_NON_IFT         = 'SERVER_ERROR_MULTIPLE_BAS_FOR_REFERENCE_BY_CMS_REF_NO_FOR_NON_IFT';
+
+    const GATEWAY_ERROR_MULTIPLE_REFUNDS_FOUND                                      = 'GATEWAY_ERROR_MULTIPLE_REFUNDS_FOUND';
+    const GATEWAY_ERROR_UNEXPECTED_STATUS                                           = 'GATEWAY_ERROR_UNEXPECTED_STATUS';
+    const GATEWAY_ERROR_REFUND_FAILED_PAYMENT_NOT_IDENTIFIED                        = 'GATEWAY_ERROR_REFUND_FAILED_PAYMENT_NOT_IDENTIFIED';
+
+    const BAD_REQUEST_SETTLEMENT_ANOTHER_QUEUE_OPERATION_IN_PROGRESS                = 'BAD_REQUEST_SETTLEMENT_ANOTHER_QUEUE_OPERATION_IN_PROGRESS';
+
+    const BAD_REQUEST_NO_DEFAULT_PLAN_IN_ORG                                        = 'BAD_REQUEST_NO_DEFAULT_PLAN_IN_ORG';
+    const GATEWAY_ERROR_ISSUER_ACS_NOT_AVAILABLE                                    = 'GATEWAY_ERROR_ISSUER_ACS_NOT_AVAILABLE';
+    const GATEWAY_ERROR_ISSUER_UNAVAILABLE                                          = 'GATEWAY_ERROR_ISSUER_UNAVAILABLE';
+
+    const NODAL_BENEFICIARY_REGISTRATION_FAILED_RESPONSE                            = 'NODAL_BENEFICIARY_REGISTRATION_FAILED_RESPONSE';
+    const BAD_REQUEST_INVALID_ACCOUNT_TYPE_PASSED_FOR_MODE                          = 'BAD_REQUEST_INVALID_ACCOUNT_TYPE_PASSED_FOR_MODE';
+    const BAD_REQUEST_INVALID_AMOUNT_PASSED_FOR_ACCOUNT_TYPE                        = 'BAD_REQUEST_INVALID_AMOUNT_PASSED_FOR_ACCOUNT_TYPE';
+
+    const BAD_REQUEST_PARTNER_ID_SENT_FOR_PURE_PLATFORM                             = 'BAD_REQUEST_PARTNER_ID_SENT_FOR_PURE_PLATFORM';
+    const BAD_REQUEST_APPLICATION_ID_OR_PARTNER_ID_MISSING                          = 'BAD_REQUEST_APPLICATION_ID_OR_PARTNER_ID_MISSING';
+    const BAD_REQUEST_APPLICATION_ID_PARTNER_ID_BOTH_PRESENT                        = 'BAD_REQUEST_APPLICATION_ID_PARTNER_ID_BOTH_PRESENT';
+    const BAD_REQUEST_APPLICATION_SUBMERCHANT_CONFIG_EXISTS                         = 'BAD_REQUEST_APPLICATION_SUBMERCHANT_CONFIG_EXISTS';
+    const BAD_REQUEST_EXPIRY_DATE_SET_FOR_SUBVENTION                                = 'BAD_REQUEST_EXPIRY_DATE_SET_FOR_SUBVENTION';
+    const BAD_REQUEST_PARTNER_CONFIGURATION_INVALID                                 = 'BAD_REQUEST_PARTNER_CONFIGURATION_INVALID';
+    const BAD_REQUEST_PARTNER_SUBMERCHANT_CONFIGURATION_INVALID                     = 'BAD_REQUEST_PARTNER_SUBMERCHANT_CONFIGURATION_INVALID';
+
+    const BAD_REQUEST_PAYMENT_CANNOT_REDIRECT_TO_AUTHORIZE                          = 'BAD_REQUEST_PAYMENT_CANNOT_REDIRECT_TO_AUTHORIZE';
+
+    const BAD_REQUEST_PAYMENT_CANNOT_GENERATE_OTP                                   = 'BAD_REQUEST_PAYMENT_CANNOT_GENERATE_OTP';
+
+    const MERCHANT_ONBOARD_ERROR_TERMINAL_CREATION                                  = 'MERCHANT_ONBOARD_ERROR_TERMINAL_CREATION';
+
+    const SERVER_ERROR_TID_EXHAUSTED                                                = 'SERVER_ERROR_TID_EXHAUSTED';
+
+    const BAD_REQUEST_FUND_ACCOUNT_VALIDATION_ALREADY_PROCESSED                     = 'BAD_REQUEST_FUND_ACCOUNT_VALIDATION_ALREADY_PROCESSED';
+    const BAD_REQUEST_FUND_ACCOUNT_VALIDATION_HAS_ACTIVE_FTA                        = 'BAD_REQUEST_FUND_ACCOUNT_VALIDATION_HAS_ACTIVE_FTA';
+    const BAD_REQUEST_FUND_ACCOUNT_VALIDATION_BANK_NOT_ALLOWED                      = 'BAD_REQUEST_FUND_ACCOUNT_VALIDATION_BANK_NOT_ALLOWED';
+
+
+    // PG ROUTER SERVICE ERRORS
+    const SERVER_ERROR_PGROUTER_SERVICE_FAILURE                                     = 'SERVER_ERROR_PGROUTER_SERVICE_FAILURE';
+
+    const BAD_REQUEST_CPS_ANOTHER_SYNC_IN_PROGRESS                                  = 'BAD_REQUEST_CPS_ANOTHER_SYNC_IN_PROGRESS';
+    const GATEWAY_ERROR_AUTHORIZATION_FAILED                                        = 'GATEWAY_ERROR_AUTHORIZATION_FAILED';
+    const GATEWAY_ERROR_INVALID_REQUEST_BODY                                        = 'GATEWAY_ERROR_INVALID_REQUEST_BODY';
+    const GATEWAY_ERROR_REFUND_TIMED_OUT                                            = 'GATEWAY_ERROR_REFUND_TIMED_OUT';
+
+    // excel store error
+    const SERVER_ERROR_EXCEL_STORE_FAILURE                                          = 'SERVER_ERROR_EXCEL_STORE_FAILURE';
+    const BAD_REQUEST_EXCEL_STORE_FILE_PARAM                                        = 'BAD_REQUEST_EXCEL_STORE_FILE_PARAM';
+
+    // Instant Refunds Error Codes
+    const BAD_REQUEST_INSTANT_REFUND_NOT_SUPPORTED                                  = 'BAD_REQUEST_INSTANT_REFUND_NOT_SUPPORTED';
+    const BAD_REQUEST_INSUFFICIENT_DATA_FOR_FTA                                     = 'BAD_REQUEST_INSUFFICIENT_DATA_FOR_FTA';
+
+    // Mozart Service
+    const SERVER_ERROR_MOZART_SERVICE_ERROR                                         = 'SERVER_ERROR_MOZART_SERVICE_ERROR';
+    const SERVER_ERROR_FAILED_TO_CONVERT_JSON_TO_ARRAY                              = 'SERVER_ERROR_FAILED_TO_CONVERT_JSON_TO_ARRAY';
+    const SERVER_ERROR_FAILED_TO_CONVERT_ARRAY_TO_JSON                              = 'SERVER_ERROR_FAILED_TO_CONVERT_ARRAY_TO_JSON';
+    const SERVER_ERROR_MOZART_SERVICE_TIMEOUT                                       = 'SERVER_ERROR_MOZART_SERVICE_TIMEOUT';
+
+    // Fund transfer service
+    const SERVER_ERROR_FTS_SERVICE_TIMEOUT                                          = 'SERVER_ERROR_FTS_SERVICE_TIMEOUT';
+    const BAD_REQUEST_FTS_DUPLICATE_TRANSFER_REQUEST_SENT                           = 'BAD_REQUEST_FTS_DUPLICATE_TRANSFER_REQUEST_SENT';
+    const BAD_REQUEST_UNSUPPORTED_SOURCE_TYPE                                       = 'BAD_REQUEST_UNSUPPORTED_SOURCE_TYPE';
+
+    const SERVER_ERROR_MOZART_INTEGRATION_ERROR                                     = 'SERVER_ERROR_MOZART_INTEGRATION_ERROR';
+    const SERVER_ERROR_MOZART_SERVICE_GATEWAY_ERROR                                 = 'SERVER_ERROR_MOZART_SERVICE_GATEWAY_ERROR';
+
+    // Fund Management payout Module
+    const BAD_REQUEST_ANOTHER_FUND_MANAGEMENT_REQUEST_IN_PROGRESS                   = 'BAD_REQUEST_ANOTHER_FUND_MANAGEMENT_REQUEST_IN_PROGRESS';
+    const BAD_REQUEST_ANOTHER_FUND_MANAGEMENT_PAYOUT_CREATION_IN_PROGRESS           = 'BAD_REQUEST_ANOTHER_FUND_MANAGEMENT_PAYOUT_CREATION_IN_PROGRESS';
+
+    // Banking Account Statement
+    const SERVER_ERROR_BANKING_ACCOUNT_STATEMENT_MOZART_RESPONSE_ERROR              = 'SERVER_ERROR_BANKING_ACCOUNT_STATEMENT_MOZART_RESPONSE_ERROR';
+    const SERVER_ERROR_BANKING_ACCOUNT_STATEMENT_BALANCES_DO_NOT_MATCH              = 'SERVER_ERROR_BANKING_ACCOUNT_STATEMENT_BALANCES_DO_NOT_MATCH';
+    const SERVER_ERROR_BANKING_ACCOUNT_STATEMENT_INVALID_TYPE_FOUND                 = 'SERVER_ERROR_BANKING_ACCOUNT_STATEMENT_INVALID_TYPE_FOUND';
+
+    const BAD_REQUEST_ANOTHER_BANKING_ACCOUNT_STATEMENT_FETCH_IN_PROGRESS             = 'BAD_REQUEST_ANOTHER_BANKING_ACCOUNT_STATEMENT_FETCH_IN_PROGRESS';
+    const BAD_REQUEST_ANOTHER_BANKING_ACCOUNT_STATEMENT_DETAILS_OPERATION_IN_PROGRESS = 'BAD_REQUEST_ANOTHER_BANKING_ACCOUNT_STATEMENT_DETAILS_OPERATION_IN_PROGRESS';
+
+    const BAD_REQUEST_ANOTHER_BAS_DETAILS_UPDATE_IN_PROGRESS                        = 'BAD_REQUEST_ANOTHER_BAS_DETAILS_UPDATE_IN_PROGRESS';
+    const BAD_REQUEST_CANNOT_EDIT_MISSING_RECORDS_ON_REDIS                          = 'BAD_REQUEST_CANNOT_EDIT_MISSING_RECORDS_ON_REDIS';
+    const BAD_REQUEST_BAS_DETAILS_FOR_ACCOUNT_IS_NOT_ACTIVE                         = 'BAD_REQUEST_BAS_DETAILS_FOR_ACCOUNT_IS_NOT_ACTIVE';
+    const BAD_REQUEST_LOCK_BAS_DETAILS_FOR_STATEMENT_FIX_FAILURE                    = 'BAD_REQUEST_LOCK_BAS_DETAILS_FOR_STATEMENT_FIX_FAILURE';
+    const BAD_REQUEST_RELEASE_BAS_DETAILS_FROM_STATEMENT_FIX_FAILURE                = 'BAD_REQUEST_RELEASE_BAS_DETAILS_FROM_STATEMENT_FIX_FAILURE';
+
+    const BAD_REQUEST_ASYNC_MERCHANT_BALANCE_UPDATE_IN_PROGRESS                     = 'BAD_REQUEST_ASYNC_MERCHANT_BALANCE_UPDATE_IN_PROGRESS';
+    const COMMISSION_BALANCE_CREATE_ALREADY_IN_PROGRESS                             = 'COMMISSION_BALANCE_CREATE_ALREADY_IN_PROGRESS';
+
+    const BAD_REQUEST_MISSING_STATEMENT_DETECTION_IN_PROGRESS                       = 'BAD_REQUEST_MISSING_STATEMENT_DETECTION_IN_PROGRESS';
+    const BAD_REQUEST_MISSING_STATEMENT_DETECTION_UPDATE_IN_PROGRESS                = 'BAD_REQUEST_MISSING_STATEMENT_DETECTION_UPDATE_IN_PROGRESS';
+    const BAD_REQUEST_FAILED_UPDATE_BATCH_PARAMS_UPDATION_IN_PROGRESS               = 'BAD_REQUEST_FAILED_UPDATE_BATCH_PARAMS_UPDATION_IN_PROGRESS';
+
+    // OmniPay Error Codes
+    const BAD_REQUEST_INVALID_UPI_PROVIDER                                          = 'BAD_REQUEST_INVALID_UPI_PROVIDER';
+    const GATEWAY_ERROR_OMNIPAY_EMPTY_INPUT                                         = 'GATEWAY_ERROR_OMNIPAY_EMPTY_INPUT';
+
+    //Shield Error Codes
+    const SERVER_ERROR_SHIELD_FRAUD_DETECTION_FAILED                                = 'SERVER_ERROR_SHIELD_FRAUD_DETECTION_FAILED';
+
+    const SERVER_ERROR_OTP_ELF_FAILED_FOR_RUPAY                                     = 'SERVER_ERROR_OTP_ELF_FAILED_FOR_RUPAY';
+
+    const BAD_REQUEST_TOKEN_REGISTRATION_OPERATION_IN_PROGRESS                      = 'BAD_REQUEST_TOKEN_REGISTRATION_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_TOKEN_UPDATION_OPERATION_IN_PROGRESS                          = 'BAD_REQUEST_TOKEN_UPDATION_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_PAYMENT_CARD_SAVE_FAILED                                      = 'BAD_REQUEST_PAYMENT_CARD_SAVE_FAILED';
+    const SERVER_ERROR_REQUESTED_MPANS_NOT_AVAILABLE                                = 'SERVER_ERROR_REQUESTED_MPANS_NOT_AVAILABLE';
+
+    //Paper NACH Error codes
+    const BAD_REQUEST_UNABLE_TO_READ_NACH_FORM                                      = 'BAD_REQUEST_UNABLE_TO_READ_NACH_FORM';
+    const SERVER_ERROR_UNABLE_TO_CREATE_NACH_FORM                                   = 'SERVER_ERROR_UNABLE_TO_CREATE_NACH_FORM';
+    const SERVER_ERROR_NACH_EXTRACTION_FAILED                                       = 'SERVER_ERROR_NACH_EXTRACTION_FAILED';
+    const BAD_REQUEST_NACH_UNKNOWN_FILE_TYPE                                        = 'BAD_REQUEST_NACH_UNKNOWN_FILE_TYPE';
+    const BAD_REQUEST_NACH_FILE_SIZE_EXCEEDS_LIMIT                                  = 'BAD_REQUEST_NACH_FILE_SIZE_EXCEEDS_LIMIT';
+    const BAD_REQUEST_NACH_IMAGE_NOT_CLEAR                                          = 'BAD_REQUEST_NACH_IMAGE_NOT_CLEAR';
+    const SERVER_ERROR_NACH_EXTRACT_IMAGE_FAILED                                    = 'SERVER_ERROR_NACH_EXTRACT_IMAGE_FAILED';
+    const BAD_REQUEST_NACH_FORM_SIGNATURE_IS_MISSING                                = 'BAD_REQUEST_NACH_FORM_SIGNATURE_IS_MISSING';
+    const BAD_REQUEST_NACH_FORM_MISMATCH                                            = 'BAD_REQUEST_NACH_FORM_MISMATCH';
+    const BAD_REQUEST_NACH_FORM_DATA_MISMATCH                                       = 'BAD_REQUEST_NACH_FORM_DATA_MISMATCH';
+    const BAD_REQUEST_NACH_FORM_STATUS_PENDING                                      = 'BAD_REQUEST_NACH_FORM_STATUS_PENDING';
+    const BAD_REQUEST_INVALID_IMAGE_HEIGHT                                          = 'BAD_REQUEST_INVALID_IMAGE_HEIGHT';
+    const BAD_REQUEST_INVALID_IMAGE_WIDTH                                           = 'BAD_REQUEST_INVALID_IMAGE_WIDTH';
+    const BAD_REQUEST_HIGH_IMAGE_X_RESOLUTION                                       = 'BAD_REQUEST_HIGH_IMAGE_X_RESOLUTION';
+    const BAD_REQUEST_LOW_IMAGE_X_RESOLUTION                                        = 'BAD_REQUEST_LOW_IMAGE_X_RESOLUTION';
+    const BAD_REQUEST_HIGH_IMAGE_Y_RESOLUTION                                       = 'BAD_REQUEST_HIGH_IMAGE_Y_RESOLUTION';
+    const BAD_REQUEST_LOW_IMAGE_Y_RESOLUTION                                        = 'BAD_REQUEST_LOW_IMAGE_Y_RESOLUTION';
+    const BAD_REQUEST_IMAGE_TOO_BRIGHT                                              = 'BAD_REQUEST_IMAGE_TOO_BRIGHT';
+    const BAD_REQUEST_IMAGE_TOO_DARK                                                = 'BAD_REQUEST_IMAGE_TOO_DARK';
+
+
+    // Mandate HQ
+    const SERVER_ERROR_MANDATE_HQ_REQUEST_FAILED                                   = 'SERVER_ERROR_MANDATE_HQ_REQUEST_FAILED';
+
+    const BAD_REQUEST_MERCHANT_EMAIL_TRIGGER_EVENT_ALREADY_AUTHORIZED               = 'BAD_REQUEST_MERCHANT_EMAIL_TRIGGER_EVENT_ALREADY_AUTHORIZED';
+    const BAD_REQUEST_MERCHANT_EMAIL_TRIGGER_EVENT_ALREADY_CAPTURED                 = 'BAD_REQUEST_MERCHANT_EMAIL_TRIGGER_EVENT_ALREADY_CAPTURED';
+
+    const BAD_REQUEST_MANDATE_EXECUTION_ATTEMPT_BEFORE_START_TIME                   = 'BAD_REQUEST_MANDATE_EXECUTION_ATTEMPT_BEFORE_START_TIME';
+    const BAD_REQUEST_UPDATE_EXPIRED_TOKEN                                          = 'BAD_REQUEST_UPDATE_EXPIRED_TOKEN';
+    const BAD_REQUEST_UPDATE_NOT_CONFIRMED_TOKEN                                    = 'BAD_REQUEST_UPDATE_NOT_CONFIRMED_TOKEN';
+    const BAD_REQUEST_INVALID_TOKEN_FOR_CANCEL                                      = 'BAD_REQUEST_INVALID_TOKEN_FOR_CANCEL';
+    const BAD_REQUEST_INVALID_TOKEN_FOR_PAUSE                                       = 'BAD_REQUEST_INVALID_TOKEN_FOR_PAUSE';
+    const BAD_REQUEST_INVALID_TOKEN_FOR_RESUME                                      = 'BAD_REQUEST_INVALID_TOKEN_FOR_RESUME';
+    const BAD_REQUEST_INVALID_TOKEN                                                 = 'BAD_REQUEST_INVALID_TOKEN';
+    const BAD_REQUEST_CUSTOMER_TOKEN_COUNT_NOT_EQUAL                                = 'BAD_REQUEST_CUSTOMER_TOKEN_COUNT_NOT_EQUAL';
+    const BAD_REQUEST_D2C_WRONG_OTP                                                 = 'BAD_REQUEST_D2C_WRONG_OTP';
+    const BAD_REQUEST_D2C_NON_OWNER_USER_NOT_ALLOWED                                = 'BAD_REQUEST_D2C_NON_OWNER_USER_NOT_ALLOWED';
+    const BAD_REQUEST_D2C_CREDIT_BUREAU_INVALID_EMAIL_OR_CONTACT                    = 'BAD_REQUEST_D2C_CREDIT_BUREAU_INVALID_EMAIL_OR_CONTACT';
+    const BAD_REQUEST_D2C_CREDIT_BUREAU_NO_RECORDS_FOUND                            = 'BAD_REQUEST_D2C_CREDIT_BUREAU_NO_RECORDS_FOUND';
+    const BAD_REQUEST_D2C_MANDATORY_FIELD_MISSING                                   = 'BAD_REQUEST_D2C_MANDATORY_FIELD_MISSING';
+    const BAD_REQUEST_D2C_INVALID_DATA_IN_INPUT                                     = 'BAD_REQUEST_D2C_INVALID_DATA_IN_INPUT';
+    const SERVER_ERROR_D2C_VOUCHER_CODE_INVALID                                     = 'SERVER_ERROR_D2C_VOUCHER_CODE_INVALID';
+    const GATEWAY_ERROR_D2C_EXPERIAN_VALIDATION_FAILURE                             = 'GATEWAY_ERROR_D2C_EXPERIAN_VALIDATION_FAILURE';
+    const BAD_REQUEST_D2C_INVALID_PAN                                               = 'BAD_REQUEST_D2C_INVALID_PAN';
+    const GATEWAY_ERROR_D2C_EXPERIAN_SERVER_ERROR                                   = 'GATEWAY_ERROR_D2C_EXPERIAN_SERVER_ERROR';
+    const GATEWAY_ERROR_D2C_EXPERIAN_SYSTEM_ERROR                                   = 'GATEWAY_ERROR_D2C_EXPERIAN_SYSTEM_ERROR';
+    const GATEWAY_ERROR_D2C_EXPERIAN_INVALID_AFFINITY                               = 'GATEWAY_ERROR_D2C_EXPERIAN_INVALID_AFFINITYs';
+
+    const BAD_REQUEST_ERROR_SOURCE_ACCOUNT_FUND_ACCOUNT_CREATION_FAILED            = 'BAD_REQUEST_ERROR_SOURCE_ACCOUNT_FUND_ACCOUNT_CREATION_FAILED';
+
+    const BAD_REQUEST_BALANCE_CONFIG_ALREADY_EXISTS_FOR_BALANCE                     = 'BAD_REQUEST_BALANCE_CONFIG_ALREADY_EXISTS_FOR_BALANCE';
+    const BAD_REQUEST_BALANCE_CONFIG_INVALID_NEGATIVE_LIMIT                         = 'BAD_REQUEST_BALANCE_CONFIG_INVALID_NEGATIVE_LIMIT';
+    const BAD_REQUEST_BALANCE_CONFIG_INVALID_NEGATIVE_TRANSACTION_FLOW              = 'BAD_REQUEST_BALANCE_CONFIG_INVALID_NEGATIVE_TRANSACTION_FLOW';
+
+    const BAD_REQUEST_INSUFFICIENT_MERCHANT_BALANCE                                  = 'BAD_REQUEST_INSUFFICIENT_MERCHANT_BALANCE';
+    const BAD_REQUEST_NEGATIVE_BALANCE_BREACHED                                      = 'BAD_REQUEST_NEGATIVE_BALANCE_BREACHED';
+    const BAD_REQUEST_INSUFFICIENT_BALANCE_LOCKED                                    = 'BAD_REQUEST_INSUFFICIENT_BALANCE_LOCKED';
+    const RESERVE_BALANCE_CREATE_ALREADY_IN_PROGRESS                                 = 'RESERVE_BALANCE_CREATE_ALREADY_IN_PROGRESS';
+    const BAD_REQUEST_RESERVE_BALANCE_TICKET_NOT_FOUND                               = 'BAD_REQUEST_RESERVE_BALANCE_TICKET_NOT_FOUND';
+
+    const FRESHDESK_TICKET_ALREADY_EXISTS                                           = 'FRESHDESK_TICKET_ALREADY_EXISTS';
+    const FRESHDESK_TICKET_INVALID_ID                                               = 'SUPPORT_TICKET_INVALID_ID';
+    const BAD_REQUEST_FRESHDESK_TICKET_ALREADY_EXISTS                               = 'BAD_REQUEST_FRESHDESK_TICKET_ALREADY_EXISTS';
+    const BAD_REQUEST_FRESHDESK_TICKET_NOT_FOUND                                    = 'BAD_REQUEST_FRESHDESK_TICKET_NOT_FOUND';
+    const BAD_REQUEST_CUSTOMER_TICKET_FETCH_FAILED                                  = 'BAD_REQUEST_CUSTOMER_TICKET_FETCH_FAILED';
+    const BAD_REQUEST_NO_TICKETS_FOUND_FOR_CUSTOMER                                 = 'BAD_REQUEST_NO_TICKETS_FOUND_FOR_CUSTOMER';
+    const BAD_REQUEST_FRESHDESK_TICKET_CREATION_FAILED                              = 'BAD_REQUEST_FRESHDESK_TICKET_CREATION_FAILED';
+    const BAD_REQUEST_FRESHDESK_TICKET_UPDATE_FAILED                                = 'BAD_REQUEST_FRESHDESK_TICKET_UPDATE_FAILED';
+    const BAD_REQUEST_FRESHDESK_TICKET_ADD_NOTE_FAILED                              = 'BAD_REQUEST_FRESHDESK_TICKET_ADD_NOTE_FAILED';
+    const BAD_REQUEST_FRESHDESK_TICKET_ALREADY_CLOSED                               = 'BAD_REQUEST_FRESHDESK_TICKET_ALREADY_CLOSED';
+    const SERVER_ERROR_FRESHDESK_INTEGRATION_ERROR                                  = 'SERVER_ERROR_FRESHDESK_INTEGRATION_ERROR';
+    const BAD_REQUEST_OPEN_TICKETS_LIMIT_EXCEEDED                                   = 'BAD_REQUEST_OPEN_TICKETS_LIMIT_EXCEEDED';
+    const BAD_REQUEST_FRESHDESK_AGENT_NOT_FOUND                                     = 'BAD_REQUEST_FRESHDESK_AGENT_NOT_FOUND';
+    const BAD_REQUEST_FRESHDESK_TICKET_NOT_ASSIGNED                                 = 'BAD_REQUEST_FRESHDESK_TICKET_NOT_ASSIGNED';
+
+    const SERVER_ERROR_FRESHCHAT_INTEGRATION_ERROR                                  = 'SERVER_ERROR_FRESHCHAT_INTEGRATION_ERROR';
+    const BAD_REQUEST_FRESHCHAT_ERROR                                               = 'BAD_REQUEST_FRESHCHAT_ERROR';
+
+    //IRCTC Error codes
+    const BAD_REQUEST_INCORRECT_AMOUNT_SENT_FOR_FULL_REFUND                         = 'BAD_REQUEST_INCORRECT_AMOUNT_SENT_FOR_FULL_REFUND';
+
+    const BAD_REQUEST_INCORRECT_RESERVATION_OR_CANCELLATION_ID_FOR_REFUND           = 'BAD_REQUEST_INCORRECT_RESERVATION_OR_CANCELLATION_ID_FOR_REFUND';
+
+    //DCC Error Codes
+    const BAD_REQUEST_PAYMENT_DCC_INVALID_REQUEST_ID                                = 'BAD_REQUEST_PAYMENT_DCC_INVALID_REQUEST_ID';
+
+    //MCC Error Code
+    const BAD_REQUEST_PAYMENT_MCC_INVALID_REQUEST_ID                                = 'BAD_REQUEST_PAYMENT_MCC_INVALID_REQUEST_ID';
+
+    const BAD_REQUEST_ERROR_BANKING_ACCOUNT_NOT_FOUND                               = 'BAD_REQUEST_ERROR_BANKING_ACCOUNT_NOT_FOUND';
+
+    //FuzzyMatcher Error Codes
+    const BAD_REQUEST_INVALID_MATCH_PERCENT                                         = 'BAD_REQUEST_INVALID_MATCH_PERCENT';
+    const BAD_REQUEST_INVALID_MATCH_TYPE                                            = 'BAD_REQUEST_INVALID_MATCH_TYPE';
+
+    // Terminals service error codes
+    const SERVER_ERROR_TERMINALS_SERVICE_INTEGRATION_ERROR                          = 'SERVER_ERROR_TERMINALS_SERVICE_INTEGRATION_ERROR';
+    const BAD_REQUEST_TERMINALS_SERVICE_ERROR                                       = 'BAD_REQUEST_TERMINALS_SERVICE_ERROR';
+    const BAD_REQUEST_INVALID_ACQUIRER_FOR_COUNTRY                                  = 'BAD_REQUEST_INVALID_ACQUIRER_FOR_COUNTRY';
+
+    //payment config
+    const BAD_REQUEST_INVALID_CONFIG_ID                                             = 'BAD_REQUEST_INVALID_CONFIG_ID';
+    const BAD_REQUEST_CONFIG_NOT_FOUND                                              = 'BAD_REQUEST_CONFIG_NOT_FOUND';
+    const BAD_REQUEST_DEFAULT_LATE_AUTH_CONFIG_PRESENT                              = 'BAD_REQUEST_DEFAULT_LATE_AUTH_CONFIG_PRESENT';
+    const BAD_REQUEST_PAYMENT_METHOD_NOT_ALLOWED_IN_CONFIG                          = 'BAD_REQUEST_PAYMENT_METHOD_NOT_ALLOWED_IN_CONFIG';
+    const BAD_REQUEST_DEFAULT_LOCALE_CONFIG_PRESENT                                 = 'BAD_REQUEST_DEFAULT_LOCALE_CONFIG_PRESENT';
+    const BAD_REQUEST_DCC_CONFIG_PRESENT                                            = 'BAD_REQUEST_DCC_CONFIG_PRESENT';
+
+    const BAD_REQUEST_ANOTHER_CREDITS_OPERATION_IN_PROGRESS                         = 'BAD_REQUEST_ANOTHER_CREDITS_OPERATION_IN_PROGRESS';
+
+    // Early Settlements and payouts
+    const BAD_REQUEST_ES_ON_DEMAND_IMPS_AMOUNT_LIMIT_EXCEEDED                       = 'BAD_REQUEST_ES_ON_DEMAND_IMPS_AMOUNT_LIMIT_EXCEEDED';
+
+    //typeform Error codes
+    const BAD_REQUEST_INVALID_COMMENT                                               = 'BAD_REQUEST_INVALID_COMMENT';
+
+    const BAD_REQUEST_INVALID_PLAYSTORE_URL                                         = 'BAD_REQUEST_INVALID_PLAYSTORE_URL';
+
+    const BAD_REQUEST_INVALID_APPSTORE_URL                                          = 'BAD_REQUEST_INVALID_APPSTORE_URL';
+
+    const BAD_REQUEST_MERCHANT_ID_NOT_PRESENT                                       = 'BAD_REQUEST_MERCHANT_ID_NOT_PRESENT';
+
+    const BAD_REQUEST_INVALID_PRODUCT_NAME                                          = 'BAD_REQUEST_INVALID_PRODUCT_NAME';
+
+    const BAD_REQUEST_TNC_ACCEPTANCE_AND_IP_NOT_TOGETHER                            = 'BAD_REQUEST_TNC_ACCEPTANCE_AND_IP_NOT_TOGETHER';
+
+    const BAD_REQUEST_TNC_ACCEPTANCE_NOT_PRESENT_FOR_MERCHANT                       = 'BAD_REQUEST_TNC_ACCEPTANCE_NOT_PRESENT_FOR_MERCHANT';
+
+    const BAD_REQUEST_INVALID_BUSINESS_UNIT                                         = 'BAD_REQUEST_INVALID_BUSINESS_UNIT';
+
+    const BAD_REQUEST_PRODUCT_INTERNATIONAL_REQUIRED                                = 'BAD_REQUEST_PRODUCT_INTERNATIONAL_REQUIRED';
+
+    const BAD_REQUEST_INTERNATIONAL_ENABLEMENT_INVALID_STATUS                       = 'BAD_REQUEST_INTERNATIONAL_ENABLEMENT_INVALID_STATUS';
+
+    const BAD_REQUEST_INTERNATIONAL_ENABLEMENT_NO_ENTRY_FOUND                       = 'BAD_REQUEST_INTERNATIONAL_ENABLEMENT_NO_ENTRY_FOUND';
+
+    const BAD_REQUEST_INTERNATIONAL_ENABLEMENT_DISCARD                              = 'BAD_REQUEST_INTERNATIONAL_ENABLEMENT_DISCARD';
+
+    const BAD_REQUEST_INVALID_STATUS_TRANSITION                                     = 'BAD_REQUEST_INVALID_STATUS_TRANSITION';
+
+    const BAD_REQUEST_PAYMENT_OTP_VALIDATION_INVALID_LENGTH                         = 'BAD_REQUEST_PAYMENT_OTP_VALIDATION_INVALID_LENGTH';
+
+    const INVALID_DATA_PARSER                                                       = 'INVALID_DATA_PARSER';
+
+    const WORKFLOW_CREATION_FAILURE                                                 = 'WORKFLOW_CREATION_FAILURE';
+
+    const BAD_REQUEST_INVALID_PERMISSION                                            = 'BAD_REQUEST_INVALID_PERMISSION';
+
+    const BAD_REQUEST_INVALID_ORG_ID                                                = 'BAD_REQUEST_INVALID_ORG_ID';
+
+    const SERVER_ERROR_PAYMENT_LINK_SERVICE_FAILURE                                 = 'SERVER_ERROR_PAYMENT_LINK_SERVICE_FAILURE';
+
+    const BAD_REQUEST_INVALID_WEBSITE                                               = 'BAD_REQUEST_INVALID_WEBSITE';
+
+    const BAD_REQUEST_PRODUCT_INTERNATIONAL_CANT_BE_ENABLED                         = 'BAD_REQUEST_PRODUCT_INTERNATIONAL_CANT_BE_ENABLED';
+
+    const BAD_REQUEST_MERCHANT_INVALID_RISK_ATTRIBUTE                               = 'BAD_REQUEST_MERCHANT_INVALID_RISK_ATTRIBUTE';
+
+    const BAD_REQUEST_MERCHANT_RISK_ATTRIBUTES_REQUIRED                             = 'BAD_REQUEST_MERCHANT_RISK_ATTRIBUTES_REQUIRED';
+
+    const BAD_REQUEST_MERCHANT_NO_DIFF_IN_RISK_ATTRIBUTES                           = 'BAD_REQUEST_MERCHANT_NO_DIFF_IN_RISK_ATTRIBUTES';
+
+    const BAD_REQUEST_ACTION_RISK_ATTRIBUTES_REQUIRED                               = 'BAD_REQUEST_ACTION_RISK_ATTRIBUTES_REQUIRED';
+    const BAD_REQUEST_INVALID_ACTION_RISK_REASON                                    = 'BAD_REQUEST_INVALID_ACTION_RISK_REASON';
+    const BAD_REQUEST_INVALID_ACTION_RISK_SOURCE                                    = 'BAD_REQUEST_INVALID_ACTION_RISK_SOURCE';
+    const BAD_REQUEST_INVALID_ACTION_RISK_TAG                                       = 'BAD_REQUEST_INVALID_ACTION_RISK_TAG';
+    const BAD_REQUEST_INVALID_ACTION_CLEAR_TAG_VALUE                                = 'BAD_REQUEST_INVALID_ACTION_CLEAR_TAG_VALUE';
+    const BAD_REQUEST_UNSUPPORTED_COMMUNICATION_TYPE                                = 'BAD_REQUEST_UNSUPPORTED_COMMUNICATION_TYPE';
+    // Salesforce Service
+    const SERVER_ERROR_SALESFORCE_SERVICE_ERROR                                     = 'SERVER_ERROR_SALESFORCE_SERVICE_ERROR';
+    const BAD_REQUEST_ANOTHER_PROMOTION_EVENT_ALREADY_EXISTS                        = 'BAD_REQUEST_ANOTHER_PROMOTION_EVENT_ALREADY_EXISTS';
+    const BAD_REQUEST_OTP_GENERATE_FAILURE                                          = 'BAD_REQUEST_OTP_GENERATE_FAILURE';
+    const BAD_REQUEST_OTP_GENERATE_ALREADY_PROCESSED                                = 'BAD_REQUEST_OTP_GENERATE_ALREADY_PROCESSED';
+    const BAD_REQUEST_INVALID_CHARGE_ACCOUNT                                        = 'BAD_REQUEST_INVALID_CHARGE_ACCOUNT';
+
+    // Low balance Config
+    const BAD_REQUEST_LOW_BALANCE_CONFIG_ALREADY_EXISTS_FOR_ACCOUNT_NUMBER          = 'BAD_REQUEST_LOW_BALANCE_CONFIG_ALREADY_EXISTS_FOR_ACCOUNT_NUMBER';
+    const BAD_REQUEST_LOW_BALANCE_CONFIG_IS_NOT_SUPPORTED_IN_TEST_MODE              = 'BAD_REQUEST_LOW_BALANCE_CONFIG_IS_NOT_SUPPORTED_IN_TEST_MODE';
+    const BAD_REQUEST_LOW_BALANCE_CONFIG_AUTH_NOT_SUPPORTED                         = 'BAD_REQUEST_LOW_BALANCE_CONFIG_AUTH_NOT_SUPPORTED';
+    const BAD_REQUEST_LOW_BALANCE_CONFIG_ENABLE_DISABLE_ADMIN_AUTH_ONLY             = 'BAD_REQUEST_LOW_BALANCE_CONFIG_ENABLE_DISABLE_ADMIN_AUTH_ONLY';
+    const BAD_REQUEST_LOW_BALANCE_CONFIG_DELETE_NOT_ALLOWED                         = 'BAD_REQUEST_LOW_BALANCE_CONFIG_DELETE_NOT_ALLOWED';
+    const BAD_REQUEST_LOW_BALANCE_CONFIG_INVALID_TYPE                               = 'BAD_REQUEST_LOW_BALANCE_CONFIG_INVALID_TYPE';
+
+    // Merchant Notification Config
+    const BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_INVALID_MODE                                              = 'BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_INVALID_MODE';
+    const BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_INVALID_MOBILE_NUMBER                                     = 'BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_INVALID_MOBILE_NUMBER';
+    const BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_ALREADY_EXISTS_FOR_MODE                                   = 'BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_ALREADY_EXISTS_FOR_MODE';
+    const BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_ALREADY_EXISTS_FOR_NOTIFICATION_TYPE                      = 'BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_ALREADY_EXISTS_FOR_NOTIFICATION_TYPE';
+    const BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_LOWER_THRESHOLD_GREATER_THAN_UPPER_THRESHOLD              = 'BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_LOWER_THRESHOLD_GREATER_THAN_UPPER_THRESHOLD';
+    const BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_NEW_UPPER_THRESHOLD_LOWER_THAN_EXISTING_LOWER_THRESHOLD   = 'BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_NEW_UPPER_THRESHOLD_LOWER_THAN_EXISTING_LOWER_THRESHOLD';
+    const BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_NEW_LOWER_THRESHOLD_GREATER_THAN_EXISTING_UPPER_THRESHOLD = 'BAD_REQUEST_MERCHANT_NOTIFICATION_CONFIG_NEW_LOWER_THRESHOLD_GREATER_THAN_EXISTING_UPPER_THRESHOLD';
+
+    const BAD_REQUEST_PROMOTIONS_FOR_X_SUPPORTED_IN_ONLY_LIVE_MODE                  = 'BAD_REQUEST_PROMOTIONS_FOR_X_SUPPORTED_IN_ONLY_LIVE_MODE';
+    const SERVER_ERROR_MERCHANT_ONBOARDING_CATEGORY_FETCH_FAILED                    = 'SERVER_ERROR_MERCHANT_ONBOARDING_CATEGORY_FETCH_FAILED';
+    const BAD_REQUEST_X_CREDITS_SUPPORTED_IN_ONLY_LIVE_MODE                         = 'BAD_REQUEST_X_CREDITS_SUPPORTED_IN_ONLY_LIVE_MODE';
+
+    const BAD_REQUEST_SETTLEMENTS_ERROR                                             = 'BAD_REQUEST_SETTLEMENTS_ERROR';
+    const SERVER_ERROR_SETTLEMENTS                                                  = 'SERVER_ERROR_SETTLEMENTS';
+
+    // cred errors
+    const BAD_REQUEST_CRED_CUSTOMER_NOT_ELIGIBLE                                    = 'BAD_REQUEST_CRED_CUSTOMER_NOT_ELIGIBLE';
+    const BAD_REQUEST_MISSING_HEADERS                                               = 'BAD_REQUEST_MISSING_HEADERS';
+    const BAD_REQUEST_INVALID_TRACKING_ID                                           = 'BAD_REQUEST_INVALID_TRACKING_ID';
+
+    const SERVER_ERROR_WORKFLOW_SERVICE_ERROR                                       = 'SERVER_ERROR_WORKFLOW_SERVICE_ERROR';
+    const SERVER_ERROR_CREDCASE_REQUEST_FAILED                                      = 'SERVER_ERROR_CREDCASE_REQUEST_FAILED';
+    const BAD_REQUEST_CRED_USER_NOT_REGISTERED                                      = 'BAD_REQUEST_CRED_USER_NOT_REGISTERED';
+    const BAD_REQUEST_CRED_PENDING_USER                                             = 'BAD_REQUEST_CRED_PENDING_USER';
+    const BAD_REQUEST_CRED_CARD_NOT_VERIFIED                                        = 'BAD_REQUEST_CRED_CARD_NOT_VERIFIED';
+    const BAD_REQUEST_CRED_WAITLISTED_USER                                          = 'BAD_REQUEST_CRED_WAITLISTED_USER';
+    const BAD_REQUEST_CRED_UNSUPPORTED_APP_VERSION                                  = 'BAD_REQUEST_CRED_UNSUPPORTED_APP_VERSION';
+    const BAD_REQUEST_CRED_NO_SUPPORTED_APP_VERSION                                 = 'BAD_REQUEST_CRED_NO_SUPPORTED_APP_VERSION';
+    const BAD_REQUEST_CRED_INACTIVE_USER                                            = 'BAD_REQUEST_CRED_INACTIVE_USER';
+    const BAD_REQUEST_CRED_BLOCKED_USER                                             = 'BAD_REQUEST_CRED_BLOCKED_USER';
+    const GATEWAY_ERROR_CRED_RESERVED_ERROR                                         = 'GATEWAY_ERROR_CRED_RESERVED_ERROR';
+    const BAD_REQUEST_CRED_MISSING_FIELDS_MESSAGE                                   = 'BAD_REQUEST_CRED_MISSING_FIELDS_MESSAGE';
+    const SERVER_ERROR_SFTP_CONNECTION_FAILED                                       = 'SERVER_ERROR_SFTP_CONNECTION_FAILED';
+
+    // Error code if no counter is found for that merchant
+    const SERVER_ERROR_COUNTER_ABSENT                                               = 'SERVER_ERROR_COUNTER_ABSENT';
+    const BAD_REQUEST_DISCOUNT_GREATER_THAN_BASE_AMOUNT                             = 'BAD_REQUEST_DISCOUNT_GREATER_THAN_BASE_AMOUNT';
+
+    const BAD_REQUEST_FREE_PAYOUTS_ATTRIBUTES_INCORRECT_BALANCE_TYPE                = 'BAD_REQUEST_FREE_PAYOUTS_ATTRIBUTES_INCORRECT_BALANCE_TYPE';
+    const BAD_REQUEST_FREE_PAYOUTS_ATTRIBUTES_INVALID_BALANCE_ID                    = 'BAD_REQUEST_FREE_PAYOUTS_ATTRIBUTES_INVALID_BALANCE_ID';
+
+    const BAD_REQUEST_INVALID_FIELDS_FOR_SALESFORCE_EVENT_REQUEST                   = 'BAD_REQUEST_INVALID_FIELDS_FOR_SALESFORCE_EVENT_REQUEST';
+
+    const PAYOUT_SOURCE_ALREADY_EXISTS                                              = 'PAYOUT_SOURCE_ALREADY_EXISTS';
+    const BAD_REQUEST_INVALID_PAYMENT_TO_AUTHORIZE                                  = 'BAD_REQUEST_INVALID_PAYMENT_TO_AUTHORIZE';
+
+    const BAD_REQUEST_PAYOUT_SOURCE_ALREADY_EXISTS                                  = 'BAD_REQUEST_PAYOUT_SOURCE_ALREADY_EXISTS';
+    const BAD_REQUEST_ANOTHER_PAYOUT_SOURCE_EXISTS_WITH_SAME_PRIORITY               = 'BAD_REQUEST_ANOTHER_PAYOUT_SOURCE_EXISTS_WITH_SAME_PRIORITY';
+
+    const BAD_REQUEST_PG_ROUTER_ONLY_LIVE_MODE_SUPPORTED                            = 'BAD_REQUEST_PG_ROUTER_ONLY_LIVE_MODE_SUPPORTED';
+
+    const BAD_REQUEST_DISPUTE_BULK_EMAIL_OPERATION_IN_PROGRESS                      = 'BAD_REQUEST_DISPUTE_BULK_EMAIL_OPERATION_IN_PROGRESS';
+
+    const BAD_REQUEST_LAXMI_VILAS_BANK_PAYMENT_DISABLED                             = 'BAD_REQUEST_LAXMI_VILAS_BANK_PAYMENT_DISABLED';
+
+    const BAD_REQUEST_PAYOUT_META_ALREADY_EXISTS                                    = 'BAD_REQUEST_PAYOUT_META_ALREADY_EXISTS';
+
+    const BAD_REQUEST_INVALID_REWARD_DURATION                                       = 'BAD_REQUEST_INVALID_REWARD_DURATION';
+
+    const BAD_REQUEST_REWARD_COUPON_MUST_BE_PRESENT                                 = 'BAD_REQUEST_REWARD_COUPON_MUST_BE_PRESENT';
+
+    const BAD_REQUEST_REWARD_ACTIVATE                                               = 'BAD_REQUEST_REWARD_ACTIVATE';
+
+    const BAD_REQUEST_REWARD_DEACTIVATE                                             = 'BAD_REQUEST_REWARD_DEACTIVATE';
+
+    const BAD_REQUEST_CALLBACK_URL_INCORRECT                                        = 'BAD_REQUEST_CALLBACK_URL_INCORRECT';
+
+    const BAD_REQUEST_PAYMENT_FAILED_BY_AVS                                         = 'BAD_REQUEST_PAYMENT_FAILED_BY_AVS';
+
+    const BAD_REQUEST_INVALID_START_TIME                                            = 'BAD_REQUEST_INVALID_START_TIME';
+
+    const BAD_REQUEST_INVALID_REWARD                                                = 'BAD_REQUEST_INVALID_REWARD';
+
+    const BAD_REQUEST_INVALID_REWARD_EVENT_TYPE                                     = 'BAD_REQUEST_INVALID_REWARD_EVENT_TYPE';
+    // Accounts/ stakeholder V2 document upload errorcodes
+    const BAD_REQUEST_DOCUMENT_UPLOAD_OPERATION_IN_PROGRESS                         = 'BAD_REQUEST_DOCUMENT_UPLOAD_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_INVALID_FILE_ACCESS                                           = 'BAD_REQUEST_INVALID_FILE_ACCESS';
+    const BAD_REQUEST_STAKEHOLDER_DOES_NOT_BELONG_TO_MERCHANT                       = 'BAD_REQUEST_STAKEHOLDER_DOES_NOT_BELONG_TO_MERCHANT';
+    const BAD_REQUEST_SERVER_ERROR_FILE_FETCH_FAILURE                               = 'BAD_REQUEST_SERVER_ERROR_FILE_FETCH_FAILURE';
+    const BAD_REQUEST_NPS_SURVEY_NOT_APPLICABLE_IN_TEST_MODE                        = 'BAD_REQUEST_NPS_SURVEY_NOT_APPLICABLE_IN_TEST_MODE';
+    const BAD_REQUEST_INVALID_SURVEY_TYPE                                           = 'BAD_REQUEST_INVALID_SURVEY_TYPE';
+    const BAD_REQUEST_SURVEY_TRACKER_NOT_FOUND                                      = 'BAD_REQUEST_SURVEY_TRACKER_NOT_FOUND';
+    const BAD_REQUEST_SURVEY_TYPE_NOT_PRESENT                                       = 'BAD_REQUEST_SURVEY_TYPE_NOT_PRESENT';
+    const BAD_REQUEST_DUPLICATE_SURVEY_TYPE                                         = 'BAD_REQUEST_DUPLICATE_SURVEY_TYPE';
+    const BAD_REQUEST_ONLY_NEEDS_CLARIFICATION_FIELDS_ARE_ALLOWED                   = 'BAD_REQUEST_ONLY_NEEDS_CLARIFICATION_FIELDS_ARE_ALLOWED';
+    const BAD_REQUEST_ONLY_NEEDS_CLARIFICATION_DOCUMENTS_ARE_ALLOWED                = 'BAD_REQUEST_ONLY_NEEDS_CLARIFICATION_DOCUMENTS_ARE_ALLOWED';
+    const BAD_REQUEST_MERCHANT_PRODUCT_CONFIG_DOESNT_EXIST                          = 'BAD_REQUEST_MERCHANT_PRODUCT_CONFIG_DOESNT_EXIST';
+    const BAD_REQUEST_ONLY_REMAINING_KYC_FIELDS_ARE_ALLOWED                         = 'BAD_REQUEST_ONLY_REMAINING_KYC_FIELDS_ARE_ALLOWED';
+
+    const BAD_REQUEST_M2P_MERCHANT_BLACKLISTED_FOR_PRODUCT                          = 'BAD_REQUEST_M2P_MERCHANT_BLACKLISTED_FOR_PRODUCT';
+    const BAD_REQUEST_M2P_MERCHANT_BLACKLISTED_BY_NETWORK                           = 'BAD_REQUEST_M2P_MERCHANT_BLACKLISTED_BY_NETWORK';
+    const BAD_REQUEST_DISPUTE_RISK_ASSESSMENT_OPERATION_IN_PROGRESS                 = 'BAD_REQUEST_DISPUTE_RISK_ASSESSMENT_OPERATION_IN_PROGRESS';
+
+    const BAD_REQUEST_BAS_INVALID_BUSINESS_ID                                       = 'BAD_REQUEST_BAS_INVALID_BUSINESS_ID';
+
+    const BAD_REQUEST_BAS_BUSINESS_ID_NOT_CREATED                                   = 'BAD_REQUEST_BAS_BUSINESS_ID_NOT_CREATED';
+
+    const BAD_REQUEST_BAS_BUSINESS_ALREADY_CREATED                                  = 'BAD_REQUEST_BAS_BUSINESS_ALREADY_CREATED';
+
+    const BAD_REQUEST_BAS_PATCH_APPLICATION_API_FAILURE                             = 'BAD_REQUEST_BAS_PATCH_APPLICATION_API_FAILURE';
+
+    const BAD_REQUEST_BAS_GET_APPLICATION_API_FAILURE                               = 'BAD_REQUEST_BAS_GET_APPLICATION_API_FAILURE';
+
+    const BAD_REQUEST_BAS_PERSON_API_FAILURE                                        = 'BAD_REQUEST_BAS_PERSON_API_FAILURE';
+
+    const BAD_REQUEST_BAS_SIGNATORY_API_FAILURE                                     = 'BAD_REQUEST_BAS_SIGNATORY_API_FAILURE';
+
+    const BAD_REQUEST_BAS_BUSINESS_DELETION_OPERATION_NOT_PERMITTED                 = 'BAD_REQUEST_BAS_BUSINESS_DELETION_OPERATION_NOT_PERMITTED';
+
+    const BAD_REQUEST_BANKING_ACCOUNT_SERVICE_ERROR                                 = 'BAD_REQUEST_BANKING_ACCOUNT_SERVICE_ERROR';
+
+    const BAD_REQUEST_BAS_CRON_PATH_MISSING                                         = 'BAD_REQUEST_BAS_CRON_PATH_MISSING';
+    const BAD_REQUEST_BAS_PATH_MISSING                                              = 'BAD_REQUEST_BAS_PATH_MISSING';
+
+    const BAD_REQUEST_AMAZONPAY_PAYOUT_NOT_ALLOWED_ON_DIRECT_ACCOUNT                = 'BAD_REQUEST_AMAZONPAY_PAYOUT_NOT_ALLOWED_ON_DIRECT_ACCOUNT';
+
+    const BAD_REQUEST_IIN_NOT_EXISTS                                                = 'BAD_REQUEST_IIN_NOT_EXISTS';
+    const BAD_REQUEST_INVALID_TOKEN_IIN                                             = 'BAD_REQUEST_INVALID_TOKEN_IIN';
+    const BAD_REQUEST_INVALID_IIN                                                   = 'BAD_REQUEST_INVALID_IIN';
+    const BAD_REQUEST_TNC_STATUS_INVALID                                            = 'BAD_REQUEST_TNC_STATUS_INVALID';
+
+    // Aadhar E-sign error codes
+    const BAD_REQUEST_INVALID_SESSION_ID        = "BAD_REQUEST_INVALID_SESSION_ID";
+
+    // X Amazon Pay wallet account payouts errorcodes
+    const BAD_REQUEST_WALLET_ACCOUNT_FUND_ACCOUNT_CREATION_NOT_PERMITTED            = 'BAD_REQUEST_WALLET_ACCOUNT_FUND_ACCOUNT_CREATION_NOT_PERMITTED';
+    const BAD_REQUEST_AMAZONPAY_PAYOUTS_NOT_PERMITTED                               = 'BAD_REQUEST_AMAZONPAY_PAYOUTS_NOT_PERMITTED';
+
+    const BAD_REQUEST_ORDER_RECEIPT_ANOTHER_OPERATION_IN_PROGRESS                   = 'BAD_REQUEST_ORDER_RECEIPT_ANOTHER_OPERATION_IN_PROGRESS';
+
+    const BAD_REQUEST_FTA_CREATION_FOR_PAYOUT_SERVICE_IN_PROGRESS                   = 'BAD_REQUEST_FTA_CREATION_FOR_PAYOUT_SERVICE_IN_PROGRESS';
+    const BAD_REQUEST_LEDGER_CREATION_FOR_PAYOUT_SERVICE_IN_PROGRESS                = 'BAD_REQUEST_LEDGER_CREATION_FOR_PAYOUT_SERVICE_IN_PROGRESS';
+    const BAD_REQUEST_REVERSAL_CREATION_FOR_PAYOUT_SERVICE_IN_PROGRESS              = 'BAD_REQUEST_REVERSAL_CREATION_FOR_PAYOUT_SERVICE_IN_PROGRESS';
+
+    const SERVER_ERROR_EDGE_PROXY_NO_CONFIG                                         = 'SERVER_ERROR_EDGE_PROXY_NO_CONFIG';
+
+    // Recon service error codes
+    const SERVER_ERROR_IN_RECON_RESPONSE                                            = 'SERVER_ERROR_IN_RECON_RESPONSE';
+    const BAD_REQUEST_ERROR_IN_RECON_RESPONSE                                       = 'BAD_REQUEST_ERROR_IN_RECON_RESPONSE';
+    const SERVER_ERROR_RECON_REQUEST_FAILURE                                        = 'SERVER_ERROR_RECON_REQUEST_FAILURE';
+
+    const BAD_REQUEST_NON_EXISTING_QR_CODE_ID                                       = 'BAD_REQUEST_NON_EXISTING_QR_CODE_ID';
+
+    const BAD_REQUEST_MERCHANT_WEBSITE_SECTION_NOT_APPLICABLE                       = 'BAD_REQUEST_MERCHANT_WEBSITE_SECTION_NOT_APPLICABLE';
+    const BAD_REQUEST_MERCHANT_TNC_NOT_APPLICABLE                                   = 'BAD_REQUEST_MERCHANT_TNC_NOT_APPLICABLE';
+    const BAD_REQUEST_MERCHANT_NOT_ELIGIBLE_FOR_1CC                                 = 'BAD_REQUEST_MERCHANT_NOT_ELIGIBLE_FOR_1CC';
+
+    // Onboarding APIs
+    const BAD_REQUEST_WALLET_INSTRUMENT_INVALID                                     = 'BAD_REQUEST_WALLET_INSTRUMENT_INVALID';
+    const BAD_REQUEST_UPI_INSTRUMENT_INVALID                                        = 'BAD_REQUEST_UPI_INSTRUMENT_INVALID';
+    const BAD_REQUEST_BANK_INSTRUMENT_INVALID                                       = 'BAD_REQUEST_BANK_INSTRUMENT_INVALID';
+    const BAD_REQUEST_PAYLATER_INSTRUMENT_INVALID                                   = 'BAD_REQUEST_PAYLATER_INSTRUMENT_INVALID';
+    const BAD_REQUEST_EMI_INSTRUMENT_INVALID                                        = 'BAD_REQUEST_EMI_INSTRUMENT_INVALID';
+    const BAD_REQUEST_CARD_INSTRUMENT_INVALID                                       = 'BAD_REQUEST_CARD_INSTRUMENT_INVALID';
+    const BAD_REQUEST_CONTACT_MOBILE_ALREADY_TAKEN                                  = 'BAD_REQUEST_CONTACT_MOBILE_ALREADY_TAKEN';
+    const BAD_REQUEST_FETCH_LOGO_FROM_URL_FAILED                                    = 'BAD_REQUEST_FETCH_LOGO_FROM_URL_FAILED';
+
+    const BAD_REQUEST_NO_OWNER_ACCOUNTS_ASSOCIATED                                  = 'BAD_REQUEST_NO_OWNER_ACCOUNTS_ASSOCIATED';
+    const BAD_REQUEST_MULTI_OWNER_ACCOUNTS_ASSOCIATED                               = 'BAD_REQUEST_MULTI_OWNER_ACCOUNTS_ASSOCIATED';
+
+    // XPayroll
+    const BAD_REQUEST_TO_XPAYROLL_SERVICE                                           = 'BAD_REQUEST_TO_XPAYROLL_SERVICE';
+
+    const BAD_REQUEST_PAYMENT_CUSTOMER_DROPPED_OFF                                  = 'BAD_REQUEST_PAYMENT_CUSTOMER_DROPPED_OFF';
+
+    const BAD_REQUEST_INTERNATIONAL_ENABLEMENT_VALIDATION_FAILURE                   = 'BAD_REQUEST_INTERNATIONAL_ENABLEMENT_VALIDATION_FAILURE';
+
+    // PSPX
+    const SERVER_ERROR_PSPX_SERVICE_UNAVAILABLE                                     = 'SERVER_ERROR_PSPX_SERVICE_UNAVAILABLE';
+    const SERVER_ERROR_PSPX_SERVICE_ERROR                                           = 'SERVER_ERROR_PSPX_SERVICE_ERROR';
+
+
+    const BAD_REQUEST_UNABLE_TO_CREATE_ORDER_RELATION_ENTITIES                      = 'BAD_REQUEST_UNABLE_TO_CREATE_ORDER_RELATION_ENTITIES';
+    const BAD_REQUEST_VALIDATION_FAILED                                             = 'BAD_REQUEST_VALIDATION_FAILED';
+    const BAD_REQUEST_PARTIAL_PAYMENT_UPDATE_NOT_ALLOWED                            = 'BAD_REQUEST_PARTIAL_PAYMENT_UPDATE_NOT_ALLOWED';
+
+    const SERVER_ERROR_CACHE_DATA_MISSING_FOR_BANK_ACCOUNT_UPDATE                   = 'SERVER_ERROR_CACHE_DATA_MISSING_FOR_BANK_ACCOUNT_UPDATE';
+    const BAD_REQUEST_MERCHANT_REQUESTED_BANK_ACCOUNT_SAME_AS_CURRENT_BANK_ACCOUNT  = 'BAD_REQUEST_MERCHANT_REQUESTED_BANK_ACCOUNT_SAME_AS_CURRENT_BANK_ACCOUNT';
+
+    const GATEWAY_ERROR_PAYMENT_FLOW_MISMATCH                                       = 'GATEWAY_ERROR_PAYMENT_FLOW_MISMATCH';
+
+    // Payouts Batch API
+    const BAD_REQUEST_PAYOUTS_BATCH_NOT_ALLOWED                                     = 'BAD_REQUEST_PAYOUTS_BATCH_NOT_ALLOWED';
+
+    //PG Router Errors
+    const BAD_REQUEST_FIRST_PAYMENT_MIN_AMOUNT_GREATER_THAN_AMOUNT_DUE              = 'BAD_REQUEST_FIRST_PAYMENT_MIN_AMOUNT_GREATER_THAN_AMOUNT_DUE';
+    const SERVER_ERROR_MUTEX_RESOURCE_NOT_ACQUIRED                                  = 'SERVER_ERROR_MUTEX_RESOURCE_NOT_ACQUIRED';
+    const BAD_REQUEST_MUTEX_RESOURCE_ALREADY_ACQUIRED                               = 'BAD_REQUEST_MUTEX_RESOURCE_ALREADY_ACQUIRED';
+    const SERVER_ERROR_CREATING_ORDER_RELATION_ENTITIES                             = 'SERVER_ERROR_CREATING_ORDER_RELATION_ENTITIES';
+    const SERVER_ERROR_ORDER_ID_GENERATION_ERROR                                    = 'SERVER_ERROR_ORDER_ID_GENERATION_ERROR';
+    const BAD_REQUEST_INVALID_PRODUCT_TYPE                                          = 'BAD_REQUEST_INVALID_PRODUCT_TYPE';
+    const BAD_REQUEST_ORDER_RECEIPT_SHOULD_BE_UNIQUE                                = 'BAD_REQUEST_ORDER_RECEIPT_SHOULD_BE_UNIQUE';
+    const BAD_REQUEST_ORDER_METHOD_NOT_SUPPORTED_FEE_BEARER                         = 'BAD_REQUEST_ORDER_METHOD_NOT_SUPPORTED_FEE_BEARER';
+    const BAD_REQUEST_ORDER_OFFER_REQUEST_ERROR                                     = 'BAD_REQUEST_ORDER_OFFER_REQUEST_ERROR';
+    const BAD_REQUEST_ORDER_CREATE_VALIDATION_FAILED                                = 'BAD_REQUEST_ORDER_CREATE_VALIDATION_FAILED';
+    const BAD_REQUEST_ORDER_AMOUNT_LESS_THAN_MINIMUM_ALLOWED_AMOUNT                 = 'BAD_REQUEST_ORDER_AMOUNT_LESS_THAN_MINIMUM_ALLOWED_AMOUNT';
+    const BAD_REQUEST_ORDER_CURRENCY_NOT_SUPPORTED_WITH_CARD                        = 'BAD_REQUEST_ORDER_CURRENCY_NOT_SUPPORTED_WITH_CARD';
+    const BAD_REQUEST_ORDER_AMOUNT_EXCEEDS_MAX_AMOUNT                               = 'BAD_REQUEST_ORDER_AMOUNT_EXCEEDS_MAX_AMOUNT';
+
+    const BAD_REQUEST_ENCRYPTED_COMMENT_NOT_FOUND = 'BAD_REQUEST_ENCRYPTED_COMMENT_NOT_FOUND';
+    const BAD_REQUEST_INVALID_TRUSTED_BADGE_STATUS = 'BAD_REQUEST_INVALID_TRUSTED_BADGE_STATUS';
+    const BAD_REQUEST_INVALID_TRUSTED_BADGE_MERCHANT_STATUS = 'BAD_REQUEST_INVALID_TRUSTED_BADGE_MERCHANT_STATUS';
+
+    // Dispute presentment
+    const BAD_REQUEST_DISPUTE_DEADLINE_ELAPSED                                       = 'BAD_REQUEST_DISPUTE_DEADLINE_ELAPSED';
+
+    // New UPI Error Codes Addition
+    const BAD_REQUEST_UPI_COOLING_PERIOD_TRANSACTION_LIMIT_EXCEEDS                  = 'BAD_REQUEST_UPI_COOLING_PERIOD_TRANSACTION_LIMIT_EXCEEDS';
+    const BAD_REQUEST_INSUFFICIENT_FUNDS_REMITTER_ACCOUNT                           = 'BAD_REQUEST_INSUFFICIENT_FUNDS_REMITTER_ACCOUNT';
+    const BAD_REQUEST_FUNDS_BLOCKED_BY_MANDATE                                      = 'BAD_REQUEST_FUNDS_BLOCKED_BY_MANDATE';
+    const BAD_REQUEST_TRANSACTION_AMOUNT_LIMIT_AT_REMITTER_EXCEEDED                 = 'BAD_REQUEST_TRANSACTION_AMOUNT_LIMIT_AT_REMITTER_EXCEEDED';
+    const BAD_REQUEST_TRANSACTION_FREQUENCY_LIMIT_AT_REMITTER_EXCEEDED              = 'BAD_REQUEST_TRANSACTION_FREQUENCY_LIMIT_AT_REMITTER_EXCEEDED';
+    const BAD_REQUEST_PAYMENT_DECLINED_BY_CUSTOMER                                  = 'BAD_REQUEST_PAYMENT_DECLINED_BY_CUSTOMER';
+
+    const GATEWAY_ERROR_CARD_EXPIRED                                                = 'GATEWAY_ERROR_CARD_EXPIRED';
+    const GATEWAY_ERROR_REQAUTHMANDATE_ACK_NOT_RECEIVED                             = 'GATEWAY_ERROR_REQAUTHMANDATE_ACK_NOT_RECEIVED';
+    const GATEWAY_ERROR_MANDATE_CREATION_DECLINED_BY_PSP                            = 'GATEWAY_ERROR_MANDATE_CREATION_DECLINED_BY_PSP';
+    const GATEWAY_ERROR_MANDATE_CREATION_EXPIRED                                    = 'GATEWAY_ERROR_MANDATE_CREATION_EXPIRED';
+    const GATEWAY_ERROR_MANDATE_CREATION_DECLINED_BY_REMITTER_BANK                  = 'GATEWAY_ERROR_MANDATE_CREATION_DECLINED_BY_REMITTER_BANK';
+    const GATEWAY_ERROR_MANDATE_CREATION_TIMEOUT_AT_REMITTER_END                    = 'GATEWAY_ERROR_MANDATE_CREATION_TIMEOUT_AT_REMITTER_END';
+    const GATEWAY_ERROR_BENEFICIARY_BANK_DEEMED_HIGH_RESPONSE_TIME_CHECK_DECLINE    = 'GATEWAY_ERROR_BENEFICIARY_BANK_DEEMED_HIGH_RESPONSE_TIME_CHECK_DECLINE';
+    const GATEWAY_ERROR_REMITTER_BANK_DEEMED_HIGH_RESPONSE_TIME_CHECK_DECLINE       = 'GATEWAY_ERROR_REMITTER_BANK_DEEMED_HIGH_RESPONSE_TIME_CHECK_DECLINE';
+    const GATEWAY_ERROR_REMITTER_BANK_THROTTLING_DECLINE                            = 'GATEWAY_ERROR_REMITTER_BANK_THROTTLING_DECLINE';
+    const GATEWAY_ERROR_PAYER_PSP_NOT_AVAILABLE                                     = 'GATEWAY_ERROR_PAYER_PSP_NOT_AVAILABLE';
+    const GATEWAY_ERROR_MULTIPLE_REQUEST                                            = 'GATEWAY_ERROR_MULTIPLE_REQUEST';
+    const GATEWAY_ERROR_RECORD_NOT_FOUND                                            = 'GATEWAY_ERROR_RECORD_NOT_FOUND';
+    const GATEWAY_ERROR_REFUND_AMOUNT_INVALID                                       = 'GATEWAY_ERROR_REFUND_AMOUNT_INVALID';
+    const GATEWAY_ERROR_CONSUMER_NUMBER_INVALID                                     = 'GATEWAY_ERROR_CONSUMER_NUMBER_INVALID';
+    const GATEWAY_ERROR_INVALID_MERCHANT_PREFIX                                     = 'GATEWAY_ERROR_INVALID_MERCHANT_PREFIX';
+    const GATEWAY_ERROR_NO_RESPONSE_FROM_SWITCH                                     = 'GATEWAY_ERROR_NO_RESPONSE_FROM_SWITCH';
+    const GATEWAY_ERROR_DEEMED_TRANSACTION                                          = 'GATEWAY_ERROR_DEEMED_TRANSACTION';
+    const GATEWAY_ERROR_REQUEST_REFUND_AMOUNT_CANNOT_BE_ZERO_OR_NEGATIVE            = 'GATEWAY_ERROR_REQUEST_REFUND_AMOUNT_CANNOT_BE_ZERO_OR_NEGATIVE';
+    const GATEWAY_ERROR_DUPLICATE_REFUND_ID                                         = 'GATEWAY_ERROR_DUPLICATE_REFUND_ID';
+    const GATEWAY_ERROR_REFUND_LIMIT_CROSSED                                        = 'GATEWAY_ERROR_REFUND_LIMIT_CROSSED';
+    const GATEWAY_ERROR_WHILE_PROCESSING_REFUND_REQUEST                             = 'GATEWAY_ERROR_WHILE_PROCESSING_REFUND_REQUEST';
+    const GATEWAY_ERROR_REMITTER_BANK_NOT_AVAILABLE                                 = 'GATEWAY_ERROR_REMITTER_BANK_NOT_AVAILABLE';
+    const BAD_REQUEST_NON_1CC_MERCHANT                                              = 'BAD_REQUEST_NON_1CC_MERCHANT';
+    const BAD_REQUEST_INVALID_1CC_ORDER                                             = 'BAD_REQUEST_INVALID_1CC_ORDER';
+    const BAD_REQUEST_ANOTHER_1CC_CONFIG_OPERATION_IN_PROGRESS                      = 'BAD_REQUEST_ANOTHER_1CC_CONFIG_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_INVALID_GIFT_CARD_ID                                          = 'BAD_REQUEST_INVALID_GIFT_CARD_ID';
+
+    const BAD_REQUEST_CUSTOMER_ADDITIONAL_INFO_MISSING_KEY_FIELD                    = 'BAD_REQUEST_CUSTOMER_ADDITIONAL_INFO_MISSING_KEY_FIELD';
+    const BAD_REQUEST_CUSTOMER_ADDITIONAL_INFO_NOT_PROVIDED                         = 'BAD_REQUEST_CUSTOMER_ADDITIONAL_INFO_NOT_PROVIDED';
+    const BAD_REQUEST_SHIPPING_INFO_NOT_FOUND                                       = 'BAD_REQUEST_SHIPPING_INFO_NOT_FOUND';
+
+    const BAD_REQUEST_MERCHANT_FETCH_COUPONS_URL_NOT_CONFIGURED                     = 'BAD_REQUEST_MERCHANT_FETCH_COUPONS_URL_NOT_CONFIGURED';
+    const BAD_REQUEST_MERCHANT_COUPON_VALIDITY_URL_NOT_CONFIGURED                   = 'BAD_REQUEST_MERCHANT_COUPON_VALIDITY_URL_NOT_CONFIGURED';
+    const BAD_REQUEST_MERCHANT_ORDER_ID_UNAVAILABLE                                 = 'BAD_REQUEST_MERCHANT_ORDER_ID_UNAVAILABLE';
+    const SERVER_ERROR_MERCHANT_COUPON_VALIDITY_EXTERNAL_CALL_EXCEPTION             = 'SERVER_ERROR_MERCHANT_COUPON_VALIDITY_EXTERNAL_CALL_EXCEPTION';
+    const SERVER_ERROR_MERCHANT_FETCH_COUPONS_EXTERNAL_CALL_EXCEPTION               = 'SERVER_ERROR_MERCHANT_FETCH_COUPONS_EXTERNAL_CALL_EXCEPTION';
+
+    const SERVER_ERROR_MERCHANT_VALIDATE_GIFT_CARD_EXTERNAL_CALL_EXCEPTION          = 'SERVER_ERROR_MERCHANT_VALIDATE_GIFT_CARD_EXTERNAL_CALL_EXCEPTION';
+    const SERVER_ERROR_MERCHANT_DOMAIN_URL_NOT_PRESENT                              = 'SERVER_ERROR_MERCHANT_DOMAIN_URL_NOT_PRESENT';
+
+    const BAD_REQUEST_MERCHANT_SERVICEABILITY_URL_NOT_CONFIGURED                    = 'BAD_REQUEST_MERCHANT_SERVICEABILITY_URL_NOT_CONFIGURED';
+    const SERVER_ERROR_MERCHANT_SERVICEABILITY_EXTERNAL_CALL_EXCEPTION              = 'SERVER_ERROR_MERCHANT_SERVICEABILITY_EXTERNAL_CALL_EXCEPTION';
+    const BAD_REQUEST_MERCHANT_SERVICEABILITY_INVALID_INPUT                         = 'BAD_REQUEST_MERCHANT_SERVICEABILITY_INVALID_INPUT';
+    //Dynamic Fee Bearer Error Codes
+    const BAD_REQUEST_INVALID_CONVENIENCE_FEE_CONFIG                                = 'BAD_REQUEST_INVALID_CONVENIENCE_FEE_CONFIG';
+
+    //2FA with password error codes
+    const BAD_REQUEST_2FA_LOGIN_INCORRECT_PASSWORD                                  = 'BAD_REQUEST_2FA_LOGIN_INCORRECT_PASSWORD';
+    const BAD_REQUEST_USER_2FA_LOGIN_PASSWORD_REQUIRED                              = 'BAD_REQUEST_USER_2FA_LOGIN_PASSWORD_REQUIRED';
+    const BAD_REQUEST_2FA_LOGIN_PASSWORD_SUSPENDED                                  = 'BAD_REQUEST_2FA_LOGIN_PASSWORD_SUSPENDED';
+    const SERVER_ERROR_2FA_INCORRECT_PASSWORD_REDIS_ERROR                           = 'SERVER_ERROR_2FA_INCORRECT_PASSWORD_REDIS_ERROR';
+
+    const BAD_REQUEST_PASSWORD_INCORRECT                                            = 'BAD_REQUEST_PASSWORD_INCORRECT';
+    const BAD_REQUEST_MOBILE_OTP_LOGIN_NOT_ALLOWED                                  = 'BAD_REQUEST_MOBILE_OTP_LOGIN_NOT_ALLOWED';
+    const BAD_REQUEST_EMAIL_SIGNUP_OTP_SEND_THRESHOLD_EXHAUSTED                     = 'BAD_REQUEST_EMAIL_SIGNUP_OTP_SEND_THRESHOLD_EXHAUSTED';
+    const SERVER_ERROR_EMAIL_SIGNUP_OTP_REDIS_ERROR                                 = 'SERVER_ERROR_EMAIL_SIGNUP_OTP_REDIS_ERROR';
+    const BAD_REQUEST_CONTACT_MOBILE_ALREADY_EXISTS                                 = 'BAD_REQUEST_CONTACT_MOBILE_ALREADY_EXISTS';
+    const BAD_REQUEST_EMAIL_ALREADY_EXISTS                                          = 'BAD_REQUEST_EMAIL_ALREADY_EXISTS';
+    const BAD_REQUEST_REDIS_KEY_THRESHOLD_EXCEEDED                                  = 'BAD_REQUEST_REDIS_KEY_THRESHOLD_EXCEEDED';
+    const BAD_REQUEST_SIGNUP_OTP_VERIFICATION_THRESHOLD_EXHAUSTED                   = 'BAD_REQUEST_SIGNUP_OTP_VERIFICATION_THRESHOLD_EXHAUSTED';
+    const SERVER_ERROR_VERIFY_SIGNUP_OTP_REDIS_ERROR                                = 'SERVER_ERROR_VERIFY_SIGNUP_OTP_REDIS_ERROR';
+    const BAD_REQUEST_SALESFORCE_RETURNED_NON_2XX_RESPONSE                          = 'BAD_REQUEST_SALESFORCE_RETURNED_NON_2XX_RESPONSE';
+    const BAD_REQUEST_SALESFORCE_DUPLICATES_RECORD_DETECTED                         = 'BAD_REQUEST_SALESFORCE_DUPLICATES_RECORD_DETECTED';
+    const BAD_REQUEST_SALESFORCE_FIELD_VALIDATION_ERROR                             = 'BAD_REQUEST_SALESFORCE_FIELD_VALIDATION_ERROR';
+    const BAD_REQUEST_USERNAME_MUST_BE_DIFFERENT                                    = 'BAD_REQUEST_USERNAME_MUST_BE_DIFFERENT';
+
+    const BAD_REQUEST_CHANGE_PASSWORD_THRESHOLD_EXHAUSTED                           = 'BAD_REQUEST_CHANGE_PASSWORD_THRESHOLD_EXHAUSTED';
+    const SERVER_ERROR_CHANGE_PASSWORD_REDIS_ERROR                                  = 'SERVER_ERROR_CHANGE_PASSWORD_REDIS_ERROR';
+
+    const BAD_REQUEST_RESET_PASSWORD_THRESHOLD_EXHAUSTED                            = 'BAD_REQUEST_RESET_PASSWORD_THRESHOLD_EXHAUSTED';
+    const SERVER_ERROR_RESET_PASSWORD_REDIS_ERROR                                   = 'SERVER_ERROR_RESET_PASSWORD_REDIS_ERROR';
+
+    const BAD_REQUEST_INVALID_AFFORDABILITY_COMPONENT                               = 'BAD_REQUEST_INVALID_AFFORDABILITY_COMPONENT';
+    const BAD_REQUEST_MERCHANT_NOT_FOUND                                            = 'BAD_REQUEST_MERCHANT_NOT_FOUND';
+    const BAD_REQUEST_KEYS_REGENERATED_PREVIOUSLY                                   = 'BAD_REQUEST_KEYS_REGENERATED_PREVIOUSLY';
+    const BAD_REQUEST_OPEN_WORKFLOW_NOT_FOUND                                       = 'BAD_REQUEST_OPEN_WORKFLOW_NOT_FOUND';
+    const BAD_REQUEST_EMANDATE_INACTIVE                                             = 'BAD_REQUEST_EMANDATE_INACTIVE';
+    const BAD_REQUEST_CARD_INVALID                                                  = 'BAD_REQUEST_CARD_INVALID';
+    const BAD_REQUEST_CARD_NOT_ELIGIBLE_FOR_TOKENISATION                            = 'BAD_REQUEST_CARD_NOT_ELIGIBLE_FOR_TOKENISATION';
+    const BAD_REQUEST_CARD_NOT_ALLOWED                                              = 'BAD_REQUEST_CARD_NOT_ALLOWED';
+    const BAD_REQUEST_CARD_DECLINED                                                 = 'BAD_REQUEST_CARD_DECLINED';
+    const GATEWAY_ERROR_DUPLICATE_REQUEST                                           = 'GATEWAY_ERROR_DUPLICATE_REQUEST';
+    const BAD_REQUEST_TOKEN_INVALID_STATE                                           = 'BAD_REQUEST_TOKEN_INVALID_STATE';
+    const GATEWAY_ERROR_TOKEN_REFERENCE_NOT_FOUND                                   = 'GATEWAY_ERROR_TOKEN_REFERENCE_NOT_FOUND';
+    const GATEWAY_ERROR_PAN_REFERENCE_NOT_FOUND                                     = 'GATEWAY_ERROR_PAN_REFERENCE_NOT_FOUND';
+    const GATEWAY_ERROR_AUTHENTICATION_REFERENCE_INVALID                            = 'GATEWAY_ERROR_AUTHENTICATION_REFERENCE_INVALID';
+    const BAD_REQUEST_TOKEN_SUSPENDED_OR_DEACTIVATED                                = 'BAD_REQUEST_TOKEN_SUSPENDED_OR_DEACTIVATED';
+    const BAD_REQUEST_TOKEN_EXPIRED                                                 = 'BAD_REQUEST_TOKEN_EXPIRED';
+    const BAD_REQUEST_STANDALONE_PAYOUT_TO_CARDS_NOT_ALLOWED                        = 'BAD_REQUEST_STANDALONE_PAYOUT_TO_CARDS_NOT_ALLOWED';
+    const BAD_REQUEST_MODE_NOT_SUPPORTED_FOR_PAYOUT_TO_TOKENISED_CARDS              = 'BAD_REQUEST_MODE_NOT_SUPPORTED_FOR_PAYOUT_TO_TOKENISED_CARDS';
+    const BAD_REQUEST_TDS_AMOUNT_GREATER_THAN_PAYOUT_AMOUNT                         = 'BAD_REQUEST_TDS_AMOUNT_GREATER_THAN_PAYOUT_AMOUNT';
+    const BAD_REQUEST_AUTH_NOT_SUPPORTED_FOR_PAYOUT_WITH_TDS                        = 'BAD_REQUEST_AUTH_NOT_SUPPORTED_FOR_PAYOUT_WITH_TDS';
+    const BAD_REQUEST_AUTH_NOT_SUPPORTED_FOR_PAYOUT_WITH_ATTACHMENTS                = 'BAD_REQUEST_AUTH_NOT_SUPPORTED_FOR_PAYOUT_WITH_ATTACHMENTS';
+    const BAD_REQUEST_INVALID_TDS_CATEGORY_ID                                       = 'BAD_REQUEST_INVALID_TDS_CATEGORY_ID';
+    const BAD_REQUEST_INVALID_TAX_PAYMENT_ID                                        = 'BAD_REQUEST_INVALID_TAX_PAYMENT_ID';
+    const BAD_REQUEST_FILE_HASH_MISSING_FOR_ATTACHMENT                              = 'BAD_REQUEST_FILE_HASH_MISSING_FOR_ATTACHMENT';
+    const BAD_REQUEST_INVALID_FILE_HASH_FOR_ATTACHMENT                              = 'BAD_REQUEST_INVALID_FILE_HASH_FOR_ATTACHMENT';
+
+    const BAD_REQUEST_MERCHANT_NOT_ON_LEDGER_REVERSE_SHADOW  = 'BAD_REQUEST_MERCHANT_NOT_ON_LEDGER_REVERSE_SHADOW';
+    const BAD_REQUEST_LEDGER_JOURNAL_ENTRY_BALANCE_GET_ERROR = 'BAD_REQUEST_LEDGER_JOURNAL_ENTRY_BALANCE_GET_ERROR';
+    const BAD_REQUEST_LEDGER_JOURNAL_ENTRY_FTS_GET_ERROR     = 'BAD_REQUEST_LEDGER_JOURNAL_ENTRY_FTS_GET_ERROR';
+
+    const BAD_REQUEST_INTERNAL_ACCOUNT_NOT_FOUND                                    = 'BAD_REQUEST_INTERNAL_ACCOUNT_NOT_FOUND';
+    const BAD_REQUEST_INTERNAL_MERCHANT_NOT_FOUND                                   = 'BAD_REQUEST_INTERNAL_MERCHANT_NOT_FOUND';
+    const BAD_REQUEST_INTERNAL_ENTITY_ALREADY_EXISTS                                = 'BAD_REQUEST_INTERNAL_ENTITY_ALREADY_EXISTS';
+    const BAD_REQUEST_INTERNAL_ENTITY_NOT_FOUND                                     = 'BAD_REQUEST_INTERNAL_ENTITY_NOT_FOUND';
+    const BAD_REQUEST_INTERNAL_BALANCE_NOT_FOUND                                    = 'BAD_REQUEST_INTERNAL_BALANCE_NOT_FOUND';
+    const BAD_REQUEST_INTERNAL_BANK_ACCOUNT_NOT_FOUND                               = 'BAD_REQUEST_INTERNAL_BANK_ACCOUNT_NOT_FOUND';
+    const BAD_REQUEST_SMS_TEMPLATE_NOT_FOUND                                        = 'BAD_REQUEST_SMS_TEMPLATE_NOT_FOUND';
+
+    //Reserve Balance/Credits Fund Addition Error Codes
+    const BAD_REQUEST_FUND_ADDITION_TYPE_IS_INVALID                                 = 'BAD_REQUEST_FUND_ADDITION_TYPE_IS_INVALID';
+    const BAD_REQUEST_ORDER_STATUS_INVALID_FOR_FUND_ADDITION                        = 'BAD_REQUEST_ORDER_STATUS_INVALID_FOR_FUND_ADDITION';
+    const BAD_REQUEST_INVALID_ORDER_ID_IN_PAYMENT                                   = 'BAD_REQUEST_INVALID_ORDER_ID_IN_PAYMENT';
+    const BAD_REQUEST_PAYMENT_DATA_TAMPERED                                         = 'BAD_REQUEST_PAYMENT_DATA_TAMPERED';
+    const BAD_REQUEST_CREDITS_ALREADY_ADDED_FOR_THE_GIVEN_CAMPAIGN                  = 'BAD_REQUEST_CREDITS_ALREADY_ADDED_FOR_THE_GIVEN_CAMPAIGN';
+    const BAD_REQUEST_MERCHANT_INFO_NOT_PRESENT_FOR_FUND_ADDITION                   = 'BAD_REQUEST_MERCHANT_INFO_NOT_PRESENT_FOR_FUND_ADDITION';
+    const BAD_REQUEST_FUND_ADDITION_METHOD_IS_INVALID                               = 'BAD_REQUEST_FUND_ADDITION_METHOD_IS_INVALID';
+    const BAD_REQUEST_CAMPAIGN_ANOTHER_OPERATION_IN_PROGRESS                        = 'BAD_REQUEST_CAMPAIGN_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_BANK_TRANSFER_INPUT_DATA_TAMPERED                             = 'BAD_REQUEST_BANK_TRANSFER_INPUT_DATA_TAMPERED';
+    const BAD_REQUEST_RESERVE_BALANCE_ALREADY_ADDED_FOR_GIVEN_DESC                  = 'BAD_REQUEST_RESERVE_BALANCE_ALREADY_ADDED_FOR_GIVEN_DESC';
+    const BAD_REQUEST_DESCRIPTION_ANOTHER_OPERATION_IN_PROGRESS                     = 'BAD_REQUEST_DESCRIPTION_ANOTHER_OPERATION_IN_PROGRESS';
+    const BAD_REQUEST_INVALID_INPUT_FOR_FUND_ADDITION                               = 'BAD_REQUEST_INVALID_INPUT_FOR_FUND_ADDITION';
+    const BAD_REQUEST_INVALID_AMOUNT_FOR_FUND_ADDITION                              = 'BAD_REQUEST_INVALID_AMOUNT_FOR_FUND_ADDITION';
+
+    const BAD_REQUEST_UPDATE_PAYOUT_ATTACHMENTS                                     = 'BAD_REQUEST_UPDATE_PAYOUT_ATTACHMENTS';
+    const BAD_REQUEST_INVALID_PAYOUT_SOURCE_FOR_UPDATE                              = 'BAD_REQUEST_INVALID_PAYOUT_SOURCE_FOR_UPDATE';
+    const BAD_REQUEST_ATTACHMENT_NOT_LINKED_TO_PAYOUT                               = 'BAD_REQUEST_ATTACHMENT_NOT_LINKED_TO_PAYOUT';
+    const SERVER_ERROR_TAX_PAYMENT_ID_UPDATE_FAILURE                                = 'SERVER_ERROR_TAX_PAYMENT_ID_UPDATE_FAILURE';
+    const SERVER_ERROR_INVALID_UFH_CLIENT                                           = 'SERVER_ERROR_INVALID_UFH_CLIENT';
+    const SERVER_ERROR_ATTACHMENT_UPDATE_FAILURE                                    = 'SERVER_ERROR_ATTACHMENT_UPDATE_FAILURE';
+    const SERVER_ERROR_ATTACHMENT_GET_FAILURE                                       = 'SERVER_ERROR_ATTACHMENT_GET_FAILURE';
+    const BAD_REQUEST_PAYOUT_ATTACHMENT_NOT_ALLOWED_FOR_THIS_ROLE                   = 'BAD_REQUEST_PAYOUT_ATTACHMENT_NOT_ALLOWED_FOR_THIS_ROLE';
+    const BAD_REQUEST_INVALID_ATTACHMENT_SIZE                                       = 'BAD_REQUEST_INVALID_ATTACHMENT_SIZE';
+    const SERVER_ERROR_GET_ATTACHMENTS_FAILURE                                      = 'SERVER_ERROR_GET_ATTACHMENTS_FAILURE';
+
+    const SERVER_ERROR_USER_X_MOBILE_APP_DOWNLOAD_LINK_SENDING_FAILED               = 'SERVER_ERROR_USER_X_MOBILE_APP_DOWNLOAD_LINK_SENDING_FAILED';
+
+    const SERVER_ERROR_OTP_ELF_INVALID_ARGUMENT                                     = 'SERVER_ERROR_OTP_ELF_INVALID_ARGUMENT';
+    const GATEWAY_ERROR_OTP_RESEND_FAILED                                           = 'GATEWAY_ERROR_OTP_RESEND_FAILED';
+    const SERVER_ERROR_OTPELF_FAILURE                                               = 'SERVER_ERROR_OTPELF_FAILURE';
+    const SERVER_ERROR_OTP_ELF_SUBMIT_OTP_FAILURE                                   = 'SERVER_ERROR_OTP_ELF_SUBMIT_OTP_FAILURE';
+    const SERVER_ERROR_OTP_ELF_ALREADY_SUCCEEDED                                    = 'SERVER_ERROR_OTP_ELF_ALREADY_SUCCEEDED';
+    const SERVER_ERROR_OTP_ELF_ALREADY_INITIATED                                    = 'SERVER_ERROR_OTP_ELF_ALREADY_INITIATED';
+    const BAD_REQUEST_PAYMENT_DECLINED_BY_BANK_DUE_TO_BLOCKED_CARD_OTPELF           = 'BAD_REQUEST_PAYMENT_DECLINED_BY_BANK_DUE_TO_BLOCKED_CARD_OTPELF';
+    const BAD_REQUEST_INVALID_CARD_DETAILS_OTPELF                                   = 'BAD_REQUEST_INVALID_CARD_DETAILS_OTPELF';
+    const BAD_REQUEST_PAYMENT_BANK_SYSTEM_ERROR_OTPELF                              = 'BAD_REQUEST_PAYMENT_BANK_SYSTEM_ERROR_OTPELF';
+    const BAD_REQUEST_PAYMENT_FAILED_BECAUSE_SESSION_EXPIRED_OTP_ELF                = 'BAD_REQUEST_PAYMENT_FAILED_BECAUSE_SESSION_EXPIRED_OTP_ELF';
+    const SERVER_ERROR_INTERNAL_SERVER_ERROR_OTP_ELF                                = 'SERVER_ERROR_INTERNAL_SERVER_ERROR_OTP_ELF';
+    const SERVER_ERROR_OTP_ELF_ACS_PAGE_UNKNOWN                                     = 'SERVER_ERROR_OTP_ELF_ACS_PAGE_UNKNOWN';
+    const BAD_REQUEST_OTP_RESEND_NOT_SUPPORTED_OTP_ELF                              = 'BAD_REQUEST_OTP_RESEND_NOT_SUPPORTED_OTP_ELF';
+    const SERVER_ERROR_UNSERVICEABLE_PAGE                                           = 'SERVER_ERROR_UNSERVICEABLE_PAGE';
+    const SERVER_ERROR_OTP_ELF_NETWORK_ERROR                                        = 'SERVER_ERROR_OTP_ELF_NETWORK_ERROR';
+    const BAD_REQUEST_PAYMENT_BANK_SYSTEM_ERROR_OTP_ELF                             = 'BAD_REQUEST_PAYMENT_BANK_SYSTEM_ERROR_OTP_ELF';
+    const BAD_REQUEST_PAYMENT_FAILED_BECAUSE_SESSION_EXPIRED_OTPELF                 = 'BAD_REQUEST_PAYMENT_FAILED_BECAUSE_SESSION_EXPIRED_OTPELF';
+    const BAD_REQUEST_ERROR_INVALID_OTP_LENGTH_OTPELF                               = 'BAD_REQUEST_ERROR_INVALID_OTP_LENGTH_OTPELF';
+    const GATEWAY_ERROR_REQUEST_TIMEOUT_OTPELF                                      = 'GATEWAY_ERROR_REQUEST_TIMEOUT_OTPELF';
+    const SERVER_ERROR_ALREADY_INITIATED_OTPELF                                     = 'SERVER_ERROR_ALREADY_INITIATED_OTPELF';
+    const SERVER_ERROR_IP_BLOCKED_OTPELF                                            = 'SERVER_ERROR_IP_BLOCKED_OTPELF';
+    const BAD_REQUEST_PAYMENT_CARD_NOT_ENROLLED_FOR_3DSECURE_OTPELF                 = 'BAD_REQUEST_PAYMENT_CARD_NOT_ENROLLED_FOR_3DSECURE_OTPELF';
+    const SERVER_ERROR_OTP_ELF_IP_BLOCKED                                           = 'SERVER_ERROR_OTP_ELF_IP_BLOCKED';
+    const BAD_REQUEST_ERROR_OTP_ELF_INVALID_OTP_LENGTH                              = 'BAD_REQUEST_ERROR_OTP_ELF_INVALID_OTP_LENGTH';
+    const BAD_REQUEST_ERROR_OTP_ELF_INVALID_IP_ADDRESS                              = 'BAD_REQUEST_ERROR_OTP_ELF_INVALID_IP_ADDRESS';
+
+    // Merchant Config Error codes
+    const BAD_REQUEST_INVALID_INPUT_LOGO_URL                                       =  'BAD_REQUEST_INVALID_INPUT_LOGO_URL';
+    const BAD_REQUEST_GATEWAY_UNKNOWN_ERROR                                        = 'BAD_REQUEST_GATEWAY_UNKNOWN_ERROR';
+    const BAD_REQUEST_PAYMENT_CAPTURE_FAILED                                       = 'BAD_REQUEST_PAYMENT_CAPTURE_FAILED';
+    const BAD_REQUEST_CARD_ISSUING_BANK_AUTHENTICATION_SERVER_FAILURE              = 'BAD_REQUEST_CARD_ISSUING_BANK_AUTHENTICATION_SERVER_FAILURE';
+    const INTERNAL_GATEWAY_ERROR                                                   = 'INTERNAL_GATEWAY_ERROR';
+    const BAD_REQUEST_CARD_NETWORK_INVALID                                         = 'BAD_REQUEST_CARD_NETWORK_INVALID';
+    const BAD_REQUEST_CARD_REFERENCE_NOT_FOUND                                     = 'BAD_REQUEST_CARD_REFERENCE_NOT_FOUND';
+    const BAD_REQUEST_PAYMENT_ACCOUNT_REFERENCE_NOT_FOUND                          = 'BAD_REQUEST_PAYMENT_ACCOUNT_REFERENCE_NOT_FOUND';
+    const BAD_REQUEST_CARD_MANDATE_NOTIFICATION_AMOUNT_GREATER_THAN_MANDATE_AMOUNT = 'BAD_REQUEST_CARD_MANDATE_NOTIFICATION_AMOUNT_GREATER_THAN_MANDATE_AMOUNT';
+    const BAD_REQUEST_CARD_MANDATE_AMOUNT_GREATER_THAN_RBI_LIMIT                   = 'BAD_REQUEST_CARD_MANDATE_AMOUNT_GREATER_THAN_RBI_LIMIT';
+    const BAD_REQUEST_CARD_MANDATE_PAYMENT_AMOUNT_MISMATCH                         = 'BAD_REQUEST_CARD_MANDATE_PAYMENT_AMOUNT_MISMATCH';
+    const BAD_REQUEST_CARD_MANDATE_CARD_NUMBER_MISMATCH                            = 'BAD_REQUEST_CARD_MANDATE_CARD_NUMBER_MISMATCH';
+    const BAD_REQUEST_MAXIMUM_DAILY_COUNTS_LIMIT_PER_CARD_EXCEEDED                 = 'BAD_REQUEST_MAXIMUM_DAILY_COUNTS_LIMIT_PER_CARD_EXCEEDED';
+    const BAD_REQUEST_MAXIMUM_DAILY_AMOUNT_LIMIT_PER_CARD_EXCEEDED                 = 'BAD_REQUEST_MAXIMUM_DAILY_AMOUNT_LIMIT_PER_CARD_EXCEEDED';
+    const BAD_REQUEST_MAXIMUM_CARD_MANDATE_LIMIT_EXCEEDED                          = 'BAD_REQUEST_MAXIMUM_CARD_MANDATE_LIMIT_EXCEEDED';
+    const BAD_REQUEST_MAXIMUM_AMOUNT_ALLOWED_EXCEEDED                              = 'BAD_REQUEST_MAXIMUM_AMOUNT_ALLOWED_EXCEEDED';
+    const BAD_REQUEST_INVALID_CARD_REFERENCE_NUMBER                                = 'BAD_REQUEST_INVALID_CARD_REFERENCE_NUMBER';
+    const BAD_REQUEST_INVALID_TOKEN_REFERENCE_NUMBER                               = 'BAD_REQUEST_INVALID_TOKEN_REFERENCE_NUMBER';
+    const BAD_REQUEST_NO_ACTIVE_TOKENS                                             = 'BAD_REQUEST_NO_ACTIVE_TOKENS';
+    const BAD_REQUEST_DUPLICATE_REQUEST_ERROR                                      = 'BAD_REQUEST_DUPLICATE_REQUEST_ERROR';
+    const TOKEN_SERVICE_PROVIDER_ERROR                                             = 'TOKEN_SERVICE_PROVIDER_ERROR';
+    const BAD_REQUEST_INVALID_RESPONSE_HOST                                        = 'BAD_REQUEST_INVALID_RESPONSE_HOST';
+    const BAD_REQUEST_TOKEN_SERVICE_PROVIDER_AUTH_FAILED                           = 'BAD_REQUEST_TOKEN_SERVICE_PROVIDER_AUTH_FAILED';
+    const BAD_REQUEST_TOKEN_SERVICE_PROVIDER_OAUTH_ERROR                           = 'BAD_REQUEST_TOKEN_SERVICE_PROVIDER_OAUTH_ERROR';
+    const BAD_REQUEST_INVALID_AUTH_TYPE                                            = 'BAD_REQUEST_INVALID_AUTH_TYPE';
+    const SERVER_ERROR_FAILED_TO_PERSIST_CVV                                       = 'SERVER_ERROR_FAILED_TO_PERSIST_CVV';
+    const SERVER_ERROR_FAILED_TO_FETCH_CVV                                         = 'SERVER_ERROR_FAILED_TO_FETCH_CVV';
+    const SERVER_ERROR_FAILED_TO_PERSIST_IN_STORE                                  = 'SERVER_ERROR_FAILED_TO_PERSIST_IN_STORE';
+    const SERVER_ERROR_FAILED_TO_FETCH_FROM_STORE                                  = 'SERVER_ERROR_FAILED_TO_FETCH_FROM_STORE';
+    const BDA_REQUEST_PAYMENT_AMOUNT_EXCEEDS_MAX_AMOUNT                            = 'BDA_REQUEST_PAYMENT_AMOUNT_EXCEEDS_MAX_AMOUNT';
+    const BAD_REQUEST_INVALID_CUSTOMER_ID                                          = 'BAD_REQUEST_INVALID_CUSTOMER_ID';
+    const MOZART_SERVICE_BAD_GATEWAY                                               = 'MOZART_SERVICE_BAD_GATEWAY';
+    const BAD_REQUEST_INVALID_PAYMENT_ID                                           = 'BAD_REQUEST_INVALID_PAYMENT_ID';
+    const XID_VALIDATION_ERROR                                                     = 'XID_VALIDATION_ERROR';
+    const VAULT_SERVICE_ERROR                                                      = 'VAULT_SERVICE_ERROR';
+    const VAULT_RESPONSE_ERROR                                                     = 'VAULT_RESPONSE_ERROR';
+    const UNKNOWN_NETWORK_ERROR                                                    = 'UNKNOWN_NETWORK_ERROR';
+    const TYPE_ASSERTION_FAILED                                                    = 'TYPE_ASSERTION_FAILED';
+    const SNS_PUSH_EVENTS_FAILURE                                                  = 'SNS_PUSH_EVENTS_FAILURE';
+    const SNS_INSTANCE_NOT_FOUND                                                   = 'SNS_INSTANCE_NOT_FOUND';
+    const SNS_INSTANCE_CREATION_FAILURE                                            = 'SNS_INSTANCE_CREATION_FAILURE';
+    const SHIELD_SERVICE_ERROR                                                     = 'SHIELD_SERVICE_ERROR';
+    const SERVER_ERROR_MOZART_RESPONSE_INVALID_DATA                                = 'SERVER_ERROR_MOZART_RESPONSE_INVALID_DATA';
+    const SERIALIZATION_DESERIALIZATION_ERROR                                      = 'SERIALIZATION_DESERIALIZATION_ERROR';
+    const ROUTER_SERVICE_ERROR                                                     = 'ROUTER_SERVICE_ERROR';
+    const REPO_TRNASACTION_ALREADY_EXISTS                                          = 'REPO_TRNASACTION_ALREADY_EXISTS';
+    const REPO_FAILURE_BACKFILLING_DATA                                            = 'REPO_FAILURE_BACKFILLING_DATA';
+    const REPO_FAILED_TO_UPSERT                                                    = 'REPO_FAILED_TO_UPSERT';
+    const REPO_FAILED_TO_UPDATE                                                    = 'REPO_FAILED_TO_UPDATE';
+    const REPO_FAILED_TO_SAVE                                                      = 'REPO_FAILED_TO_SAVE';
+    const REPO_FAILED_TO_FIND_BY_PAYMENTID                                         = 'REPO_FAILED_TO_FIND_BY_PAYMENTID';
+    const REPO_FAILED_TO_FIND_BY_ID                                                = 'REPO_FAILED_TO_FIND_BY_ID';
+    const REPO_FAILED_TO_FETCH                                                     = 'REPO_FAILED_TO_FETCH';
+    const REPO_FAILED_TO_DELETE                                                    = 'REPO_FAILED_TO_DELETE';
+    const REPO_FAILED_TO_CREATE                                                    = 'REPO_FAILED_TO_CREATE';
+    const REPO_BULK_UPDATED                                                        = 'REPO_BULK_UPDATED';
+    const REPO_BULK_DELETE_ATTEMPT                                                 = 'REPO_BULK_DELETE_ATTEMPT';
+    const REPO_BULK_DELETE                                                         = 'REPO_BULK_DELETE';
+    const REDIS_CONNECTION_ERROR                                                   = 'REDIS_CONNECTION_ERROR';
+    const RAZORX_SERVICE_ERROR                                                     = 'RAZORX_SERVICE_ERROR';
+    const PAYMENT_VERIFICATION_FAILED_ON_GATEWAY                                   = 'PAYMENT_VERIFICATION_FAILED_ON_GATEWAY';
+    const PAYMENT_INITIATION_FAILED                                                = 'PAYMENT_INITIATION_FAILED';
+    const PAYMENT_ID_ASSERTION_FAILED                                              = 'PAYMENT_ID_ASSERTION_FAILED';
+    const PAYMENT_CARD_SAVING_FAILED                                               = 'PAYMENT_CARD_SAVING_FAILED';
+    const PAYMENT_AMOUNT_ASSERTION_FAILED                                          = 'PAYMENT_AMOUNT_ASSERTION_FAILED';
+    const MOZART_SERVICE_ERROR                                                     = 'MOZART_SERVICE_ERROR';
+    const MOZART_CALL_UNSUCCESSFUL                                                 = 'MOZART_CALL_UNSUCCESSFUL';
+    const INVALID_ACTION                                                           = 'INVALID_ACTION';
+    const HTTP_REQUEST_ERROR                                                       = 'HTTP_REQUEST_ERROR';
+    const GATEWAY_ERROR_UNKNOWN_INTERNAL_SERVER_ERROR                              = 'GATEWAY_ERROR_UNKNOWN_INTERNAL_SERVER_ERROR';
+    const GATEWAY_ERROR_UNKNOWN_CALLBACK_INTERNAL_SERVER_ERROR                     = 'GATEWAY_ERROR_UNKNOWN_CALLBACK_INTERNAL_SERVER_ERROR';
+    const FAILED_TO_STORE_GATEWAY_RESPONSE                                         = 'FAILED_TO_STORE_GATEWAY_RESPONSE';
+    const FAILED_TO_RELEASE_LOCK                                                   = 'FAILED_TO_RELEASE_LOCK';
+    const FAILED_TO_GET_CORE                                                       = 'FAILED_TO_GET_CORE';
+    const FAILED_TO_ACQUIRE_LOCK                                                   = 'FAILED_TO_ACQUIRE_LOCK';
+    const EXEC_NO_HANDLERS_FOR_ACTION                                              = 'EXEC_NO_HANDLERS_FOR_ACTION';
+    const ENROLLMENT_VALIDATION_ERROR                                              = 'ENROLLMENT_VALIDATION_ERROR';
+    const ECI_VALIDATION_ERROR                                                     = 'ECI_VALIDATION_ERROR';
+    const DATA_TAMPERING_FOUND                                                     = 'DATA_TAMPERING_FOUND';
+    const CORE_FAILED_TO_UPDATE_MODEL                                              = 'CORE_FAILED_TO_UPDATE_MODEL';
+    const CORE_FAILED_TO_GET_MODEL                                                 = 'CORE_FAILED_TO_GET_MODELE';
+    const CORE_FAILED_TO_FETCH_BY_ID                                               = 'CORE_FAILED_TO_FETCH_BY_ID';
+    const CORE_FAILED_TO_DELETE_BY_ID                                              = 'CORE_FAILED_TO_DELETE_BY_ID';
+    const CORE_FAILED_TO_CREATE_MODEL                                              = 'CORE_FAILED_TO_CREATE_MODEL';
+    const BULK_REQUEST_LIMIT_EXCEEDED                                              = 'BULK_REQUEST_LIMIT_EXCEEDED';
+    const BAD_REQUEST_PAYMNET_CANCELLED                                            = 'BAD_REQUEST_PAYMNET_CANCELLED';
+    const BAD_REQUEST_PAYMENT_AUTO_CAPTURE_NOT_ALLOWED                             = 'BAD_REQUEST_PAYMENT_AUTO_CAPTURE_NOT_ALLOWED';
+    const BAD_REQUEST_PAYMENT_ALREADY_CAPTUREDBAD_REQUEST_PAYMENT_CAPTURE_ONLY_AUTHORIZED = 'BAD_REQUEST_PAYMENT_ALREADY_CAPTUREDBAD_REQUEST_PAYMENT_CAPTURE_ONLY_AUTHORIZED';
+    const BAD_REQUEST_NO_TERMINALS                                                 = 'BAD_REQUEST_NO_TERMINAL';
+    const BAD_REQUEST_INVALID_ORDER_ID                                             = 'BAD_REQUEST_INVALID_ORDER_ID';
+    const AUTHENTICATION_RESULT_VALIDATION_ERROR                                   = 'AUTHENTICATION_RESULT_VALIDATION_ERROR';
+    const AUTHENTICATION_RESULT_FAILED_ERROR                                       = 'AUTHENTICATION_RESULT_FAILED_ERROR';
+    const AUTHENTICATION_RESULT_ATTEMPTED_ERROR                                    = 'AUTHENTICATION_RESULT_ATTEMPTED_ERROR';
+    const API_CUSTOMER_TOKEN_CREATION_ERROR                                        = 'API_CUSTOMER_TOKEN_CREATION_ERROR';
+    const API_CARD_ENTITY_CREATION_FAILURE                                         = 'API_CARD_ENTITY_CREATION_FAILURE';
+    const ACTION_UNSUPPORTED_GATEWAY                                               = 'ACTION_UNSUPPORTED_GATEWAY';
+    const BAD_REQUEST_PAYMENT_TIMEOUT_FAILED                                       = 'BAD_REQUEST_PAYMENT_TIMEOUT_FAILED';
+    const BAD_REQUEST_PAYMENT_CANCEL_FAILED                                        = 'BAD_REQUEST_PAYMENT_CANCEL_FAILED';
+    const BAD_REQUEST_INVALID_PAYMENT_CURRENCY                                     = 'BAD_REQUEST_INVALID_PAYMENT_CURRENCY';
+    const BAD_REQUEST_INVALID_PAYMENT_AMOUNT                                       = 'BAD_REQUEST_INVALID_PAYMENT_AMOUNT';
+    const BAD_REQUEST_BANK_DISABLED_ON_MERCHANT                                    = 'BAD_REQUEST_BANK_DISABLED_ON_MERCHANT';
+    const BAD_REQUEST_CARD_SUB_TYPE_NOT_ALLOWED_ON_MERCHANT                        = 'BAD_REQUEST_CARD_SUB_TYPE_NOT_ALLOWED_ON_MERCHANT';
+    const PAYMENT_CAPTURE_FAILURE_EXCEPTION                                        = 'PAYMENT_CAPTURE_FAILURE_EXCEPTION';
+    const BAD_REQUEST_CARD_IIN_NOT_ALLOWED_ON_MERCHANT                             = 'BAD_REQUEST_CARD_IIN_NOT_ALLOWED_ON_MERCHANT';
+    const BAD_REQUEST_INTERNATIONAL_NOT_ALLOWED_ON_MERCHANT                        = 'BAD_REQUEST_INTERNATIONAL_NOT_ALLOWED_ON_MERCHANT';
+    const BAD_REQUEST_CARD_TYPE_NOT_ALLOWED_ON_MERCHANT                            = 'BAD_REQUEST_CARD_TYPE_NOT_ALLOWED_ON_MERCHANT';
+    const BAD_REQUEST_CARD_ISSUER_NOT_ALLOWED_ON_MERCHANT                          = 'BAD_REQUEST_CARD_ISSUER_NOT_ALLOWED_ON_MERCHANT';
+    const BAD_REQUEST_CARD_NETWORK_NOT_ALLOWED_ON_MERCHANT                         = 'BAD_REQUEST_CARD_NETWORK_NOT_ALLOWED_ON_MERCHANT';
+    const BAD_REQUEST_INVALID_MERCHANT_ID                                          = 'BAD_REQUEST_INVALID_MERCHANT_ID';
+    const BAD_REQUEST_EMPTY_PAYLOAD_ERROR                                          = 'BAD_REQUEST_EMPTY_PAYLOAD_ERROR';
+    const BAD_REQUEST_ENABLE_NON_3DS_REQUEST_MADE_IN_LAST_30_DAYS                  = 'BAD_REQUEST_ENABLE_NON_3DS_REQUEST_MADE_IN_LAST_30_DAYS';
+
+    const BAD_REQUEST_OTP_VERIFICATION_LOG                                         = 'BAD_REQUEST_OTP_VERIFICATION_LOG';
+    const BAD_REQUEST_OTP_NOT_REQUIRED                                             = 'BAD_REQUEST_OTP_NOT_REQUIRED';
+
+    const BAD_REQUEST_SUBMERCHANT_UNLINKING_FAILED                                 = 'BAD_REQUEST_SUBMERCHANT_UNLINKING_FAILED';
+
+    const BAD_REQUEST_AGG_SUBMERCHANT_CONFIG_UPDATE_FAILED                         = 'BAD_REQUEST_AGG_SUBMERCHANT_CONFIG_UPDATE_FAILED';
+
+    const BAD_REQUEST_ORDER_AND_PRODUCTS_AMOUNT_MISMATCH                           = 'BAD_REQUEST_ORDER_AND_PRODUCTS_AMOUNT_MISMATCH';
+    const BAD_REQUEST_RAZORPAY_WALLET_ERROR                                        = "BAD_REQUEST_RAZORPAY_WALLET_ERROR";
+
+    const GATEWAY_ERROR_INVALID_MOBILE_NUMBER                                      = 'GATEWAY_ERROR_INVALID_MOBILE_NUMBER';
+
+    const BAD_REQUEST_TOKEN_INVALID_STATUS                                          = 'BAD_REQUEST_TOKEN_INVALID_STATUS';
+
+    const BAD_REQUEST_REFUND_AMOUNT_EXCEEDS_PAYMENT_AMOUNT                          = 'BAD_REQUEST_REFUND_AMOUNT_EXCEEDS_PAYMENT_AMOUNT';
+
+    const BAD_REQUEST_LINKED_ACCOUNT_CREATION_NOT_ALLOWED                           = "BAD_REQUEST_LINKED_ACCOUNT_CREATION_NOT_ALLOWED";
+    const BAD_REQUEST_LINKED_ACCOUNT_UPDATION_NOT_ALLOWED                           = "BAD_REQUEST_LINKED_ACCOUNT_UPDATION_NOT_ALLOWED";
+
+    const BAD_REQUEST_LINKED_ACCOUNT_CREATION_BLOCKED                               = 'BAD_REQUEST_LINKED_ACCOUNT_CREATION_BLOCKED';
+
+    const BAD_REQUEST_GIFT_CARD_FUNCTIONALITY_NOT_APPLICABLE                       = "BAD_REQUEST_GIFT_CARD_FUNCTIONALITY_NOT_APPLICABLE";
+
+    const BAD_REQUEST_PAYMENT_METHOD_DISABLED_FOR_COUPON                           = 'BAD_REQUEST_PAYMENT_METHOD_DISABLED_FOR_COUPON';
+
+    const BAD_REQUEST_TOKEN_NOT_APPLICABLE                                         = 'BAD_REQUEST_TOKEN_NOT_APPLICABLE';
+
+    const BAD_REQUEST_TOKEN_CREATION_FAILED                                        = 'BAD_REQUEST_TOKEN_CREATION_FAILED';
+
+    const BAD_REQUEST_ROUTE_NOT_ACCESSIBLE_VIA_BANKING                             = 'BAD_REQUEST_ROUTE_NOT_ACCESSIBLE_VIA_BANKING';
+
+    const BAD_REQUEST_ERROR_MERCHANT_SHOPIFY_INVALID_VARIANTS_RECEIVED             = 'BAD_REQUEST_ERROR_MERCHANT_SHOPIFY_INVALID_VARIANTS_RECEIVED';
+    const BAD_REQUEST_ERROR_MERCHANT_SHOPIFY_ACCOUNT_NOT_CONFIGURED                = 'BAD_REQUEST_ERROR_MERCHANT_SHOPIFY_ACCOUNT_NOT_CONFIGURED';
+    const BAD_REQUEST_ERROR_MERCHANT_SHOPIFY_ACCOUNT_ACCESS_DENIED                 = 'BAD_REQUEST_ERROR_MERCHANT_SHOPIFY_ACCOUNT_ACCESS_DENIED';
+    const BAD_REQUEST_ERROR_MERCHANT_SHOPIFY_ACCOUNT_THROTTLED                     = 'BAD_REQUEST_ERROR_MERCHANT_SHOPIFY_ACCOUNT_THROTTLED';
+    const SERVER_ERROR_SHOPIFY_SERVICE_FAILURE                                     = 'SERVER_ERROR_SHOPIFY_SERVICE_FAILURE';
+    const BAD_REQUEST_PAYMENT_FAILED_EXCEEDS_ARRANGEMENT                           = 'BAD_REQUEST_PAYMENT_FAILED_EXCEEDS_ARRANGEMENT';
+    const BAD_REQUEST_MERCHANT_NOT_ONBOARDED_FOR_TOKENISATION                      = 'BAD_REQUEST_MERCHANT_NOT_ONBOARDED_FOR_TOKENISATION';
+    const BAD_REQUEST_ERROR_INVALID_ONE_CC_MERCHANT                                = 'BAD_REQUEST_ERROR_INVALID_ONE_CC_MERCHANT';
+    const SERVER_ERROR_DCS_EXTERNAL_SERVICE_FAILURE                                = 'SERVER_ERROR_DCS_EXTERNAL_SERVICE_FAILURE';
+    const SERVER_ERROR_DCS_CLIENT_REQUEST_FAILURE                                  = 'SERVER_ERROR_DCS_CLIENT_REQUEST_FAILURE';
+    const BAD_REQUEST_DCS_DISABLED                                                 = 'BAD_REQUEST_DCS_DISABLED';
+    const SERVER_ERROR_DCS_SERVICE_FAILURE                                         = 'SERVER_ERROR_DCS_SERVICE_FAILURE';
+    const SERVER_ERROR_DCS_SERVICE_TIMEOUT                                         = 'SERVER_ERROR_DCS_SERVICE_TIMEOUT';
+    const BAD_REQUEST_CRYPTOGRAM_NOT_SUPPORTED                                     = 'BAD_REQUEST_CRYPTOGRAM_NOT_SUPPORTED';
+    const BAD_REQUEST_OPTIMIZER_ONLY_MERCHANT_HAS_RAAS_DISABLED                    = 'BAD_REQUEST_OPTIMIZER_ONLY_MERCHANT_HAS_RAAS_DISABLED';
+    const BAD_REQUEST_ON_DEMAND_QR_CODE_DISABLED                                   = 'BAD_REQUEST_ON_DEMAND_QR_CODE_DISABLED';
+    const SERVER_ERROR_SYNC_SHOPIFY_CREDENTIAL                                     = 'SERVER_ERROR_SYNC_SHOPIFY_CREDENTIAL';
+    const BAD_REQUEST_QR_CODE_ON_DEMAND_CLOSE_FOR_YES_BANK                         = 'BAD_REQUEST_QR_CODE_ON_DEMAND_CLOSE_FOR_YES_BANK';
+
+    // NoCode Service Error Codes
+    const SERVER_ERROR_NOCODE_APPS_SERVICE_FAILURE                                 = 'SERVER_ERROR_NOCODE_APPS_SERVICE_FAILURE';
+
+    const BAD_REQUEST_WHITELISTED_MERCHANT_ADMIN_FORGOT_PASSWORD_FEATURE_NOT_ENABLED           = 'BAD_REQUEST_WHITELISTED_MERCHANT_ADMIN_FORGOT_PASSWORD_FEATURE_NOT_ENABLED';
+    const BAD_REQUEST_WHITELISTED_MERCHANT_ADMIN_RESET_PASSWORD_FEATURE_NOT_ENABLED            = 'BAD_REQUEST_WHITELISTED_MERCHANT_ADMIN_RESET_PASSWORD_FEATURE_NOT_ENABLED';
+
+    // Account Service Error Codes
+    const BAD_REQUEST_NO_RECORD_FOUND_FOR_ID                                        = 'BAD_REQUEST_NO_RECORD_FOUND_FOR_ID';
+    const BAD_REQUEST_INVALID_ARGUMENT                                              = 'BAD_REQUEST_INVALID_ARGUMENT';
+
+    const ASV_SERVER_ERROR                                                          = 'ASV_SERVER_ERROR';
+    const ASV_MAPPING_NOT_PRESENT_ERROR                                             = 'ASV_MAPPING_NOT_PRESENT_ERROR';
+
+
+    const ASV_INTERNAL_PARITY_CHECKER_ERROR                                         = 'ASV_INTERNAL_PARITY_CHECKER_ERROR';
+
+    const SERVER_ERROR_UNABLE_TO_ASSIGN_PRICING_PLAN_FOR_B2B_EXPORT                 = 'SERVER_ERROR_UNABLE_TO_ASSIGN_PRICING_PLAN_FOR_B2B_EXPORT';
+    const BAD_REQUEST_MANDATE_CREATION_OUTDATED                                     = 'BAD_REQUEST_MANDATE_CREATION_OUTDATED';
+    const BAD_REQUEST_MANDATE_REPRESENTATION_LIMIT_EXCEEDED                         = 'BAD_REQUEST_MANDATE_REPRESENTATION_LIMIT_EXCEEDED';
+    const BAD_REQUEST_FUTURE_MANDATE_CREATION_DATE                                  = 'BAD_REQUEST_FUTURE_MANDATE_CREATION_DATE';
+
+
+
+    // bank account deletion
+    const BAD_REQUEST_ACCOUNT_ALREADY_DELETED                                       = 'BAD_REQUEST_ACCOUNT_ALREADY_DELETED';
+    const BAD_REQUEST_ACCOUNT_DOES_NOT_EXIST                                        = 'BAD_REQUEST_ACCOUNT_DOES_NOT_EXIST';
+
+    const BAD_REQUEST_PARTNER_SUBMERCHANT_OAUTH_ONBOARDING_EXP_NOT_ENABLED          = 'BAD_REQUEST_PARTNER_SUBMERCHANT_OAUTH_ONBOARDING_EXP_NOT_ENABLED';
+
+    const BAD_REQUEST_PAYOUT_APPROVAL_TOKEN_INVALID                                 = 'BAD_REQUEST_PAYOUT_APPROVAL_TOKEN_INVALID';
+
+    static function getConstants()
+    {
+        $oClass = new \ReflectionClass(__CLASS__);
+
+        return $oClass->getConstants();
+    }
+}
